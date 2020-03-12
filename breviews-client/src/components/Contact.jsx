@@ -3,7 +3,29 @@ import {
   Link
 } from "react-router-dom";
 
-const Contact = () => {
+class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  // componentDidMount() {
+  //   fetch('http://localhost:3000/users/adduser', {
+  //     method: 'POST',
+  //     headers: {
+	// 			"Content-type": "application/json; charset=UTF-8"
+	// 		},
+	// 		body: JSON.stringify({
+  //       review: 'Testing',
+  //       fullname: 'Test',
+  //       age: '27',
+  //       location: "MC", 
+  //       gender: "male"
+	// 		})
+  //   })
+  // }
+  render() {
+    // let { data } = this.props.data;
+    // console.log(data)
     return (
       <div>
       <header>
@@ -28,15 +50,15 @@ const Contact = () => {
         <form>
           <ul>
             <li>
-              <label for="name">Name:</label>
+              <label htmlFor="name">Name:</label>
               <input type="text" id="name" name="user_name" />
             </li>
             <li>
-              <label for="mail">E-mail:</label>
+              <label htmlFor="mail">E-mail:</label>
               <input type="email" id="mail" name="user_mail" />
             </li>
             <li>
-              <label for="msg">Message:</label>
+              <label htmlFor="msg">Message:</label>
               <textarea id="msg" name="user_message"></textarea>
             </li>
           </ul>
@@ -48,6 +70,7 @@ const Contact = () => {
       </footer>
     </div>
     )
+  }
 }
 
 export default Contact;

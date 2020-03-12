@@ -1,4 +1,0 @@
-For production, you should create a seperate config that extends and modifies the development version.
-
-Development:
-- fix footer position
