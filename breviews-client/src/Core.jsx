@@ -3,6 +3,7 @@ import Main from './components/Main.jsx';
 import Team from './components/Team.jsx';
 import Legal from './components/Legal.jsx';
 import Contact from './components/Contact.jsx';
+import Seytech from './components/Seytech/Seytech.jsx';
 
 import {
     BrowserRouter as Router,
@@ -47,7 +48,7 @@ class Core extends Component {
         this._isMounted = true;
         // IDK why but fetch return undefined data before returning actual data. TODO
         this.getData().then(result => { 
-            console.log(result)
+            // console.log(result)
             if (result !== undefined) 
             { this.setState({ data: result })} 
         }) 
@@ -101,7 +102,7 @@ class Core extends Component {
 
     render() {
          // IDK why but fetch return 2 empty [] before returning actual data. TODO
-         console.log("check: ", this.state.data)
+        //  console.log("check: ", this.state.data)
         if (this.state.data.length > 0 ) {
             return (
                 <Router>
@@ -116,6 +117,13 @@ class Core extends Component {
                         </Route>
                         <Route path="/legal">
                             <Legal />
+                        </Route>
+                        <Route path="/seytech">
+                            <Seytech 
+                                data={this.state}
+                                handleSubmit={this.handleSubmit}
+                                handleChange={this.handleChange}
+                            />
                         </Route>
                         <Route exact path="/">
                             <Main 

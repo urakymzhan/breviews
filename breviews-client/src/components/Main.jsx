@@ -3,6 +3,7 @@ import '../style/style.css';
 import {
     Link
   } from "react-router-dom";
+import Header from './Header.jsx';
 
 class Main extends React.Component {
     constructor(props){
@@ -10,29 +11,13 @@ class Main extends React.Component {
     }
 
     render() {
-        let { data, nameInput, reviewInput } = this.props.data;
-        let { handleSubmit, handleChange } = this.props;
+        let { data } = this.props.data;
+        let firstReview = data[0]
+        let seytechReviewCount = data.length;
+        console.log(firstReview)
         return (
             <>
-                {/* <h3 id="header-tmp">bootcamp-reviews.com</h3> */}
-                <header>
-                    <nav id="header-nav">
-                        <ul id="logo-wrapper">
-                            <li id="header-logo"><Link to="/"><img id="brlogo" src="./public/assets/brlogo3.png"/></Link></li>
-                        </ul>
-                        <ul id="tc-wrapper">
-                            <li id="header-team">
-                                <Link to="/team">Team</Link>
-                            </li>
-                            <li id="header-contact">
-                                <Link to="/contact">Contact</Link>
-                            </li>
-                            <li id="header-legal">
-                                <Link to="/legal">Legal</Link>
-                            </li>   
-                        </ul>
-                    </nav>       
-                </header>
+                <Header />
                 <div className="intro">  
                     <h2>Not sure which bootcamp to choose?</h2>
                     <p>This website will help you decide</p>   
@@ -46,66 +31,27 @@ class Main extends React.Component {
                             </div> 
                             <h3> <a href="https://www.seytech.co" target="_blank"> Seytech </a> </h3>
                         </div>
-                        <span className="review-overall">Overall: 4.8/5 (112 reviews)</span>
+                        <span className="review-overall">Overall: 4.8/5 ({ `${seytechReviewCount}` } reviews)</span>
                         <p id="bootcamp-definition">Seytech is a fullstack software developer bootcamp. Their course is a remote, online learning experience that teaches everything needs to know to become a successful software engineer...</p>
                         <p><span id="bootcamp-highlight">MODE:</span> online</p>
                         <p><span id="bootcamp-highlight">IT background:</span> not required</p>
                         <p><span id="bootcamp-highlight">LOCATION:</span> online, Seattle, Chicago</p>
                         <p><span id="bootcamp-highlight">LENGTH:</span> 6 month</p>
                         <p><span id="bootcamp-highlight">PRICE:</span> 12K total, 6K initial, 6K after placement</p>
-                        {/* review section start */} 
+                        {/* first review */} 
                         {
-                            data.map((element) => {
-                                return(
-                                    <div className="customer-reviews" key={element._id}>
-                                        <div className="review-wrapper">
-                                            <h4 id="review-author">Ulan</h4>
-                                            <span id="review-date"> {element.date} </span>
-                                            <p id="review-text">
-                                                {element.review}    
-                                            </p>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                        {/* review section end */}
-                        <div className="leave-review" style={{margin: "10px 0"}}>
-                            {/* review form start */}
-                            <form onSubmit={handleSubmit} style={{border: "none", width: "100%", backgroundColor: "#f2f2f2", textAlign: "center"}}>
-                                <div>
-                                    <label style={{width: "100%", textAlign: "left"}}>
-                                    Leave a review:
-                                    <input
-                                        name="name"
-                                        style={{width: "100%", padding: "10px", border: "none", borderRadius: "10px", margin: "1em 0"}}
-                                        type="text"
-                                        value={nameInput}
-                                        placeholder="Name - We don't show it on page"
-                                        onChange={handleChange}
-                                    />
-                                    <input
-                                        name="review"
-                                        style={{width: "100%", padding: "10px", border: "none", borderRadius: "10px", margin: "1em 0"}}
-                                        type="text"
-                                        placeholder="Type here ..."
-                                        value={reviewInput}
-                                        onChange={handleChange}
-                                    />
-                                    </label>
-                                </div>
-                                <div>
-                                    <input 
-                                        type="submit" 
-                                        value="Submit" 
-                                        style={{width: "50%", padding: "8px", border: "none", borderRadius: "10px"}}
-                                    />
-                                </div>
-                            </form>
-                            {/* review form end */}
+                        <div className="customer-reviews" key={firstReview._id}>
+                            <div className="review-wrapper">
+                                <h4 id="review-author">anonymous</h4>
+                                <span id="review-date"> {firstReview.date} </span>
+                                <p id="review-text">
+                                    {firstReview.review}    
+                                </p>
+                            </div>
                         </div>
+                        }
                         <div>
-                            <p className="more-reviews"><Link to="/seytech">>READ MORE REVIEWS >></Link></p>
+                            <p className="more-reviews"><Link to="/seytech">LEAVE AND READ MORE REVIEWS</Link></p>
                         </div>
                     
                     </section>

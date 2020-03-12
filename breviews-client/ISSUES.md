@@ -6,4 +6,4 @@ At the momennt i get around by removing e.prevenDefault() from button so page re
 
 2.  IDK why but fetch return 2 empty [] before returning actual data from database. Is it something to do with react lifecycles or server ?
 
-3. 
+3. All the styles seen from ELements section on DOM. In development we want to hide them.
