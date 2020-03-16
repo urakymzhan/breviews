@@ -1,31 +1,13 @@
 import React from 'react';
-import {
-  Link
-} from "react-router-dom";
+import Header from './B_Molecules/Header.jsx';
+import Footer from './B_Molecules/Footer.jsx';
 
 const Team = () => {
     return (
-      <div>
-        <header>
-                <nav id="header-nav">
-                    <ul id="logo-wrapper">
-                        <li id="header-logo"><Link to="/"><img id="brlogo" src="./public/assets/brlogo3.png"/></Link></li>
-                    </ul>
-                    <ul id="tc-wrapper">
-                        <li id="header-team">
-                            <Link to="/team">Team</Link>
-                        </li>
-                        <li id="header-contact">
-                            <Link to="/contact">Contact</Link>
-                        </li>
-                        <li id="header-legal">
-                            <Link to="/legal">Legal</Link>
-                        </li>   
-                    </ul>
-                </nav>       
-        </header>
+      <div className="team-wrapper">
+        <Header />
         <div>
-          <div style={{padding: "50px 10px", display: "flex"}}>
+          <div style={{padding: "100px 10px", display: "flex"}}>
 
             <div style={{width: "45%"}}>
               <div>
@@ -48,17 +30,17 @@ const Team = () => {
             </div>
           </div>
         </div>
-        <footer>
-                <p>All Rights Reserved</p>
-                <p>© 2020</p>
-        </footer>
+        <Footer />
       </div>
     )
 }
 
+export default Team;
+
+
+// STYLES:
 let imgStyle = {
   height: "200px",
   width: "200px",
   borderRadius: "100%"
 }
-export default Team;

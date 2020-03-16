@@ -12,6 +12,7 @@
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "mongodb": "^3.0.5",
+    "mongoose": "^5.9.4",
     "monk": "^7.1.2",
     "morgan": "~1.9.1",
     "pug": "^2.0.4"

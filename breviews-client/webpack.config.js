@@ -23,7 +23,9 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           // attach the presets to the loader (most projects use .babelrc file instead)
-          presets: ["@babel/preset-env", "@babel/preset-react"]
+          presets: ["@babel/preset-env", "@babel/preset-react"],
+          // this is for spinner animation
+          plugins: ["emotion"]
         }
       },
       {

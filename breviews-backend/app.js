@@ -10,6 +10,15 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/nodetest2');
 
+// TODO: Switch to mongoose and mongodb atlas 
+// mongoose
+// var mongoose = require('mongoose');
+// var mongoDB = 'mongodb://localhost:27017/nodetest2';
+// mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// Note that Express auto-creates a /users route 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
