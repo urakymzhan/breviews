@@ -32,8 +32,11 @@ class Core extends Component {
             pros: '',
             cons: '',
             dateGraduated: '',
+            schoolname: '',
             // animation
-            loading: true
+            loading: true,
+            
+
         }
         // this.state = {
         //     data: {
@@ -53,7 +56,8 @@ class Core extends Component {
         // }
     }
     getData() {
-        return fetch('http://localhost:3000/users/userlist',
+         // TODO: later proxy localhost on client side and just call /userlist extension
+        return fetch('http://localhost:3000/users/reviewlist',
         {
             method: "GET",
         headers: {
@@ -69,10 +73,9 @@ class Core extends Component {
         })
         .catch(error => console.warn(error));
     }   
-    // TODO: later proxy localhost on client side and just call /userlist extension
+   
     componentDidMount() {
         this._isMounted = true;
-        // IDK why but fetch return undefined data before returning actual data. TODO
         this.getData().then(result => { 
             // console.log(result)
             if (result !== undefined) 
@@ -82,12 +85,13 @@ class Core extends Component {
     componentWillUnmount() {
         this._isMounted = false;
     }
-    handleChange = e => {
+    handleChange = (e, sName ) => {
         // e.preventDefault();
+        console.log(sName);
         let target = e.target;
         let value = target.value;
         let name = target.name;
-        this.setState({ [name]: value });
+        this.setState({ [name]: value, schoolname: sName });
     }    
     handleSubmit = e => {
         // e.preventDefault();
@@ -97,6 +101,7 @@ class Core extends Component {
         const prosInput = this.state.pros;
         const consInput = this.state.cons;
         const dateGraduatedInput = this.state.dateGraduated;
+        const schoolname = this.state.schoolname;
         // TODO: i will change this to more better Date library
         const today = new Date().toLocaleDateString("en-US");
         // object to post
@@ -106,12 +111,14 @@ class Core extends Component {
             date: today,
             pros: prosInput,
             cons: consInput,
-            dateGraduated: dateGraduatedInput
+            dateGraduated: dateGraduatedInput,
+            schoolname: schoolname
         }
         let data = this.state.data;
+        // pushing new object to whole data in state
         data.push(dataToPost);
         if (reviewInput.length > 0) {
-            fetch('http://localhost:3000/users/adduser', {
+            fetch('http://localhost:3000/users/addreview', {
                 method: 'POST',
                 headers: {
                             "Content-type": "application/json; charset=UTF-8"
@@ -126,14 +133,15 @@ class Core extends Component {
                     pros: '',
                     cons: '',
                     dateGraduated: '',
-                    dataToPost: {} 
+                    dataToPost: {}, 
+                    schoolname: ''
                 })
             })
         }
     }   
     render() {
          // IDK why but fetch return 2 empty [] before returning actual data. TODO
-        //  console.log("check: ", this.state.data)
+         console.log("check: ", this.state.data)
         if (this.state.data.length > 0 ) {
             return (
                 <Router>
@@ -149,6 +157,14 @@ class Core extends Component {
                         <Route path="/legal">
                             <Legal />
                         </Route>
+                        {/* another design solution instead of using many routes for each school */}
+                        {/* <Route path="/bootcamps/:id">
+                            <Seytech 
+                                data={this.state}
+                                handleSubmit={this.handleSubmit}
+                                handleChange={this.handleChange}
+                            />
+                        </Route>         */}
                         <Route path="/seytech">
                             <Seytech 
                                 data={this.state}
