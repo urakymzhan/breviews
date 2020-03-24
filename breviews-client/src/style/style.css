@@ -1,258 +1,134 @@
 /* imports */
-@import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif&display=swap");
+
 /* GLOBALS */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background: #fff;
-    font-family: 'Noto Serif', serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: "Noto Serif", serif;
+  text-align: center;
 }
-
-/* MAIN PAGE START -------------  */
-.bootcamps-list-row {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;
-    padding: 1em;
-}
-.bootcamp-section {
-    box-shadow: 1px 1px 5px gray;
-    text-align: left;
-    overflow: auto;
-    border-radius: 2px;
-    background-color: #f2f2f2;
-    width: 25%;
-    margin: 0.5em;
-    min-height: 600px;
-    padding: 1em;
-}
-@media only screen and (max-width: 767px) {
-    /* tablets and desktop */
-    .bootcamps-list-row {
-        display: block;
-    }
-    .bootcamp-section {
-        width: 100%;
-        min-height: 200px;
-    }
-}
-.company-definition-wrapper {
-    padding: 0.2em;
-    margin-bottom: 0.2em;
-    min-height: 300px;
-}
-#bootcamp-definition, #bootcamp-definition-text {
-    font-size: 80%;
-    padding: 0.2em;
-    color: #636363;
-}
-#bootcamp-highlight {
-    font-weight: 600;
-    color: #000000;
-}
-.review-logo-header {
-    display: flex;
-    margin-bottom: 1em;
-    color: rgb(64, 64, 64);
-    padding: 0.2em;
-}
-.bootcamp-logo {
-    background-color: rgb(64, 64, 64);
-    box-shadow: 0 0.4em 0.8em rgba(64, 64, 64, 0.8);
-    height: 80px;
-    width: 80px;
-    margin-right: 1em;
-    position: relative;
-}
-.bootcamp-logo img {
-    height: 80%;
-    width: 80%;
-    object-fit: contain;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -40%; /* Half the height */
-    margin-left: -40%; /* Half the width */
-}
-.review-logo-header a {
-    text-decoration: none;
-    color: inherit;
-}
-/* first review section */
-.first-review-wrapper  {
-    background: #fff;
-    border: 1px solid #CCC;
-    border-left: 8px solid #194719;
-    padding: 0.5em;
-    margin-bottom: 0.2em; 
-    min-height: 300px;   
-}
-.first-review {
-    padding: 0.5em;
-}
-/* more review  text */
-.more-reviews {
-    text-align: right;
-    padding: 0.2em;
-}
-.more-reviews a {
-    text-decoration: none;
-    cursor: pointer;
-    color: #922820;
-    font-size: 80%;
-}
-.review-overall {
-    color: #ff9800;
-}
-#empty-review-text {
-    color: red;
-    font-size: 90%;
-}
-
-/* MAIN PAGE END -------------  */
-
 
 /* REVIEW PAGE START----------- */
-
-input, button, textarea, select {
-    outline: none;
-}
-.reviews-page-wrapper {
-    min-height: 100vh;
+input,
+button,
+textarea,
+select {
+  outline: none;
 }
 
 .reviews-content-wrapper {
-    width: 50%; 
-    margin: 100px auto;
-    font-size: 13px;
+  width: 50%;
+  margin: 100px auto;
+  font-size: 13px;
 }
 .reviews-header {
-    font-size: 16px;
-    margin: 3em;
-    font-weight: bold;
+  font-size: 16px;
+  margin: 3em;
+  font-weight: bold;
 }
 .write-review-btn {
-    background: #6c5399;
-    float: left;
-    margin: 0.8em 0;
-    padding: 0.4em 0.6em;
-    color: #fff;
-    line-height: 22px;
-    font-size: 11px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
+  background: #6c5399;
+  float: left;
+  margin: 0.8em 0;
+  padding: 0.4em 0.6em;
+  color: #fff;
+  line-height: 22px;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
 }
 #reviews-header-span {
-    color: rgb(255, 153, 0);;
+  color: rgb(255, 153, 0);
 }
 /* reviews */
 .review-overall .fa-star {
-    color: rgb(255, 153, 0);
+  color: rgb(255, 153, 0);
 }
 .customer-reviews {
-    background: inherit;
+  background: inherit;
 }
 .review-wrapper {
-    background: #fff;
-    padding: 5px 15px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 4px 0px #CCC;
-    text-align: left;
+  background: #fff;
+  padding: 5px 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 4px 0px #ccc;
+  text-align: left;
 }
 #review-author {
-    margin: 0;
-    color: #922820;
-    font-style: italic;
+  margin: 0;
+  color: #922820;
+  font-style: italic;
 }
 #review-date {
-    margin: 0;
-    font-style: italic;
-    color: #999;
+  margin: 0;
+  font-style: italic;
+  color: #999;
 }
-#review-pros, #review-cons {
-    width: 100%; 
+#review-pros,
+#review-cons {
+  width: 100%;
+  text-align: left;
+  font-size: 80%;
 }
 #review-pros span {
-    color: #367e39;
+  color: #367e39;
 }
 #review-cons span {
-    color: #922820;
+  color: #922820;
 }
 #review-text {
-    overflow: auto;
-    padding: 0.2em 0.8em;
-    text-align: center;
+  overflow: auto;
+  padding: 0.2em 0.8em;
+  text-align: center;
 }
 #year-graduated {
-    color: #999;
+  color: #999;
 }
-
 
 /* leave a review box */
 .leave-review {
-    /* width: 50%; */
-    box-shadow: 0 0 4px 0px #a2c4de;
-    /* display: none; */
-    /* position: absolute; */
-    background: burlywood;
-    top: 150px;
+  width: 100%;
+  box-shadow: 0 0 4px 0px #a2c4de;
+  display: block;
+  background: burlywood;
+  top: 150px;
 }
 .leave-review-box {
-    border: none;
-    border-radius: 0;
-    width: 100%;
-    background: #a2c4de; 
-    text-align: center; 
-    padding: 0.5em;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  background: #a2c4de;
+  text-align: center;
+  padding: 0.5em;
 }
 .leave-review-label {
-    width: 100%;
-    text-align: left;
+  width: 100%;
+  text-align: left;
 }
 .leave-review-warning {
-    color: #922820; 
-    font-size: 9px;
+  color: #922820;
+  font-size: 9px;
 }
 .leave-review-row1 {
-    display: flex;
-    justify-content: space-between;  
-    margin: 0.8em 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.8em 0;
 }
 .leave-review-row2 {
-    display: flex;
-    justify-content: space-between;  
-    margin: 0 0 0.8em 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0.8em 0;
 }
 
 /* REVIEW PAGE END----------- */
 
-
-/* TEMPORARY ----------- */
-/* trying to fix footer fixed position on the bottom */
-  /* wrappers */
-  .main-wrapper {
-    position: relative; 
-    padding: 0;
-    margin: 0;
-    padding: 100px 0 100px 0;
-  }
-
-  .legal-wrapper {
-    /* position: relative;  */
-    padding: 60px 0 0 0;
-  }
-  .team-wrapper {
-      /* position: relative;  */
-    padding: 60px 0 0 0;
-  }
-  .reviews-page-wrapper {
-    /* position: relative;  */
-    padding: 0;
-    margin: 0;
-    padding: 60px 0 100px 0;
-  }
+footer > p::selection {
+  background: #6799ff;
+  color: #fff;
+}

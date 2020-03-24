@@ -1,0 +1,138 @@
+/* WRAPPERS -------------  */
+.main-wrapper {
+  position: relative;
+  margin: 0;
+  padding-bottom: 140px;
+  min-height: 100%;
+  text-align: center;
+}
+
+.bootcamps-list-row {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+.bootcamp-section {
+  display: inline-block;
+  width: calc((100% / 4) - (0.8em * 2));
+  box-shadow: 1px 1px 5px gray;
+  text-align: left;
+  border-radius: 2px;
+  background-color: #f2f2f2;
+  min-height: 520px;
+  padding: 1em;
+  margin: 0 0.8em 0.8em 0.8em;
+  vertical-align: top;
+}
+.company-definition-wrapper {
+  min-height: 340px;
+  clear: both;
+}
+.review-overall {
+  color: #ff9800;
+  text-align: center;
+  margin-top: 0;
+  font-size: 80%;
+}
+
+#bootcamp-definition,
+#bootcamp-definition-text {
+  font-size: 80%;
+  padding: 0.2em;
+  color: #636363;
+}
+#bootcamp-highlight {
+  font-weight: 600;
+  color: #000000;
+}
+.review-logo-header {
+  color: rgb(64, 64, 64);
+}
+.bootcamp-logo-wrapper {
+  background-color: rgb(64, 64, 64);
+  box-shadow: 0 0.4em 0.8em rgba(64, 64, 64, 0.8);
+  height: 80px;
+  width: 80px;
+  position: relative;
+  vertical-align: top;
+  margin: 0 auto;
+}
+.bootcamp-logo-wrapper img {
+  height: 80%;
+  width: 80%;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -40%; /* Half the height */
+  margin-left: -40%; /* Half the width */
+  z-index: 1;
+}
+.schoolnames-wrapper {
+  width: 100%;
+  vertical-align: top;
+  text-align: center;
+}
+.schoolnames a {
+  text-decoration: none;
+  color: inherit;
+}
+.schoolnames::first-letter {
+  text-transform: uppercase;
+}
+
+/* more review  text */
+.more-reviews-wrapper {
+  text-align: center;
+}
+.more-reviews {
+  padding: 0.8em;
+  border: none;
+  font-size: 12px;
+  /* font-weight: bold; */
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+.more-reviews:hover {
+  background-color: #b2eaf2;
+  border: 1px solid #f2f2f2;
+  transition: 0.5s ease-in-out;
+}
+.more-reviews a {
+  text-decoration: none;
+  color: rgb(64, 64, 64);
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 599px) {
+  /*  for-phone-only  */
+  .bootcamp-section {
+    display: block;
+    width: 100%;
+    margin: 0 0 0.8em 0;
+  }
+  .company-definition-wrapper {
+    min-height: 280px;
+  }
+  .intro {
+    width: 90% !important;
+  }
+  .chart-wrapper {
+    width: 90% !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  /*  for-desktop-only */
+}
+
+@media screen and (min-width: 599px) and (max-width: 1199px) {
+  .bootcamp-section {
+    width: calc((100% / 2) - (0.8em * 2));
+  }
+  .intro {
+    width: 60% !important;
+  }
+}

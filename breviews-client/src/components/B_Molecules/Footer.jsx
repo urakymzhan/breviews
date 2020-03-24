@@ -1,23 +1,25 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
-    return (
-        <footer style={main}>
-            <p>All Rights Reserved</p>
-            <p>© 2020</p>
-        </footer>
-    )
-}
+  return (
+    <footer style={footerWrapperStyle}>
+      <p>Copyright 2020</p>
+      <p>Breviews</p>
+    </footer>
+  );
+};
 
 export default Footer;
 
-
 // STYLES:
-const main = {
-    background: "rgb(56, 73, 89)",
-    padding: "5px",
-    color: "#fff",
-    position: "absolute",  
-    bottom: "0",
-    width: "100%"
-}
+const footerWrapperStyle = {
+  background: "#788b95",
+  padding: "2em",
+  color: "#fff",
+  position: "absolute",
+  bottom: "0",
+  left: "0",
+  right: "0",
+  width: "100%",
+  fontSize: "12px"
+};

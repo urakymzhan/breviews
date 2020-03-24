@@ -1,44 +1,57 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   // the output bundle won't be optimized for production but suitable for development
-  mode: 'development',
+  mode: "development",
   // the app entry point is /src/index.js
-  entry: path.resolve(__dirname, 'index.js'),
+  entry: path.resolve(__dirname, "index.js"),
   output: {
-  	// the output of the webpack build will be in /dist directory
-    path: path.resolve(__dirname, 'dist'),
+    // the output of the webpack build will be in /dist directory
+    path: path.resolve(__dirname, "dist"),
     // the filename of the JS bundle will be bundle.js
-    filename: 'bundle.js'
+    filename: "bundle.js",
+    publicPath: "/"
   },
   module: {
     rules: [
       {
-      	// for any file with a suffix of js or jsx
+        // for any file with a suffix of js or jsx
         test: /\.jsx?$/,
         // ignore transpiling JavaScript from node_modules as it should be that state
         exclude: /node_modules/,
         // use the babel-loader for transpiling JavaScript to a suitable format
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
           // attach the presets to the loader (most projects use .babelrc file instead)
           presets: ["@babel/preset-env", "@babel/preset-react"],
-          // emotion is for spinner animation
-          // order of plugins important
-          plugins: ["babel-plugin-styled-components", "emotion"]
+
+          // order of plugins are important
+          plugins: [
+            // this is fixing my polyfill issue, which allows us to use async await syntax
+            "@babel/plugin-transform-runtime",
+            // emotion is for spinner animation
+            "emotion"
+          ]
         }
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
+        use: ["style-loader", "css-loader"]
+      }
     ]
   },
   devServer: {
-    // helps on reloading the page
-    historyApiFallback: true
+    // helps on reloading pages
+    historyApiFallback: true,
+    port: 8080,
+    // proxying backend api
+    proxy: { "/api": "http://localhost:5000" }
   },
   // add a custom index.html as the template
-  plugins: [new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public', 'index.html') })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "public", "index.html")
+    })
+  ]
 };

@@ -14,20 +14,25 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "framer-motion": "^1.9.1",
+    "makecancelable": "^1.1.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "react-spinners": "^0.8.1",
     "react-spring": "^8.0.27",
-    "styled-components": "^5.0.1"
+    "reactstrap": "^8.4.1",
+    "recharts": "^1.8.5",
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
+    "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.7",
+    "babel-polyfill": "^6.26.0",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^1.1.3",
