@@ -1,63 +1,46 @@
 const express = require("express");
 const router = express.Router();
 // const { check, validationResult } = require("express-validator/check");
-const Bootcamps = require('../../models/Bootcamps');
+const Bootcamp = require('../../models/Bootcamps');
 
 // @route  GET api/landing
 // access  Public
-router.get("/landing", function(req, res) {
-  var db = req.db;
-  var collection = db.get("bootcamps");
-  // on landing page excluding all reviews in order to make page load faster
-  collection.find(
-    {},
-    {
-      sort: { schoolname: 1, logo: 1, overall: 1, lastreview: 1 },
-      fields: { reviews: 0 } // deprecated warning
-    },
-    (err, data) => {
-      if (err) {
-        console.log(err);
-      }
-      res.json(data);
-    }
-  );
+router.get("/landing", async (req, res) => {
+  try {
+    const landing = await Bootcamp.find().select('-reviews');
+    res.json(landing);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // @route  GET api/bootcamps/:name
 // access  Public
-router.get("/bootcamps/:name", function(req, res) {
-  const name = req.params.name;
-  var newArr;
-  var db = req.db;
-  var collection = db.get("bootcamps");
-  collection.find({ schoolname: { $eq: name } }, (err, docs) => {
-    // newArr = docs;
-    // // get all reviews array
-    // var allreviews = newArr[0].reviews;
-    // // send all reviews
-    res.json(docs);
-  });
+router.get("/bootcamps/:name", async (req, res) => {
+  try {
+    const name = req.params.name;
+    const bootcamp = await Bootcamp.find({schoolname: { $eq: name }});
+    res.json(bootcamp);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // WORKS BUT NOT ENTIRELY SURE ABOUT ARCHITECTURE
 // @route  POST api/bootcamps/:name
 // access  Public
-router.post("/bootcamps/:name", function(req, res) {
-  const name = req.params.name;
+router.post("/bootcamps/:name", async (req, res) => {
 
-  let db = req.db;
-  let collection = db.get("bootcamps");
-
-  var newArr;
-  collection.find({ schoolname: { $eq: name } }, (err, results) => {
-    newArr = results;
+  try {
+    const name = req.params.name;
+    await Bootcamp.find({ schoolname: { $eq: name } }, (err, bootcamp) => {
     // get all reviews
-    var allreviews = newArr[0].reviews;
-    // insert the new review
+    var allreviews = bootcamp[0].reviews;
+    // insert new review
     allreviews.push(req.body);
     // compute sum of stars
-    // make sure star value is integer from submit
     var sum = 0;
     allreviews.map(obj => {
       sum += obj.star;
@@ -92,7 +75,9 @@ router.post("/bootcamps/:name", function(req, res) {
     console.log("overallRating: ", overallRating);
 
     // update in db
-    collection.update(
+    // i again had to parse them to int, 
+    // float otherwise they stored as strings in DB
+    Bootcamp.update(
       { schoolname: { $eq: name } },
       {
         $set: {
@@ -100,7 +85,7 @@ router.post("/bootcamps/:name", function(req, res) {
           overall: parseFloat(overallRating),
           reviewsCount: parseInt(count),
           jobrate: parseFloat(rate),
-          charData: chartData
+          chartData: chartData
         }
       },
       (err, result) => {
@@ -111,7 +96,11 @@ router.post("/bootcamps/:name", function(req, res) {
         );
       }
     );
-  });
+  }); 
+  } catch(err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 });
 
 module.exports = router;

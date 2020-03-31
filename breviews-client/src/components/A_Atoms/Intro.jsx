@@ -36,5 +36,5 @@ const intro = {
   padding: "0.8em",
   textAlign: "center",
   borderRadius: "4px",
-  color: "rgb(255, 51, 0, 1)"
+  color: "#000000"
 };

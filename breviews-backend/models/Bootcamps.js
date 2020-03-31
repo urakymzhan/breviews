@@ -2,68 +2,70 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BootcampSchema = new Schema({
-  _id: Schema.Type.ObjectId,
+  _id: Schema.Types.ObjectId,
   schoolname: {
-    type: String,
-    trim: true,
-    required: true
+    type: String
+  },
+  customName: {
+    type: String
   },
   reviews: [
     {
-      // uuid id
       id: String,
-      name: String,
-      date: Date,
+      customerName: String,
+      date: String,
       pros: String,
       cons: String,
-      dateGraduated: Date,
-      star: Number
+      dateGraduated: Number,
+      star: Number,
+      jobfound: String,
+      review: String,
     }
   ],
   logo: {
-    type: String,
-    required: true
+    type: String
   },
   overall: {
-    type: Number,
-    required: true
+    type: Number
   },
-  lastreviw: {
-    id: String,
-    name: String,
-    date: Date,
-    pros: String,
-    cons: String,
-    dateGraduated: Date,
-    star: Number
+  reviewsCount: {
+    type: Number
+  },
+  jobrate: {
+    type: Number
+  },
+  chartData: {
+    name: {
+      type: String
+    },
+    rate: {
+      type: Number
+    }
+  },
+  website: {
+    type: String
+  },
+  definition: {
+    type: String
+  },
+  mode: {
+    type: String
+  },
+  itbackground: {
+    type: String
+  },
+  location: {
+    type: String
+  },
+  duration: {
+    type: String
+  },
+  price: {
+    type: String
   }
 });
 
-module.exports = mongoose.model("BootcampSchema", BootcampSchema);
+// 3rd parameter is collection name
+module.exports = Bootcamp = mongoose.model("bootcamp", BootcampSchema, 'bootcamps');
 
-// Correct EXAMPLE:
 
-// data: [
-//     id: String, //or number, whatever you need
-//     name: String,
-//     description: String,
-//     category: String,
-//     points: Number,
-//     startDate​:​ Date,
-//     endDate​: ​Date,
-//     isActive​: ​Boolean​,
-//     alreadyAnswered​:​ Boolean​,
-//     questions:[{
-//             id: String, //or again, number
-//             text: String,
-//             type: String,
-//             options: [
-//                 {
-//                     id: String, //or number
-//                     text: String,
-//                     value: String
-//                 }
-//             ]
-//         }
-//     ]
-// ]

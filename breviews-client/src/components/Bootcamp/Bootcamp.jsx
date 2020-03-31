@@ -22,10 +22,10 @@ class Bootcamp extends React.Component {
       pros: "",
       cons: "",
       star: 0,
-      dateGraduated: "",
+      dateGraduated: null,
       jobfound: 'Yes',
       show: false,
-      ratingValue: 0,
+      ratingValue: null,
     };
   }
 
@@ -101,7 +101,7 @@ class Bootcamp extends React.Component {
       customerName: "",
       pros: "",
       cons: "",
-      dateGraduated: "",
+      dateGraduated: null,
       dataToPost: {},
       jobfound: "Yes",
       ratingValue: 0
@@ -120,7 +120,7 @@ class Bootcamp extends React.Component {
   };
 
   handleStars = (starVal) => {
-    console.log(starVal);
+    // console.log(starVal);
     this.setState({ ratingValue: starVal })
   }
   render() {

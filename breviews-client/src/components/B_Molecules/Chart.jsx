@@ -7,27 +7,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
 } from "recharts";
-
-const data = [
-  {
-    name: "Seytech",
-    percentage: 0
-  },
-  {
-    name: "Cybertek",
-    percentage: 0
-  },
-  {
-    name: "Salesforce Bootcamp",
-    percentage: 0
-  },
-  {
-    name: "Cloudgate Academy",
-    percentage: 0
-  }
-];
+import data from '../constants/chart_sample';
 
 class Chart extends React.Component {
   constructor(props) {
@@ -37,16 +18,15 @@ class Chart extends React.Component {
   render() {
     // Not sure if its a good idea to bring all data here 
     const { mainpageData } = this.props;
-    let charData = [];
+    let chartData = [];
     mainpageData.map(obj => {
-      if(obj.charData.length !== 0) {
-        // console.log(typeof obj.charData['rate'])
-        charData.push(obj.charData);
+      if(obj.chartData.length !== 0) {
+        chartData.push(obj.chartData);
       } 
     })
-    // if charData empty use hard coded data above
-    if (charData.length === 0) {
-      charData = data
+    // if chartData empty use hard coded from constants
+    if (chartData.length === 0) {
+      chartData = data
     }
     return (
       <div
@@ -69,7 +49,7 @@ class Chart extends React.Component {
         <ResponsiveContainer width={"100%"} height={520}>
           <ComposedChart
             layout="vertical"
-            data={charData}
+            data={chartData}
             margin={{
               top: 20,
               right: 80,

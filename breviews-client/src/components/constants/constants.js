@@ -1,6 +1,4 @@
 
-
-
 export const EMPTY_REVIEW_TEXT = "Be the first to leave a review";
 
 // Main.jsx

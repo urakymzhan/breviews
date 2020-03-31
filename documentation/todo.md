@@ -14,7 +14,4 @@
 
 ### Back end
 
-- how to debug inside route.get or route.post from vscode ?
-- Switch to mongoose from monk
 - store images in file system rather than on db
-- use uuid for giving a unique "key" to each review when posting

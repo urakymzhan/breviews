@@ -1,13 +1,22 @@
-const monk = require("monk");
 const config = require("config");
-const dbURI = config.get("mongoURI");
+const mongoose = require('mongoose');
+const db = config.get("mongoURI");
 
-const db = monk(dbURI);
+const connectDB = async () => {
+	try {
+		await mongoose.connect(db, {
+			useNewUrlParser: true,
+			useCreateIndex: true,
+			useFindAndModify: false,
+			useUnifiedTopology: true
+		});
 
-db.then(() => {
-  console.log("Database correctly to connected to server");
-});
+		console.log('MongoDB Connected...');
+	} catch (err) {
+		console.error(err.message);
+		// Exit process with failure
+		process.exit(1);
+	}
+};
 
-module.exports = db;
-
-// NOTE: I want to switch to mongoose ideally
+module.exports = connectDB;
