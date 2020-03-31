@@ -42,20 +42,19 @@ const Header = () => {
 export default Header;
 
 // STYLES:
-
+const navStyle = {
+  display: "flex",
+  flexWrap: "nowrap",
+  justifyContent: "space-between",
+  background: "#f2f2f2",
+  padding: "0.6em 4em"
+};
 const ulStyle = {
   listStyle: "none",
   padding: "0",
   height: "40px",
   lineHeight: "40px",
   verticalAlign: "middle"
-};
-const navStyle = {
-  display: "flex",
-  flexWrap: "nowrap",
-  justifyContent: "space-between",
-  background: "#f2f2f2",
-  padding: "0.1em 2em"
 };
 
 const lists = {

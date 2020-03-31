@@ -22,13 +22,18 @@ select {
 }
 
 .reviews-content-wrapper {
-  width: 50%;
-  margin: 100px auto;
+  margin: 0 auto;
   font-size: 13px;
 }
+.reviews-header-wrapper {
+  background: #a1cee1;
+  padding: 2em 1em;
+  margin-bottom: 2em;
+  color: #333;
+}
+
 .reviews-header {
   font-size: 16px;
-  margin: 3em;
   font-weight: bold;
 }
 .write-review-btn {
@@ -43,8 +48,15 @@ select {
   border-radius: 4px;
   cursor: pointer;
 }
+.write-review-btn:hover {
+  background: #574971;
+  transition: 0.5s ease-in-out;
+  transform: scale(0.99);
+  color: #fff;
+}
 #reviews-header-span {
-  color: rgb(255, 153, 0);
+  /* color: rgb(255, 153, 0); */
+  color: RGBA(175, 48, 38, 1);
 }
 /* reviews */
 .review-overall .fa-star {
@@ -59,14 +71,16 @@ select {
   margin-bottom: 10px;
   box-shadow: 0 0 4px 0px #ccc;
   text-align: left;
+  font-size: 11px;
 }
 #review-author {
   margin: 0;
   color: #922820;
   font-style: italic;
+  font-size: 15px;
 }
 #review-date {
-  margin: 0;
+  margin: 0 0 0.8em 0;
   font-style: italic;
   color: #999;
 }
@@ -74,7 +88,6 @@ select {
 #review-cons {
   width: 100%;
   text-align: left;
-  font-size: 80%;
 }
 #review-pros span {
   color: #367e39;
@@ -91,29 +104,22 @@ select {
   color: #999;
 }
 
-/* leave a review box */
-.leave-review {
-  width: 100%;
-  box-shadow: 0 0 4px 0px #a2c4de;
-  display: block;
-  background: burlywood;
-  top: 150px;
+/* REVIEW PAGE END----------- */
+
+
+/* MODAL START */
+
+.modal-body {
+  padding: 0 1rem !important;
 }
 .leave-review-box {
-  border: none;
-  border-radius: 0;
   width: 100%;
-  background: #a2c4de;
-  text-align: center;
-  padding: 0.5em;
-}
-.leave-review-label {
-  width: 100%;
-  text-align: left;
+  font-size: 12px;
 }
 .leave-review-warning {
-  color: #922820;
-  font-size: 9px;
+  color: #9c2a22;
+  font-size: 10px;
+  text-align: left;
 }
 .leave-review-row1 {
   display: flex;
@@ -126,8 +132,86 @@ select {
   margin: 0 0 0.8em 0;
 }
 
-/* REVIEW PAGE END----------- */
+.modalName {
+  width: 50%;
+  margin-right: 0.8em;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.modalDateGraduated {
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.modalPros {
+  width: 50%;
+  padding: 5px;
+  margin-right: 0.8em;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.modalCons {
+  width: 50%;
+  padding: 5px;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.modalReview {
+  width: 100%;
+  padding: 5px;
+  margin:  0 0 0.8em 0;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.modalSixMonthJobfound {
+  text-align: left;
+  margin: 0.8em 0;
+  color: #636363;
+}
+.modalSixMonthJobfound select {
+  width: 100%; 
+  border: 1px solid #ccc; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; 
+  padding: 0.4em;
+}
 
+
+#modalsubmitBtn {
+  background: #6c5399;
+  padding: 0.4em 3em;
+  letter-spacing: 2px;
+  color: #fff;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0.4em 0 0 0;
+}
+
+.overall-review-rating-stars {
+}
+.star-rating-container {
+
+}
+#rating-empty-star, #rating-full-star {
+  height: 30px;
+  width: auto;
+  margin: 0.4em 1.2em;
+}
+/* MODAL END */
+
+#empty-review-text {
+  font-size: 12px;
+  color: teal;
+}
+
+/* footer selection */
 footer > p::selection {
   background: #6799ff;
   color: #fff;

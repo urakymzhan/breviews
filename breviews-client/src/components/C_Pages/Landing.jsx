@@ -4,7 +4,6 @@ import "../../style/landing.css";
 import { Link } from "react-router-dom";
 import Footer from "../B_Molecules/Footer.jsx";
 import Intro from "../A_Atoms/Intro.jsx";
-import NoReviewsYet from "../A_Atoms/NoReviewsYet";
 import Chart from "../B_Molecules/Chart.jsx";
 import {
   MODE,
@@ -14,6 +13,7 @@ import {
   PRICE
 } from "../constants/constants";
 import Spinner from "../A_Atoms/Spinner";
+import  Rating from 'react-rating';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -37,6 +37,7 @@ class Landing extends React.Component {
   render() {
     let { mainpageData, isLoaded } = this.state;
     console.log("mainpageData", mainpageData);
+ 
 
     let content = <Spinner />;
 
@@ -45,26 +46,38 @@ class Landing extends React.Component {
         <div className="bootcamps-list-row">
           {mainpageData.map(bootcamp => {
             return (
-              <section className="bootcamp-section">
+              <section className="bootcamp-section" key={bootcamp._id}>
                 <div className="review-logo-header">
                   <div className="bootcamp-logo-wrapper">
                     <img src={bootcamp.logo} />
                   </div>
                   <div className="schoolnames-wrapper">
-                    <h3 className="schoolnames">
+                    <h4 className="schoolnames">
                       {" "}
                       <a href={bootcamp.website} target="_blank">
                         {" "}
-                        {bootcamp.schoolname}{" "}
+                        {bootcamp.customName}{" "}
                       </a>{" "}
-                    </h3>
+                    </h4>
                   </div>
                 </div>
+
                 <div className="company-definition-wrapper">
-                  <p className="review-overall">
-                    <span id="overall-review-text">Overall: </span>{" "}
-                    {bootcamp.overall}/5 ({`${bootcamp.reviewsCount}`} reviews)
-                  </p>
+                  <div className="review-overall">
+                  <Rating
+                    className="star-rating-container"
+                    start={0}
+                    stop={5}
+                    fractions={2}
+                    placeholderRating={bootcamp.overall}
+                    emptySymbol={<img id="rating-empty-star-main" src="../../public/assets/rating-off.png" />}
+                    placeholderSymbol={<img id="rating-full-star-main" src="../../public/assets/rating-on.png" />}
+                    readonly
+                  />
+                    <div>
+                      <span>{bootcamp.overall}/5 ({bootcamp.reviewsCount} reviews)</span>
+                    </div>
+                  </div>
                   <p id="bootcamp-definition-text">{bootcamp.definition} </p>
                   <p id="bootcamp-definition">
                     <span id="bootcamp-highlight">{MODE}: </span>{" "}
@@ -88,13 +101,14 @@ class Landing extends React.Component {
                   </p>
                 </div>
 
-                <div className="more-reviews-wrapper">
+                <div className="more-reviews-wrapper" >
                   <button className="more-reviews">
                     <Link to={`/bootcamps/${bootcamp.schoolname}`}>
                       LEARN MORE
                     </Link>
                   </button>
-                </div>
+                </div>    
+
               </section>
             );
           })}
@@ -105,7 +119,7 @@ class Landing extends React.Component {
       <div className="main-wrapper">
         <Intro />
         {content}
-        <Chart />
+        <Chart mainpageData={mainpageData}/>
         <Footer />
       </div>
     );

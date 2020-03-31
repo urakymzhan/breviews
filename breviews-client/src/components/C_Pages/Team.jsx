@@ -9,6 +9,11 @@ const Team = () => {
           padding: "0.8em"
         }}
       >
+
+        <div style={{ marginBottom: "2em"}}>
+          <p >We are a team who loves what they do</p>
+          <hr style={{width: "30%"}}/>
+        </div>
         <div>
           <div>
             <img
@@ -19,12 +24,11 @@ const Team = () => {
             />
           </div>
           <div>
-            <h2> Ulan Rakymzhanov</h2>
-            <p style={{ color: "gray" }}>
-              Founder
-              <br />
-              <span> - Freelancer - </span>
-            </p>
+          <p>ULAN RAKYMZHANOV<br />
+              <span style={{ color: "gray", fontSize: "10px" }}>
+                Founder
+              </span>
+              </p>
           </div>
         </div>
 
@@ -45,12 +49,13 @@ const Team = () => {
               />
             </div>
             <div>
-              <h2>Marat Gaipov</h2>
-              <p style={{ color: "gray" }}>
-                Advisor
-                <br />
-                <span> - Engineer at Amazon - </span>
-              </p>
+              <p>MARAT GAIPOV<br />
+                <span style={{ color: "gray", fontSize: "10px" }}>
+                  Advisor
+                  <br />
+                  - Engineer at Amazon -
+                </span>
+                </p>
             </div>
           </div>
 
@@ -64,11 +69,12 @@ const Team = () => {
               />
             </div>
             <div>
-              <h2>Tynarbek Arzymatov</h2>
-              <p style={{ color: "gray" }}>
+              <p>TYNAR ARZYMATOV<br />
+              <span style={{ color: "gray", fontSize: "10px" }}>
                 Advisor
                 <br />
-                <span> - Engineer at Oracle - </span>
+                 - Engineer at Oracle -
+              </span>
               </p>
             </div>
           </div>
@@ -87,11 +93,13 @@ const teamWrapper = {
   position: "relative",
   margin: "0",
   padding: "40px 0 100px 0",
-  minHeight: "100%"
+  minHeight: "100%",
+  textAlign: "center"
 };
 
 let imgStyle = {
   height: "100px",
   width: "100px",
-  borderRadius: "100%"
+  borderRadius: "100%",
+  margin: "0.8em"
 };

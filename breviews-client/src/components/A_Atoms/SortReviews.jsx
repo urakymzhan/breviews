@@ -17,4 +17,7 @@ export default function SortReviews() {
     )
 }
 
-
+// use this:
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none; 

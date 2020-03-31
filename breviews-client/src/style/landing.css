@@ -1,31 +1,38 @@
-/* WRAPPERS -------------  */
+/* WRAPPER -------------  */
 .main-wrapper {
   position: relative;
   margin: 0;
-  padding-bottom: 140px;
   min-height: 100%;
   text-align: center;
+  background: linear-gradient(#a1cee1,#34c8fb);
+  padding: 0.8em 0.8em 8em 0.8em;
 }
 
 .bootcamps-list-row {
   position: relative;
   width: 90%;
-  margin: 0 auto;
+  margin: 0.8em auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .bootcamp-section {
-  display: inline-block;
-  width: calc((100% / 4) - (0.8em * 2));
+  /* display: inline-block; */
+  /* width: calc((100% / 4) - (0.8em * 2)); */
+  /* min-height: 520px; */
+  flex-basis: calc(90% / 3);
   box-shadow: 1px 1px 5px gray;
   text-align: left;
   border-radius: 2px;
   background-color: #f2f2f2;
-  min-height: 520px;
   padding: 1em;
-  margin: 0 0.8em 0.8em 0.8em;
+  margin: 0.8em 0;
   vertical-align: top;
 }
 .company-definition-wrapper {
-  min-height: 340px;
+  /* find better way to keep LEARN MORE at the bottom */
+  min-height: 380px;
   clear: both;
 }
 .review-overall {
@@ -34,7 +41,13 @@
   margin-top: 0;
   font-size: 80%;
 }
-
+.overall-review-rating-stars {
+  margin: 0.8em 0;
+}
+.overall-review-rating-stars img {
+  width: 20px;
+  height: auto;
+}
 #bootcamp-definition,
 #bootcamp-definition-text {
   font-size: 80%;
@@ -72,15 +85,17 @@
   width: 100%;
   vertical-align: top;
   text-align: center;
+  margin-top: 0.8em;
 }
 .schoolnames a {
   text-decoration: none;
   color: inherit;
 }
-.schoolnames::first-letter {
-  text-transform: uppercase;
+/* rating stars */
+#rating-empty-star-main, #rating-full-star-main {
+  height: 15px;
+  width: auto;
 }
-
 /* more review  text */
 .more-reviews-wrapper {
   text-align: center;
@@ -89,7 +104,6 @@
   padding: 0.8em;
   border: none;
   font-size: 12px;
-  /* font-weight: bold; */
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid #ccc;
@@ -104,14 +118,13 @@
   color: rgb(64, 64, 64);
 }
 
-/* MEDIA QUERIES */
+/* MEDIA QUERIES START */
 
 @media only screen and (max-width: 599px) {
   /*  for-phone-only  */
   .bootcamp-section {
     display: block;
-    width: 100%;
-    margin: 0 0 0.8em 0;
+    flex-basis: 100%;
   }
   .company-definition-wrapper {
     min-height: 280px;
@@ -123,16 +136,17 @@
     width: 90% !important;
   }
 }
-
-@media only screen and (min-width: 1200px) {
-  /*  for-desktop-only */
-}
-
 @media screen and (min-width: 599px) and (max-width: 1199px) {
   .bootcamp-section {
-    width: calc((100% / 2) - (0.8em * 2));
+    flex-basis: calc(90% / 2);
   }
   .intro {
     width: 60% !important;
   }
 }
+@media only screen and (min-width: 1200px) {
+  /*  for-desktop-only */
+}
+/* MEDIA QUERIES END */
+
+

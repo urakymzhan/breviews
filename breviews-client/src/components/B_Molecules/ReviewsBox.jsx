@@ -9,7 +9,7 @@ export default function ReviewsBox(props) {
   return reviewsData.map(user => {
     return (
       <div className="review-wrapper" key={user.id}>
-        <h4 id="review-author">anonymous</h4>
+        <p id="review-author">anonymous</p>
         <p id="review-date"> {user.date} </p>
         <p id="review-pros">
           <span>PROS: </span>

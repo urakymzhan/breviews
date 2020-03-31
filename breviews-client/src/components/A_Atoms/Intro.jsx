@@ -18,10 +18,10 @@ export default function Intro() {
       transition={{ duration: 8, times: [0, 0.6, 1] }}
       variants={variants}
     >
-      <h2 style={{ marginBottom: "0.2em", color: "#333" }}>
+      <h5 style={{ marginBottom: "0.2em"}}>
         Not sure which bootcamp to choose?
-      </h2>
-      <p style={{ marginTop: "0", color: "#fffbd7" }}>
+      </h5>
+      <p style={{ marginTop: "0", color: "#333"}}>
         This platform will help you decide
       </p>
     </motion.div>
@@ -30,10 +30,11 @@ export default function Intro() {
 
 // STYLES:
 const intro = {
-  background: "rgb(255, 51, 0, 0.8)",
+  background: "#f2f2f2",
   width: "40%",
-  margin: "0.8em auto",
+  margin: "0 auto",
   padding: "0.8em",
   textAlign: "center",
-  borderRadius: "2px"
+  borderRadius: "4px",
+  color: "rgb(255, 51, 0, 1)"
 };

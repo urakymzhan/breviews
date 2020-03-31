@@ -1,8 +1,11 @@
 import React from "react";
 import "../../style/style.css";
+import { Modal }  from 'react-bootstrap';
+import  Rating from 'react-rating';
 
 export default function ReviewSubmitForm(props) {
   const {
+    localData,
     handleChange,
     handleSubmit,
     customerName,
@@ -10,121 +13,106 @@ export default function ReviewSubmitForm(props) {
     cons,
     pros,
     dateGraduated,
-    name
+    jobfound,
+    name,
+    show,
+    handleClose,
+    handleStars,
+    ratingValue
   } = props;
 
   return (
-    <div className="leave-review">
-      <form className="leave-review-box" onSubmit={e => handleSubmit(e, name)}>
+    <Modal
+    show={show} 
+    onHide={handleClose} 
+    animation={false}
+    >
+    <Modal.Header closeButton>
+    <Modal.Title> Review {localData[0].customName} </Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <form className="leave-review-box" onSubmit={e => handleSubmit(e, name)} >
         <div>
-          <label className="leave-review-label">
-            <div>Want to leave a review ?</div>
-            <div className="leave-review-warning">
-              {" "}
-              For ethical reasons we won't be showing names *
-            </div>
-            <div className="leave-review-row1">
-              <input
-                name="customerName"
-                style={{
-                  width: "50%",
-                  padding: "10px",
-                  border: "none",
-                  marginRight: "0.8em",
-                  marginRight: " 0.8em"
-                }}
-                type="text"
-                value={customerName}
-                placeholder="Name "
-                onChange={e => handleChange(e)}
-              />
-              <input
-                name="dateGraduated"
-                style={{ width: "50%", padding: "10px", border: "none" }}
-                type="text"
-                value={dateGraduated}
-                placeholder="Year of graduation past/future"
-                onChange={e => handleChange(e)}
-              />
-            </div>
-            <div className="leave-review-row2">
+          <div className="overall-review-rating-stars">
+            <Rating
+              className="star-rating-container"
+              start={0}
+              stop={5}
+              initialRating={ratingValue}
+              emptySymbol={<img id="rating-empty-star" src="../../public/assets/rating-off.png" />}
+              fullSymbol={<img id="rating-full-star" src="../../public/assets/rating-on.png" />}
+              onClick={handleStars}
+            />
+          </div>
+          <div className="leave-review-warning">
+            <p>We won't be showing names (anonymous)*</p>
+          </div>
+          <div className="leave-review-row1">
+            <input
+              className="modalName"
+              name="customerName"
+              type="text"
+              value={customerName}
+              placeholder="Name* "
+              onChange={handleChange}
+            />
+            <input
+              className="modalDateGraduated"
+              name="dateGraduated"
+              type="number"
+              min="1900"
+              max="2100"
+              value={dateGraduated}
+              placeholder="Date of graduation*"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="leave-review-row2">
+            <textarea
+              className="modalPros"
+              name="pros"
+              type="text"
+              placeholder="Pros"
+              value={pros}
+              onChange={handleChange}
+            ></textarea>
+            <textarea
+              className="modalCons"
+              name="cons"
+              type="text"
+              placeholder="Cons"
+              value={cons}
+              onChange={handleChange}
+            ></textarea>
+          </div>
+          <div>
               <textarea
-                name="pros"
-                style={{
-                  width: "50%",
-                  padding: "10px",
-                  border: "none",
-                  marginRight: " 0.8em"
-                }}
-                type="text"
-                placeholder="Pros"
-                value={pros}
-                onChange={e => handleChange(e)}
-              ></textarea>
-              <textarea
-                name="cons"
-                style={{ width: "50%", padding: "10px", border: "none" }}
-                type="text"
-                placeholder="Cons"
-                value={cons}
-                onChange={e => handleChange(e)}
-              ></textarea>
-            </div>
-            <div>
-              <textarea
+                className="modalReview"
                 name="review"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  border: "none",
-                  margin: " 0 0 0.8em 0"
-                }}
                 type="text"
                 placeholder="Type review here ..."
                 value={review}
-                onChange={e => handleChange(e)}
+                onChange={handleChange}
               ></textarea>
             </div>
-          </label>
-          <div
-            style={{
-              textAlign: "left",
-              margin: " 0 0 0.8em 0",
-              fontSize: "70%"
-            }}
-          >
-            <span>
-              Were you able to find a job after 4 month of graduation ?{" "}
-            </span>
-
-            <input type="radio" id="yes" name="jobfound" value="yes" />
-            <label htmlFor="yes"> Yes</label>
-
-            <input type="radio" id="no" name="jobfound" value="no" />
-            <label htmlFor="no"> No</label>
-
-            <input
-              type="radio"
-              id="no"
-              name="jobfound"
-              value="notgraduatedyet"
-            />
-            <label htmlFor="no"> Not graduated yet</label>
+          <div className="modalSixMonthJobfound">
+            <label>Did you find a job after 6 month of graduation?</label>
+            <select name="jobfound" value={jobfound} onChange={handleChange}>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="notyetgraduated" >Not yet graduated</option>
+            </select>
           </div>
           <div>
             <input
+              id="modalsubmitBtn"
               type="submit"
               value="POST"
-              style={{
-                border: "none",
-                cursor: "pointer",
-                backgroundColor: "inherit",
-                margin: "0.8em 0"
-              }}
             />
           </div>
         </div>
       </form>
-    </div>
+    </Modal.Body>
+  </Modal>
   );
 }

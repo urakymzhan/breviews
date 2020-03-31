@@ -31,6 +31,7 @@ https://expressjs.com/en/resources/middleware/cors.html
         logo: "https://urls.com",
         overall: 4.3,
         lastreview: { id: 2, name: "Jazzy", date: "03/10/2020", pros: "Nice", cons: "Bad", dateGraduated: 2008, star: 4.2 } 
+        ...
     },
         {
         schoolname: "cybertek",
@@ -41,17 +42,17 @@ https://expressjs.com/en/resources/middleware/cors.html
         logo: "https://urlc.com",
         overall: 4.0,
         lastreview: { id: 2, name: "Nass", date: "03/10/2000", pros: "Ok", cons: "Nothing", dateGraduated: 2008, star: 4.0 } 
+        ...
     }
 }
     ...
     more schools
  
-- when user click "LEAVE AND READ MORE REVIEWS" fetch all reviews.
-- For Optimiziation: use pagination (load more)
+- when user click "LEARN MORE" fetch all reviews.
+- For Optimiziation: use pagination (load more) (optional) 
 
 
 ### IMG URLS:
-
 seytech -> https://ibb.co/CKjtwM4
 cybertek -> https://cybertekschool.com/wp-content/uploads/2020/02/cybertek_logo_header.svg
 cloudgateacademy -> https://ibb.co/ZMq7F4J

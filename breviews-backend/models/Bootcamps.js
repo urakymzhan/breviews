@@ -5,12 +5,13 @@ const BootcampSchema = new Schema({
   _id: Schema.Type.ObjectId,
   schoolname: {
     type: String,
+    trim: true,
     required: true
   },
   reviews: [
     {
-      // should i give id to each review ?
-      //   _id: Schema.Types.ObjectId,
+      // uuid id
+      id: String,
       name: String,
       date: Date,
       pros: String,
@@ -28,7 +29,7 @@ const BootcampSchema = new Schema({
     required: true
   },
   lastreviw: {
-    // _id: Schema.Types.ObjectId,
+    id: String,
     name: String,
     date: Date,
     pros: String,
@@ -38,7 +39,7 @@ const BootcampSchema = new Schema({
   }
 });
 
-module.exports = Bootcamps = mongoose.model("bootcamps", BootcampSchema);
+module.exports = mongoose.model("BootcampSchema", BootcampSchema);
 
 // Correct EXAMPLE:
 

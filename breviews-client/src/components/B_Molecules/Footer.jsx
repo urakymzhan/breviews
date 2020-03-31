@@ -3,8 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer style={footerWrapperStyle}>
-      <p>Copyright 2020</p>
-      <p>Breviews</p>
+      <p>© 2020 Breviews</p>
     </footer>
   );
 };
@@ -21,5 +20,6 @@ const footerWrapperStyle = {
   left: "0",
   right: "0",
   width: "100%",
-  fontSize: "12px"
+  fontSize: "12px",
+  textAlign: "center"
 };
