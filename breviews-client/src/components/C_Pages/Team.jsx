@@ -4,16 +4,13 @@ import Footer from "../B_Molecules/Footer.jsx";
 const Team = () => {
   return (
     <div className="team-wrapper" style={teamWrapper}>
-      <div
-        style={{
-          padding: "0.8em"
-        }}
-      >
-
+      
         <div style={{ marginBottom: "2em"}}>
           <p >We are a team who loves what they do</p>
           <hr style={{width: "30%"}}/>
         </div>
+
+      <div style={{display: "flex", justifyContent: "space-evenly"}}>
         <div>
           <div>
             <img
@@ -31,56 +28,31 @@ const Team = () => {
               </p>
           </div>
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            padding: "0.8em"
-          }}
-        >
+        <div>
           <div>
-            <div>
-              <img
-                className="team-img"
-                src="https://www.seytech.co/images/users/marat.jpg"
-                alt="Tynarbek Arzymatov"
-                style={imgStyle}
-              />
-            </div>
-            <div>
-              <p>MARAT GAIPOV<br />
-                <span style={{ color: "gray", fontSize: "10px" }}>
-                  Advisor
-                  <br />
-                  - Engineer at Amazon -
-                </span>
-                </p>
-            </div>
+            <img
+              className="team-img"
+              src="https://www.seytech.co/images/users/marat.jpg"
+              alt="Tynarbek Arzymatov"
+              style={imgStyle}
+            />
           </div>
-
           <div>
-            <div>
-              <img
-                className="team-img"
-                src="/public/assets/tynar.jpeg"
-                alt="Tynarbek Arzymatov"
-                style={imgStyle}
-              />
-            </div>
-            <div>
-              <p>TYNAR ARZYMATOV<br />
+            <p>MARAT GAIPOV<br />
               <span style={{ color: "gray", fontSize: "10px" }}>
                 Advisor
                 <br />
-                 - Engineer at Oracle -
+                - Engineer at Amazon -
               </span>
               </p>
-            </div>
           </div>
         </div>
       </div>
-
+      <hr style={{width: "30%"}}/>
+      <div>
+        <p>Special thanks to our inters and contributors</p>
+        <p>Bob Smith: <span style={{color: "gray"}}>https://linkedin/bob-smith</span></p>
+      </div>
       <Footer />
     </div>
   );

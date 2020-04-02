@@ -4,7 +4,7 @@ import "../../style/style.css";
 export default function ReviewsBox(props) {
   const { reviewsData } = props;
 
-  console.log("reviewsData", reviewsData);
+  // console.log("reviewsData", reviewsData);
 
   return reviewsData.map(user => {
     return (

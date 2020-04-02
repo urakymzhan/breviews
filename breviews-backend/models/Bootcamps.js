@@ -20,6 +20,7 @@ const BootcampSchema = new Schema({
       star: Number,
       jobfound: String,
       review: String,
+      customerLinkedin: String
     }
   ],
   logo: {

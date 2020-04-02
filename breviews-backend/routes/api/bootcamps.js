@@ -11,7 +11,7 @@ router.get("/landing", async (req, res) => {
     res.json(landing);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    // res.status(500).send('Server Error');
   }
 });
 
@@ -24,7 +24,7 @@ router.get("/bootcamps/:name", async (req, res) => {
     res.json(bootcamp);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    // res.status(500).send('Server Error');
   }
 });
 
@@ -65,7 +65,7 @@ router.post("/bootcamps/:name", async (req, res) => {
     })
     let rate =  parseFloat( ( (found / (count - neitherfound) ) * 100 ) ).toFixed(2);
     // chart data
-    let chartData = { "name": name, "rate": parseInt(rate) };
+    let chartData = { "name": bootcamp[0].customName, "rate": parseInt(rate) };
 
     console.log("rate", rate)
     console.log("chartData", chartData);
@@ -99,7 +99,7 @@ router.post("/bootcamps/:name", async (req, res) => {
   }); 
   } catch(err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    // res.status(500).send("Server Error");
   }
 });
 

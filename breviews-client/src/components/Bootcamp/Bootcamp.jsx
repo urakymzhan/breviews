@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect, useReducer } from "react";
 import "../../style/style.css";
 import "../../style/landing.css";
 import { withRouter } from "react-router";
@@ -6,87 +6,67 @@ import ReviewSubmitForm from "../B_Molecules/ReviewSubmitForm.jsx";
 import ReviewsBox from "../B_Molecules/ReviewsBox.jsx";
 import SortReviews from "../A_Atoms/SortReviews.jsx";
 import { EMPTY_REVIEW_TEXT } from "../constants/constants";
-import makeCancelable from "makecancelable";
 import { v4 as uuidv4 } from "uuid";
 import { Button }  from 'react-bootstrap';
 import Spinner from "../A_Atoms/Spinner";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getBootcampData } from '../../redux/actions/bootcamp';
 
-class Bootcamp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      localData: [],
-      dataToPost: {},
-      review: "",
-      customerName: "",
-      pros: "",
-      cons: "",
-      star: 0,
-      dateGraduated: null,
+
+const Bootcamp = ({ getBootcampData, localData, name }) => {
+
+  const[ratingValue, setRatingValue] = useState(null);
+  const [show, setShow ] = useState(false);
+  // handle multiple inputs
+  const [formInput, setFormInput] = useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      review: '',
+      customerName: '',
+      pros: '',
+      cons: '',
+      dateGraduated: '',
       jobfound: 'Yes',
-      show: false,
-      ratingValue: null,
-    };
-  }
+      customerLinkedin: ''
+    }
+  )
+  useEffect (() => {
+    console.log("name from useEffect:", name)
+    getBootcampData(name);
+  }, [])
 
-  getDataFromApi = async name => {
-    const response = await fetch(`/api/bootcamps/${name}`);
-    const result = await response.json();
-    return result;
-  };
-  componentDidMount() {
-    const { name } = this.props.match.params;
-    console.log(typeof name);
-
-    this.cancelRequest = makeCancelable(this.getDataFromApi(name), data =>
-      this.setState({
-        localData: data
-      })
-    );
-  }
-  componentWillUnmount() {
-    this.cancelRequest();
-  }
-
-  handleChange = e => {
+  const handleChange = e => {
     let target = e.target;
     let value = target.value;
     let name = target.name;
-    // console.log(name, value)
-    this.setState({ [name]: value });
+    setFormInput({ [name]: value });
   };
 
-  handleSubmit = (e, name) => {
+  const handleSubmit = (e, name) => {
     e.preventDefault();
-    const reviewInput = this.state.review;
-    const customerNameInput = this.state.customerName;
-    const prosInput = this.state.pros;
-    const consInput = this.state.cons;
-    const dateGraduatedInput = this.state.dateGraduated;
+    const {review, customerName, pros, cons, dateGraduated, jobfound, customerLinkedin } = formInput;
     const today = new Date().toLocaleDateString("en-US");
     const reviewID = uuidv4();
-    const jobfoundInput = this.state.jobfound;
-    const ratingValue = this.state.ratingValue;
 
     const dataToPost = {
-      // providing id for each review
       id: reviewID,
-      review: reviewInput,
-      customerName: customerNameInput,
+      customerName,
       date: today,
-      pros: prosInput,
-      cons: consInput,
-      dateGraduated: dateGraduatedInput,
+      pros,
+      cons,
+      dateGraduated,
       star: ratingValue,
-      jobfound: jobfoundInput
+      jobfound,
+      review,
+      customerLinkedin
     };
-    let localData = this.state.localData;
     // pushing new review obj to state
     localData[0].reviews.push(dataToPost);
-    // params id from ?
-    console.log(reviewInput, "runs");
 
-    if (reviewInput.length > 0) {
+    // get this localData
+    // then in action just use it
+    if (review.length > 0) {
       fetch(`/api/bootcamps/${name}`, {
         method: "POST",
         headers: {
@@ -95,116 +75,100 @@ class Bootcamp extends React.Component {
         body: JSON.stringify(dataToPost)
       });
     }
-    this.setState({
-      localData: localData,
+    // setLocalData(localData);
+    setFormInput({
       review: "",
       customerName: "",
       pros: "",
       cons: "",
-      dateGraduated: null,
-      dataToPost: {},
+      dateGraduated: '',
       jobfound: "Yes",
-      ratingValue: 0
+      customerLinkedin: ''
     });
 
     // close modal
-    this.handleClose();
+    handleClose();
   };
-
-  handleShow = e => {
-    this.setState({ show: true });
+  const handleShow = e => {
+    setShow(true);
   };
-
-  handleClose = e => {
-    this.setState({ show: false });
+  const handleClose = e => {
+    setShow(false);
   };
-
-  handleStars = (starVal) => {
-    // console.log(starVal);
-    this.setState({ ratingValue: starVal })
+  const handleStar = (starVal) => {
+    setRatingValue(starVal)
   }
-  render() {
 
-    const {
-      localData,
-      review,
-      pros,
-      cons,
-      dateGraduated,
-      customerName,
-      jobfound,
-      show,
-      ratingValue
-    } = this.state;
+  console.log("localData hey: ", localData);
 
-    console.log("localData", localData);
-    // params name
-    const { name } = this.props.match.params;
-
-    return (
-      <Fragment>
-        {localData.length === 0 ? (
-          <Spinner />
-        ): 
-        (
-          // <Fragment>
-        <div className="reviews-content-wrapper">
-
-          <div className="reviews-header-wrapper">
-
-            <div className="reviews-header">
-              <h2>
-                <span style={{ textTransform: "uppercase" }}>{localData[0].customName}</span>{" "}
-                <span id="reviews-header-span">REVIEWS</span>
-              </h2>
-            </div>
-            <div>
-              <p style={{display: "inline-block", height: "40px", lineHeight: "40px"}}><img src="../../public/assets/web-icon.png" style={{verticalAlign: "middle", height: "12px", width: "auto"}}/> <a href={localData[0].website} target="_blank" style={{verticalAlign: "middle", height: "12px", width: "auto", color: "#795548"}}>{localData[0].website}</a></p> 
-            </div>
+  return (
+    <Fragment>
+      {localData.length === 0 ? (
+        <Spinner />
+      ): 
+      (
+      <div className="reviews-content-wrapper">
+        <div className="reviews-header-wrapper">
+          <div className="reviews-header">
+            <h2>
+              <span style={{ textTransform: "uppercase" }}>{localData[0].customName}</span>{" "}
+              <span id="reviews-header-span">REVIEWS</span>
+            </h2>
           </div>
-          
-          <div style={{width: "50%", margin:'0 auto'}}>
           <div>
-            <Button className="write-review-btn" variant="outline-light" onClick={this.handleShow} >
-              Write a Review
-            </Button>
+            <p style={{display: "inline-block", height: "40px", lineHeight: "40px"}}><img src="../../public/assets/web-icon.png" style={{verticalAlign: "middle", height: "12px", width: "auto"}}/> <a href={localData[0].website} target="_blank" style={{verticalAlign: "middle", height: "12px", width: "auto", color: "#795548"}}>{localData[0].website}</a></p> 
           </div>
-          <SortReviews />
-
-          {/*  REVIEWS START */}
-          <div className="customer-reviews">
-            {localData.length === 0 || localData[0].reviews.length === 0 ? (
-              <div>
-                <h3 id="empty-review-text"> {EMPTY_REVIEW_TEXT} </h3>
-              </div>
-            ) : (
-              <ReviewsBox reviewsData={localData[0].reviews} />
-            )}
-          </div>
-          {/*  REVIEWS END */}
-          <ReviewSubmitForm
-              localData={localData}
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-              customerName={customerName}
-              review={review}
-              cons={cons}
-              pros={pros}
-              dateGraduated={dateGraduated}
-              jobfound={jobfound}
-              name={name}
-              show={show}
-              handleClose={this.handleClose}
-              handleStars={this.handleStars}
-              ratingValue={ratingValue}
-        />
         </div>
-
+        
+        <div style={{width: "50%", margin:'0 auto'}}>
+        <div>
+          <Button className="write-review-btn" variant="outline-light" onClick={handleShow} >
+            Write a Review
+          </Button>
         </div>
-        )}
-      </Fragment>
-    )
+        <SortReviews />
+
+        {/*  REVIEWS START */}
+        <div className="customer-reviews">
+          {localData.length === 0 || localData[0].reviews.length === 0 ? (
+            <div>
+              <h3 id="empty-review-text"> {EMPTY_REVIEW_TEXT} </h3>
+            </div>
+          ) : (
+            <ReviewsBox reviewsData={localData[0].reviews} />
+          )}
+        </div>
+        {/*  REVIEWS END */}
+
+        <ReviewSubmitForm
+            localData={localData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            name={name}
+            show={show}
+            handleClose={handleClose}
+            formInput={formInput}
+            handleStar={handleStar}
+            ratingValue={ratingValue}
+      />
+      </div>
+      </div>
+      )}
+    </Fragment>
+  )
   }
-}
 
-export default withRouter(Bootcamp);
+    
+  Bootcamp.protoType = {
+    localData: PropTypes.array.isRequired,
+    getBootcampData: PropTypes.func.isRequired
+  }
+  const mapStateToProps = (state, { match }) => ({
+      localData: state.bootcamp.localData,
+      name: match.params.name
+  })
+  const mapDispatchToProps = dispatch => ({
+      getBootcampData: name => dispatch(getBootcampData(name))
+  });
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Bootcamp));

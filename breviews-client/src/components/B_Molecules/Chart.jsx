@@ -8,26 +8,23 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
-import data from '../constants/chart_sample';
+import { data } from '../constants/chart_sample';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-class Chart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Chart = ({ mainpageData }) => { 
 
-  render() {
-    // Not sure if its a good idea to bring all data here 
-    const { mainpageData } = this.props;
     let chartData = [];
     mainpageData.map(obj => {
       if(obj.chartData.length !== 0) {
         chartData.push(obj.chartData);
       } 
     })
-    // if chartData empty use hard coded from constants
+    // if chartData is empty use initial data from constants
     if (chartData.length === 0) {
       chartData = data
     }
+    console.log("chartData: ", chartData)
     return (
       <div
         className="chart-wrapper"
@@ -41,7 +38,7 @@ class Chart extends React.Component {
         }}
       >
         <div>
-          <h3 style={{ marginBottom: "0.2em" }}>Employment Rate</h3>
+          <h4 style={{ marginBottom: "0.2em" }}>Employment Rate</h4>
           <span style={{ fontStyle: "italic", fontSize: "11px" }}>
             Based on reviews
           </span>
@@ -54,7 +51,7 @@ class Chart extends React.Component {
               top: 20,
               right: 80,
               bottom: 20,
-              left: 80
+              left: 120
             }}
           >
             <CartesianGrid stroke="#f7b0c8" />
@@ -67,6 +64,11 @@ class Chart extends React.Component {
       </div>
     );
   }
-};
 
-export default Chart;
+  Chart.propTypes = {
+    mainpageData: PropTypes.array.isRequired
+  }
+  const mapStateToProps = state => ({
+    mainpageData: state.landing.mainpageData
+  })
+export default connect(mapStateToProps, {})(Chart);

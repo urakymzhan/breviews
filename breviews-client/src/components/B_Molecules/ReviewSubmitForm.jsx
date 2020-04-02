@@ -8,16 +8,11 @@ export default function ReviewSubmitForm(props) {
     localData,
     handleChange,
     handleSubmit,
-    customerName,
-    review,
-    cons,
-    pros,
-    dateGraduated,
-    jobfound,
     name,
     show,
     handleClose,
-    handleStars,
+    formInput,
+    handleStar,
     ratingValue
   } = props;
 
@@ -41,7 +36,7 @@ export default function ReviewSubmitForm(props) {
               initialRating={ratingValue}
               emptySymbol={<img id="rating-empty-star" src="../../public/assets/rating-off.png" />}
               fullSymbol={<img id="rating-full-star" src="../../public/assets/rating-on.png" />}
-              onClick={handleStars}
+              onClick={handleStar}
             />
           </div>
           <div className="leave-review-warning">
@@ -52,7 +47,7 @@ export default function ReviewSubmitForm(props) {
               className="modalName"
               name="customerName"
               type="text"
-              value={customerName}
+              value={formInput.customerName}
               placeholder="Name* "
               onChange={handleChange}
             />
@@ -62,7 +57,7 @@ export default function ReviewSubmitForm(props) {
               type="number"
               min="1900"
               max="2100"
-              value={dateGraduated}
+              value={formInput.dateGraduated}
               placeholder="Date of graduation*"
               onChange={handleChange}
             />
@@ -73,7 +68,7 @@ export default function ReviewSubmitForm(props) {
               name="pros"
               type="text"
               placeholder="Pros"
-              value={pros}
+              value={formInput.pros}
               onChange={handleChange}
             ></textarea>
             <textarea
@@ -81,23 +76,33 @@ export default function ReviewSubmitForm(props) {
               name="cons"
               type="text"
               placeholder="Cons"
-              value={cons}
+              value={formInput.cons}
               onChange={handleChange}
             ></textarea>
           </div>
           <div>
-              <textarea
-                className="modalReview"
-                name="review"
-                type="text"
-                placeholder="Type review here ..."
-                value={review}
-                onChange={handleChange}
-              ></textarea>
-            </div>
+            <textarea
+              className="modalReview"
+              name="review"
+              type="text"
+              placeholder="Type review here ..."
+              value={formInput.review}
+              onChange={handleChange}
+            ></textarea>
+          </div>
+          <div>
+            <input
+              className="modalLinkedin"
+              name="customerLinkedin"
+              type="text"
+              value={formInput.customerLinkedin}
+              placeholder="Linkedin profile* "
+              onChange={handleChange}
+            />
+          </div>
           <div className="modalSixMonthJobfound">
             <label>Did you find a job after 6 month of graduation?</label>
-            <select name="jobfound" value={jobfound} onChange={handleChange}>
+            <select name="jobfound" value={formInput.jobfound} onChange={handleChange}>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
               <option value="notyetgraduated" >Not yet graduated</option>

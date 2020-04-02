@@ -168,6 +168,12 @@ select {
   border: 1px solid #ccc;
   border-radius: 2px;
 }
+.modalLinkedin {
+  width: 100%; 
+  border: 1px solid #ccc; 
+  padding: 5px;
+  border-radius: 2px;
+}
 .modalSixMonthJobfound {
   text-align: left;
   margin: 0.8em 0;
@@ -179,10 +185,8 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; 
-  padding: 0.4em;
+  padding: 5px;
 }
-
-
 #modalsubmitBtn {
   background: #6c5399;
   padding: 0.4em 3em;

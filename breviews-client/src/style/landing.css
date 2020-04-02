@@ -31,7 +31,7 @@
   vertical-align: top;
 }
 .company-definition-wrapper {
-  /* find better way to keep LEARN MORE at the bottom */
+  /* TODO: find better way to keep LEARN MORE at the bottom */
   min-height: 380px;
   clear: both;
 }

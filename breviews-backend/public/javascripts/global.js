@@ -1,3 +1,9 @@
+
+// MIGHT IMPLEMENT DELETE FUNCTIONALITY LATER FOR MY OWN USE 
+// BY SETTING VIEWS PAGE
+// THIS WILL HELP ME DELETING REVIEWS ON PAGE RATHER THAN ON DATABASE
+
+
 // // Userlist data array for filling in info box
 // var userListData = [];
 
