@@ -26,7 +26,8 @@ select {
   font-size: 13px;
 }
 .reviews-header-wrapper {
-  background: #a1cee1;
+  /* background: #a1cee1; */
+  background: linear-gradient(#a1cee1,#6cd7fb);
   padding: 2em 1em;
   margin-bottom: 2em;
   color: #333;

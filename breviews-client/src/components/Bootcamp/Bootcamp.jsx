@@ -16,7 +16,7 @@ import { getBootcampData } from '../../redux/actions/bootcamp';
 
 const Bootcamp = ({ getBootcampData, localData, name }) => {
 
-  const[ratingValue, setRatingValue] = useState(null);
+  const[ratingValue, setRatingValue] = useState(0);
   const [show, setShow ] = useState(false);
   // handle multiple inputs
   const [formInput, setFormInput] = useReducer(
@@ -31,6 +31,19 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
       customerLinkedin: ''
     }
   )
+
+  // condition must be bigger than 0
+  const [ratingValueError, setRatingValueError] = useState(''); 
+  // shouldn't be empty and must be string type
+  const [nameError, setNameError] = useState('');
+   // shouldn't be empty and must be number type
+  const [graduateDateError, setGraduateDateError] = useState('');
+   // shouldn't be empty and must be string type
+  const [reviewError, setReviewError] = useState('');
+   // should include linkedin word and same name. Shouldn't be empty and must be string type
+  const [linkedinError, setLinkedinError] = useState('');
+
+
   useEffect (() => {
     console.log("name from useEffect:", name)
     getBootcampData(name);
@@ -43,8 +56,18 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
     setFormInput({ [name]: value });
   };
 
+  // const validateReviewSubmitForm = () => {
+  //   console.log('hi from validate')
+  //   if(formInput.customerName.length === 0 || typeof formInput.customerName !== 'string') {
+  //     setNameError('Name shouldn\'t be empty');
+  //   }
+  // }
+
   const handleSubmit = (e, name) => {
     e.preventDefault();
+
+    // validateReviewSubmitForm();
+
     const {review, customerName, pros, cons, dateGraduated, jobfound, customerLinkedin } = formInput;
     const today = new Date().toLocaleDateString("en-US");
     const reviewID = uuidv4();
@@ -150,6 +173,7 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
             formInput={formInput}
             handleStar={handleStar}
             ratingValue={ratingValue}
+            nameError={nameError}
       />
       </div>
       </div>

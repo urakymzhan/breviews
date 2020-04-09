@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../style/style.css";
 import { Modal }  from 'react-bootstrap';
 import  Rating from 'react-rating';
@@ -13,7 +13,8 @@ export default function ReviewSubmitForm(props) {
     handleClose,
     formInput,
     handleStar,
-    ratingValue
+    ratingValue,
+    nameError
   } = props;
 
   return (
@@ -51,6 +52,7 @@ export default function ReviewSubmitForm(props) {
               placeholder="Name* "
               onChange={handleChange}
             />
+            <span>{nameError}</span>
             <input
               className="modalDateGraduated"
               name="dateGraduated"

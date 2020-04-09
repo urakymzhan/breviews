@@ -3,6 +3,7 @@ import "../../style/style.css";
 import "../../style/landing.css";
 import { Link } from "react-router-dom";
 import Footer from "../B_Molecules/Footer.jsx";
+import Header from "../B_Molecules/Header.jsx";
 import Intro from "../A_Atoms/Intro.jsx";
 import Chart from "../B_Molecules/Chart.jsx";
 import {
@@ -103,7 +104,29 @@ const Landing = ({ mainpageData, isLoaded, getMainPageData }) => {
   }
   return (
     <div className="main-wrapper">
-      <Intro />
+      {/* <Intro /> */}
+      <div id="banner">
+            <h2>
+              Not sure which bootcamp to choose?
+            </h2>
+            <p>
+              This platform will help you decide
+            </p>
+            <div>
+              <button> GET STARTED</button>
+            </div>
+			</div>
+      <div className="offer" style={{padding: "4em", color: "#333", display: "flex", justifyContent: "space-evenly"}}>
+          <div>
+            <img src="../../public/assets/trust2.png" height="25px" width="auto"  style={{marginRight: "0.4em"}}/> TRUST
+          </div>
+          <div>
+            <img src="../../public/assets/data.png" height="25px" width="auto" style={{marginRight: "0.4em"}}/> REAL DATA
+          </div>
+          <div>
+            <img src="../../public/assets/support.png" height="25px" width="auto" style={{marginRight: "0.4em"}}/> SUPPORT
+          </div>
+      </div>
         {content}
       <Chart mainpageData={mainpageData}/>
       <Footer />

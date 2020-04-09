@@ -10,7 +10,7 @@ const Header = () => {
             <img
               id="brlogo"
               src="/public/assets/brlogo3.png"
-              style={{ width: "auto", height: "40px" }}
+              style={{ width: "auto", height: "30px" }}
             />
           </Link>
         </li>
@@ -28,7 +28,7 @@ const Header = () => {
         </li>
         <li
           id="header-legal"
-          style={{ float: "left", marginRight: "1.2em", marginRight: "0" }}
+          style={{ float: "left", marginRight: "1.2em", marginRight: "0", fontSize: "14px" }}
         >
           <Link to="/legal" style={links}>
             Terms
@@ -46,20 +46,22 @@ const navStyle = {
   display: "flex",
   flexWrap: "nowrap",
   justifyContent: "space-between",
-  background: "#f2f2f2",
-  padding: "0.6em 4em"
+  // background: "#f2f2f2",
+  background: "transparent",
+  padding: "0.2em 4em"
 };
 const ulStyle = {
   listStyle: "none",
-  padding: "0",
-  height: "40px",
-  lineHeight: "40px",
+  padding: "0.5em 0 0 0",
+  height: "30px",
+  lineHeight: "30px",
   verticalAlign: "middle"
 };
 
 const lists = {
   float: "left",
-  marginRight: "1.2em"
+  marginRight: "1.2em",
+  fontSize: "14px"
 };
 const links = {
   textDecoration: "none",
