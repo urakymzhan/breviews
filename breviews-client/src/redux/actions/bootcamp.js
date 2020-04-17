@@ -7,22 +7,25 @@ import {
 } from './types';
 
 export const getBootcampData = name => async dispatch => {
-    // console.log("name from action: ", name)
     try {
         const res = await axios.get(`/api/bootcamps/${name}`);
+
         dispatch({
             type: BOOTCAMP_DATA_LOADED,
             payload: res.data
         })
-    }catch(err) {
+    } catch(err) { 
         dispatch({
             type: BOOTCAMP_DATA_LOAD_FAILED,
-            payload: { msg: err.response.statusText, status: err.response.status }
+            payload: err
         })
     }
 }
 
-export const addReview = (dataToPost, name)  => async  dispatch => {
+// it is adding review but redux returning REVIEW_POST_FAILED type
+export const addBootcampReview = (dataToPost, name)  => async  dispatch => {
+
+    console.log("dataToPost from action: ", dataToPost) 
     const config = {
         headers: {
             'Content-Type': 'application/json'

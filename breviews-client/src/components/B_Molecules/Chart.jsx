@@ -24,7 +24,7 @@ const Chart = ({ mainpageData }) => {
     if (chartData.length === 0) {
       chartData = data
     }
-    console.log("chartData: ", chartData)
+    // console.log("chartData: ", chartData)
     return (
       <div
         className="chart-wrapper"

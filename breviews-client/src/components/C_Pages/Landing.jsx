@@ -1,18 +1,9 @@
-import React, { useEffect, Fragment } from "react";
-import "../../style/style.css";
+import React, { useEffect } from "react";
 import "../../style/landing.css";
 import { Link } from "react-router-dom";
 import Footer from "../B_Molecules/Footer.jsx";
-import Header from "../B_Molecules/Header.jsx";
-import Intro from "../A_Atoms/Intro.jsx";
+import Banner from '../../components/A_Atoms/Banner.jsx';
 import Chart from "../B_Molecules/Chart.jsx";
-import {
-  MODE,
-  ITBACKGROUND,
-  LOCATION,
-  DURATION,
-  PRICE
-} from "../constants/constants";
 import Spinner from "../A_Atoms/Spinner";
 import  Rating from 'react-rating';
 import { connect } from 'react-redux';
@@ -26,7 +17,6 @@ const Landing = ({ mainpageData, isLoaded, getMainPageData }) => {
   }, [])
 
   let content = <Spinner />;
-
   console.log("mainpageData: ", mainpageData);
 
   if (isLoaded) {
@@ -48,9 +38,6 @@ const Landing = ({ mainpageData, isLoaded, getMainPageData }) => {
                     </a>{" "}
                   </h4>
                 </div>
-              </div>
-
-              <div className="company-definition-wrapper">
                 <div className="review-overall">
                 <Rating
                   className="star-rating-container"
@@ -66,36 +53,19 @@ const Landing = ({ mainpageData, isLoaded, getMainPageData }) => {
                     <span>{bootcamp.overall}/5 ({bootcamp.reviewsCount} reviews)</span>
                   </div>
                 </div>
-                <p id="bootcamp-definition-text">{bootcamp.definition} </p>
-                <p id="bootcamp-definition">
-                  <span id="bootcamp-highlight">{MODE}: </span>{" "}
-                  {bootcamp.mode}
-                </p>
-                <p id="bootcamp-definition">
-                  <span id="bootcamp-highlight">{ITBACKGROUND}: </span>{" "}
-                  {bootcamp.itbackground}
-                </p>
-                <p id="bootcamp-definition">
-                  <span id="bootcamp-highlight">{LOCATION}: </span>
-                  {bootcamp.location}
-                </p>
-                <p id="bootcamp-definition">
-                  <span id="bootcamp-highlight">{DURATION}: </span>
-                  {bootcamp.duration}
-                </p>
-                <p id="bootcamp-definition">
-                  <span id="bootcamp-highlight">{PRICE}: </span>
-                  {bootcamp.price}
-                </p>
               </div>
-
+              <div className="company-definition-wrapper">
+                <div className="bootcamp-definition-text">
+                  <p>{bootcamp.definition} </p>
+                </div>           
+              </div>
               <div className="more-reviews-wrapper" >
-                <button className="more-reviews">
-                  <Link to={`/bootcamps/${bootcamp.schoolname}`}>
-                    LEARN MORE
-                  </Link>
-                </button>
-              </div>    
+                  <button className="more-reviews">
+                    <Link to={`/bootcamps/${bootcamp.schoolname}`}>
+                      LEARN MORE
+                    </Link>
+                  </button>
+              </div> 
             </section>
           );
         })}
@@ -104,29 +74,7 @@ const Landing = ({ mainpageData, isLoaded, getMainPageData }) => {
   }
   return (
     <div className="main-wrapper">
-      {/* <Intro /> */}
-      <div id="banner">
-            <h2>
-              Not sure which bootcamp to choose?
-            </h2>
-            <p>
-              This platform will help you decide
-            </p>
-            <div>
-              <button> GET STARTED</button>
-            </div>
-			</div>
-      <div className="offer" style={{padding: "4em", color: "#333", display: "flex", justifyContent: "space-evenly"}}>
-          <div>
-            <img src="../../public/assets/trust2.png" height="25px" width="auto"  style={{marginRight: "0.4em"}}/> TRUST
-          </div>
-          <div>
-            <img src="../../public/assets/data.png" height="25px" width="auto" style={{marginRight: "0.4em"}}/> REAL DATA
-          </div>
-          <div>
-            <img src="../../public/assets/support.png" height="25px" width="auto" style={{marginRight: "0.4em"}}/> SUPPORT
-          </div>
-      </div>
+      <Banner />
         {content}
       <Chart mainpageData={mainpageData}/>
       <Footer />

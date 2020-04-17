@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect, useReducer } from "react";
-import "../../style/style.css";
+import "../../style/bootcamp.css";
 import "../../style/landing.css";
 import { withRouter } from "react-router";
 import ReviewSubmitForm from "../B_Molecules/ReviewSubmitForm.jsx";
@@ -11,10 +11,16 @@ import { Button }  from 'react-bootstrap';
 import Spinner from "../A_Atoms/Spinner";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getBootcampData } from '../../redux/actions/bootcamp';
+import { getBootcampData, addBootcampReview } from '../../redux/actions/bootcamp';
+import {
+  MODE,
+  ITBACKGROUND,
+  LOCATION,
+  DURATION,
+  PRICE
+} from "../constants/constants";
 
-
-const Bootcamp = ({ getBootcampData, localData, name }) => {
+const Bootcamp = ({ getBootcampData, localData, name, addBootcampReview }) => {
 
   const[ratingValue, setRatingValue] = useState(0);
   const [show, setShow ] = useState(false);
@@ -32,20 +38,7 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
     }
   )
 
-  // condition must be bigger than 0
-  const [ratingValueError, setRatingValueError] = useState(''); 
-  // shouldn't be empty and must be string type
-  const [nameError, setNameError] = useState('');
-   // shouldn't be empty and must be number type
-  const [graduateDateError, setGraduateDateError] = useState('');
-   // shouldn't be empty and must be string type
-  const [reviewError, setReviewError] = useState('');
-   // should include linkedin word and same name. Shouldn't be empty and must be string type
-  const [linkedinError, setLinkedinError] = useState('');
-
-
   useEffect (() => {
-    console.log("name from useEffect:", name)
     getBootcampData(name);
   }, [])
 
@@ -56,22 +49,21 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
     setFormInput({ [name]: value });
   };
 
-  // const validateReviewSubmitForm = () => {
-  //   console.log('hi from validate')
-  //   if(formInput.customerName.length === 0 || typeof formInput.customerName !== 'string') {
-  //     setNameError('Name shouldn\'t be empty');
-  //   }
-  // }
-
   const handleSubmit = (e, name) => {
     e.preventDefault();
-
-    // validateReviewSubmitForm();
-
     const {review, customerName, pros, cons, dateGraduated, jobfound, customerLinkedin } = formInput;
     const today = new Date().toLocaleDateString("en-US");
     const reviewID = uuidv4();
 
+    // TODO: maybe store this in state so you can pass to addBootcampReview in actions
+    // state = {
+    //   text: '',
+    // }
+  
+    // handleSubmit = () => {
+    //   this.props.postComment(this.state.text);
+    // }
+  
     const dataToPost = {
       id: reviewID,
       customerName,
@@ -84,21 +76,12 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
       review,
       customerLinkedin
     };
-    // pushing new review obj to state
+    // push new review to state
+    // TODO: ARE WE MUTATING THE STATE ?
     localData[0].reviews.push(dataToPost);
-
-    // get this localData
-    // then in action just use it
-    if (review.length > 0) {
-      fetch(`/api/bootcamps/${name}`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        },
-        body: JSON.stringify(dataToPost)
-      });
-    }
-    // setLocalData(localData);
+    // posts but redux is failing
+    addBootcampReview(dataToPost, name)
+    // reset
     setFormInput({
       review: "",
       customerName: "",
@@ -122,7 +105,7 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
     setRatingValue(starVal)
   }
 
-  console.log("localData hey: ", localData);
+  console.log("localData: ", localData);
 
   return (
     <Fragment>
@@ -131,6 +114,7 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
       ): 
       (
       <div className="reviews-content-wrapper">
+
         <div className="reviews-header-wrapper">
           <div className="reviews-header">
             <h2>
@@ -139,7 +123,30 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
             </h2>
           </div>
           <div>
-            <p style={{display: "inline-block", height: "40px", lineHeight: "40px"}}><img src="../../public/assets/web-icon.png" style={{verticalAlign: "middle", height: "12px", width: "auto"}}/> <a href={localData[0].website} target="_blank" style={{verticalAlign: "middle", height: "12px", width: "auto", color: "#795548"}}>{localData[0].website}</a></p> 
+            <p id="bootcamp-definition">
+              <img src="../../public/assets/web-icon.png" style={{verticalAlign: "middle", height: "12px", width: "auto"}}/> {""}
+              <a href={localData[0].website} target="_blank" style={{verticalAlign: "middle", height: "12px", width: "auto", color: "#795548"}}>{localData[0].website}</a>
+            </p> 
+            <p id="bootcamp-definition">
+              <span id="bootcamp-highlight">{MODE}: </span>{" "}
+              {localData[0].mode}
+            </p>
+            <p id="bootcamp-definition">
+              <span id="bootcamp-highlight">{ITBACKGROUND}: </span>{" "}
+              {localData[0].itbackground}
+            </p>
+            <p id="bootcamp-definition">
+              <span id="bootcamp-highlight">{LOCATION}: </span>
+              {localData[0].location}
+            </p>
+            <p id="bootcamp-definition">
+              <span id="bootcamp-highlight">{DURATION}: </span>
+              {localData[0].duration}
+            </p>
+            <p id="bootcamp-definition">
+              <span id="bootcamp-highlight">{PRICE}: </span>
+              {localData[0].price}
+            </p>
           </div>
         </div>
         
@@ -150,7 +157,6 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
           </Button>
         </div>
         <SortReviews />
-
         {/*  REVIEWS START */}
         <div className="customer-reviews">
           {localData.length === 0 || localData[0].reviews.length === 0 ? (
@@ -173,7 +179,6 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
             formInput={formInput}
             handleStar={handleStar}
             ratingValue={ratingValue}
-            nameError={nameError}
       />
       </div>
       </div>
@@ -185,14 +190,17 @@ const Bootcamp = ({ getBootcampData, localData, name }) => {
     
   Bootcamp.protoType = {
     localData: PropTypes.array.isRequired,
-    getBootcampData: PropTypes.func.isRequired
+    getBootcampData: PropTypes.func.isRequired,
+    addBootcampReview: PropTypes.func.isRequired
   }
   const mapStateToProps = (state, { match }) => ({
       localData: state.bootcamp.localData,
       name: match.params.name
   })
   const mapDispatchToProps = dispatch => ({
-      getBootcampData: name => dispatch(getBootcampData(name))
+      getBootcampData: name => dispatch(getBootcampData(name)),
+      // how dataToPost accessed from here (dispatch?)
+      addBootcampReview: (dataToPost, name) => dispatch(addBootcampReview(dataToPost, name))
   });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Bootcamp));

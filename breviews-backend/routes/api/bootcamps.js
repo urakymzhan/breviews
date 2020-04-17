@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator/check");
 const Bootcamp = require('../../models/Bootcamps');
 
 // @route  GET api/landing
@@ -20,7 +20,7 @@ router.get("/landing", async (req, res) => {
 router.get("/bootcamps/:name", async (req, res) => {
   try {
     const name = req.params.name;
-    const bootcamp = await Bootcamp.find({schoolname: { $eq: name }});
+    const bootcamp = await Bootcamp.find({schoolname: { $eq: name }}).select('-chartData');
     res.json(bootcamp);
   } catch (err) {
     console.error(err.message);

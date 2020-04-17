@@ -50,7 +50,7 @@ const Team = () => {
       </div>
       <hr style={{width: "30%"}}/>
       <div>
-        <p>Special thanks to our inters and contributors</p>
+        <p>Special thanks to our interns and contributors</p>
         <p>Bob Smith: <span style={{color: "gray"}}>https://linkedin/bob-smith</span></p>
       </div>
       <Footer />
@@ -72,6 +72,6 @@ const teamWrapper = {
 let imgStyle = {
   height: "100px",
   width: "100px",
-  borderRadius: "100%",
+  // borderRadius: "100%",
   margin: "0.8em"
 };

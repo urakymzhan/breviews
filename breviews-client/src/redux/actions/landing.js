@@ -10,9 +10,10 @@ export const getMainPageData = () => async dispatch =>  {
             type: MAIN_DATA_LOADED,
             payload: res.data
         })
-    } catch {
+    } catch(err) {
         dispatch({
-            type: MAIN_DATA_LOAD_FAILED
+            type: MAIN_DATA_LOAD_FAILED,
+            payload: err        
         })
     }
 }

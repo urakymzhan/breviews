@@ -33,6 +33,16 @@ select {
   color: #333;
 }
 
+#bootcamp-definition {
+  font-size: 80%;
+  padding: 0.2em;
+  color: #636363;
+  text-align: center;
+}
+#bootcamp-highlight {
+  font-weight: 600;
+  color: #000000;
+}
 .reviews-header {
   font-size: 16px;
   font-weight: bold;

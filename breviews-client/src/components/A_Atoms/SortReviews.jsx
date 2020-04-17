@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../style/style.css';
+import '../../style/bootcamp.css';
 
 
 export default function SortReviews() {
