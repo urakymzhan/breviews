@@ -5,7 +5,7 @@
 * {
   box-sizing: border-box;
 }
-body {
+html, body {
   margin: 0;
   padding: 0;
   background: #fff;
@@ -13,6 +13,14 @@ body {
   text-align: center;
 }
 
+#root {
+  height: 100%;
+  display: grid;
+  /* defines header and footer height */
+  grid-template-rows: 60px auto 100px;
+  margin: 0;
+  padding: 0;
+}
 /* REVIEW PAGE START----------- */
 input,
 button,
@@ -22,18 +30,57 @@ select {
 }
 
 .reviews-content-wrapper {
-  margin: 0 auto;
-  font-size: 13px;
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 40px;
 }
 .reviews-header-wrapper {
-  /* background: #a1cee1; */
   background: linear-gradient(#a1cee1,#6cd7fb);
   padding: 2em 1em;
   margin-bottom: 2em;
   color: #333;
 }
+.bootcamp-info-row1 {
+  padding: 20px 0;
+  margin: 10px 0;
+}
+.bootcamp-info-row2 {
+  padding: 20px 0;
+  margin: 10px 0;
+}
+.bootcamp-info-row3  {
+  padding: 20px 0;
+  margin: 10px 0;
+}
+.bootcamp-info-row4 {
+  padding: 20px 0;
+  margin: 10px 0;
+}
 
-#bootcamp-definition {
+.bootcamp-info-row1 > div {
+  display: inline-block;
+  margin-right: 20px;
+  border-left: 1px solid;
+  padding: 0 31px;
+}
+.bootcamp-info-row2 > div {
+  display: inline-block;
+  margin-right: 20px;
+  border-left: 1px solid;
+  padding: 0 31px;
+}
+.bootcamp-info-row3 > div {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 0 31px;
+}
+.bootcamp-info-row4 > div {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 0 31px;
+}
+
+/* #bootcamp-definition {
   font-size: 80%;
   padding: 0.2em;
   color: #636363;
@@ -46,33 +93,35 @@ select {
 .reviews-header {
   font-size: 16px;
   font-weight: bold;
-}
+} */
 .write-review-btn {
   background: #6c5399;
-  float: left;
-  margin: 0.8em 0;
   padding: 0.4em 0.6em;
-  color: #fff;
   line-height: 22px;
   font-size: 11px;
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
+  border: none;
 }
 .write-review-btn:hover {
   background: #574971;
   transition: 0.5s ease-in-out;
-  transform: scale(0.99);
   color: #fff;
 }
+
+
+
+
+
 #reviews-header-span {
   /* color: rgb(255, 153, 0); */
   color: RGBA(175, 48, 38, 1);
 }
-/* reviews */
-.review-overall .fa-star {
+/* might need this later */
+/* .review-overall .fa-star {
   color: rgb(255, 153, 0);
-}
+} */
 .customer-reviews {
   background: inherit;
 }

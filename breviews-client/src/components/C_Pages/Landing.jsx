@@ -77,7 +77,7 @@ const Landing = ({ mainpageData, isLoaded, getMainPageData }) => {
       <Banner />
         {content}
       <Chart mainpageData={mainpageData}/>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

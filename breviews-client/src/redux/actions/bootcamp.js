@@ -22,10 +22,8 @@ export const getBootcampData = name => async dispatch => {
     }
 }
 
-// it is adding review but redux returning REVIEW_POST_FAILED type
 export const addBootcampReview = (dataToPost, name)  => async  dispatch => {
 
-    console.log("dataToPost from action: ", dataToPost) 
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -35,7 +33,8 @@ export const addBootcampReview = (dataToPost, name)  => async  dispatch => {
         const res = await axios.post(`/api/bootcamps/${name}`, dataToPost, config);
         dispatch({
             type: REVIEW_POSTED,
-            payload: res.data
+            // its because backend is giving msg and data together from response
+            payload: res.data.data
         })
     }catch(err) {
         dispatch({

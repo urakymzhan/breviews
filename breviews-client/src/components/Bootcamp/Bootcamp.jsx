@@ -54,15 +54,6 @@ const Bootcamp = ({ getBootcampData, localData, name, addBootcampReview }) => {
     const {review, customerName, pros, cons, dateGraduated, jobfound, customerLinkedin } = formInput;
     const today = new Date().toLocaleDateString("en-US");
     const reviewID = uuidv4();
-
-    // TODO: maybe store this in state so you can pass to addBootcampReview in actions
-    // state = {
-    //   text: '',
-    // }
-  
-    // handleSubmit = () => {
-    //   this.props.postComment(this.state.text);
-    // }
   
     const dataToPost = {
       id: reviewID,
@@ -76,11 +67,9 @@ const Bootcamp = ({ getBootcampData, localData, name, addBootcampReview }) => {
       review,
       customerLinkedin
     };
-    // push new review to state
-    // TODO: ARE WE MUTATING THE STATE ?
-    localData[0].reviews.push(dataToPost);
-    // posts but redux is failing
-    addBootcampReview(dataToPost, name)
+    // post in redux
+    addBootcampReview(dataToPost, name);
+
     // reset
     setFormInput({
       review: "",
@@ -119,68 +108,64 @@ const Bootcamp = ({ getBootcampData, localData, name, addBootcampReview }) => {
           <div className="reviews-header">
             <h2>
               <span style={{ textTransform: "uppercase" }}>{localData[0].customName}</span>{" "}
-              <span id="reviews-header-span">REVIEWS</span>
+              {/* <span id="reviews-header-span">REVIEWS</span> */}
             </h2>
           </div>
-          <div>
-            <p id="bootcamp-definition">
+          <div className="bootcamp-info-row1">
+            <div>
               <img src="../../public/assets/web-icon.png" style={{verticalAlign: "middle", height: "12px", width: "auto"}}/> {""}
               <a href={localData[0].website} target="_blank" style={{verticalAlign: "middle", height: "12px", width: "auto", color: "#795548"}}>{localData[0].website}</a>
-            </p> 
-            <p id="bootcamp-definition">
-              <span id="bootcamp-highlight">{MODE}: </span>{" "}
-              {localData[0].mode}
-            </p>
-            <p id="bootcamp-definition">
-              <span id="bootcamp-highlight">{ITBACKGROUND}: </span>{" "}
-              {localData[0].itbackground}
-            </p>
-            <p id="bootcamp-definition">
-              <span id="bootcamp-highlight">{LOCATION}: </span>
-              {localData[0].location}
-            </p>
-            <p id="bootcamp-definition">
-              <span id="bootcamp-highlight">{DURATION}: </span>
-              {localData[0].duration}
-            </p>
-            <p id="bootcamp-definition">
-              <span id="bootcamp-highlight">{PRICE}: </span>
-              {localData[0].price}
-            </p>
+            </div>
+            <div>LOCATION ICON > {localData[0].location} </div>
+            <div>TYPE: Private</div>
+          </div>
+          <div className="bootcamp-info-row2">
+            <div>DURATION:  {localData[0].duration} </div>
+            <div>ITBACKGROUND: {localData[0].itbackground}</div>
+            <div>PRICE: {localData[0].price}</div>
+          </div>
+          <div className="bootcamp-info-row3">
+            <div>ACADEMICS: Here we need to show what they teach...</div>
+          </div>
+          <div className="bootcamp-info-row4">
+            <div>SCHEDULE: Here we need show when they teach, from what time to what time</div>
+          </div>
+          <div style={{textAlign: "right"}}>
+            <Button className="write-review-btn" variant="outline-light" onClick={handleShow} >
+              Write a Review
+            </Button>
           </div>
         </div>
-        
-        <div style={{width: "50%", margin:'0 auto'}}>
-        <div>
-          <Button className="write-review-btn" variant="outline-light" onClick={handleShow} >
-            Write a Review
-          </Button>
-        </div>
-        <SortReviews />
-        {/*  REVIEWS START */}
-        <div className="customer-reviews">
-          {localData.length === 0 || localData[0].reviews.length === 0 ? (
-            <div>
-              <h3 id="empty-review-text"> {EMPTY_REVIEW_TEXT} </h3>
+          <div style={{width: "50%", margin:'0 auto'}}>
+            <SortReviews />
+            {/*  REVIEWS START */}
+            <div className="customer-reviews">
+              {localData.length === 0 || localData[0].reviews.length === 0 ? (
+                <div>
+                  <h3 id="empty-review-text"> {EMPTY_REVIEW_TEXT} </h3>
+                </div>
+              ) : (
+                <ReviewsBox reviewsData={localData[0].reviews} />
+              )}
+                {/* experimental */}
+                <div style={{textAlign: "center", padding: "10px", color: "#fff", fontWeight: "bold", background: "#a1cee1"}}>
+                  Show More \/ (ideally icon)
+                </div>
             </div>
-          ) : (
-            <ReviewsBox reviewsData={localData[0].reviews} />
-          )}
-        </div>
-        {/*  REVIEWS END */}
+            {/*  REVIEWS END */}
 
-        <ReviewSubmitForm
-            localData={localData}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            name={name}
-            show={show}
-            handleClose={handleClose}
-            formInput={formInput}
-            handleStar={handleStar}
-            ratingValue={ratingValue}
-      />
-      </div>
+            <ReviewSubmitForm
+                localData={localData}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                name={name}
+                show={show}
+                handleClose={handleClose}
+                formInput={formInput}
+                handleStar={handleStar}
+                ratingValue={ratingValue}
+            />
+        </div>
       </div>
       )}
     </Fragment>
@@ -197,10 +182,12 @@ const Bootcamp = ({ getBootcampData, localData, name, addBootcampReview }) => {
       localData: state.bootcamp.localData,
       name: match.params.name
   })
-  const mapDispatchToProps = dispatch => ({
+  const mapDispatchToProps = dispatch => {
+    return {
       getBootcampData: name => dispatch(getBootcampData(name)),
       // how dataToPost accessed from here (dispatch?)
       addBootcampReview: (dataToPost, name) => dispatch(addBootcampReview(dataToPost, name))
-  });
+  }
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Bootcamp));

@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from "./components/routing/Routes";
 import Header from "./components/B_Molecules/Header.jsx";
+import Footer from "./components/B_Molecules/Footer.jsx";
 import Landing from "./components/C_Pages/Landing.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
@@ -17,6 +18,7 @@ const App = () => {
             <Route exact path="/" component={Landing} />
             <Route component={Routes} />
           </Switch>
+          <Footer />
         </Router>
       </Provider>
     );

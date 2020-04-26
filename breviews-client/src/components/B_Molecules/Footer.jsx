@@ -3,7 +3,11 @@ import React from "react";
 const Footer = () => {
   return (
     <footer style={footerWrapperStyle}>
-      <p>© 2020 Breviews</p>
+      <div>
+        <p>© 2020 BootcampAvenue</p> 
+        <span>About</span> {" "}
+        <span>Terms</span>
+      </div>
     </footer>
   );
 };
@@ -12,14 +16,8 @@ export default Footer;
 
 // STYLES:
 const footerWrapperStyle = {
-  background: "#788b95",
   padding: "2em",
-  color: "#fff",
-  position: "absolute",
-  bottom: "0",
-  left: "0",
-  right: "0",
-  width: "100%",
+  background: "#788b95",
   fontSize: "12px",
-  textAlign: "center"
+  color: "#fff"
 };

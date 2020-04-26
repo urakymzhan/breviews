@@ -2,21 +2,22 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  // the output bundle won't be optimized for production but suitable for development
   mode: "development",
   // the app entry point
   entry: path.resolve(__dirname, "index.js"),
   output: {
+    // adding caching handler
+    filename: "bundle.[contentHash].js", 
     // the output of the webpack build will be in /dist directory
     path: path.resolve(__dirname, "dist"),
     // the filename of the JS bundle will be bundle.js
-    filename: "bundle.js",
-    publicPath: "/"
+ 
+    // give some virtual path later [ex: dist, assets, example.com/assets etc...] 
+    // publicPath: "/"
   },
   module: {
     rules: [
       {
-        // for any file with a suffix of js or jsx
         test: /\.jsx?$/,
         // ignore transpiling JavaScript from node_modules as it should be that state
         exclude: /node_modules/,
@@ -37,16 +38,21 @@ module.exports = {
       },
       {
         test: /\.css$/i,
+        // css-loader converts to css to js, style-loader injects styles to DOM
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|ico)$/i,
         use: [
           {
             loader: 'file-loader',
           },
         ],
-      }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
     ]
   },
   devServer: {

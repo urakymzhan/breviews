@@ -1,11 +1,8 @@
 /* WRAPPER -------------  */
 .main-wrapper {
-  position: relative;
   margin: 0;
-  min-height: 100%;
   text-align: center;
-  /* background: linear-gradient(#a1cee1,#34c8fb); */
-  padding-bottom: 8em;
+  margin-bottom: 40px;
 }
 
 .bootcamps-list-row {

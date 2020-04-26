@@ -11,6 +11,8 @@ export default function Routes() {
       <Route path="/team" component={Team} />
       <Route path="/legal" component={Legal} />
       <Route path="/contact" component={Contact} />
+      <Route path="/patreon" component={Contact} />
+      <Route path="/blog" component={Contact} />
       <Route path="/bootcamps/:name" component={Bootcamp} />
       {/* <Route path="/write-review/:name/" component={WriteReview} /> */}
       {/* <Route path="/write-review/" component={WriteReview} /> */}
