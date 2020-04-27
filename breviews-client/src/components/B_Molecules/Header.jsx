@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import brlogo from '../../../public/assets/brlogo3.png'
 
 const Header = () => {
   return (
@@ -10,8 +11,8 @@ const Header = () => {
           <Link to="/">
             <img
               id="brlogo"
-              src="/public/assets/brlogo3.png"
-              style={{ width: "auto", height: "50%" }}
+              src={brlogo}
+              style={{ width: "auto", height: "30px" }}
             />
           </Link>
         </li>

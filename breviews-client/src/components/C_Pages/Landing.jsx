@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "../../style/landing.css";
 import { Link } from "react-router-dom";
-import Footer from "../B_Molecules/Footer.jsx";
 import Banner from '../../components/A_Atoms/Banner.jsx';
 import Chart from "../B_Molecules/Chart.jsx";
 import Spinner from "../A_Atoms/Spinner";
