@@ -5,8 +5,8 @@ import brlogo from '../../../public/assets/brlogo3.png'
 const Header = () => {
   return (
     <header>
-      <nav id="header-nav" style={navStyle}>
-      <ul id="logo-wrapper" style={ulStyle}>
+      <nav id="header-nav" style={style.nav}>
+      <ul id="logo-wrapper" style={style.ul}>
         <li id="header-logo">
           <Link to="/">
             <img
@@ -17,37 +17,37 @@ const Header = () => {
           </Link>
         </li>
       </ul>
-      <ul style={ulStyle}>
-        <li id="header-team" style={lists}>
-          <Link to="/" style={links}>
+      <ul style={style.ul}>
+        <li id="header-team" style={style.lists}>
+          <Link to="/" style={style.links}>
             Home
           </Link>
         </li> 
-        <li id="header-team" style={lists}>
-          <Link to="/team" style={links}>
+        <li id="header-team" style={style.lists}>
+          <Link to="/team" style={style.links}>
             About
           </Link>
         </li>
-        <li id="header-team" style={lists}>
-          <Link to="/patreon" style={links}>
+        <li id="header-team" style={style.lists}>
+          <Link to="/patreon" style={style.links}>
             Patreon
           </Link>
         </li>
-        <li id="header-team" style={lists}>
-          <Link to="/blog" style={links}>
+        <li id="header-team" style={style.lists}>
+          <Link to="/blog" style={style.links}>
             Blog
           </Link>
         </li>
-        <li id="header-contact" style={lists} >
-          <Link to="/contact" style={links}>
+        <li id="header-contact" style={style.lists} >
+          <Link to="/contact" style={style.links}>
             Contact
           </Link>
         </li>
         <li
           id="header-legal"
-          style={lists}
+          style={style.lists}
         >
-          <Link to="/legal" style={links}>
+          <Link to="/legal" style={style.links}>
             Terms
           </Link>
         </li>
@@ -60,24 +60,9 @@ const Header = () => {
 export default Header;
 
 // STYLES:
-const navStyle = {
-  display: "flex",
-  flexWrap: "nowrap",
-  justifyContent: "space-between",
-  background: "transparent",
-  padding: "0 4em"
-};
-const ulStyle = {
-  listStyle: "none",
-  padding: "1em 0",
-  fontSize: "14px",
-};
-
-const lists = {
-  float: "left",
-  margin: "0.4em 1.2em auto auto",
-};
-const links = {
-  textDecoration: "none",
-  color: "inherit"
-};
+const style = {
+  nav: {display: "flex", flexWrap: "nowrap",  justifyContent: "space-between",  background: "transparent",   padding: "0 4em"},
+  ul: { listStyle: "none", padding: "1em 0", fontSize: "14px" },
+  lists: { float: "left", margin: "0.4em 1.2em auto auto" },
+  links: { textDecoration: "none", color: "inherit"}
+}

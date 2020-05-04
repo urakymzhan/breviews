@@ -9,6 +9,7 @@ module.exports = merge(common, {
   output: {
     filename: "bundle.js", 
     path: path.resolve(__dirname, "dist"),
+    publicPath: '/'
   },
   // add a custom index.html as the template
   plugins: [
