@@ -1,0 +1,4 @@
+footer > p::selection {
+    background: #6799ff;
+    color: #fff;
+}

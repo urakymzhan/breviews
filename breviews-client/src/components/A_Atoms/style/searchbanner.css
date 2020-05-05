@@ -1,0 +1,24 @@
+/* BANNER */
+.banner {
+    height: 400px;
+    min-height: 400px;
+    background: #d7d7d7;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .tags {
+    margin-top: 1em;
+  }
+   .tags button {
+     border-radius: 10px;
+     font-size: 10px;
+     letter-spacing: 1px;
+     padding: 1px 10px;
+     margin: 2px 3px;
+     background: inherit;
+     border: 1px solid #9f9f9f;
+   }
+   .ui.icon.input {
+     width: 40%;
+   }

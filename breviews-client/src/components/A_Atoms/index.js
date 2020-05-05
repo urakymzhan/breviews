@@ -1,15 +1,11 @@
-import Banner from './Banner.jsx';
-import Intro from './Intro.jsx';
-import Modal from './Modal.jsx';
-import NoReviewsYet from './NoReviewsYet';
+import SearchBanner from './SearchBanner.jsx';
 import SortReviews from './SortReviews.jsx';
-import Spinner from './Spinner';
+import Spinner from './Spinner.jsx';
+import ReadOnlyReviewsStar from './ReadOnlyReviewsStar.jsx';
 
 export {
-    Banner,
-    Intro,
-    Modal,
-    NoReviewsYet,
+    SearchBanner,
     SortReviews,
-    Spinner
+    Spinner,
+    ReadOnlyReviewsStar
 }

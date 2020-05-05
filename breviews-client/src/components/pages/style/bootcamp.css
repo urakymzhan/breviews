@@ -1,0 +1,124 @@
+/* imports */
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif&display=swap");
+
+/* globals */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: "Noto Serif", serif;
+}
+
+#root {
+  height: 100%; 
+  min-height: 100vh;
+  display: grid;
+  /* defines header and footer height */
+  grid-template-rows: 60px auto 100px;
+  margin: 0;
+  padding: 0;
+}
+/* Bootcamp page start----------- */
+
+.reviews-content-wrapper {
+  padding: 0 40px;
+  text-align: center;
+}
+.reviews-header-wrapper {
+  display: grid;
+  grid-template-areas:
+  "sidebar main";
+  grid-template-columns: 20% 75%;
+  grid-template-rows: auto;
+  column-gap: 5%;
+  margin: 20px 0;
+  text-align: left;
+}
+.bootcamp-logo {
+  background: rgb(215, 215, 215);
+  grid-area: sidebar;
+  text-align: center;
+  height: 200px;
+  min-height: 200px;
+  padding-top: 80px;
+}
+.bootcamp-info {
+  grid-area: main;
+  color: gray;
+}
+.bootcamp-info-row1 p {
+  display: inline-block;
+  margin-left: 10px;
+}
+.bootcamp-location-each {
+  margin-left: 10px;
+}
+.bootcamp-info-row2 button {
+  border-radius: 10px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 1px 10px;
+  margin: 2px 3px;
+  background: inherit;
+}
+.bootcamp-info-row3 p {
+  display: inline-block;
+  font-size: 12px;
+}
+.bootcamp-info-row3 p span {
+  font-size: 12px;
+  font-weight: 800;
+  color: #000;
+}
+.bootcamp-info-row3 p:last-child {
+  margin: 1em 4em;
+}
+/* reviews  */
+.reviews-wrapper {
+  display: grid;
+  grid-template-areas:
+  "sidebar main";
+  grid-template-columns: 20% 75%;
+  grid-template-rows: auto;
+  column-gap: 5%;
+}
+.bootcamp-write-a-review {
+  background: rgb(215, 215, 215);
+  grid-area: sidebar;
+  text-align: center;
+  font-size: 12px;
+  padding: 20px 30px;
+  height: 200px;
+  min-height: 200px;
+}
+.bootcamp-write-a-review h6 {
+  font-weight: 800;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.bootcamp-write-a-review p {
+  text-align: left;
+}
+.bootcamp-write-a-review button {
+  border: none;
+  background-color: darkgray;
+  padding: 5px 20px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.customer-reviews {
+  background: rgb(215, 215, 215, 0.2);
+  grid-area: main;
+  text-align: center;
+  height: 600px;
+  min-height: 600px;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+
+
+

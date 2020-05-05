@@ -39,7 +39,7 @@ module.exports = {
         loader: 'html-loader',
       },
       {
-        test: /\.(png|jpe?g|gif|ico|svg)$/i,
+        test: /\.(png|jpe?g|gif|ico|svg|woff)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -51,17 +51,6 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.(ico)$/i,
-      //   use: [
-      //     {
-      //       loader: 'url-loader',
-      //       options: {
-      //         limit: 8192,
-      //       },
-      //     },
-      //   ],
-      // },
     ]
   },
   devServer: {

@@ -1,10 +1,7 @@
 import React from "react";
-import "../../style/bootcamp.css";
 
 export default function ReviewsBox(props) {
   const { reviewsData } = props;
-
-  // console.log("reviewsData", reviewsData);
 
   return reviewsData.map(user => {
     return (

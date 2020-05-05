@@ -1,0 +1,21 @@
+
+.review-submit-form {
+    width: 40%;
+    margin: 0 auto;
+    font-size: 12px;
+    
+}
+.review-submit-form label, input, textarea {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+.review-submit-form div {
+    margin: 20px 0;
+}
+.terms-checkbox {
+    font-size: 10px;
+}
+#rating-empty-star, #rating-full-star {
+    height: 16px;
+}

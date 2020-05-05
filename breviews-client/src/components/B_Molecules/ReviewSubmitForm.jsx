@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../style/bootcamp.css";
 import { Modal }  from 'react-bootstrap';
 import  Rating from 'react-rating';
 
