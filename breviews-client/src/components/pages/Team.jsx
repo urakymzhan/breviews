@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../B_Molecules/Footer.jsx";
 
 const Team = () => {
   return (
@@ -53,7 +52,6 @@ const Team = () => {
         <p>Special thanks to our interns and contributors</p>
         <p>Bob Smith: <span style={{color: "gray"}}>https://linkedin/bob-smith</span></p>
       </div>
-      <Footer />
     </div>
   );
 };
@@ -62,16 +60,14 @@ export default Team;
 
 // STYLES:
 const teamWrapper = {
-  position: "relative",
-  margin: "0",
-  padding: "40px 0 100px 0",
-  minHeight: "100%",
-  textAlign: "center"
+  padding: "100px 0",
+  textAlign: "center",
+  fontSize: '12px'
 };
 
 let imgStyle = {
   height: "100px",
   width: "100px",
-  // borderRadius: "100%",
+  borderRadius: "100%",
   margin: "0.8em"
 };

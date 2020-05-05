@@ -12,7 +12,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
     const { type, payload } =  action;
-
+    
     switch (type) {
         case BOOTCAMP_DATA_LOADED:
             return {
@@ -27,7 +27,7 @@ export default function(state = initialState, action) {
         case REVIEW_POSTED:
             return {
                 ...state,
-                localData: [...state, payload]
+                localData: state.localData.map(data => { return { ...data, reviews: data.reviews.concat(payload)}})
             }
         case REVIEW_POST_FAILED:
             return {

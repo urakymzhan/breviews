@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../B_Molecules/Footer.jsx";
 import { Link } from 'react-router-dom';
 
 const Legal = () => {
@@ -29,7 +28,6 @@ const Legal = () => {
           Any detected falsy information or spam action will be removed without any notice.
         </p> 
       </section>
-      <Footer />
     </div>
   );
 };
@@ -38,15 +36,11 @@ export default Legal;
 
 // STYLES:
 const legalWrapperStyle = {
-  position: "relative",
-  padding: "2% 1%",
-  minHeight: "100%",
   textAlign: "left",
-  color: "rgba(0,0,0,0.87)",
   fontFamily: "Roboto,arial,sans-serif",
-  fontSize: "14px"
+  fontSize: "12px"
 };
 
 const sectionStyle = {
-  padding: "1em"
+  padding: "4em 6em"
 };

@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
+=======
+const { check, validationResult } = require("express-validator");
+>>>>>>> ffe033a31d8dd3e62d75ff3672e5315826ad2236
 const Bootcamp = require('../../models/Bootcamps');
 
 // @route  GET api/landing
@@ -90,7 +94,8 @@ router.post("/bootcamps/:name", async (req, res) => {
       (err, result) => {
         res.send(
           err === null
-            ? { msg: "Successfully updated bootcamp and inserted new review!" }
+          // this makes me write payload.data.data in redux reducers
+            ? { msg: "Successfully updated bootcamp and inserted new review!", data: req.body }
             : { msg: err }
         );
       }

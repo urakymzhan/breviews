@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../style/bootcamp.css";
 import { Modal }  from 'react-bootstrap';
 import  Rating from 'react-rating';
 
@@ -11,9 +10,12 @@ export default function ReviewSubmitForm(props) {
     name,
     show,
     handleClose,
-    formInput,
+    values,
     handleStar,
     ratingValue,
+    handleBlur,
+    errors,
+    isSubmitting
   } = props;
 
   return (
@@ -44,76 +46,91 @@ export default function ReviewSubmitForm(props) {
           </div>
           <div className="leave-review-row1">
             <input
-              className="modalName"
+              className={errors.customerName ? 'modalName errors': 'modalName'}
               name="customerName"
               type="text"
-              value={formInput.customerName}
+              value={values.customerName}
               placeholder="Name* "
               onChange={handleChange}
+              onBlur={handleBlur}
             />
+            {errors.customerName && <p>{ errors.customerName} </p> }
             <input
               className="modalDateGraduated"
+              className={errors.dateGraduated ? 'modalDateGraduated errors': 'modalDateGraduated'}
               name="dateGraduated"
               type="number"
               min="1900"
               max="2100"
-              value={formInput.dateGraduated}
+              value={values.dateGraduated}
               placeholder="Date of graduation*"
               onChange={handleChange}
+              onBlur={handleBlur}
             />
+            {errors.dateGraduated && <p>{ errors.dateGraduated} </p> }
           </div>
           <div className="leave-review-row2">
             <textarea
-              className="modalPros"
+              className={errors.pros ? 'modalPros errors': 'modalPros'}
               name="pros"
               type="text"
               placeholder="Pros"
-              value={formInput.pros}
+              value={values.pros}
               onChange={handleChange}
+              onBlur={handleBlur}
             ></textarea>
+             {errors.pros && <p>{ errors.pros} </p> }
             <textarea
-              className="modalCons"
+              className={errors.cons ? 'modalCons errors': 'modalCons'}
               name="cons"
               type="text"
               placeholder="Cons"
-              value={formInput.cons}
+              value={values.cons}
               onChange={handleChange}
+              onBlur={handleBlur}
             ></textarea>
+             {errors.cons && <p>{ errors.cons} </p> }
           </div>
           <div>
             <textarea
-              className="modalReview"
+              className={errors.review ? 'modalReview errors': 'modalReview'}
               name="review"
               type="text"
               placeholder="Type review here ..."
-              value={formInput.review}
+              value={values.review}
               onChange={handleChange}
+              onBlur={handleBlur}
             ></textarea>
+             {errors.review && <p>{ errors.review} </p> }
           </div>
           <div>
             <input
-              className="modalLinkedin"
+              className={errors.customerLinkedin ? 'modalLinkedin errors': 'modalLinkedin'}
               name="customerLinkedin"
               type="text"
-              value={formInput.customerLinkedin}
+              value={values.customerLinkedin}
               placeholder="Linkedin profile* "
               onChange={handleChange}
+              onBlur={handleBlur}
             />
           </div>
+          {errors.customerLinkedin && <p>{ errors.customerLinkedin} </p> }
           <div className="modalSixMonthJobfound">
             <label>Did you find a job after 6 month of graduation?</label>
-            <select name="jobfound" value={formInput.jobfound} onChange={handleChange}>
+            <select name="jobfound" value={values.jobfound} onChange={handleChange}>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
               <option value="notyetgraduated" >Not yet graduated</option>
             </select>
           </div>
           <div>
-            <input
+            <button
               id="modalsubmitBtn"
               type="submit"
-              value="POST"
-            />
+              disabled={isSubmitting}
+            >
+              POST
+            </button>
           </div>
         </div>
       </form>

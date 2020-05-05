@@ -1,6 +1,4 @@
 import React from 'react'
-import '../../style/bootcamp.css';
-
 
 export default function SortReviews() {
     return (
