@@ -8,12 +8,47 @@ import Rating from "react-rating";
 import "./style/reviewformpage.css";
 
 class ReviewFormPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      ratingVal: 0
+    }
+  }
+
+  handeStar = (clickedVal) =>  {
+    this.setState({ratingVal: clickedVal})
+  }
   render() {
     const { match } = this.props;
     let schoolName = match.params.name;
 
+    console.log("star", this.state.ratingVal)
+
     return (
       <div className="review-form-container">
+          <div>
+            <label htmlFor="email">Select rating* </label>
+            <Rating
+              className="star-rating-container"
+              name="ratingVal"
+              start={0}
+              stop={5}
+              initialRating={this.state.ratingVal}
+              onClick={this.handeStar}
+              emptySymbol={
+                <img
+                  id="rating-empty-star"
+                  src="../../public/assets/rating-off.png"
+                />
+              }
+              fullSymbol={
+                <img
+                  id="rating-full-star"
+                  src="../../public/assets/rating-on.png"
+                />
+              }
+            />
+        </div>
         <ReviewForm />
       </div>
     );
@@ -29,7 +64,8 @@ function ReviewForm() {
       cons: "",
       review: "",
       email: "",
-      acceptTerms: false
+      acceptTerms: false,
+      ratingVal: 0
     },
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
@@ -63,7 +99,7 @@ function ReviewForm() {
       return errors;
     },
   });
-
+  console.log("values", formik.values)
   return (
       <form onSubmit={formik.handleSubmit} className="review-submit-form">
       <div>
@@ -77,29 +113,6 @@ function ReviewForm() {
         />
         {formik.errors.customerName && formik.touched.customerName ? <div>{formik.errors.customerName}</div>: null}
       </div>
-
-      {/* <div>
-        <label htmlFor="email">Select rating* </label>
-        <Rating
-          className="star-rating-container"
-          start={0}
-          stop={5}
-          initialRating={0}
-          emptySymbol={
-            <img
-              id="rating-empty-star"
-              src="../../public/assets/rating-off.png"
-            />
-          }
-          fullSymbol={
-            <img
-              id="rating-full-star"
-              src="../../public/assets/rating-on.png"
-            />
-          }
-        />
-      </div>
-       */}
       <div>
         <label htmlFor="review">Your Review*
         <input
