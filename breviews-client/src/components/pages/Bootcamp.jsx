@@ -42,7 +42,7 @@ const Bootcamp = ({ getBootcampData, localData, name, addBootcampReview }) => {
         <div className="reviews-content-wrapper">
           <div className="reviews-header-wrapper">
           <div className="bootcamp-logo">
-            <h3>LOGO</h3>
+            <img src={localData[0].logo} alt="company logo"/>
           </div>
           <div className="bootcamp-info">
             <h3>{localData[0].customName}  {" "}

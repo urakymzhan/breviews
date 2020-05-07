@@ -1,14 +1,17 @@
-/* imports */
 @import url("https://fonts.googleapis.com/css?family=Noto+Serif&display=swap");
 
 /* globals */
+:root {
+  --mainWhite: #fff;
+  --mainGray: rgb(215, 215, 215)
+}
 * {
   box-sizing: border-box;
 }
 html, body {
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: var(--mainWhite);
   font-family: "Noto Serif", serif;
 }
 
@@ -38,12 +41,16 @@ html, body {
   text-align: left;
 }
 .bootcamp-logo {
-  background: rgb(215, 215, 215);
+  background: var(--mainGray);
   grid-area: sidebar;
-  text-align: center;
   height: 200px;
   min-height: 200px;
-  padding-top: 80px;
+  position: relative;
+}
+.bootcamp-logo img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 .bootcamp-info {
   grid-area: main;
@@ -86,7 +93,7 @@ html, body {
   column-gap: 5%;
 }
 .bootcamp-write-a-review {
-  background: rgb(215, 215, 215);
+  background: var(--mainGray);
   grid-area: sidebar;
   text-align: center;
   font-size: 12px;
@@ -104,13 +111,13 @@ html, body {
 }
 .bootcamp-write-a-review button {
   border: none;
-  background-color: darkgray;
+  background-color: rgba(215, 215, 215, 0.2);
   padding: 5px 20px;
   margin-top: 20px;
   font-weight: bold;
 }
 .customer-reviews {
-  background: rgb(215, 215, 215, 0.2);
+  background: rgba(215, 215, 215, 0.2);
   grid-area: main;
   text-align: center;
   height: 600px;

@@ -28,7 +28,6 @@ router.get("/bootcamps/:name", async (req, res) => {
   }
 });
 
-// WORKS BUT NOT ENTIRELY SURE ABOUT ARCHITECTURE
 // @route  POST api/bootcamps/:name
 // access  Public
 router.post("/bootcamps/:name", async (req, res) => {
@@ -50,25 +49,6 @@ router.post("/bootcamps/:name", async (req, res) => {
     //  calculate overall review
     let overallRating = parseFloat(sum / count).toFixed(1); 
 
-    // job rate calculate
-    let found = 0;
-    let notfound = 0;
-    let neitherfound = 0;
-    allreviews.map(obj => {
-      if(obj.jobfound === "Yes") {
-        found++;
-      } else if(obj.jobfound === "No") {
-        notfound++;
-      }else {
-        neitherfound++;
-      }
-    })
-    let rate =  parseFloat( ( (found / (count - neitherfound) ) * 100 ) ).toFixed(2);
-    // chart data
-    let chartData = { "name": bootcamp[0].customName, "rate": parseInt(rate) };
-
-    console.log("rate", rate)
-    console.log("chartData", chartData);
     console.log("allreviews: ", allreviews);
     console.log("sum: ", sum);
     console.log("count: ", count);
@@ -77,15 +57,13 @@ router.post("/bootcamps/:name", async (req, res) => {
     // update in db
     // i again had to parse them to int, 
     // float otherwise they stored as strings in DB
-    Bootcamp.update(
+    Bootcamp.updateOne(
       { schoolname: { $eq: name } },
       {
         $set: {
           reviews: allreviews,
           overall: parseFloat(overallRating),
           reviewsCount: parseInt(count),
-          jobrate: parseFloat(rate),
-          chartData: chartData
         }
       },
       (err, result) => {

@@ -1,21 +1,61 @@
+.review-form-container {
+    width: 30%;
+    margin: 10px auto;
+    padding: 15px;
+}
+    .review-form-container  h3 {
+        text-transform: capitalize;
+        font-weight: 800;
+    }
+    .review-submit-form {
+        margin: 0 auto;
+        font-size: 12px;
+    }
+    .review-submit-form div {
+        margin: 20px 0;
+    }
+    .review-submit-form label, input, textarea {
+        width: 100%;
+        margin: 0;
+    }
+    .review-submit-form input, textarea {
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        resize: none;
+        padding: 5px;
+    }
+    .review-submit-form input::placeholder, textarea::placeholder {
+        color: #d3d3d3;
+    }
+    .review-submit-form .review {
+        height: 60px;
+    }
+    .review-submit-form .pros {
+        height: 30px;
+    }
+    .review-submit-form .cons {
+        height: 30px;
+    }
+    .review-submit-form .acceptTerms { 
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        position: relative;
+    }
+    .review-submit-form .checkbox-label {
+        display: block;
+        padding-left: 15px;
+        text-indent: -15px;
+        font-size: 10px;
+    }
 
-.review-submit-form {
-    width: 40%;
-    margin: 0 auto;
-    font-size: 12px;
-    
-}
-.review-submit-form label, input, textarea {
-    display: block;
-    width: 100%;
-    margin: 0;
-}
-.review-submit-form div {
-    margin: 20px 0;
-}
-.terms-checkbox {
-    font-size: 10px;
-}
-#rating-empty-star, #rating-full-star {
-    height: 16px;
-}
+    .review-submit-form .form-submit-btn {
+        border: 1px solid lightgray;
+        font-weight: 800;
+        border-radius: 2px;
+        color: #000;
+        padding: 3px 10px;
+    }
+    #rating-empty-star, #rating-full-star {
+        height: 18px;
+    }
