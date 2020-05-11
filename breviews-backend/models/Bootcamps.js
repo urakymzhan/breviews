@@ -15,7 +15,7 @@ const BootcampSchema = new Schema({
       date: Date,
       pros: String,
       cons: String,
-      dateGraduated: Date,
+      title: String,
       star: Number,
       review: String,
       email: String
@@ -42,9 +42,9 @@ const BootcampSchema = new Schema({
   itbackground: {
     type: String
   },
-  location: {
+  location: [{
     type: String
-  },
+  }],
   duration: {
     type: String
   },

@@ -1,23 +1,37 @@
 import React, { useEffect } from "react";
 import "./style/landing.css";
 import { Link } from "react-router-dom";
-import { SearchBanner, Spinner } from "../A_Atoms";
-import { connect } from "react-redux";
+import { SearchBanner, Spinner, Autocomplete } from "../A_Atoms";
+import { connect, useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { getMainPageData } from "../../redux/actions/landing";
 import { TopBootcamps, RemoteBootcamps } from '../B_Molecules';
 
 
-const Landing = ({ mainpageData, isLoaded, getMainPageData }) => {
+const Landing = () => {
+  const isLoaded = useSelector(state => state.landing.isLoaded);
+  const mainpageData = useSelector(state => state.landing.mainpageData);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    getMainPageData();
+    dispatch(getMainPageData());
   }, []);
 
   let content = <Spinner />;
-  console.log("mainpageData: ", mainpageData);
+  // testing out 
+  // its ok to filter here because we don't have much data 
+  let topBootcamps = mainpageData.filter(bootcamp => bootcamp.overall > 4);
+  let remoteBootcamps = mainpageData.filter(bootcamp => bootcamp.location.includes("Remote")) 
   // will show only 4 bootcamps in main page
-  const topBootcamps = mainpageData.slice(0, 4);
-  const remoteBootcamps = mainpageData.slice(0, 4);
+  topBootcamps = topBootcamps.slice(0, 4);
+  remoteBootcamps = remoteBootcamps.slice(0, 4);
+
+  console.log("mainpageData", mainpageData);
+  console.log("topBootcamps", topBootcamps)
+  console.log("remoteBootcamps", remoteBootcamps)
+
+  // testing out search options
+  const NameOptions = mainpageData.map(school => school.customName);
 
   if (isLoaded) {
     content = (
@@ -29,20 +43,12 @@ const Landing = ({ mainpageData, isLoaded, getMainPageData }) => {
   }
   return (
     <div className="main-wrapper">
-      <SearchBanner />
+       <SearchBanner
+        options={NameOptions} 
+       />
       {content}
     </div>
   );
 };
 
-Landing.propTypes = {
-  getMainPageData: PropTypes.func.isRequired,
-  mainpageData: PropTypes.array.isRequired,
-  isLoaded: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  mainpageData: state.landing.mainpageData,
-  isLoaded: state.landing.isLoaded,
-});
-export default connect(mapStateToProps, { getMainPageData })(Landing);
+export default Landing;
