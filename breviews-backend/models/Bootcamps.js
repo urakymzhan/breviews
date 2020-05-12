@@ -11,16 +11,14 @@ const BootcampSchema = new Schema({
   },
   reviews: [
     {
-      id: String,
       customerName: String,
-      date: String,
+      date: Date,
       pros: String,
       cons: String,
-      dateGraduated: Number,
+      title: String,
       star: Number,
-      jobfound: String,
       review: String,
-      customerLinkedin: String
+      email: String
     }
   ],
   logo: {
@@ -31,17 +29,6 @@ const BootcampSchema = new Schema({
   },
   reviewsCount: {
     type: Number
-  },
-  jobrate: {
-    type: Number
-  },
-  chartData: {
-    name: {
-      type: String
-    },
-    rate: {
-      type: Number
-    }
   },
   website: {
     type: String
@@ -55,9 +42,9 @@ const BootcampSchema = new Schema({
   itbackground: {
     type: String
   },
-  location: {
+  location: [{
     type: String
-  },
+  }],
   duration: {
     type: String
   },

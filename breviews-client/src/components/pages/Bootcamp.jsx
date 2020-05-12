@@ -5,72 +5,42 @@ import { ReviewSubmitForm, ReviewsBox } from "../B_Molecules";
 import { SortReviews, Spinner } from "../A_Atoms";
 import { EMPTY_REVIEW_TEXT } from "../../utils/constants";
 import { Button } from "react-bootstrap";
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import {
-  getBootcampData,
-  addBootcampReview,
-} from "../../redux/actions/bootcamp";
-import Rating from "react-rating";
+import { getBootcampData } from "../../redux/actions/bootcamp";
 import { Link } from 'react-router-dom';
+import { Ratings } from "../A_Atoms";
 
-const INITIAL_STATE = {
-  review: "",
-  customerName: "",
-  pros: "",
-  cons: "",
-  dateGraduated: "",
-  jobfound: "Yes",
-  customerLinkedin: "",
-};
-
-const Bootcamp = ({ getBootcampData, localData, name, addBootcampReview }) => {
-
+const Bootcamp = (props) => {
+  const localData = useSelector(state => state.bootcamp.localData);
+  const dispatch = useDispatch();
+  const name = props.match.params.name;
 
   useEffect(() => {
-    getBootcampData(name);
+    dispatch(getBootcampData(name));
   }, []);
-
-  console.log("localData", localData);
-
-  // TODO: destructure localData when not empty
+    
+  console.log(localData)
   return (
     <Fragment>
-      {localData.length === 0 ? (
+      {localData && localData.length === 0 ? (
         <Spinner />
       ) : (
         <div className="reviews-content-wrapper">
           <div className="reviews-header-wrapper">
           <div className="bootcamp-logo">
-            <h3>LOGO</h3>
+            <img src={localData[0].logo} alt="company logo"/>
           </div>
           <div className="bootcamp-info">
-            <h3>{localData[0].customName}  {" "}
+            <h3 style={{color: "#000"}}>{localData[0].customName}  {" "}
             <a href={localData[0].website} target="_blank">
               <img src="https://cdn1.iconfinder.com/data/icons/feather-2/24/external-link-512.png" style={{height: "16px", width: "auto"}}/>
             </a>
             </h3>
-            {/* move this to ReadOnlyReviewsStar.jsx */}
             <div className="bootcamp-info-row1">
-              <Rating
-                className="star-rating-container"
-                start={0}
-                stop={5}
-                fractions={2}
-                placeholderRating={localData[0].overall}
-                emptySymbol={
-                  <img
-                    id="rating-empty-star-main"
-                    src="../../public/assets/rating-off.png"
-                  />
-                }
-                placeholderSymbol={
-                  <img
-                    id="rating-full-star-main"
-                    src="../../public/assets/rating-on.png"
-                  />
-                }
-                readonly
+              <Ratings
+                classname="star-rating-container"
+                overall={localData[0].overall}
               />
               <p>
                 {localData[0].reviewsCount} reviews
@@ -122,25 +92,8 @@ const Bootcamp = ({ getBootcampData, localData, name, addBootcampReview }) => {
 
 Bootcamp.protoType = {
   localData: PropTypes.array.isRequired,
-  getBootcampData: PropTypes.func.isRequired,
-  addBootcampReview: PropTypes.func.isRequired,
-};
-const mapStateToProps = (state, { match }) => ({
-  localData: state.bootcamp.localData,
-  name: match.params.name,
-});
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getBootcampData: (name) => dispatch(getBootcampData(name)),
-    // how dataToPost accessed from here (dispatch?)
-    addBootcampReview: (dataToPost, name) =>
-      dispatch(addBootcampReview(dataToPost, name)),
-  };
+  getBootcampData: PropTypes.func.isRequired
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Bootcamp)
-);
-
-
+export default withRouter(Bootcamp);
 

@@ -16,18 +16,18 @@ class Header extends React.Component {
       <header style={bgcolor}>
         <nav id="header-nav" style={style.nav}>
         <ul id="logo-wrapper" style={style.ul}>
-          <li id="header-logo" style={style.lists}>
+          <li id="header-logo" style={{float: "left", margin: "0.2em 1.2em auto auto" }}>
             <Link to="/" style={style.links}>
               <img
                 id="brlogo"
                 src={brlogo}
-                style={{ width: "auto", height: "30px" }}
+                style={{ width: "auto", height: "30px"}}
               />
             </Link>
           </li>
           <li id="header-logo" style={style.lists}>
             <Link to="/results" style={style.links}>
-              write a review
+              Leave a review
             </Link>
           </li>
         </ul>
@@ -64,8 +64,8 @@ export default FlexibleHeader;
 
 // STYLES:
 const style = {
-  nav: {display: "flex", flexWrap: "nowrap",  justifyContent: "space-between",  background: "transparent",   padding: "0 4em"},
-  ul: { listStyle: "none", padding: "1em 0", fontSize: "14px" },
+  nav: {display: "flex", flexWrap: "nowrap",  justifyContent: "space-between",  background: "transparent",   padding: "0 20px"},
+  ul: { listStyle: "none", padding: "1em 0", fontSize: "12px", color: "#000" },
   lists: { float: "left", margin: "1em 1.2em auto auto" },
   links: { textDecoration: "none", color: "inherit"}
 }

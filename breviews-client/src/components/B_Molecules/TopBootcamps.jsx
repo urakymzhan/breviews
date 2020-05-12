@@ -1,8 +1,9 @@
 
 import React from 'react'
-import Rating from "react-rating";
+// import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import './style/topbootcamps.css'
+import { Ratings } from '../A_Atoms';
 
 const TopBootcamps = ({topBootcamps}) => {
     return (
@@ -29,33 +30,20 @@ const TopBootcamps = ({topBootcamps}) => {
                     </h4>
                   </div>
                   <div className="review-overall">
-                    <Rating
-                      className="star-rating-container"
-                      start={0}
-                      stop={5}
-                      fractions={2}
-                      placeholderRating={bootcamp.overall}
-                      emptySymbol={
-                        <img
-                          id="rating-empty-star-main"
-                          src="../../public/assets/rating-off.png"
-                        />
-                      }
-                      placeholderSymbol={
-                        <img
-                          id="rating-full-star-main"
-                          src="../../public/assets/rating-on.png"
-                        />
-                      }
-                      readonly
+                    <Ratings
+                      classname="star-rating-container"
+                      overall={bootcamp.overall}
                     />
                     <span className="total-review-count">
                       {bootcamp.reviewsCount} reviews
                     </span>
                   </div>
                   <div className="bootcamp-location location">
-                    {/* TODO: make it an array */}
-                    <span>{bootcamp.location}</span>
+                    {
+                      bootcamp.location.map((location, ind) => {
+                        return <span key={ind} style={{marginRight: "3px"}}>{location}</span>
+                      })
+                    }
                   </div>
                 </div>
               </section>
