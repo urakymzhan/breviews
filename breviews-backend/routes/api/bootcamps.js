@@ -1,9 +1,5 @@
 const express = require("express");
 const router = express.Router();
-<<<<<<< HEAD
-=======
-const { check, validationResult } = require("express-validator");
->>>>>>> ffe033a31d8dd3e62d75ff3672e5315826ad2236
 const Bootcamp = require('../../models/Bootcamps');
 
 // @route  GET api/landing
