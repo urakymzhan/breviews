@@ -10,7 +10,7 @@ const TopBootcamps = ({topBootcamps}) => {
         <div>
             <div className="top-bootcamps-nav">
             <h4>Top Bootcamps</h4>
-            <p>See all</p>
+            <Link to={`/results`}>See all</Link>
             </div>
             <div className="top-bootcamps-list-row">
           {topBootcamps.map((bootcamp) => {
