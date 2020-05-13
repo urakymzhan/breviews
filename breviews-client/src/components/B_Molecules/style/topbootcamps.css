@@ -1,0 +1,92 @@
+
+.top-bootcamps-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 5em;
+    clear: both;
+  }
+  .top-bootcamps-list-row {
+    position: relative;
+    margin: 1.2em auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .bootcamp-section {
+    border-radius: 5px;
+    vertical-align: top;
+    text-align: left;
+    display: grid;
+    height: auto;
+    min-height: 240px;
+    width: 180px;
+    margin: 0 10px;
+    box-shadow: 1px 2px 6px 2px rgba(0,0,0,0.05);
+  }
+  .bootcamp-logo-wrapper {
+    background-color: #d7d7d7;
+    height: 180px;
+    width: 180px;
+    position: relative;
+    vertical-align: top;
+    margin: 0 auto;
+  }
+  .bootcamp-logo-wrapper img {
+    height: 90%;
+    width: 90%;
+    object-fit: contain;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .review-overall {
+    color: #ff9800;
+    position: relative;
+    font-size: 14px;
+  }
+  #rating-empty-star-main, #rating-full-star-main {
+    height: 14px;
+    width: auto;
+    float: left;
+  }
+  .total-review-count {
+    color: #333;
+    margin-left: 0.8em;
+    font-size: 12px;
+  }
+  .schoolnames a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .bootcamp-location {
+    font-size: 12px;
+    color: #333;
+  }
+  /* MEDIA QUERIES START */
+  
+  @media only screen and (max-width: 599px) {
+    /*  for-phone-only  */
+    .bootcamp-section {
+      display: block;
+      flex-basis: 100%;
+    }
+    .chart-wrapper {
+      width: 90% !important;
+    }
+  }
+  @media screen and (min-width: 599px) and (max-width: 1199px) {
+    .bootcamp-section {
+      flex-basis: calc(90% / 2);
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    /*  for-desktop-only */
+  }
+  /* MEDIA QUERIES END */

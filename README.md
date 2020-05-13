@@ -1,6 +1,6 @@
-# breviews
+# bootcampAvenue
 
-> personal breviews project
+> personal bootcampAvenue project
 
 ### run:
 - from breviews-backend

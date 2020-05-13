@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 const Bootcamp = require('../../models/Bootcamps');
 
 // @route  GET api/landing
@@ -20,7 +20,7 @@ router.get("/landing", async (req, res) => {
 router.get("/bootcamps/:name", async (req, res) => {
   try {
     const name = req.params.name;
-    const bootcamp = await Bootcamp.find({schoolname: { $eq: name }});
+    const bootcamp = await Bootcamp.find({schoolname: { $eq: name }}).select('-chartData');
     res.json(bootcamp);
   } catch (err) {
     console.error(err.message);
@@ -28,7 +28,6 @@ router.get("/bootcamps/:name", async (req, res) => {
   }
 });
 
-// WORKS BUT NOT ENTIRELY SURE ABOUT ARCHITECTURE
 // @route  POST api/bootcamps/:name
 // access  Public
 router.post("/bootcamps/:name", async (req, res) => {
@@ -50,25 +49,6 @@ router.post("/bootcamps/:name", async (req, res) => {
     //  calculate overall review
     let overallRating = parseFloat(sum / count).toFixed(1); 
 
-    // job rate calculate
-    let found = 0;
-    let notfound = 0;
-    let neitherfound = 0;
-    allreviews.map(obj => {
-      if(obj.jobfound === "Yes") {
-        found++;
-      } else if(obj.jobfound === "No") {
-        notfound++;
-      }else {
-        neitherfound++;
-      }
-    })
-    let rate =  parseFloat( ( (found / (count - neitherfound) ) * 100 ) ).toFixed(2);
-    // chart data
-    let chartData = { "name": bootcamp[0].customName, "rate": parseInt(rate) };
-
-    console.log("rate", rate)
-    console.log("chartData", chartData);
     console.log("allreviews: ", allreviews);
     console.log("sum: ", sum);
     console.log("count: ", count);
@@ -77,21 +57,20 @@ router.post("/bootcamps/:name", async (req, res) => {
     // update in db
     // i again had to parse them to int, 
     // float otherwise they stored as strings in DB
-    Bootcamp.update(
+    Bootcamp.updateOne(
       { schoolname: { $eq: name } },
       {
         $set: {
           reviews: allreviews,
           overall: parseFloat(overallRating),
           reviewsCount: parseInt(count),
-          jobrate: parseFloat(rate),
-          chartData: chartData
         }
       },
       (err, result) => {
         res.send(
           err === null
-            ? { msg: "Successfully updated bootcamp and inserted new review!" }
+          // this makes me write payload.data.data in redux reducers
+            ? { msg: "Successfully updated bootcamp and inserted new review!", data: req.body }
             : { msg: err }
         );
       }

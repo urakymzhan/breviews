@@ -7,22 +7,23 @@ import {
 } from './types';
 
 export const getBootcampData = name => async dispatch => {
-    // console.log("name from action: ", name)
     try {
         const res = await axios.get(`/api/bootcamps/${name}`);
+
         dispatch({
             type: BOOTCAMP_DATA_LOADED,
             payload: res.data
         })
-    }catch(err) {
+    } catch(err) { 
         dispatch({
             type: BOOTCAMP_DATA_LOAD_FAILED,
-            payload: { msg: err.response.statusText, status: err.response.status }
+            payload: err
         })
     }
 }
 
-export const addReview = (dataToPost, name)  => async  dispatch => {
+export const addBootcampReview = (dataToPost, name)  => async  dispatch => {
+
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -32,7 +33,8 @@ export const addReview = (dataToPost, name)  => async  dispatch => {
         const res = await axios.post(`/api/bootcamps/${name}`, dataToPost, config);
         dispatch({
             type: REVIEW_POSTED,
-            payload: res.data
+            // its because backend is giving msg and data together from response
+            payload: res.data.data
         })
     }catch(err) {
         dispatch({

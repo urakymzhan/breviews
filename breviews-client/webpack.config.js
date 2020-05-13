@@ -1,22 +1,15 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  // the output bundle won't be optimized for production but suitable for development
-  mode: "development",
-  // the app entry point is /src/index.js
+  // app entry point
+  // we can more than 1 entry point ex: entry: {main: path.resolve(__dirname, "index.js"), vendor: "./src/vendor.js" }
+  // then in dev and prod replace bundle to [name].js or whatever 
+  // this might be useful in using 3rd party libraries like bootstrap js, jquery etc.
   entry: path.resolve(__dirname, "index.js"),
-  output: {
-    // the output of the webpack build will be in /dist directory
-    path: path.resolve(__dirname, "dist"),
-    // the filename of the JS bundle will be bundle.js
-    filename: "bundle.js",
-    publicPath: "/"
-  },
+
   module: {
     rules: [
       {
-        // for any file with a suffix of js or jsx
         test: /\.jsx?$/,
         // ignore transpiling JavaScript from node_modules as it should be that state
         exclude: /node_modules/,
@@ -35,18 +28,29 @@ module.exports = {
           ]
         }
       },
+      // moved it to other dev and prod
+      // {
+      //   test: /\.css$/i,
+      //   // css-loader converts to css to js, style-loader injects styles to DOM
+      //   use: ["style-loader", "css-loader"]
+      // },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"]
+        test: /\.html$/i,
+        loader: 'html-loader',
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|ico|svg|woff)$/i,
         use: [
           {
             loader: 'file-loader',
+            options: {
+              name: "[name].[hash].[ext]",
+              // TODO
+              outputPath: "assets",
+            }
           },
         ],
-      }
+      },
     ]
   },
   devServer: {
@@ -54,12 +58,9 @@ module.exports = {
     historyApiFallback: true,
     port: 8080,
     // proxying backend api
-    proxy: { "/api": "http://localhost:5000" }
+    proxy: { "/api": "http://localhost:5000" },
+    // contentBase: path.join(__dirname, 'dist'),
+    // compress: true,
+    // publicPath: '/assets/'
   },
-  // add a custom index.html as the template
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "public", "index.html")
-    })
-  ]
 };

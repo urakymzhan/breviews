@@ -8,7 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
-import { data } from '../constants/chart_sample';
+import { data } from '../../utils/chart_sample';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -24,7 +24,7 @@ const Chart = ({ mainpageData }) => {
     if (chartData.length === 0) {
       chartData = data
     }
-    console.log("chartData: ", chartData)
+    // console.log("chartData: ", chartData)
     return (
       <div
         className="chart-wrapper"

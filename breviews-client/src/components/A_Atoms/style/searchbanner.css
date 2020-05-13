@@ -1,0 +1,88 @@
+/* BANNER */
+.banner {
+    height: 400px;
+    min-height: 400px;
+    background: #d7d7d7;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .search-tags {
+    margin-top: 1em;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+  .tags {
+    border-radius: 10px;
+    letter-spacing: 1px;
+    padding: 1px 10px;
+    margin: 2px 3px;
+    border: 1px solid #9f9f9f;
+  }
+   .tags.inactive {
+     background: inherit;
+   }
+   .tags.active {
+    background: red;
+  }
+   .search-input-wrapper {
+    width: 50%;
+    margin: 0 auto;
+    position: relative;    
+  }
+  .search-box-name {
+    border: none;
+    width: 50%;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;  
+    box-sizing: border-box;
+    padding: 5px  10px;
+  }
+  .search-box-location {
+    border: none;
+    width: 30%; 
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border-left: 1px solid #d7d7d7;
+  }
+   .search-btn {
+    border: none;
+    width: 20%;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;  
+    box-sizing: border-box;
+    padding: 5px;
+    border-left: 1px solid #d7d7d7;
+  }
+
+  ul.options, ul.no-options {
+    position: absolute;
+    list-style: none;
+    transition: width 0.3s;
+    margin: auto;
+    width: 50%;
+    background: #fff;
+    padding: 0;
+    top: 40px;
+    text-align: left;
+  }
+  
+  ul.options li, ul.no-options li {
+    display: block;
+    margin: 5px auto;
+    padding: 5px;
+    width: 100%;
+  }
+  ul.options li:hover {
+    color: gray;
+    cursor: pointer;
+    transition: 0.3s all;
+  }
+  
+  ul.options li.option-active {
+    background: yellow;
+  }
+  .no-options {
+    color: red;
+    position: absolute;
+  }

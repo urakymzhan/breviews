@@ -6,12 +6,13 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    localData: []
+    localData: [],
+    error: ''
 }
 
 export default function(state = initialState, action) {
     const { type, payload } =  action;
-
+    
     switch (type) {
         case BOOTCAMP_DATA_LOADED:
             return {
@@ -20,19 +21,18 @@ export default function(state = initialState, action) {
             }
         case BOOTCAMP_DATA_LOAD_FAILED:
             return {
-                ...state
-                // handle erros
+                ...state,
+                error: payload
             }
         case REVIEW_POSTED:
             return {
                 ...state,
-                // this is wrong at the moment
-                localData: [...state, payload]
+                localData: state.localData.map(data => { return { ...data, reviews: data.reviews.concat(payload)}})
             }
         case REVIEW_POST_FAILED:
             return {
-                ...state
-                // handle errors
+                ...state,
+                error: payload
             }
         default:
             return state;

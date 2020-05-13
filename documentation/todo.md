@@ -24,7 +24,6 @@
 - Make sure that people can't submit without star or linkedin profile (validate)
 - fix chart data name section
 - eventually move team and terms to footer. Instead put blog/news section there
-- 
 
 ### Major
 - Contact

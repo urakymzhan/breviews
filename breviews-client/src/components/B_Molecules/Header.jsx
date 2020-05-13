@@ -1,67 +1,71 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import brlogo from '../../../public/assets/brlogo3.png'
+import { withRouter } from "react-router";
+import PropTypes from "prop-types";
 
-const Header = () => {
-  return (
-    <nav id="header-nav" style={navStyle}>
-      <ul id="logo-wrapper" style={ulStyle}>
-        <li id="header-logo">
-          <Link to="/">
-            <img
-              id="brlogo"
-              src="/public/assets/brlogo3.png"
-              style={{ width: "auto", height: "40px" }}
-            />
-          </Link>
-        </li>
-      </ul>
-      <ul style={ulStyle}>
-        <li id="header-team" style={lists}>
-          <Link to="/team" style={links}>
-            Team
-          </Link>
-        </li>
-        <li id="header-contact" style={lists}>
-          <Link to="/contact" style={links}>
-            Contact
-          </Link>
-        </li>
-        <li
-          id="header-legal"
-          style={{ float: "left", marginRight: "1.2em", marginRight: "0" }}
-        >
-          <Link to="/legal" style={links}>
-            Terms
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  );
+class Header extends React.Component {
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+  };
+
+  render() {
+    const { location } = this.props;
+    const bgcolor = location.pathname === '/' || location.pathname === '/results' ? { background: '#d7d7d7'} : { background: '#fff'};
+    return (
+      <header style={bgcolor}>
+        <nav id="header-nav" style={style.nav}>
+        <ul id="logo-wrapper" style={style.ul}>
+          <li id="header-logo" style={{float: "left", margin: "0.2em 1.2em auto auto" }}>
+            <Link to="/" style={style.links}>
+              <img
+                id="brlogo"
+                src={brlogo}
+                style={{ width: "auto", height: "30px"}}
+              />
+            </Link>
+          </li>
+          <li id="header-logo" style={style.lists}>
+            <Link to="/results" style={style.links}>
+              Leave a review
+            </Link>
+          </li>
+        </ul>
+        <ul style={style.ul}>
+          <li id="header-team" style={style.lists}>
+            <Link to="/patreon" style={style.links}>
+              Patreon
+            </Link>
+          </li>
+          <li id="header-team" style={style.lists}>
+            <Link to="/team" style={style.links}>
+              About
+            </Link>
+          </li>
+          <li id="header-team" style={style.lists}>
+            <Link to="/blog" style={style.links}>
+              Blog
+            </Link>
+          </li>
+          <li id="header-contact" style={style.lists} >
+            <Link to="/contact" style={style.links}>
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      </header>
+    );  
+  }
 };
 
-export default Header;
+const FlexibleHeader = withRouter(Header);
+export default FlexibleHeader;
 
 // STYLES:
-const navStyle = {
-  display: "flex",
-  flexWrap: "nowrap",
-  justifyContent: "space-between",
-  background: "#f2f2f2",
-  padding: "0.6em 4em"
-};
-const ulStyle = {
-  listStyle: "none",
-  padding: "0",
-  height: "40px",
-  lineHeight: "40px",
-  verticalAlign: "middle"
-};
-
-const lists = {
-  float: "left",
-  marginRight: "1.2em"
-};
-const links = {
-  textDecoration: "none",
-  color: "inherit"
-};
+const style = {
+  nav: {display: "flex", flexWrap: "nowrap",  justifyContent: "space-between",  background: "transparent",   padding: "0 20px"},
+  ul: { listStyle: "none", padding: "1em 0", fontSize: "12px", color: "#000" },
+  lists: { float: "left", margin: "1em 1.2em auto auto" },
+  links: { textDecoration: "none", color: "inherit"}
+}
