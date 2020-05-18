@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Route } from "react-router-dom";
-import { Team, Legal, Contact, ReviewFormPage, Results, Bootcamp, FormComplete } from "../pages";
+import { Team, Legal, Contact, ReviewFormPage, Results, Bootcamp, FormComplete, Blog } from "../pages";
 
 export default function Routes() {
   return (
@@ -9,7 +9,7 @@ export default function Routes() {
       <Route path="/legal" component={Legal} />
       <Route path="/contact" component={Contact} />
       <Route path="/patreon" component={Contact} />
-      <Route path="/blog" component={Contact} />
+      <Route path="/blog" component={Blog} />
       <Route path="/bootcamps/:name" component={Bootcamp} />
       <Route path="/write-review/:name" component={ReviewFormPage} />
       <Route path="/form-complete/:name" component={FormComplete} />
