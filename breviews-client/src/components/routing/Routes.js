@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Route } from "react-router-dom";
-import { Team, Legal, Contact, ReviewFormPage, Results, Bootcamp, FormComplete, Landing, NotFoundPage } from "../pages";
+import { Team, Legal, Contact, ReviewFormPage, Results, Bootcamp, FormComplete, Landing, Blog, NotFoundPage } from "../pages";
 
 export default function Routes() {
   return (
@@ -20,11 +20,4 @@ export default function Routes() {
       <Route component={NotFoundPage}/>
     </Fragment>
   );
-}
-
-
-function Blog() {
-  return (
-    <div>Welcome to Blog Page</div>
-  )
 }

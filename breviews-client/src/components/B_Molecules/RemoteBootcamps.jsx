@@ -10,7 +10,7 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
         <div>
             <div className="top-bootcamps-nav">
             <h4>Remote Bootcamps</h4>
-            <p>See all</p>
+            <Link to={`/results`}>See all</Link>
             </div>
             <div className="top-bootcamps-list-row">
             {remoteBootcamps.map((bootcamp) => {
