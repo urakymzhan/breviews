@@ -5,7 +5,6 @@ import { Header, Footer } from "./components/B_Molecules";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from '../src/redux/store';
-import { Landing } from './components/pages';
 
 const App = () => {
 
