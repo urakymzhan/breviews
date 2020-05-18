@@ -82,5 +82,26 @@ router.post("/bootcamps/:name", async (req, res) => {
   }
 });
 
+// test out
+router.post("/results", async (req, res) => {
+  try {
+    // console.log(req.body)
+    res.json(req.body)
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+router.get("/autoCompleteNames", async (req, res) => {
+  try {
+    const customNamesObj = await Bootcamp.find({}, 'customName').select("-_id");
+    const customeNamesArr = customNamesObj.map(obj => {return obj.customName } );
+    // console.log(customeNamesArr);
+    res.json(customeNamesArr);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 module.exports = router;
 

@@ -14,7 +14,7 @@ module.exports = merge(common, {
     filename: "bundle.[contentHash].js", 
     path: path.resolve(__dirname, "dist"),
     // TODO: fails if remove dot
-    publicPath: './'
+    publicPath: '/'
   },
   optimization: {
     // minimizing css and js files

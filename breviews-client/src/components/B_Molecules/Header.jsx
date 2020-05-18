@@ -33,9 +33,9 @@ class Header extends React.Component {
         </ul>
         <ul style={style.ul}>
           <li id="header-team" style={style.lists}>
-            <Link to="/patreon" style={style.links}>
+            <a href="https://www.patreon.com/" target="_blank" style={style.links}>
               Patreon
-            </Link>
+            </a>
           </li>
           <li id="header-team" style={style.lists}>
             <Link to="/team" style={style.links}>
