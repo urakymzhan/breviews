@@ -1,23 +1,48 @@
 import React, { Fragment } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Team, Legal, Contact, ReviewFormPage, Results, Bootcamp, FormComplete, Landing, Blog, NotFoundPage } from "../pages";
 
-export default function Routes() {
+const Routes = () => {
   return (
     <Fragment>
-      <Route exact path="/" component={Landing} />
-      <Route exact path="/team" component={Team} />
-      <Route exact path="/legal" component={Legal} />
-      <Route exact path="/contact" component={Contact} />
-      {/* <Route exact path="/patreon" component={Contact} /> */}
-      <Route exact path="/blog" component={Blog} />
-      <Route path="/bootcamps/:name" component={Bootcamp} />
-      <Route path="/write-review/:name" component={ReviewFormPage} />
-      <Route path="/form-complete/:name" component={FormComplete} />
-      <Route path="/results" component={Results} />
-      {/* <Route path="/results/:type" component={Results} /> */}
-      {/* fix this */}
-      <Route component={NotFoundPage}/>
+      <Switch>
+        <Route exact path="/" >
+          <Landing />
+        </Route>
+        <Route exact path="/team" >
+          <Team />
+        </Route>
+        <Route exact path="/legal" >
+          <Legal />
+        </Route>
+        <Route exact path="/contact" >
+          <Contact />
+        </Route>
+        <Route exact path="/blog">
+          <Blog />
+        </Route>
+        <Route path="/bootcamps/:name">
+          <Bootcamp />
+        </Route>
+        {/* TODO: nested url without base /write-review path */}
+        <Route path="/write-review/:name">
+          <ReviewFormPage />
+        </Route>
+        <Route path="/form-complete/:name">
+          <FormComplete />
+        </Route>
+        <Route exact path="/results">
+          <Results />
+        </Route>
+        <Route>
+          <NotFoundPage />
+        </Route>
+      </Switch>
     </Fragment>
   );
 }
+
+export default Routes;
+
+      {/* <Route path="/results/:type" component={Results} /> */}
+      {/* fix this */}

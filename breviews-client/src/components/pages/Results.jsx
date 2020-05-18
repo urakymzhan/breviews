@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./style/landing.css";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { SearchBanner, Spinner } from '../A_Atoms';
 import axios from 'axios';
 
@@ -44,4 +44,4 @@ const Results = (props) => {
   );
 }
 
-export default Results;
+export default withRouter(Results);

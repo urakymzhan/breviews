@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import "./style/landing.css";
-import { Link } from "react-router-dom";
 import { SearchBanner, Spinner } from "../A_Atoms";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { getMainPageData } from "../../redux/actions/landing";
 import { TopBootcamps, RemoteBootcamps } from '../B_Molecules';
