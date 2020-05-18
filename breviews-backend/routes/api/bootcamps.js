@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
 const Bootcamp = require('../../models/Bootcamps');
 
 // @route  GET api/landing
