@@ -1,4 +1,5 @@
 import React from "react";
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from "./components/routing/Routes";
 import { Header, Footer } from "./components/B_Molecules";

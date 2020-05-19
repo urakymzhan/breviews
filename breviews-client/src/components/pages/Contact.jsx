@@ -57,7 +57,7 @@ const contactPageWrapper = {
     "URL('https://images.unsplash.com/photo-1491183672482-d0af0e44929d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  height: "100%"
+
 };
 const form = {
   textAlign: "left",

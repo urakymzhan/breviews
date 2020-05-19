@@ -1,51 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Serif&display=swap");
 
-/* globals */
-:root {
-  --mainWhite: #fff;
-  --mainGray: rgb(215, 215, 215)
-}
-* {
-  box-sizing: border-box;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--mainWhite);
-  font-family: "Noto Serif", serif;
-}
-
-#root {
-  height: 100%; 
-  min-height: 100vh;
-  display: grid;
-  /* defines header and footer height */
-  grid-template-rows: 60px auto 100px;
-  margin: 0;
-  padding: 0;
-}
-/* Bootcamp page start----------- */
-
 .reviews-content-wrapper {
-  margin: 0;
-  text-align: center;
   padding: 0 20px;
 }
-.reviews-header-wrapper {
+/* header content */
+.bootcamps-header {
   display: grid;
-  grid-template-areas:
-  "sidebar main";
-  grid-template-columns: 20% 75%;
-  grid-template-rows: auto;
-  column-gap: 5%;
-  margin: 20px 0;
-  text-align: left;
+  grid-template-areas: "logo headerMain";
+  grid-template-columns: 1fr 3fr;
+  grid-auto-rows: minmax(200px, auto);
+  column-gap: 30px;
+  margin-bottom: 30px;
 }
 .bootcamp-logo {
   background: var(--mainGray);
-  grid-area: sidebar;
-  height: 200px;
-  min-height: 200px;
+  grid-area: logo;
   position: relative;
 }
 .bootcamp-logo img {
@@ -60,58 +29,76 @@ html, body {
   bottom: 0;
 }
 .bootcamp-info {
-  grid-area: main;
+  grid-area: headerMain;
   color: gray;
+  text-align: left;
+  font-size: 12px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+.bootcamp-info-row1,
+.bootcamp-info-row2,
+.bootcamp-info-row3 {
+  text-align: inherit;
+  padding: 5px 0;
+}
+
+.bootcamp-info-row1 {
+  /* row 1 */
+}
+.star-rating-container {
+  margin-right: 10px;
 }
 .bootcamp-info-row1 p {
   display: inline-block;
-  margin-left: 10px;
+  margin: 0 30px 0 0;
 }
-.bootcamp-location-each {
-  margin-left: 10px;
+.bootcamp-info-row2 {
+  /* row 2 */
 }
 .bootcamp-info-row2 button {
   border-radius: 10px;
   font-size: 10px;
   letter-spacing: 1px;
-  padding: 1px 10px;
-  margin: 2px 3px;
-  background: inherit;
+  padding: 2px 10px;
+  margin: 0 10px 0 0;
+}
+.bootcamp-info-row3 {
+  /* row 3 */
 }
 .bootcamp-info-row3 p {
   display: inline-block;
-  font-size: 12px;
+  margin: 0 80px 0 0;
 }
 .bootcamp-info-row3 p span {
-  font-size: 12px;
   font-weight: 800;
   color: #000;
 }
-.bootcamp-info-row3 p:last-child {
-  margin: 1em 4em;
-}
-/* reviews  */
-.reviews-wrapper {
+
+/* reviews content */
+.reviews-main {
   display: grid;
-  grid-template-areas:
-  "sidebar main";
-  grid-template-columns: 20% 75%;
-  grid-template-rows: 200px auto;
-  column-gap: 5%;
-  /* TODO: temporary  fix */
-  margin-bottom: 600px;
+  grid-template-areas: "aside content";
+  grid-template-columns: 1fr 3fr;
+  grid-auto-rows: minmax(200px, auto);
+  column-gap: 30px;
+  margin-bottom: 30px;
+}
+.aside-wrapper {
+  background: rgb(165, 222, 224);
+  grid-area: aside;
 }
 .bootcamp-write-a-review {
   background: var(--mainGray);
-  grid-area: sidebar;
   text-align: center;
   font-size: 12px;
-  padding: 20px 30px;
+  padding: 20px;
+  /* min-height: 140px; */
 }
 .bootcamp-write-a-review h6 {
   font-weight: 800;
-  text-align: left;
   margin-bottom: 10px;
+  text-align: left;
 }
 .bootcamp-write-a-review p {
   text-align: left;
@@ -120,16 +107,46 @@ html, body {
   border: none;
   background-color: rgb(189, 186, 186);
   padding: 5px 20px;
-  margin-top: 20px;
   font-weight: bold;
 }
-.customer-reviews {
-  /* background: rgba(215, 215, 215, 0.2); */
-  grid-area: main;
-  text-align: center;
-  /* margin-bottom: 40px; */
+.reviews-content {
+  grid-area: content;
+  background-color: rgb(165, 222, 224);
 }
 
+/* testing pagination */
 
-
-
+.pagination {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  outline: none;
+  width: 200px;
+}
+.pagination > .active > a {
+  color: #fff;
+}
+.pagination > li > a {
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  outline: none;
+}
+.pagination > li > a,
+.pagination > li > span {
+  color: gray;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span,
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-radius: unset;
+}

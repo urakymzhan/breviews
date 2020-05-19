@@ -44,5 +44,5 @@ const Routes = () => {
 
 export default Routes;
 
-      {/* <Route path="/results/:type" component={Results} /> */}
-      {/* fix this */}
+{/* <Route path="/results/:type" component={Results} /> */}
+{/* fix this */}
