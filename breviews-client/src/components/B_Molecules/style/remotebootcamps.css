@@ -22,13 +22,17 @@
   .remote-bootcamps-list-row {
     position: relative;
     margin: 1.2em auto;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; */
+
+    display: grid;
+    grid-template-columns: repeat(4, 180px);
+    grid-column-gap: calc(( 100% - (180px * 4) ) / 3)
+
   }
   .bootcamp-logo-wrapper {
-    border: 1px solid #d7d7d7;
     background-color: #d7d7d7;
     position: relative;
     vertical-align: top;
@@ -36,7 +40,8 @@
   .bootcamp-logo-wrapper img {
     height: 180px;
     width: 180px;
-    object-fit: contain;
+    /* object-fit: contain; */
+    border: 1px solid #d7d7d7;
   }
   .schoolnames-wrapper {
     text-align: left;
@@ -68,7 +73,16 @@
     font-size: 12px;
     color: #333;
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
   }
+
+    .bootcamp-location span img {
+      height: 12px;
+      width: auto;
+      margin-right: 3px;
+      vertical-align: baseline;
+    }
   /* MEDIA QUERIES START */
   
   @media only screen and (max-width: 599px) {

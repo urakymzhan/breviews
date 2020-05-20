@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import "./style/bootcamp.css";
+import "./style/bootcamp.scss";
 import { withRouter } from "react-router";
 import { ReviewsBox } from "../B_Molecules";
 import { SortReviews, Spinner } from "../A_Atoms";

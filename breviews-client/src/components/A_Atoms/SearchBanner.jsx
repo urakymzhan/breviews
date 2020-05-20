@@ -130,13 +130,13 @@ class SearchBanner extends Component {
         );
       }
     }
-    console.log("hey", this.state.results)
+    console.log("SearchBanner results", this.state.results)
     return (
       <div className="banner">
         <div className="search-input-wrapper">
           <input
             type="search"
-            placeholder="Bootcamp name..."
+            placeholder="Search Bootcamp Name"
             className="search-box-name"
             onChange={handleNameChange}
             onKeyDown={hanldeNameKeyDown}
@@ -144,13 +144,19 @@ class SearchBanner extends Component {
           />
           {optionList}
 
-          <input type="submit" value="Search" className="search-btn" onClick={handleSearchClick}/>
+          <button 
+            type="submit" 
+            value="submit" 
+            className="search-btn" 
+            onClick={handleSearchClick}>
+          </button>
           {results.length > 0 &&
             <Redirect to={{
               pathname: '/results',
               state: { results }
             }}/>
           }
+          
         </div>
         
         <div className="search-tags">
