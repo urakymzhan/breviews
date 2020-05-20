@@ -28,12 +28,6 @@ module.exports = {
           ]
         }
       },
-      // moved it to other dev and prod
-      // {
-      //   test: /\.css$/i,
-      //   // css-loader converts to css to js, style-loader injects styles to DOM
-      //   use: ["style-loader", "css-loader"]
-      // },
       {
         test: /\.html$/i,
         loader: 'html-loader',

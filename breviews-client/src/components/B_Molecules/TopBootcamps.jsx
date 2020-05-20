@@ -37,7 +37,9 @@ const TopBootcamps = ({topBootcamps}) => {
           </div>
           
           <div className="bootcamp-location location">
-            <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png" style={{height: "12px", width: "auto", marginRight: "3px", verticalAlign: "baseline"}}/>
+            <span>
+              <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png" />
+            </span>
             {
               bootcamp.location.map((location, ind) => {
                 return <span key={ind} style={{marginRight: "3px"}}>{location}</span>
@@ -55,7 +57,14 @@ const TopBootcamps = ({topBootcamps}) => {
         <section>
           <div className="top-bootcamps-nav">
             <h4>Top Bootcamps</h4>
-            <Link to={`/results`}>See all</Link>
+            <Link
+              to={{
+                pathname: "/results",
+                state: { category: "top" }
+              }}
+            >
+              See all
+            </Link>
           </div>
           <div className="top-bootcamps-list-row">
           {content}

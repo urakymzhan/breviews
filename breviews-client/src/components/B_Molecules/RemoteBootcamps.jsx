@@ -33,15 +33,9 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
           </div>
 
           <div className="bootcamp-location location">
-            <img
-              src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png"
-              style={{
-                height: "12px",
-                width: "auto",
-                marginRight: "3px",
-                verticalAlign: "baseline",
-              }}
-            />
+            <span>
+              <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png" />
+            </span>
             {bootcamp.location.map((location, ind) => {
               return (
                 <span key={ind} style={{ marginRight: "3px" }}>
@@ -59,7 +53,14 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
     <section>
       <div className="remote-bootcamps-nav">
         <h4>Remote Bootcamps</h4>
-        <Link to={`/results`}>See all</Link>
+        <Link
+          to={{
+            pathname: "/results",
+            state: { category: "remote" },
+          }}
+        >
+          See all
+        </Link>
       </div>
       <div className="remote-bootcamps-list-row">{content}</div>
     </section>

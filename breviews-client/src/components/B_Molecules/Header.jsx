@@ -32,7 +32,13 @@ class Header extends React.Component {
               </Link>
             </li>
             <li id="header-logo" style={style.lists}>
-              <Link to="/results" style={style.links}>
+              <Link
+                to={{
+                  pathname: "/results",
+                  state: { category: "all" }
+                }}
+                style={style.links}
+              >
                 Leave a review
               </Link>
             </li>
