@@ -1,40 +1,39 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './style/searchbanner.css';
+import { Redirect } from 'react-router-dom';
 
 class SearchBanner extends Component {
   static propTypes = {
-    options: PropTypes.instanceOf(Array).isRequired
+    autoCompleteOptions: PropTypes.instanceOf(Array).isRequired
   };
   state = {
     activeOption: 0,
     filteredOptions: [],
     showOptions: false,
     userInput: '',
+
     tagInputs: [],
-    tagCname: false
+    tagCname: false,
+    results: []
   };
 
-  onChange = (e) => {
-    console.log('onChanges');
-
-    const { options } = this.props;
+  handleNameChange = (e) => {
+    const { autoCompleteOptions } = this.props;
     const userInput = e.currentTarget.value;
-
-    const filteredOptions = options.filter(
+    const filteredOptions = autoCompleteOptions.filter(
       (optionName) =>
         optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
-
     this.setState({
       activeOption: 0,
       filteredOptions,
       showOptions: true,
-      userInput: e.currentTarget.value,
+      userInput
     });
   };
 
-  onClick = (e) => {
+  handleNameClick = (e) => {
     this.setState({
       activeOption: 0,
       filteredOptions: [],
@@ -42,23 +41,27 @@ class SearchBanner extends Component {
       userInput: e.currentTarget.innerText
     });
   };
-  onKeyDown = (e) => {
+  hanldeNameKeyDown = (e) => {
     const { activeOption, filteredOptions } = this.state;
 
+    // enter choose active name
     if (e.keyCode === 13) {
       this.setState({
         activeOption: 0,
         showOptions: false,
         userInput: filteredOptions[activeOption]
       });
-    } else if (e.keyCode === 38) {
+    }
+    else if (e.keyCode === 38) {
       if (activeOption === 0) {
+         // up return nothing if 0
         return;
       }
       this.setState({ activeOption: activeOption - 1 });
-    } else if (e.keyCode === 40) {
+    } 
+    else if (e.keyCode === 40) {
       if (activeOption === filteredOptions.length - 1) {
-        console.log(activeOption);
+        // down increment until options list ends
         return;
       }
       this.setState({ activeOption: activeOption + 1 });
@@ -68,14 +71,39 @@ class SearchBanner extends Component {
   hanldeTagClick = (e) => {
     this.setState({ tagInputs: [...this.state.tagInputs, e.target.value], tagCname: !this.state.tagCname})
   }
+  handleSearchClick = async (e) =>  {
+    const { userInput, tagInputs } = this.state;
+    const url = "/api/results"
+
+    const rawData = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userInput,
+        tagInputs
+      })
+    })
+    const data = await rawData.json();
+    console.log("data", data);
+    // test out
+    this.setState({
+      results: [...this.state.results, data]
+    })
+
+  }
   render() {
     const {
-      onChange,
-      onClick,
-      onKeyDown,
+      handleNameChange,
+      handleNameClick,
+      hanldeNameKeyDown,
       hanldeTagClick,
-      state: { activeOption, filteredOptions, showOptions, userInput, tagInputs, tagCname }
+      handleSearchClick,
+      state: { activeOption, filteredOptions, showOptions, userInput, tagInputs, tagCname, results }
     } = this;
+
     let optionList;
     if (showOptions && userInput) {
       if (filteredOptions.length) {
@@ -87,7 +115,7 @@ class SearchBanner extends Component {
                 className = 'option-active';
               }
               return (
-                <li className={className} key={optionName} onClick={onClick}>
+                <li className={className} key={optionName} onClick={handleNameClick}>
                   {optionName}
                 </li>
               );
@@ -102,20 +130,33 @@ class SearchBanner extends Component {
         );
       }
     }
+    console.log("SearchBanner results", this.state.results)
     return (
       <div className="banner">
         <div className="search-input-wrapper">
           <input
-            type="text"
-            placeholder="Bootcamp name..."
+            type="search"
+            placeholder="Search Bootcamp Name"
             className="search-box-name"
-            onChange={onChange}
-            onKeyDown={onKeyDown}
+            onChange={handleNameChange}
+            onKeyDown={hanldeNameKeyDown}
             value={userInput}
           />
           {optionList}
-          <input type="text" placeholder="Location..." className="search-box-location" />
-          <input type="submit" value="Search" className="search-btn" />
+
+          <button 
+            type="submit" 
+            value="submit" 
+            className="search-btn" 
+            onClick={handleSearchClick}>
+          </button>
+          {results.length > 0 &&
+            <Redirect to={{
+              pathname: '/results',
+              state: { results }
+            }}/>
+          }
+          
         </div>
         
         <div className="search-tags">
@@ -128,6 +169,7 @@ class SearchBanner extends Component {
           <button onClick={hanldeTagClick} value="DevOps" className={tagCname ? "tags active": "tags inactive"}>DevOps</button>
           <button onClick={hanldeTagClick} value="Security" className={tagCname ? "tags active": "tags inactive"}>Security</button>
         </div>
+
       </div>
     );
   }

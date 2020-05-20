@@ -1,38 +1,12 @@
 .main-wrapper {
     margin: 0;
     text-align: center;
-    margin-bottom: 40px;
   }
   .container-bootcamps {
     width: 80%;
-    margin: 0.8em auto;
+    margin: 5em auto;
   }
-  
-  /* test */
 
-  .search-form {
-    border-radius: 10px;
-  }
-.search-name {
-  width: 30%;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  padding: 5px;
-  border: 1px solid gray;
-  background-color: #fff;
-}
-.search-location {
-  width: 20%;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background: url("https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-  padding: 5px;
-  border: 1px solid gray;
-  background-color: #fff;
-}
   
   
   

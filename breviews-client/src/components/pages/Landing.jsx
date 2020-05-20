@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import "./style/landing.css";
-import { Link } from "react-router-dom";
-import { SearchBanner, Spinner, Autocomplete } from "../A_Atoms";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { SearchBanner, Spinner } from "../A_Atoms";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { getMainPageData } from "../../redux/actions/landing";
 import { TopBootcamps, RemoteBootcamps } from '../B_Molecules';
@@ -14,6 +13,7 @@ const Landing = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("useEffect inside Landing called")
     dispatch(getMainPageData());
   }, []);
 
@@ -32,6 +32,7 @@ const Landing = () => {
 
   // testing out search options
   const NameOptions = mainpageData.map(school => school.customName);
+  console.log("NameOptions", NameOptions)
 
   if (isLoaded) {
     content = (
@@ -44,7 +45,7 @@ const Landing = () => {
   return (
     <div className="main-wrapper">
        <SearchBanner
-        options={NameOptions} 
+        autoCompleteOptions={NameOptions} 
        />
       {content}
     </div>

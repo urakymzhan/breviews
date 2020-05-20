@@ -2,11 +2,10 @@ import React from 'react'
 
 export default function SortReviews() {
     return (
-        // temporary look 
-        // looks for react-select library
-        <div style={{margin: "10px 0", textAlign: "right", clear: "both"}}>
-            <span style={{fontSize: "82%"}} >Sort by: </span>
-            <select className="sortby-reviews" style={{border: "none"}}>
+        // temporary, looks for react-select library
+        <div style={{textAlign: "right", margin: "0", alignSelf: "end"}}>
+            <span>Sort by: </span>
+            <select className="sortby-reviews">
                 <option value="newest">Newest</option>
                 <option value="highestrating">Highest rating</option>
                 <option value="lowestrating">Lowest rating</option>
@@ -15,7 +14,4 @@ export default function SortReviews() {
     )
 }
 
-// use this:
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-//   appearance: none; 
+

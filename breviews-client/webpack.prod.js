@@ -14,7 +14,7 @@ module.exports = merge(common, {
     filename: "bundle.[contentHash].js", 
     path: path.resolve(__dirname, "dist"),
     // TODO: fails if remove dot
-    publicPath: './'
+    publicPath: '/'
   },
   optimization: {
     // minimizing css and js files
@@ -51,6 +51,25 @@ module.exports = merge(common, {
           'css-loader',                           // 1. Turns css into commonjs
         ],
       },
+      {
+        test: /\.s?css$/,
+        oneOf: [
+          {
+            test: /\.module\.s?css$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: "css-loader",
+                options: { modules: true, exportOnlyLocals: false }
+              },
+              "sass-loader"
+            ]
+          },
+          {
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+          }
+        ]
+      }
     ]
   }
 });

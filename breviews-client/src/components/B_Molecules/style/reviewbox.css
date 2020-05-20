@@ -1,6 +1,6 @@
 .review-wrapper {
-    background-color: rgba(215, 215, 215, 0.2);
-    margin: 5px 0;
+    background: var(--mainGray);
+    margin-bottom: 5px;
     padding: 15px;
     font-size: 12px;
     color: gray;
@@ -23,12 +23,17 @@
 .review-right-side {
     display: inline-block;
     width: 90%;
-    text-align: left;
 }
-#review-author {
-    margin-bottom: 0;
-    color: #000;
-}
-#review-text::first-letter {
-    text-transform: uppercase;
-}
+    .review-right-side p {
+        text-align: left;
+    }
+    #review-author {
+        margin-bottom: 0;
+        color: #000;
+    }
+    #review-text::first-letter {
+        text-transform: uppercase;
+    }
+    #review-pros {
+        margin-bottom: 10px;
+    }

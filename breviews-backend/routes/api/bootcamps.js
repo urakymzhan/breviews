@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
 const Bootcamp = require('../../models/Bootcamps');
 
 // @route  GET api/landing
@@ -79,6 +78,27 @@ router.post("/bootcamps/:name", async (req, res) => {
   } catch(err) {
     console.error(err.message);
     // res.status(500).send("Server Error");
+  }
+});
+
+// test out
+router.post("/results", async (req, res) => {
+  try {
+    // console.log(req.body)
+    res.json(req.body)
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+router.get("/autoCompleteNames", async (req, res) => {
+  try {
+    const customNamesObj = await Bootcamp.find({}, 'customName').select("-_id");
+    const customeNamesArr = customNamesObj.map(obj => {return obj.customName } );
+    // console.log(customeNamesArr);
+    res.json(customeNamesArr);
+  } catch (err) {
+    console.error(err.message);
   }
 });
 
