@@ -5,7 +5,14 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-top: 5em;
+    margin-top: 3em;
+  }
+  .remote-bootcamps-nav h4 {
+    font-weight: 800;
+  }
+  .remote-bootcamps-nav a {
+    font-weight: 800;
+    color: inherit;
   }
   .top-bootcamps-nav a {
     font-size: 1.5rem;
@@ -20,40 +27,26 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .bootcamp-section {
-    flex-basis: auto;
-    border-radius: 5px;
-    vertical-align: top;
-    text-align: left;
-    display: grid;
-    height: auto;
-    min-height: 240px;
-    width: 180px;
-    box-shadow: 1px 2px 6px 2px rgba(0,0,0,0.05);
-  }
   .bootcamp-logo-wrapper {
+    border: 1px solid #d7d7d7;
     background-color: #d7d7d7;
-    height: 180px;
-    width: 180px;
     position: relative;
     vertical-align: top;
-    margin: 0 auto;
   }
   .bootcamp-logo-wrapper img {
-    height: 90%;
-    width: 90%;
+    height: 180px;
+    width: 180px;
     object-fit: contain;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  }
+  .schoolnames-wrapper {
+    text-align: left;
   }
   .review-overall {
     color: #ff9800;
     position: relative;
     font-size: 14px;
+    text-align: left;
+    margin: 4px 0;
   }
   #rating-empty-star-main, #rating-full-star-main {
     height: 14px;
@@ -74,6 +67,7 @@
   .bootcamp-location {
     font-size: 12px;
     color: #333;
+    text-align: left;
   }
   /* MEDIA QUERIES START */
   

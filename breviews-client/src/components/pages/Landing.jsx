@@ -15,6 +15,7 @@ const Landing = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("useEffect inside Landing called")
     dispatch(getMainPageData());
   }, []);
 
@@ -33,6 +34,7 @@ const Landing = () => {
 
   // testing out search options
   const NameOptions = mainpageData.map(school => school.customName);
+  console.log("NameOptions", NameOptions)
 
   if (isLoaded) {
     content = (
@@ -45,7 +47,7 @@ const Landing = () => {
   return (
     <div className="main-wrapper">
        <SearchBanner
-        options={NameOptions} 
+        autoCompleteOptions={NameOptions} 
        />
       {content}
     </div>

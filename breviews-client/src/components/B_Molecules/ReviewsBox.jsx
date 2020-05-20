@@ -1,15 +1,9 @@
 import React from "react";
 import "./style/reviewbox.css";
-import Rating from "react-rating";
 import { Ratings } from "../A_Atoms";
-import moment from "moment";
 
-export default function ReviewsBox(props) {
+const ReviewsBox = (props) => {
   const { reviewsData } = props;
-
-  // just a test
-  // i will use user.date from backend data
-  const reviewDate = moment().format("L");
 
   return reviewsData.map((user) => {
     let emptyInd;
@@ -18,9 +12,12 @@ export default function ReviewsBox(props) {
       emptyInd = user.customerName.indexOf(' ')
       name = user.customerName.slice(0, emptyInd) + " " + user.customerName.slice(emptyInd+1, emptyInd+2) + ".";
     }
-    console.log(reviewsData)
+    // console.log(reviewsData)
+    const reviewDate = new Date(user.date);
+
     return (
       <div className="review-wrapper" key={user._id}>
+
         <div className="review-left-side">
           <div className="avatar-review">{user.customerName[0]}</div>
         </div>
@@ -37,7 +34,7 @@ export default function ReviewsBox(props) {
               <p id="review-author">{user.customerName.indexOf(' ') > -1 ? name: user.customerName}</p>
               <Ratings classname="star-rating-container" overall={user.star} />
             </div>
-            <p id="review-date"> {reviewDate} </p>
+            <p id="review-date"> {(reviewDate.getMonth() + 1) + "/" + reviewDate.getDate() + '/' + reviewDate.getFullYear().toString().substr(-2)} </p>
           </div>
           
           <p id="review-title">{user.title} </p>
@@ -54,7 +51,10 @@ export default function ReviewsBox(props) {
           </div>
 
         </div>
+      
       </div>
     );
   });
 }
+
+export default ReviewsBox;

@@ -28,23 +28,23 @@
    .search-input-wrapper {
     width: 50%;
     margin: 0 auto;
-    position: relative;    
+    position: relative;  
   }
   .search-box-name {
     border: none;
-    width: 50%;
+    width: 80%;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;  
     box-sizing: border-box;
     padding: 5px  10px;
   }
-  .search-box-location {
+  /* .search-box-location {
     border: none;
     width: 30%; 
     box-sizing: border-box;
     padding: 5px 10px;
     border-left: 1px solid #d7d7d7;
-  }
+  } */
    .search-btn {
     border: none;
     width: 20%;
@@ -60,7 +60,7 @@
     list-style: none;
     transition: width 0.3s;
     margin: auto;
-    width: 50%;
+    width: 80%;
     background: #fff;
     padding: 0;
     top: 40px;

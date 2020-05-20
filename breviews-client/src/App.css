@@ -1,0 +1,45 @@
+/* globals */
+:root {
+    --mainWhite: #fff;
+    --mainGray: rgb(215, 215, 215)
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--mainWhite);
+    font-family: "Noto Serif", serif;
+    width: 100%; 
+	height: 100%;
+  }
+  
+  #root {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 100%;
+  }
+
+  /* 
+  
+  If you want to exclude Header or Footer in some components:
+    1) Create layout component example:
+        Example: 
+            Layout Component:
+                <div>
+                    <Header/>
+                        anything else you want to appear on every page that uses this layout 
+                </div>
+            Contact Page Component:
+                <Layout>
+                    <ContactComponent />
+                    put all you want on this page within the layout component 
+                </Layout>
+
+    2) Use withRouter as a condition
+  
+  */

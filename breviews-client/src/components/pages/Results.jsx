@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./style/landing.css";
 import "./style/results.css";
 import { Link } from "react-router-dom";
@@ -53,12 +53,17 @@ const Results = () => {
       </div>
     );
   }
+  console.log("result page props", props.location.state);
+  console.log("autoCompleteOptions", autoCompleteOptions)
+
   return (
     <div className="main-wrapper">
-      <SearchBanner />
+      <SearchBanner
+        autoCompleteOptions={autoCompleteOptions} 
+      />
         {content}
     </div>
   );
 }
 
-export default Results;
+export default withRouter(Results);
