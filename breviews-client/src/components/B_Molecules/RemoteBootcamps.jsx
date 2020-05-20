@@ -9,14 +9,14 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
     return (
         <div>
             <div className="top-bootcamps-nav">
-            <h4>Remote Bootcamps</h4>
+            <h2>Remote Bootcamps</h2>
             <Link to={`/results`}>See all</Link>
             </div>
             <div className="top-bootcamps-list-row">
             {remoteBootcamps.map((bootcamp) => {
                 return (
                 <section className="bootcamp-section" key={bootcamp._id}>
-                    <div>
+                    <div className='main-box'>
                     <div className="bootcamp-logo-wrapper">
                         <img src={bootcamp.logo} />
                     </div>
@@ -41,7 +41,8 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
                     <div className="bootcamp-location location">
                     {
                       bootcamp.location.map((location, ind) => {
-                        return <span key={ind} style={{marginRight: "3px"}}>{location}</span>
+                        return <span key={ind} style={{marginRight: "3px"}}>
+                            {location}</span>
                       })
                     }
                     </div>

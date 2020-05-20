@@ -1,4 +1,11 @@
-
+.main-box {
+  text-align: center;
+}
+.top-bootcamps-nav a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #000;
+}
 .top-bootcamps-nav {
     display: flex;
     justify-content: space-between;
@@ -75,7 +82,7 @@
     /*  for-phone-only  */
     .bootcamp-section {
       display: block;
-      flex-basis: 100%;
+      flex-basis: 41%;
     }
     .chart-wrapper {
       width: 90% !important;
@@ -83,7 +90,7 @@
   }
   @media screen and (min-width: 599px) and (max-width: 1199px) {
     .bootcamp-section {
-      flex-basis: calc(90% / 2);
+      flex-basis: calc(41.5% / 2);
     }
   }
   @media only screen and (min-width: 1200px) {

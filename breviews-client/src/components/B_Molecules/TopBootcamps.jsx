@@ -9,14 +9,14 @@ const TopBootcamps = ({topBootcamps}) => {
     return (
         <div>
             <div className="top-bootcamps-nav">
-            <h4>Top Bootcamps</h4>
+            <h2>Top Bootcamps</h2>
             <Link to={`/results`}>See all</Link>
             </div>
             <div className="top-bootcamps-list-row">
           {topBootcamps.map((bootcamp) => {
             return (
               <section className="bootcamp-section" key={bootcamp._id}>
-                <div>
+                <div className='main-box'>
                   <div className="bootcamp-logo-wrapper">
                     <img src={bootcamp.logo} />
                   </div>

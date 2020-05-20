@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./style/landing.css";
+import "./style/results.css";
 import { Link } from "react-router-dom";
 import { SearchBanner, Spinner, Autocomplete } from "../A_Atoms";
 import { connect, useSelector, useDispatch } from "react-redux";

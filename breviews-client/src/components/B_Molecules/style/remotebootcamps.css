@@ -1,8 +1,16 @@
+.main-box {
+  text-align: center;
+}
 .top-bootcamps-nav {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-top: 5em;
+  }
+  .top-bootcamps-nav a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #000;
   }
   .remote-bootcamps-list-row {
     position: relative;
@@ -73,7 +81,8 @@
     /*  for-phone-only  */
     .bootcamp-section {
       display: block;
-      flex-basis: 100%;
+      flex-basis: 41%;
+      margin-top: 20px;
     }
     .chart-wrapper {
       width: 90% !important;
@@ -81,7 +90,7 @@
   }
   @media screen and (min-width: 599px) and (max-width: 1199px) {
     .bootcamp-section {
-      flex-basis: calc(90% / 2);
+      flex-basis: calc(41.5% / 2);
     }
   }
   @media only screen and (min-width: 1200px) {
