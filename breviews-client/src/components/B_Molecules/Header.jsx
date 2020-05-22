@@ -3,11 +3,21 @@ import { Link } from "react-router-dom";
 import brlogo from "../../../public/assets/brlogo3.png";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
+import './style/header.css';
 
 class Header extends React.Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
   };
+  constructor(){
+    super();
+    this.state = {
+      menuBar: false
+    }
+  }
+  flip = ()=>{
+    this.setState({menuBar: !this.state.menuBar})
+  }
 
   render() {
     const { location } = this.props;
@@ -15,9 +25,13 @@ class Header extends React.Component {
       location.pathname === "/" || location.pathname === "/results"
         ? { background: "#d7d7d7" }
         : { background: "#fff" };
+
+    const {menuBar} = this.state;
+    const className = menuBar ? 'x icon' : 'bars icon';
     return (
       <header style={bgcolor}>
         <nav id="header-nav" style={style.nav}>
+        
           <ul id="logo-wrapper" style={style.ul}>
             <li
               id="header-logo"
@@ -43,27 +57,52 @@ class Header extends React.Component {
               </Link>
             </li>
           </ul>
-          <ul style={style.ul}>
-            <li id="header-team" style={style.lists}>
-              <a
-                href="https://www.patreon.com/user?u=35633615"
-                target="_blank"
-                style={style.links}
-              >
-                Patreon
-              </a>
-            </li>
-            <li id="header-team" style={style.lists}>
-              <Link to="/blog" style={style.links}>
-                Blog
-              </Link>
-            </li>
-            <li id="header-contact" style={style.lists}>
-              <Link to="/contact" style={style.links}>
-                Contact
-              </Link>
-            </li>
-          </ul>
+          <ul class='menu-wrapper' style={style.ul}>
+              <li id="header-team" style={style.lists}>
+                <a
+                  href="https://www.patreon.com/user?u=35633615"
+                  target="_blank"
+                  style={style.links}
+                >
+                  Patreon
+                </a>
+              </li>
+              <li id="header-team" style={style.lists}>
+                <Link to="/blog" style={style.links}>
+                  Blog
+                </Link>
+              </li>
+              <li id="header-contact" style={style.lists}>
+                <Link to="/contact" style={style.links}>
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          
+          {menuBar && <div class='show-on-mobile'>
+            <ul >
+              <li id="header-team" style={style.lists}>
+                <a
+                  href="https://www.patreon.com/user?u=35633615"
+                  target="_blank"
+                  style={style.links}
+                >
+                  Patreon
+                </a>
+              </li>
+              <li id="header-team" style={style.lists}>
+                <Link to="/blog" style={style.links}>
+                  Blog
+                </Link>
+              </li>
+              <li id="header-contact" style={style.lists}>
+                <Link to="/contact" style={style.links}>
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>}
+          <i class={className} style={style.i} onClick={this.flip}></i>
         </nav>
       </header>
     );
@@ -82,7 +121,10 @@ const style = {
     background: "transparent",
     padding: "0 20px",
   },
-  ul: { listStyle: "none", padding: "1em 0", fontSize: "12px", color: "#000" },
+  ul: { listStyle: "none", padding: "1em 0", fontSize: "12px", color: "#000", display: 'flex' },
   lists: { float: "left", margin: "1em 1.2em auto auto" },
   links: { textDecoration: "none", color: "inherit" },
+  i: {float: 'right', marginTop: '20px', fontSize: '25px', display: 'none'} 
 };
+
+

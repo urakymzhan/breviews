@@ -11,11 +11,12 @@
     margin-top: 1em;
     border-radius: 10px;
     font-size: 10px;
+    padding: 0 10px;
   }
   .tags {
-    border-radius: 10px;
+    border-radius: 50px;
     letter-spacing: 1px;
-    padding: 1px 10px;
+    padding: 10px;
     margin: 2px 3px;
     border: 1px solid #9f9f9f;
   }
@@ -37,7 +38,8 @@
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;  
     box-sizing: border-box;
-    padding: 5px  10px;
+    /* padding: 5px  10px; */
+    padding: 12px 15px;
     outline: none;
     vertical-align: top;
   }
@@ -93,4 +95,28 @@
   .no-options {
     color: red;
     position: absolute;
+  }
+
+@media only screen and (max-width: 768px) {
+    .search-tags{
+      padding: 0 10px;
+    }
+    .search-tags .tags{
+      padding: 10px;
+    } 
+    .search-input-wrapper {
+    width: 95%;
+    }
+    .search-box-name{
+      padding: 12px 15px;
+    }
+    
+}
+
+@media screen and (min-width: 769px) and (max-width: 1199px) {
+    
+    .search-input-wrapper {
+    width: 50%;
+    }
+    
   }

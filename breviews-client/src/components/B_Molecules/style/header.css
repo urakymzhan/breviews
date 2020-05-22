@@ -1,0 +1,23 @@
+.show-on-mobile{
+        display: none;
+    }
+
+@media only screen and (max-width: 498px) {
+   .show-on-mobile{
+        display: block;
+    }
+    .show-on-mobile ul{
+        display: block !important;
+        width: 65px;
+        margin-top: 10px;
+        list-style: none;
+        padding-left: 0;
+    }
+    .icon {
+        display: block !important;
+        transition: 1s ease;
+    }
+    .menu-wrapper{
+        display: none !important;
+    }
+}

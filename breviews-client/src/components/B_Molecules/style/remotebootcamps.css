@@ -1,11 +1,12 @@
 .main-box {
   text-align: center;
 }
-.top-bootcamps-nav {
+.remote-bootcamps-nav {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-top: 3em;
+    clear: both;
   }
   .remote-bootcamps-nav h4 {
     font-weight: 800;
@@ -14,7 +15,7 @@
     font-weight: 800;
     color: inherit;
   }
-  .top-bootcamps-nav a {
+  .remote-bootcamps-nav a {
     font-size: 1.5rem;
     text-decoration: none;
     color: #000;
@@ -85,23 +86,75 @@
     }
   /* MEDIA QUERIES START */
   
-  @media only screen and (max-width: 599px) {
-    /*  for-phone-only  */
-    .bootcamp-section {
-      display: block;
-      flex-basis: 41%;
+  @media only screen and (max-width: 490px) {
+    /* --------------- for-phone-only  ---------------------*/
+     .bootcamp-section {
+      /* display: block;
+      flex-basis: 41%; */
       margin-top: 20px;
+      border-radius: 10px;
+      width: 144px;
     }
-    .chart-wrapper {
+    /* .chart-wrapper {
       width: 90% !important;
+    }  */
+    .remote-bootcamps-list-row {
+      position: relative;
+      margin: 1.2em auto;
+      /* display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between; */
+      width: 200px;
+      display: grid;
+      grid-template-columns: repeat(1, 180px);
+      grid-column-gap: calc(( 100% - (180px * 1) ) / 3);
+      padding: 0 35px;
+    }
+    .bootcamp-logo-wrapper img {
+      height: 140px;
+      width: 140px;
+      border: 1px solid #d7d7d7;
+      background-color: #d7d7d7;
+      /* border-radius: 30px;
+      padding: 15px; */
+    }
+    .bootcamp-logo-wrapper {
+      background-color: transparent;
+      text-align: center;
     }
   }
-  @media screen and (min-width: 599px) and (max-width: 1199px) {
+  @media screen and (min-width: 491px) and (max-width: 768px) {
     .bootcamp-section {
-      flex-basis: calc(41.5% / 2);
+      margin-top: 20px;
+      margin-right: 20px;
+    }
+      .remote-bootcamps-list-row {
+      position: relative;
+      margin: 1.2em auto;
+      
+      display: grid;
+      grid-template-columns: repeat(2, 180px);
+      grid-column-gap: calc(( 100% - (180px * 2) ))
+
+    }
+  }
+   @media screen and (min-width: 769px) and (max-width: 1199px) {
+    /*  for-ipad-only  */
+    .bootcamp-section {
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    .remote-bootcamps-list-row {
+      position: relative;
+      margin: 1.2em auto;
+      display: grid;
+      grid-template-columns: repeat(3, 180px);
+      grid-column-gap: calc(( 100% - (180px * 3) ) / 2);
     }
   }
   @media only screen and (min-width: 1200px) {
     /*  for-desktop-only */
+
   }
   /* MEDIA QUERIES END */

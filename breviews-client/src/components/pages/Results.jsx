@@ -55,45 +55,6 @@ const Results = (props) => {
 
   if (resultsData && resultsData.length > 0) {
     content = (
-<<<<<<< HEAD
-      <div>
-          {mainpageData.map((bootcamp) => {
-            return (
-              <section className="bootcamp-section" key={bootcamp._id}>
-                <div className='main-box'>
-                  <div className="bootcamp-logo-wrapper">
-                    <img src={bootcamp.logo} />
-                  </div>
-                  <div className="schoolnames-wrapper">
-                    <h4 className="schoolnames">
-                      {" "}
-                      <Link to={`/bootcamps/${bootcamp.schoolname}`}>
-                        {" "}
-                        {bootcamp.customName}{" "}
-                      </Link>{" "}
-                    </h4>
-                  </div>
-                  <div className="review-overall">
-                    <Ratings
-                      classname="star-rating-container"
-                      overall={bootcamp.overall}
-                    />
-                    <span className="total-review-count">
-                      {bootcamp.reviewsCount} reviews
-                    </span>
-                  </div>
-                  <div className="bootcamp-location location">
-                    {
-                      bootcamp.location.map((location, ind) => {
-                        return <span key={ind} style={{marginRight: "3px"}}>{location}</span>
-                      })
-                    }
-                  </div>
-                </div>
-              </section>
-            );
-          })}
-=======
       <div className="results-content-wrapper">
         <div className="results-content-navbar">
           <div className="results-all-results">All Results</div>
@@ -146,7 +107,6 @@ const Results = (props) => {
             </div>
           );
         })}
->>>>>>> a7d0c427a2198d488b88de43d22d7bb8c021c52d
       </div>
     );
   }
