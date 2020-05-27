@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import Rating from "react-rating";
-import "./style/reviewformpage.css";
+import "./style/reviewformpage.scss";
 import * as Yup from 'yup';
 
 // Star rating value doesnt work with yup right now

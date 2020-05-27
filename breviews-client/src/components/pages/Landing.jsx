@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./style/landing.css";
+import "./style/landing.scss";
 import { SearchBanner, Spinner } from "../A_Atoms";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
-import './style/formcomplete.css'
+import './style/formcomplete.scss'
 
 const FormComplete = (props) => {
     const { match } = props;

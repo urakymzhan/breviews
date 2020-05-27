@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './style/searchbanner.css';
+import './style/searchbanner.scss';
 import { Redirect } from 'react-router-dom';
 
 class SearchBanner extends Component {
