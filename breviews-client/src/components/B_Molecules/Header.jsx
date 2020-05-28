@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import brlogo from "../../../public/assets/brlogo3.png";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
+import { Nav, NavItem, NavLink } from 'reactstrap';
 
 class Header extends React.Component {
   static propTypes = {

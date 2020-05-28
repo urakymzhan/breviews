@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./style/results.css";
+import "./style/results.scss";
 import { withRouter, Link } from "react-router-dom";
 import { SearchBanner, Spinner } from "../A_Atoms";
 import { Ratings } from '../A_Atoms'
