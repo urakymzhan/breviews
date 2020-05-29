@@ -2,23 +2,24 @@ const express = require("express");
 const cors = require("cors");
 const logger = require("./middleware/logger");
 const connectDB = require('./config/database');
+const bootcamps = require("./routes/api/bootcamps");
 
-// app
+// app init
 const app = express();
 
 // Connect Database
 connectDB();
 
 // middlewares
-app.use(express.json({ extended: false })); // bodyparser
-app.use(express.urlencoded({ extended: false })); // handle form submissions/url encoded data
+app.use(express.json({ extended: true })); // bodyparser
+app.use(express.urlencoded({ extended: true })); // handle form submissions/url encoded data
 app.use(logger); // logger
 app.use(cors()); // enalbe all CORS resquests
 
 
 // define Routes
-app.get("/api", (req, res) => res.send("API Running"));
-app.use("/api", require("./routes/api/bootcamps"));
+app.get("/", (req, res) => res.send("API Running"));
+app.use("/api", bootcamps);
 
 // port
 const PORT = process.env.PORT || 5000;
@@ -37,6 +38,5 @@ module.exports = app;
 //   });
 // }
 
-// const PORT = process.env.PORT || 5000;
 
-// app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+

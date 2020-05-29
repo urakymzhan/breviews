@@ -1,53 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./style/results.css";
 import { withRouter, Link } from "react-router-dom";
-import { SearchBanner, Spinner } from "../A_Atoms";
+import { Spinner, AsyncExample } from "../A_Atoms";
 import { Ratings } from '../A_Atoms'
 import axios from "axios";
 
 const Results = (props) => {
-  // const [autoCompleteOptions, setAutoCompleteOptions] = useState([]);
-  // useEffect(() => {
-  //   // topbootcamps
-  //   // remotebootcamps
-  //   // search input based results
-  //   console.log("useEffect inside Results called");
-  //   async function fetchData () {
-  //     const result = await axios(
-  //       '/api/autoCompleteNames',
-  //     );
-  //     setAutoCompleteOptions(result.data);
-  //   }
-  //   fetchData();
-  // }, []);
 
   let [resultsData, setResultsData] = useState([]);
 
   useEffect(() => {
+    const { category } = props.location.state;
     async function fetchData() {
       // TODO: this api should be changed by category
-      const result = await axios("/api/landing");
+      const result = await axios(`/api/results/${category}`);
       setResultsData(result.data);
     }
     fetchData();
   }, []);
-
-  // TODO: Just testing out search options
-  const NameOptions = resultsData.map((school) => school.customName);
-
-  // console.log("NameOptions", NameOptions);
-  console.log("props", props.location.state.category);
-  // console.log("resultsData", resultsData);
-
-  // TODO: Just testing out
-  if (props.location.state.category === "top") {
-    resultsData = resultsData.filter((data) => data.overall > 4);
-  }
-  if (props.location.state.category === "remote") {
-    resultsData = resultsData.filter((data) =>
-      data.location.includes("Remote")
-    );
-  }
 
   console.log("resultsData", resultsData);
 
@@ -58,6 +28,7 @@ const Results = (props) => {
       <div className="results-content-wrapper">
         <div className="results-content-navbar">
           <div className="results-all-results">All Results</div>
+          {/* TODO: just testing */}
           <div className="results-sortby">
             Sort by{" "}
             <select>
@@ -113,7 +84,7 @@ const Results = (props) => {
 
   return (
     <div className="main-wrapper">
-      <SearchBanner autoCompleteOptions={NameOptions} />
+      <AsyncExample />
       {content}
     </div>
   );

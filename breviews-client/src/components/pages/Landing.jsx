@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./style/landing.css";
-import { SearchBanner, Spinner } from "../A_Atoms";
+import { Spinner, AsyncExample } from "../A_Atoms";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { getMainPageData } from "../../redux/actions/landing";
@@ -18,21 +18,14 @@ const Landing = () => {
   }, []);
 
   let content = <Spinner />;
-  // testing out 
-  // its ok to filter here because we don't have much data 
+  // its ok to filter here because we don't have too much data 
   let topBootcamps = mainpageData.filter(bootcamp => bootcamp.overall > 4);
   let remoteBootcamps = mainpageData.filter(bootcamp => bootcamp.location.includes("Remote")) 
-  // will show only 4 bootcamps in main page
+  // will show only max of 4 bootcamps in main page
   topBootcamps = topBootcamps.slice(0, 4);
   remoteBootcamps = remoteBootcamps.slice(0, 4);
 
   console.log("mainpageData", mainpageData);
-  console.log("topBootcamps", topBootcamps)
-  console.log("remoteBootcamps", remoteBootcamps)
-
-  // testing out search options
-  const NameOptions = mainpageData.map(school => school.customName);
-  console.log("NameOptions", NameOptions)
 
   if (isLoaded) {
     content = (
@@ -44,9 +37,7 @@ const Landing = () => {
   }
   return (
     <div className="main-wrapper">
-       <SearchBanner
-        autoCompleteOptions={NameOptions} 
-       />
+       <AsyncExample />
       {content}
     </div>
   );

@@ -25,32 +25,30 @@
    .tags.active {
     background: red;
   }
+  /* TODO: fix styling later */
    .search-input-wrapper {
     width: 50%;
     margin: 0 auto;
     position: relative;  
+    display: flex;
+    flex: nowrap;
   }
-  .search-box-name {
-    border: none;
-    width: 90%;
-    height: 100%;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;  
-    box-sizing: border-box;
-    padding: 5px  10px;
-    outline: none;
-    vertical-align: top;
+  .rbt {
+    width: 80%!important;
   }
-  /* .search-box-location {
-    border: none;
-    width: 30%; 
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border-left: 1px solid #d7d7d7;
-  } */
+  .form-control {
+    border: none!important;
+    box-sizing: border-box!important;
+    height: 100%!important;
+    border-bottom-left-radius: 20px!important;
+    border-top-left-radius: 20px!important;  
+  }
+  .rsw {
+    width: 10%;
+  }
    .search-btn {
     border: none;
-    width: 10%;
+    width: 100%;
     height: 100%;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;  
@@ -60,37 +58,10 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: #fff;
-    outline: none;
+    outline: none!important;
+  }
+  .search-btn:focus {
+    color: #495057;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
 
-  ul.options, ul.no-options {
-    position: absolute;
-    list-style: none;
-    transition: width 0.3s;
-    margin: auto;
-    width: 80%;
-    background: #fff;
-    padding: 0;
-    top: 40px;
-    text-align: left;
-  }
-  
-  ul.options li, ul.no-options li {
-    display: block;
-    margin: 5px auto;
-    padding: 5px;
-    width: 100%;
-  }
-  ul.options li:hover {
-    color: gray;
-    cursor: pointer;
-    transition: 0.3s all;
-  }
-  
-  ul.options li.option-active {
-    background: yellow;
-  }
-  .no-options {
-    color: red;
-    position: absolute;
-  }

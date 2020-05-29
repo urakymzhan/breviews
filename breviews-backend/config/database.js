@@ -1,6 +1,7 @@
 const config = require("config");
 const mongoose = require('mongoose');
 const db = config.get("mongoURI");
+//  You can use dotenv for configs
 
 const connectDB = async () => {
 	try {

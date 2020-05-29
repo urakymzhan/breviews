@@ -1,178 +1,68 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import _ from "lodash";
+import faker from "faker";
+import React, { Component } from "react";
+import { Search, Grid, Header, Segment, Container, Button } from "semantic-ui-react";
 import './style/searchbanner.css';
-import { Redirect } from 'react-router-dom';
+
+const initialState = { isLoading: false, results: [], value: "" };
+
+const source = _.times(5, () => ({
+  title: faker.company.companyName()
+}));
 
 class SearchBanner extends Component {
-  static propTypes = {
-    autoCompleteOptions: PropTypes.instanceOf(Array).isRequired
-  };
-  state = {
-    activeOption: 0,
-    filteredOptions: [],
-    showOptions: false,
-    userInput: '',
+  state = initialState;
 
-    tagInputs: [],
-    tagCname: false,
-    results: []
-  };
+  handleResultSelect = (e, { result }) => this.setState({ value: result.title });
 
-  handleNameChange = (e) => {
-    const { autoCompleteOptions } = this.props;
-    const userInput = e.currentTarget.value;
-    const filteredOptions = autoCompleteOptions.filter(
-      (optionName) =>
-        optionName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );
-    this.setState({
-      activeOption: 0,
-      filteredOptions,
-      showOptions: true,
-      userInput
-    });
-  };
+  handleSearchChange = (e, { value }) => {
+  
+    this.setState({ isLoading: true, value });
 
-  handleNameClick = (e) => {
-    this.setState({
-      activeOption: 0,
-      filteredOptions: [],
-      showOptions: false,
-      userInput: e.currentTarget.innerText
-    });
-  };
-  hanldeNameKeyDown = (e) => {
-    const { activeOption, filteredOptions } = this.state;
+    setTimeout(() => {
+      if (this.state.value.length < 1) return this.setState(initialState);
 
-    // enter choose active name
-    if (e.keyCode === 13) {
+      const re = new RegExp(_.escapeRegExp(this.state.value), "i");
+      const isMatch = result => re.test(result.title);
+
       this.setState({
-        activeOption: 0,
-        showOptions: false,
-        userInput: filteredOptions[activeOption]
+        isLoading: false,
+        results: _.filter(source, isMatch)
       });
-    }
-    else if (e.keyCode === 38) {
-      if (activeOption === 0) {
-         // up return nothing if 0
-        return;
-      }
-      this.setState({ activeOption: activeOption - 1 });
-    } 
-    else if (e.keyCode === 40) {
-      if (activeOption === filteredOptions.length - 1) {
-        // down increment until options list ends
-        return;
-      }
-      this.setState({ activeOption: activeOption + 1 });
-    }
+    }, 300);
   };
 
-  hanldeTagClick = (e) => {
-    this.setState({ tagInputs: [...this.state.tagInputs, e.target.value], tagCname: !this.state.tagCname})
-  }
-  handleSearchClick = async (e) =>  {
-    const { userInput, tagInputs } = this.state;
-    const url = "/api/results"
-
-    const rawData = await fetch(url, {
-      method: "POST",
-      headers: {
-        'Accept': "application/json",
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        userInput,
-        tagInputs
-      })
-    })
-    const data = await rawData.json();
-    console.log("data", data);
-    // test out
-    this.setState({
-      results: [...this.state.results, data]
-    })
-
-  }
   render() {
-    const {
-      handleNameChange,
-      handleNameClick,
-      hanldeNameKeyDown,
-      hanldeTagClick,
-      handleSearchClick,
-      state: { activeOption, filteredOptions, showOptions, userInput, tagInputs, tagCname, results }
-    } = this;
+    const { isLoading, value, results } = this.state;
 
-    let optionList;
-    if (showOptions && userInput) {
-      if (filteredOptions.length) {
-        optionList = (
-          <ul className="options">
-            {filteredOptions.map((optionName, index) => {
-              let className;
-              if (index === activeOption) {
-                className = 'option-active';
-              }
-              return (
-                <li className={className} key={optionName} onClick={handleNameClick}>
-                  {optionName}
-                </li>
-              );
-            })}
-          </ul>
-        );
-      } else {
-        optionList = (
-          <ul className="no-options">
-            <li>Search result 0</li>
-          </ul>
-        );
-      }
-    }
-    console.log("SearchBanner results", this.state.results)
     return (
       <div className="banner">
         <div className="search-input-wrapper">
-          <input
-            type="search"
-            placeholder="Search Bootcamp Name"
-            className="search-box-name"
-            onChange={handleNameChange}
-            onKeyDown={hanldeNameKeyDown}
-            value={userInput}
-          />
-          {optionList}
-
-          <button 
-            type="submit" 
-            value="submit" 
-            className="search-btn" 
-            onClick={handleSearchClick}>
-          </button>
-          {results.length > 0 &&
-            <Redirect to={{
-              pathname: '/results',
-              state: { results }
-            }}/>
-          }
-          
+          <Search
+                loading={isLoading}
+                onResultSelect={this.handleResultSelect}
+                onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                  leading: true
+                })}
+                results={results}
+                value={value}
+                {...this.props}
+              />
         </div>
-        
-        <div className="search-tags">
-          <button onClick={hanldeTagClick} value="Frontend" className={tagCname ? "tags active": "tags inactive"}>Frontend</button>
-          <button onClick={hanldeTagClick} value="Backend" className={tagCname ? "tags active": "tags inactive"}>Backend</button>
-          <button onClick={hanldeTagClick} value="Fullstack" className={tagCname ? "tags active": "tags inactive"}>Fullstack</button>
-          <button onClick={hanldeTagClick} value="Career Services" className={tagCname ? "tags active": "tags inactive"}>Career Services</button>
-          <button onClick={hanldeTagClick} value="SDET" className={tagCname ? "tags active": "tags inactive"}>SDET</button><br/>
-          <button onClick={hanldeTagClick} value="Cloud" className={tagCname ? "tags active": "tags inactive"}>Cloud</button>
-          <button onClick={hanldeTagClick} value="DevOps" className={tagCname ? "tags active": "tags inactive"}>DevOps</button>
-          <button onClick={hanldeTagClick} value="Security" className={tagCname ? "tags active": "tags inactive"}>Security</button>
+        <div className="search-tags tags">
+          <button>Frontend</button>
+          <button>Backend</button>
+          <button>Fullstack</button>
+          <button>Career Services</button>
+          <button>SDET</button><br/>
+          <button>Cloud</button>
+          <button>DevOps</button>
+          <button>Security</button>
         </div>
-
       </div>
     );
   }
 }
+
 
 export default SearchBanner;
