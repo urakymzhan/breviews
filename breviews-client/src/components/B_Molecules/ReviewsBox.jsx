@@ -1,5 +1,5 @@
 import React from "react";
-import "./style/reviewbox.css";
+import "./style/reviewbox.scss";
 import { Ratings } from "../A_Atoms";
 
 const ReviewsBox = (props) => {

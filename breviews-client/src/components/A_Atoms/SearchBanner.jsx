@@ -2,7 +2,7 @@ import _ from "lodash";
 import faker from "faker";
 import React, { Component } from "react";
 import { Search, Grid, Header, Segment, Container, Button } from "semantic-ui-react";
-import './style/searchbanner.css';
+import './style/searchbanner.scss';
 
 const initialState = { isLoading: false, results: [], value: "" };
 

@@ -1,7 +1,7 @@
 
 import React, { Fragment } from 'react'
 import { Link } from "react-router-dom";
-import './style/topbootcamps.css'
+import './style/topbootcamps.scss'
 import { Ratings } from '../A_Atoms';
 
 const TopBootcamps = ({topBootcamps}) => {

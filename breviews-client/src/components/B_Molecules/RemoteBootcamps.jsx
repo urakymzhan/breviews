@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./style/remotebootcamps.css";
+import "./style/remotebootcamps.scss";
 import { Ratings } from "../A_Atoms";
 
 const RemoteBootcamps = ({ remoteBootcamps }) => {

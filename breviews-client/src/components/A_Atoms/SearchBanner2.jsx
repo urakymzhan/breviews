@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { Search, Grid, Header, Segment, Container, Button } from "semantic-ui-react";
-import './style/searchbanner.css';
+import './style/searchbanner.scss';
 
 const data = [
   {

@@ -1,4 +1,4 @@
-import './style/searchbanner.css';
+import './style/searchbanner.scss';
 import { Redirect } from 'react-router-dom';
 
 import React, { useState, useCallback } from "react";
