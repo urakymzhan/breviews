@@ -1,30 +1,31 @@
 /* globals */
 :root {
-    --mainWhite: #fff;
-    --mainGray: rgb(215, 215, 215)
-  }
-  * {
-    box-sizing: border-box;
-  }
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--mainWhite);
-    font-family: "Noto Serif", serif;
-    width: 100%; 
-	height: 100%;
-  }
-  
-  #root {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	grid-template-columns: 100%;
-  }
+  --mainWhite: #fff;
+  --mainGray: rgb(215, 215, 215);
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--mainWhite);
+  font-family: "Noto Serif", serif;
+  width: 100%;
+  height: 100%;
+}
 
-  /* 
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  // grid-template-columns: 100%;
+}
+
+/* 
   
   If you want to exclude Header or Footer in some components:
     1) Create layout component example:

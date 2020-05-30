@@ -17,6 +17,7 @@
             font-weight: 800;
         }
 
+
     .results-bootcamp-wrapper {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
@@ -40,6 +41,15 @@
         }
             .results-bootcamp-info h4 {
                 font-weight: 800;
+            }
+            .results-bootcamp-info a {
+                color: inherit;
+                text-decoration: none;
+            }
+            .results-bootcamp-info a:hover {
+                color: #135a91;
+                text-decoration: none;
+                transition: 0.3s linear;
             }
             .results-bootcamp-info-ratings {
                display: flex; 

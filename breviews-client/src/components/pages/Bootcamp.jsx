@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./style/bootcamp.scss";
 import { withRouter } from "react-router";
 import { ReviewsBox } from "../B_Molecules";
@@ -7,35 +7,51 @@ import { EMPTY_REVIEW_TEXT } from "../../utils/constants";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { getBootcampData } from "../../redux/actions/bootcamp";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Ratings } from "../A_Atoms";
-import ReactPaginate from 'react-paginate';
+// import ReactPaginate from "react-paginate";
+import Pagination from "react-js-pagination";
 
 const Bootcamp = (props) => {
-  const localData = useSelector(state => state.bootcamp.localData);
+  const localData = useSelector((state) => state.bootcamp.localData);
   const dispatch = useDispatch();
   const name = props.match.params.name;
+
+  const [offset, setOffset] = useState(5);
+  const [activePage, setActivePage] = useState(1);
 
   useEffect(() => {
     dispatch(getBootcampData(name));
   }, []);
-    
-  console.log(localData)
+
+  const handlePageChange = (pageNumber) => {
+    setActivePage(pageNumber);
+}
+
+  console.log("localData from Bootcamp", localData);
+ 
+  // start and end for pagination
+  const start = (activePage - 1)*offset;
+  const end = activePage*offset
+  
   return (
     <Fragment>
       {localData && localData.length === 0 ? (
         <Spinner />
       ) : (
         <div className="reviews-content-wrapper">
-
           <div className="bootcamps-header">
             <div className="bootcamp-logo">
-              <img src={localData[0].logo} alt="company logo"/>
+              <img src={localData[0].logo} alt="company logo" />
             </div>
             <div className="bootcamp-info">
-              <h3 style={{color: "#000"}}>{localData[0].customName}  {" "}
+              <h3 style={{ color: "#000" }}>
+                {localData[0].customName}{" "}
                 <a href={localData[0].website} target="_blank">
-                  <img src="https://cdn1.iconfinder.com/data/icons/feather-2/24/external-link-512.png" style={{height: "16px", width: "auto"}}/>
+                  <img
+                    src="https://cdn1.iconfinder.com/data/icons/feather-2/24/external-link-512.png"
+                    style={{ height: "16px", width: "auto" }}
+                  />
                 </a>
               </h3>
               <div className="bootcamp-info-row1">
@@ -43,68 +59,84 @@ const Bootcamp = (props) => {
                   classname="star-rating-container"
                   overall={localData[0].overall}
                 />
+                <p>{localData[0].reviewsCount} reviews</p>
                 <p>
-                  {localData[0].reviewsCount} reviews
+                  <img
+                    src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png"
+                    style={{
+                      height: "12px",
+                      width: "auto",
+                      marginRight: "5px",
+                      verticalAlign: "baseline",
+                    }}
+                  />
+                  {localData[0].location.map((loc, ind) => (
+                    <span key={ind}>{loc} </span>
+                  ))}
                 </p>
-                <p>
-                  <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png" style={{height: "12px", width: "auto", marginRight: "5px", verticalAlign: "baseline"}}/>
-                  { localData[0].location.map((loc, ind) => <span key={ind}>{loc} </span>) }
-                </p>
-                </div>
+              </div>
               <div className="bootcamp-info-row2">
-                <button>Frontend</button>
-                <button>Fullstack</button>
-                <button>JavaScript</button>
-                <button>Remote</button>
-                <button>Career Services</button>
+                {localData[0].tags && localData[0].tags.map((tag, i) => {
+                  return <button key={i}>{tag}</button>;
+                })}
               </div>
               <div className="bootcamp-info-row3">
-                <p><span>Duration: </span> {localData[0].duration}</p>
-                <p><span>Price: </span> {localData[0].price}</p>
+                <p>
+                  <span>Duration: </span> {localData[0].duration}
+                </p>
+                <p>
+                  <span>Price: </span> {localData[0].price}
+                </p>
               </div>
               <SortReviews />
             </div>
           </div>
 
           <div className="reviews-main">
-
             <div className="aside-wrapper">
               <div className="bootcamp-write-a-review">
                 <h6>Write a Review</h6>
-                <p>Have you completed a bootcamp lorem ipsum lorem ipsum lorem ipsum</p>
-                <Link to={`/write-review/${localData[0].schoolname}`}><button>Review</button></Link>
+                <p>
+                  Have you completed { localData[0].customName }?  
+                </p>
+                  {/* Or do you want to share your related experience with this place?  */}
+                  <p>
+                  We may take down any review that we think is fake or that doesn’t follow our
+                  <Link to="/legal"> review policies</Link>.
+                </p>
+                <Link to={{
+                  pathname: `/write-review/${localData[0].schoolname}`,
+                  state: { customName: localData[0].customName }
+                }}>
+                  <button>Review</button>
+                </Link>
               </div>
             </div>
 
             <div className="reviews-content">
               <div className="customer-reviews">
                 <div>
-                  {localData.length === 0 || localData[0].reviews.length === 0 ? (
+                  { localData[0].reviews.length === 0 ? (
                     <div>
                       <p id="empty-review-text"> {EMPTY_REVIEW_TEXT} </p>
                     </div>
                   ) : (
-                    <ReviewsBox reviewsData={localData[0].reviews} />
+                    <ReviewsBox reviewsData={localData[0].reviews.slice(start, end)} />
                   )}
-                  {/* TODO: testing */}
-                  <ReactPaginate
-                    previousLabel={"prev"}
-                    nextLabel={"next"}
-                    breakLabel={"..."}
-                    breakClassName={"break-me"}
-                    pageCount={10}
-                    marginPagesDisplayed={2}
+                  <Pagination
+                    hideFirstLastPages
                     pageRangeDisplayed={5}
-                    // onPageChange={this.handlePageClick}
-                    containerClassName={"pagination"}
-                    subContainerClassName={"pages pagination"}
-                    activeClassName={"active"}/>
+                    activePage={activePage}
+                    itemsCountPerPage={offset}
+                    totalItemsCount={localData[0].reviews.length}
+                    onChange={handlePageChange}
+                    itemClass="page-item"
+                    linkClass="page-link"
+                    />
                 </div>
               </div>
             </div>
-          
           </div>
-
         </div>
       )}
     </Fragment>
@@ -113,8 +145,7 @@ const Bootcamp = (props) => {
 
 Bootcamp.protoType = {
   localData: PropTypes.array.isRequired,
-  getBootcampData: PropTypes.func.isRequired
+  getBootcampData: PropTypes.func.isRequired,
 };
 
 export default withRouter(Bootcamp);
-

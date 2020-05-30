@@ -1,0 +1,77 @@
+/* BANNER */
+.banner {
+    height: 400px;
+    min-height: 400px;
+    background: #d7d7d7;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+   .search-input-wrapper {
+    width: 800px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;  
+    display: flex;
+  }
+    .rbt {
+      width: 90%;
+      height: 100%;
+      border-top-left-radius: 20px!important;
+      border-bottom-left-radius: 20px!important;
+      border: 2px solid rgb(172, 169, 169);
+      border-right: 0;
+    }
+      .form-control {
+        border-top-left-radius: 20px!important;
+        border-bottom-left-radius: 20px!important;
+        border-top-right-radius: 0!important;
+        border-bottom-right-radius: 0!important;
+        border: none!important;
+        height: 100%!important;
+      }
+      // .form-control:focus .search-btn {
+      //   border-color: #80bdff;
+      //   box-shadow: 0 0 0 0.2rem rgba(123, 255, 0.25)
+      // }
+    .rsw {
+      width: 10%;
+      height: 100%;
+      position: relative;
+      border: none!important;
+      border-style: none;
+    }
+      .search-btn {
+        width: 100%;
+        height: 100%;
+        background: url("https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #fff;
+        outline: none;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border: 2px solid rgb(172, 169, 169);
+        border-left: 0;
+      }
+
+    .search-tags {
+      font-size: 12px;
+      width: 780px;
+      margin: 10px auto;
+    }
+    .tags {
+      border-radius: 10px;
+      letter-spacing: 1.5px;
+      padding: 2px 10px;
+      margin: 5px;
+      border: 2px solid rgb(172, 169, 169);
+      background-color: inherit;
+    }
+    .tags.active {
+      background: rgb(175, 173, 173);
+      transition: 0.1s linear;
+    }

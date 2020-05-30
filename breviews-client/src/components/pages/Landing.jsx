@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import "./style/landing.scss";
-import { Spinner, AsyncExample } from "../A_Atoms";
+import { Spinner } from "../A_Atoms";
+import { TopBootcamps, RemoteBootcamps, SearchBanner } from '../B_Molecules';
 import { useSelector, useDispatch } from "react-redux";
-import PropTypes from "prop-types";
 import { getMainPageData } from "../../redux/actions/landing";
-import { TopBootcamps, RemoteBootcamps } from '../B_Molecules';
+
 
 
 const Landing = () => {
@@ -13,12 +13,12 @@ const Landing = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("useEffect inside Landing called")
+    console.log("test: useEffect in Landing called")
     dispatch(getMainPageData());
   }, []);
 
   let content = <Spinner />;
-  // its ok to filter here because we don't have too much data 
+  // its ok to filter here, we don't have too much data 
   let topBootcamps = mainpageData.filter(bootcamp => bootcamp.overall > 4);
   let remoteBootcamps = mainpageData.filter(bootcamp => bootcamp.location.includes("Remote")) 
   // will show only max of 4 bootcamps in main page
@@ -37,7 +37,7 @@ const Landing = () => {
   }
   return (
     <div className="main-wrapper">
-       <AsyncExample />
+       <SearchBanner />
       {content}
     </div>
   );

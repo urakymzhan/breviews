@@ -50,7 +50,10 @@ const BootcampSchema = new Schema({
   },
   price: {
     type: String
-  }
+  },
+  tags: [{
+    type: String,
+  }],
 });
 
 // 3rd parameter is collection name

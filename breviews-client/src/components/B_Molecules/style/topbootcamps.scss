@@ -5,25 +5,25 @@
   align-items: baseline;
   clear: both;
   }
-  .top-bootcamps-nav h4 {
-    font-weight: 800;
-  }
-  .top-bootcamps-nav a {
-    font-weight: 800;
-    color: inherit;
-  }
-  .top-bootcamps-list-row {
-    position: relative;
-    margin: 1.2em auto;
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between; */
-    /* TODO */
-    display: grid;
-    grid-template-columns: repeat(4, 180px);
-    grid-column-gap: calc(( 100% - (180px * 4) ) / 3)
-  }
+    .top-bootcamps-nav h3 {
+      font-weight: 800;
+    }
+    .top-bootcamps-nav a {
+      font-weight: 800;
+      color: inherit;
+    }
+    .top-bootcamps-list-row {
+      position: relative;
+      margin: 1.2em auto;
+      /* display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between; */
+      /* TODO */
+      display: grid;
+      grid-template-columns: repeat(4, 180px);
+      grid-column-gap: calc(( 100% - (180px * 4) ) / 3)
+    }
   .bootcamp-logo-wrapper {
     background-color: #d7d7d7;
     position: relative;
@@ -60,6 +60,11 @@
     color: #333;
     font-size: 16px;
     font-weight: bold;
+  }
+  .schoolnames a:hover {
+    color: #135a91;
+    text-decoration: none;
+    transition: 0.3s linear;
   }
   .bootcamp-location {
     font-size: 12px;          

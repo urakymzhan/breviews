@@ -10,9 +10,11 @@ class Header extends React.Component {
   };
 
   render() {
+    const all = 'all';
+
     const { location } = this.props;
     const bgcolor =
-      location.pathname === "/" || location.pathname === "/results"
+      location.pathname === "/" || location.pathname.includes('results')
         ? { background: "#d7d7d7" }
         : { background: "#fff" };
     return (
@@ -34,8 +36,7 @@ class Header extends React.Component {
             <li id="header-logo" style={style.lists}>
               <Link
                 to={{
-                  pathname: "/results",
-                  state: { category: "all" }
+                  pathname: `/results/${all}`,
                 }}
                 style={style.links}
               >

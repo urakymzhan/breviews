@@ -24,14 +24,13 @@ const Routes = () => {
         <Route path="/bootcamps/:name">
           <Bootcamp />
         </Route>
-        {/* TODO: nested url without base /write-review path */}
         <Route path="/write-review/:name">
           <ReviewFormPage />
         </Route>
         <Route path="/form-complete/:name">
           <FormComplete />
         </Route>
-        <Route exact path="/results">
+        <Route path="/results/:search">
           <Results />
         </Route>
         <Route>

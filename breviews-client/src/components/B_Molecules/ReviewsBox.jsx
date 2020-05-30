@@ -4,6 +4,7 @@ import { Ratings } from "../A_Atoms";
 
 const ReviewsBox = (props) => {
   const { reviewsData } = props;
+  console.log("reviewsData from Box", reviewsData)
 
   return reviewsData.map((user) => {
     let emptyInd;
@@ -11,8 +12,7 @@ const ReviewsBox = (props) => {
     if (user.customerName.indexOf(' ') > -1) {
       emptyInd = user.customerName.indexOf(' ')
       name = user.customerName.slice(0, emptyInd) + " " + user.customerName.slice(emptyInd+1, emptyInd+2) + ".";
-    }
-    // console.log(reviewsData)
+    } 
     const reviewDate = new Date(user.date);
 
     return (

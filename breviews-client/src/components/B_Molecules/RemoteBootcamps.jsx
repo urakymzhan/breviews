@@ -4,6 +4,8 @@ import "./style/remotebootcamps.scss";
 import { Ratings } from "../A_Atoms";
 
 const RemoteBootcamps = ({ remoteBootcamps }) => {
+  const remote = "remote";
+  
   let content = remoteBootcamps.map((bootcamp) => {
     return (
       <div className="bootcamp-section" key={bootcamp._id}>
@@ -52,11 +54,10 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
   return (
     <section>
       <div className="remote-bootcamps-nav">
-        <h4>Remote Bootcamps</h4>
+        <h3>Remote Bootcamps</h3>
         <Link
           to={{
-            pathname: "/results",
-            state: { category: "remote" },
+            pathname: `/results/${remote}`
           }}
         >
           See all

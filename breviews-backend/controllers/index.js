@@ -51,13 +51,26 @@ const getSearchOptions = async (req, res) => {
 const getResultsCategory = async (req, res) => {
     try {
         const category = req.params.category;
+
         const resultsData = await findResultsCategory();
-        if (category === 'top') {
+
+        if (category === 'all') {
+            res.json(resultsData);
+        }
+        else if (category === 'top') {
             const topBootcamps = resultsData.filter(top => top.overall > 4);
             res.json(topBootcamps)
         } else if (category === 'remote') {
             const remoteBootcamps = resultsData.filter(remote => remote.location.includes('Remote'));
             res.json(remoteBootcamps);
+        } else if (category === "search") {
+            // TODO: handle lowerCase or upperCases and double check code
+            const selectedOption = req.body.searchCriterias.selectedOption;
+            const selectedTags = req.body.searchCriterias.selectedTags;
+            const searchResult = resultsData.filter(singleBoo => singleBoo.customName === selectedOption || singleBoo['tags'].some(r => selectedTags.includes(r)));
+            // console.log("final:", searchResult)
+            res.json(searchResult);
+
         }
     } catch (err) {
         console.log(err);

@@ -22,5 +22,7 @@ router.get("/search/options", getSearchOptions);
 // access  Public
 router.get("/results/:category", getResultsCategory)
 
+router.post("/results/:category", getResultsCategory)
+
 module.exports = router;
 

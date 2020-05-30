@@ -1,5 +1,5 @@
 .review-wrapper {
-    background: var(--mainGray);
+    background: rgb(236, 235, 235);
     margin-bottom: 5px;
     padding: 15px;
     font-size: 12px;
@@ -18,6 +18,7 @@
     font-size: 8px;
     padding-top: 12px;
     margin: 0 auto;
+    background-color: var(--mainGray);;
 }
 
 .review-right-side {

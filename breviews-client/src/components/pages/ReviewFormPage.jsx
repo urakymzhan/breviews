@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { useFormik, useField, Field, Formik, ErrorMessage, Form } from "formik";
+import { useField, Field, Formik, ErrorMessage, Form } from "formik";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
@@ -29,8 +29,9 @@ import * as Yup from 'yup';
 // })
 
 
+// handle star rating
 const MyStarInput = ({ratingVal, handleStar, ...props}) => {
-  const [field, meta ] = useField(props);
+  // const [field, meta ] = useField(props);
   return (
     <Rating
           className="star-rating-container"
@@ -68,8 +69,7 @@ class ReviewFormPage extends Component {
     values.date = today;
     // post here
     // repeated params code
-    const { match } = this.props;
-    const name = match.params.name;
+    const { name } = this.props.match.params;
     fetch(`/api/bootcamps/${name}`, {
       method: "POST",
       headers: {
@@ -77,10 +77,21 @@ class ReviewFormPage extends Component {
       },
       body: JSON.stringify(values),
     });
-    console.log(values)
+  
     setSubmitting(false);
+    // reset
     resetForm();
+    // reset star
     this.setState({ ratingVal: 0 });
+
+    // redirect
+    const { customName } = this.props.location.state;
+    const location = {
+      pathname: `/form-complete/${name}`,
+      state: customName,
+    };
+    this.props.history.push(location);
+
   };
 
   handleStar = (clickedVal) => this.setState({ ratingVal: clickedVal });
@@ -123,13 +134,11 @@ class ReviewFormPage extends Component {
   };
 
   render() {
-    // repeated params code
-    const { match } = this.props;
-    const schoolName = match.params.name;
-    console.log(schoolName);
+    // from results page
+    const { customName } = this.props.location.state;
     return (
       <div className="review-form-container">
-        <h3>{schoolName}</h3>
+        <h3>{customName}</h3>
         <ReviewForm 
           onSubmit={this.handleSubmit}
           handleStar={this.handleStar}
@@ -241,9 +250,6 @@ const ReviewForm = (props) => {
   </div>  
   );
 };
-
-
-
 
 export default withRouter(ReviewFormPage);
 

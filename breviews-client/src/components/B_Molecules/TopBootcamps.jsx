@@ -1,11 +1,11 @@
 
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 import './style/topbootcamps.scss'
 import { Ratings } from '../A_Atoms';
 
 const TopBootcamps = ({topBootcamps}) => {
-  
+  const top = 'top';
   let content = topBootcamps.map((bootcamp) => {
     return (
       <div className="bootcamp-section" key={bootcamp._id}>
@@ -56,11 +56,10 @@ const TopBootcamps = ({topBootcamps}) => {
     return (
         <section>
           <div className="top-bootcamps-nav">
-            <h4>Top Bootcamps</h4>
+            <h3>Top Bootcamps</h3>
             <Link
               to={{
-                pathname: "/results",
-                state: { category: "top" }
+                pathname: `/results/${top}`,
               }}
             >
               See all
