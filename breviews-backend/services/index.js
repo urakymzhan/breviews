@@ -51,10 +51,6 @@ const findAndUpdateReviews = async (name, newReview) => {
             // overall review
             let overallRating = parseFloat(sum / count).toFixed(1);
 
-            console.log("sum: ", sum);
-            console.log("count: ", count);
-            console.log("overallRating: ", overallRating);
-
             // update in db
             // i again had to parse them to int, 
             Bootcamp.updateOne(

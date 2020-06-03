@@ -1,0 +1,18 @@
+// we can use inheritance here
+// example our images or buttons have similar styles
+
+// ex:
+// %btn {
+//     padding: 10px;
+//     margin: 5px;
+// }
+
+// .btn1 {
+//     @extend %btn;
+//     color: red;
+// }
+
+// .btn2 {
+//     @extend %btn;
+//     color: green;
+// }

@@ -9,6 +9,9 @@ const Routes = () => {
         <Route exact path="/" >
           <Landing />
         </Route>
+        <Route exact path="/results">
+          <Results />
+        </Route>
         <Route exact path="/team" >
           <Team />
         </Route>
@@ -29,9 +32,6 @@ const Routes = () => {
         </Route>
         <Route path="/form-complete/:name">
           <FormComplete />
-        </Route>
-        <Route path="/results/:search">
-          <Results />
         </Route>
         <Route>
           <NotFoundPage />

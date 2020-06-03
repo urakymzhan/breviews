@@ -1,8 +1,9 @@
 import React from "react";
+import './style/team.scss';
 
 const Team = () => {
   return (
-    <div className="team-wrapper" style={teamWrapper}>
+    <div className="team-wrapper">
       
         <div style={{ marginBottom: "2em"}}>
           <p >We are a team who loves what they do</p>
@@ -13,10 +14,8 @@ const Team = () => {
         <div>
           <div>
             <img
-              className="team-img"
               src="/public/assets/ulan3.jpg"
               alt="Ulan Rakymzhanov"
-              style={imgStyle}
             />
           </div>
           <div>
@@ -30,10 +29,8 @@ const Team = () => {
         <div>
           <div>
             <img
-              className="team-img"
               src="https://www.seytech.co/images/users/marat.jpg"
-              alt="Tynarbek Arzymatov"
-              style={imgStyle}
+              alt="Marat Gaipov"
             />
           </div>
           <div>
@@ -58,16 +55,4 @@ const Team = () => {
 
 export default Team;
 
-// STYLES:
-const teamWrapper = {
-  padding: "100px 0",
-  textAlign: "center",
-  fontSize: '12px'
-};
 
-let imgStyle = {
-  height: "100px",
-  width: "100px",
-  borderRadius: "100%",
-  margin: "0.8em"
-};

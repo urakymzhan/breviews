@@ -1,10 +1,15 @@
 .main-wrapper {
     margin: 0;
     text-align: center;
+
+    .container-bootcamps {
+      width: 80%;
+      margin: 5em auto;
+      // background-color: greenyellow;
+      padding: 10px 5px;
+    }
+    
   }
-  .container-bootcamps {
-    width: 80%;
-    margin: 5em auto;
-  }
+
 
   

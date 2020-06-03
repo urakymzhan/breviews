@@ -51,6 +51,9 @@ const BootcampSchema = new Schema({
   price: {
     type: String
   },
+  totalPrice: {
+    type: Number
+  },
   tags: [{
     type: String,
   }],

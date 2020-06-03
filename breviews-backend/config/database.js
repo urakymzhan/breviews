@@ -1,7 +1,7 @@
-const config = require("config");
+// const config = require("config");
+// const db = config.get("mongoURI");
 const mongoose = require('mongoose');
-const db = config.get("mongoURI");
-//  You can use dotenv for configs
+const db = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@users-rsup3.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`
 
 const connectDB = async () => {
 	try {
@@ -11,8 +11,8 @@ const connectDB = async () => {
 			useFindAndModify: false,
 			useUnifiedTopology: true
 		});
-
 		console.log('MongoDB Running...');
+
 	} catch (err) {
 		console.error(err.message);
 		// Exit process with failure

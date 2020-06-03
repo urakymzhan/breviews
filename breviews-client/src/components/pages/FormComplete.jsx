@@ -4,12 +4,13 @@ import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 import './style/formcomplete.scss'
 
+
+
 const FormComplete = (props) => {
     const { match } = props;
     let schoolName = match.params.name;
     let customName = props.location.state;
-
-    console.log(props)
+  
     return (
         <div className="form-complete-content-wrapper">
             <p>Your review for <span className="capitalized-schoolname"> {customName}</span> is now live!</p>

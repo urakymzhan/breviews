@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import './style/legal.scss';
 
 const Legal = () => {
   return (
-    <div className="legal-wrapper" style={legalWrapperStyle}>
-      <section style={sectionStyle}>
+    <div className="legal-wrapper">
+      <section>
         <h3>Privacy Policy</h3>
         <p>
           This section will help you understand what information we collect, <br />
@@ -21,7 +22,7 @@ const Legal = () => {
           Please reach out on <Link to="contact">contact us</Link> page. We will carefully check for validity of request and thus perform right action.
         </p>
       </section>
-      <section style={sectionStyle}>
+      <section>
         <h3> Terms of Service </h3>
         <p>
           When you use our service you fully committed to provide a trusted source of information.<br />
@@ -34,13 +35,4 @@ const Legal = () => {
 
 export default Legal;
 
-// STYLES:
-const legalWrapperStyle = {
-  textAlign: "left",
-  fontFamily: "Roboto,arial,sans-serif",
-  fontSize: "12px"
-};
 
-const sectionStyle = {
-  padding: "4em 6em"
-};

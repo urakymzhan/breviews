@@ -5,7 +5,7 @@ import './style/topbootcamps.scss'
 import { Ratings } from '../A_Atoms';
 
 const TopBootcamps = ({topBootcamps}) => {
-  const top = 'top';
+  
   let content = topBootcamps.map((bootcamp) => {
     return (
       <div className="bootcamp-section" key={bootcamp._id}>
@@ -36,7 +36,7 @@ const TopBootcamps = ({topBootcamps}) => {
             </span>
           </div>
           
-          <div className="bootcamp-location location">
+          <div className="bootcamp-location">
             <span>
               <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png" />
             </span>
@@ -59,12 +59,14 @@ const TopBootcamps = ({topBootcamps}) => {
             <h3>Top Bootcamps</h3>
             <Link
               to={{
-                pathname: `/results/${top}`,
+                pathname: '/results',
+                search: "?category=top"
               }}
             >
               See all
             </Link>
           </div>
+          
           <div className="top-bootcamps-list-row">
           {content}
           </div> 

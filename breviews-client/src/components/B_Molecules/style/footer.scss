@@ -1,4 +1,18 @@
-footer > p::selection {
-    background: #6799ff;
-    color: #fff;
+@import "../../../style/config";
+@import "./media";
+
+footer {
+  padding: 2em;
+  background: #788b95;
+  font-size: 12px;
+  color: $mainWhite;
+  text-align: center;
+
+  p {
+    margin: 5px;
+    font-size: 10px;
+  }
+  a {
+    color: inherit;
+  }
 }

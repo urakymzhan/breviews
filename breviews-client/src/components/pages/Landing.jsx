@@ -1,44 +1,61 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style/landing.scss";
-import { Spinner } from "../A_Atoms";
-import { TopBootcamps, RemoteBootcamps, SearchBanner } from '../B_Molecules';
-import { useSelector, useDispatch } from "react-redux";
-import { getMainPageData } from "../../redux/actions/landing";
-
-
+import { SkeletonLanding } from "../A_Atoms";
+import { TopBootcamps, RemoteBootcamps, SearchBanner } from "../B_Molecules";
 
 const Landing = () => {
-  const isLoaded = useSelector(state => state.landing.isLoaded);
-  const mainpageData = useSelector(state => state.landing.mainpageData);
-  const dispatch = useDispatch();
+  // removed redux for now
+  const [mainpageData, setMainpageData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    console.log("test: useEffect in Landing called")
-    dispatch(getMainPageData());
+    localStorage.clear();
+    const fetchData = async () => {
+      setIsLoading(true);
+      setError("");
+      try {
+        const response = await fetch("/api/landing", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        const resData = await response.json();
+        if (!response.ok) {
+          // make sure to go to catch block if any server error
+          throw new Error(resData.message);
+        }
+        setMainpageData(resData);
+      } catch (err) {
+        // fallback message doesnt hurt
+        setError(err.message || "Couldn't get data. Please try again.");
+      }
+      setIsLoading(false);
+    };
+    fetchData();
   }, []);
 
-  let content = <Spinner />;
-  // its ok to filter here, we don't have too much data 
-  let topBootcamps = mainpageData.filter(bootcamp => bootcamp.overall > 4);
-  let remoteBootcamps = mainpageData.filter(bootcamp => bootcamp.location.includes("Remote")) 
-  // will show only max of 4 bootcamps in main page
-  topBootcamps = topBootcamps.slice(0, 4);
-  remoteBootcamps = remoteBootcamps.slice(0, 4);
-
-  console.log("mainpageData", mainpageData);
-
-  if (isLoaded) {
+  let content;
+  if (error) {
+    content = <div>{error}</div>;
+  } else if (isLoading || mainpageData.length === 0) {
+    content = <SkeletonLanding />;
+  } else {
     content = (
-      <div className="container-bootcamps">
-        <TopBootcamps topBootcamps={topBootcamps}/>
-        <RemoteBootcamps remoteBootcamps={remoteBootcamps}/>
-      </div>
+      <React.Fragment>
+        {mainpageData.topBootcamps && mainpageData.remoteBootcamps && (
+          <React.Fragment>
+            <TopBootcamps topBootcamps={mainpageData.topBootcamps} />
+            <RemoteBootcamps remoteBootcamps={mainpageData.remoteBootcamps} />
+          </React.Fragment>
+        )}
+      </React.Fragment>
     );
   }
+
   return (
     <div className="main-wrapper">
-       <SearchBanner />
-      {content}
+      <SearchBanner />
+      <div className="container-bootcamps">{content}</div>
     </div>
   );
 };

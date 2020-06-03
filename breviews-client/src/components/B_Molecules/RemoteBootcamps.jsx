@@ -4,7 +4,6 @@ import "./style/remotebootcamps.scss";
 import { Ratings } from "../A_Atoms";
 
 const RemoteBootcamps = ({ remoteBootcamps }) => {
-  const remote = "remote";
   
   let content = remoteBootcamps.map((bootcamp) => {
     return (
@@ -57,7 +56,8 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
         <h3>Remote Bootcamps</h3>
         <Link
           to={{
-            pathname: `/results/${remote}`
+            pathname: '/results',
+            search: "?category=remote"
           }}
         >
           See all

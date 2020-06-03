@@ -1,114 +1,84 @@
+@import "../../../style/config";
+@import "./media";
 
 .top-bootcamps-nav {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   clear: both;
+
+  h3 {
+    font-weight: 800;
+    font-size: 16px;
   }
-    .top-bootcamps-nav h3 {
-      font-weight: 800;
-    }
-    .top-bootcamps-nav a {
-      font-weight: 800;
-      color: inherit;
-    }
-    .top-bootcamps-list-row {
-      position: relative;
-      margin: 1.2em auto;
-      /* display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between; */
-      /* TODO */
-      display: grid;
-      grid-template-columns: repeat(4, 180px);
-      grid-column-gap: calc(( 100% - (180px * 4) ) / 3)
-    }
+  a {
+    font-weight: 800;
+    color: $mainColor;
+  }
+}
+
+.top-bootcamps-list-row {
+  position: relative;
+  margin: 1.2em auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 180px));
+  grid-column-gap: calc((100% - (180px * 4)) / 3);
+  font-size: 14px;
+
   .bootcamp-logo-wrapper {
-    background-color: #d7d7d7;
+    background-color: $secondBg;
     position: relative;
     vertical-align: top;
-  }
-  .bootcamp-logo-wrapper img {
-    height: 180px;
-    width: 180px;
-    /* object-fit: contain; */
-    border: 1px solid #d7d7d7;
+    img {
+      height: 180px;
+      width: 180px;
+      // object-fit: contain;
+      border: 1px solid $secondBg;
+    }
   }
   .schoolnames-wrapper {
     text-align: left;
+
+    .schoolnames {
+      a {
+        text-decoration: none;
+        color: $secondColor;
+        &:hover {
+          color: #135a91;
+          transition: 0.3s linear;
+        }
+      }
+    }
   }
   .review-overall {
-    color: #ff9800;
+    color: $orange;
     position: relative;
-    font-size: 14px;
-    text-align: left;
     margin: 4px 0;
-  }
-  #rating-empty-star-main, #rating-full-star-main {
-    height: 14px;
-    width: auto;
-    float: left;
-  }
-  .total-review-count {
-    color: #333;
-    margin-left: 0.8em;
-    font-size: 12px;
-  }
-  .schoolnames a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .schoolnames a:hover {
-    color: #135a91;
-    text-decoration: none;
-    transition: 0.3s linear;
+    text-align: left;
+    .star-rating-container {
+      #rating-empty-star-main,
+      #rating-full-star-main {
+        height: 14px;
+        width: auto;
+        float: left;
+      }
+    }
+    .total-review-count {
+      color: $secondColor;
+      margin-left: 0.8em;
+    }
   }
   .bootcamp-location {
-    font-size: 12px;          
     text-align: left;
     display: flex;
     flex-wrap: wrap;
-  }
-    .bootcamp-location span img {
-      height: 12px;
+    img {
+      height: 14px;
       width: auto;
       margin-right: 3px;
       vertical-align: baseline;
     }
-  /* MEDIA QUERIES START */
-  
-  @media only screen and (max-width: 599px) {
-    /*  for-phone-only  */
-    .bootcamp-section {
-      display: block;
-      flex-basis: 100%;
-    }
-    .chart-wrapper {
-      width: 90% !important;
-    }
   }
-  @media screen and (min-width: 599px) and (max-width: 1199px) {
-    .bootcamp-section {
-      flex-basis: calc(90% / 2);
-    }
-  }
-  @media only screen and (min-width: 1200px) {
-    /*  for-desktop-only */
-  }
-  /* MEDIA QUERIES END */
+}
 
-
-
-  /* image alterative */
-      /* height: 90%;
-    width: 90%; */
-    /* object-fit: contain; */
-    /* position: absolute; */
-    /* margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0; */
+@import "media";

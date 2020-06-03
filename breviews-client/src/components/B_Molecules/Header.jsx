@@ -4,63 +4,53 @@ import brlogo from "../../../public/assets/brlogo3.png";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 
-class Header extends React.Component {
-  static propTypes = {
-    location: PropTypes.object.isRequired,
-  };
+import "./style/header.scss";
 
-  render() {
-    const all = 'all';
+const Header = props => {
 
-    const { location } = this.props;
+    const { location } = props;
     const bgcolor =
-      location.pathname === "/" || location.pathname.includes('results')
+      location.pathname === "/" || location.pathname.includes("results")
         ? { background: "#d7d7d7" }
         : { background: "#fff" };
     return (
       <header style={bgcolor}>
-        <nav id="header-nav" style={style.nav}>
-          <ul id="logo-wrapper" style={style.ul}>
-            <li
-              id="header-logo"
-              style={{ float: "left", margin: "0.2em 1.2em auto auto" }}
-            >
-              <Link to="/" style={style.links}>
-                <img
-                  id="brlogo"
-                  src={brlogo}
-                  style={{ width: "auto", height: "30px" }}
-                />
+        <nav id="header-nav">
+          <ul>
+            <li id="header-logo">
+              <Link to="/" className="links">
+                <img id="brlogo" src={brlogo} />
               </Link>
             </li>
-            <li id="header-logo" style={style.lists}>
+            <li id="leave-review">
               <Link
                 to={{
-                  pathname: `/results/${all}`,
+                  pathname: '/results',
+                  search: '?category=all'
                 }}
-                style={style.links}
+                className="links"
               >
                 Leave a review
               </Link>
             </li>
           </ul>
-          <ul style={style.ul}>
-            <li id="header-team" style={style.lists}>
+          <ul>
+            <li className="lists">
               <a
                 href="https://www.patreon.com/user?u=35633615"
                 target="_blank"
-                style={style.links}
+                className="links"
               >
                 Patreon
               </a>
             </li>
-            <li id="header-team" style={style.lists}>
-              <Link to="/blog" style={style.links}>
+            <li className="lists">
+              <Link to="/blog" className="links">
                 Blog
               </Link>
             </li>
-            <li id="header-contact" style={style.lists}>
-              <Link to="/contact" style={style.links}>
+            <li className="lists">
+              <Link to="/contact" className="links">
                 Contact
               </Link>
             </li>
@@ -68,22 +58,10 @@ class Header extends React.Component {
         </nav>
       </header>
     );
-  }
 }
+Header.propTypes = {
+  location: PropTypes.object.isRequired,
+};
 
 const FlexibleHeader = withRouter(Header);
 export default FlexibleHeader;
-
-// STYLES:
-const style = {
-  nav: {
-    display: "flex",
-    flexWrap: "nowrap",
-    justifyContent: "space-between",
-    background: "transparent",
-    padding: "0 20px",
-  },
-  ul: { listStyle: "none", padding: "1em 0", fontSize: "12px", color: "#000" },
-  lists: { float: "left", margin: "1em 1.2em auto auto" },
-  links: { textDecoration: "none", color: "inherit" },
-};

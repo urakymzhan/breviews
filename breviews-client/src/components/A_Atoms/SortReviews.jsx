@@ -1,8 +1,8 @@
 import React from 'react'
+// use this later similar to Avatar
 
-export default function SortReviews() {
+const SortReviews = props => {
     return (
-        // temporary, look for react-select library
         <div style={{textAlign: "right", margin: "0", alignSelf: "end"}}>
             <span>Sort by: </span>
             <select className="sortby-reviews">
@@ -15,4 +15,4 @@ export default function SortReviews() {
     )
 }
 
-
+export default SortReviews;

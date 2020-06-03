@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { useField, Field, Formik, ErrorMessage, Form } from "formik";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
 import Rating from "react-rating";
 import "./style/reviewformpage.scss";
 import * as Yup from 'yup';
@@ -178,12 +177,12 @@ const ReviewForm = (props) => {
               name="customerName"
               type="input"
             />
-            <ErrorMessage name="customerName" render={msg => <div>{msg}</div>} />
+            <ErrorMessage name="customerName" render={msg => <div className="form-errors">{msg}</div>} />
           </div>
           <div>
             <label>Select Rating*</label>
             <MyStarInput name="ratingVal" handleStar={handleStar} ratingVal={ratingVal} value={ratingVal}/>
-            <ErrorMessage name="ratingVal" render={msg => <div>{msg}</div>} />
+            <ErrorMessage name="ratingVal" render={msg => <div className="form-errors">{msg}</div>} />
           </div>
           <div>
             <label htmlFor="title"> Title of your review* </label>
@@ -193,7 +192,7 @@ const ReviewForm = (props) => {
               type="input"
             />
             <span className="input-footers">( 3 word minimum )</span>
-            <ErrorMessage name="title" render={msg => <div>{msg}</div>} />
+            <ErrorMessage name="title" render={msg => <div className="form-errors">{msg}</div>} />
           </div>
 
           <div>
@@ -204,7 +203,7 @@ const ReviewForm = (props) => {
               type="textarea"
             />
             <span className="input-footers">( 20 word minimum )</span>
-            <ErrorMessage name="review" render={msg => <div>{msg}</div>} />
+            <ErrorMessage name="review" render={msg => <div className="form-errors">{msg}</div>} />
           </div>
           <div>
             <label htmlFor="pros"> Pros </label>
@@ -230,19 +229,20 @@ const ReviewForm = (props) => {
               name="email"
               type="email"
             />
-            <ErrorMessage name="email" render={msg => <div>{msg}</div>} />
+            <ErrorMessage name="email" render={msg => <div className="form-errors">{msg}</div>} />
           </div>
-          <div>
-            <Field name="acceptTerms" type="checkbox" />
+          <div className="checkboxes">
+            <Field name="acceptTerms" type="checkbox" className="checkbox"/>
             <label className="checkbox-label">I agree to BootcampAvenue Terms of Use. This review of my experience at this bootcamp is truthful*</label>
-            <ErrorMessage name="acceptTerms" render={msg => <div>{msg}</div>} />
+            <ErrorMessage name="acceptTerms" render={msg => <div className="form-errors">{msg}</div>} />
           </div>
           <div>
             <button disabled={isSubmitting} type="submit" className="form-submit-btn">
               Post Review
             </button>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
-            <pre>{JSON.stringify(errors, null, 2)}</pre>
+            {/* for testing purposes only */}
+            {/* <pre>{JSON.stringify(values, null, 2)}</pre>
+            <pre>{JSON.stringify(errors, null, 2)}</pre> */}
           </div>
         </Form>
       )}

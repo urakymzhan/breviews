@@ -1,6 +1,6 @@
 import "./style/searchbanner.scss";
 import { withRouter } from "react-router";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 
@@ -19,25 +19,32 @@ const initalTags = [
   "Mobile",
   "C#",
   "USA",
-  "Europe"
+  "Europe",
 ];
 
 const SearchBanner = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(
+    localStorage.getItem("option") || ""
+  );
+  const [value, setValue] = useState('');
+
+  const [selectedTags, setSelectedTags] = useState(
+    JSON.parse(localStorage.getItem("tags")) || []
+  );
+
+  // side effect
+  useEffect(() => {
+    localStorage.setItem("tags", JSON.stringify(selectedTags));
+    localStorage.setItem("option", selectedOption);
+  }, [selectedTags, selectedOption]);
 
   const handleSearch = useCallback((query) => {
     setIsLoading(true);
-    // need query?
     fetch(`/api/search/options?q=${query}`)
       .then((resp) => resp.json())
       .then((options) => {
-        // const options = items.map(i => ({
-        //   id: i._id,
-        //   name: i.customName
-        // }));
         setOptions(options);
         setIsLoading(false);
       });
@@ -61,20 +68,26 @@ const SearchBanner = (props) => {
     setSelectedOption(strOption);
   };
 
-  const handleSearchClick = () => {
-    const location = {
-      pathname: "/results/search",
+  const handleSearchClick = (e) => {
+
+    const redirectLocation = {
+      pathname: "/results",
+      search: "?category=search",
       state: { selectedOption, selectedTags },
     };
-    props.history.push(location);
-    // TODO: temorary not a react way solution
-    // it clears all the state values 
-    // window.location.reload()
+
+    // TODO: temorary not a react way of solution
+    // if (selectedOption.length > 0 || selectedTags.length > 0) {
+      props.history.push(redirectLocation);
+      window.location.reload();
+    // }
   };
 
-  console.log("selectedTags from search bar", selectedTags);
-  console.log("selectedOption from search bar", selectedOption);
+  console.log("props", props);
+  console.log("value", value);
 
+  const { path } = props.match;
+  console.log(path);
   return (
     <div className="banner">
       <div className="search-input-wrapper">
@@ -87,8 +100,9 @@ const SearchBanner = (props) => {
           options={options}
           placeholder="Search Bootcamp Name"
           onChange={handleOption}
+          value={value}
           renderMenuItemChildren={(option, props) => (
-            <div>
+            <div className="options">
               <span>{option}</span>
             </div>
           )}

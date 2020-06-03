@@ -2,7 +2,7 @@ import { MAIN_DATA_LOADED, MAIN_DATA_LOAD_FAILED } from '../actions/types';
 
 const initialState = {
     mainpageData: [],
-    isLoaded: false,
+    isLoading: false,
     error: ''
 };
 
@@ -14,12 +14,12 @@ export default function( state = initialState, action ) {
             return {
                 ...state,
                 mainpageData: payload,
-                isLoaded: true
+                isLoading: true
             }
         case MAIN_DATA_LOAD_FAILED:
             return {
                 ...state,
-                isLoaded: false,
+                isLoading: false,
                 error: payload
             }
         default:

@@ -1,11 +1,14 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 export default function NotFoundPage() {
   let location = useLocation();
   return (
-    <h1 style={{ textAlign: "center", margin: "50px auto" }}>
-      Page not found for <code>{location.pathname}</code>
-    </h1>
+    <div>
+      <h3 style={{ textAlign: "center", margin: "50px auto" }}>
+        Page not found for <code>{location.pathname}</code>
+      </h3>
+        <Link to="/" style={{color: "#e83e8c"}}>Return to home page</Link>
+    </div>
   );
 }

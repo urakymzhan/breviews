@@ -1,80 +1,95 @@
+@import '../../../style/config';
 
 .results-content-wrapper {
-    width: 60%;
-    margin: 60px auto;
+  width: 60%;
+  margin: 60px auto;
+
+  .error {
+    color: red;
+    font-weight: 800;
+    margin-top: 20px;
+  }
+  .results-content-navbar {
+    display: flex;
+    justify-content: space-between;
+
+    .results-all-results {
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .results-sortby select {
+      // border: none;
+      // -webkit-appearance: none;
+      font-weight: 800;
+      height: 100%;
+      border: 1px solid $secondBg;
+    }
+  }
+  .results-bootcamp-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin-top: 40px;
+    grid-column-gap: 40px;
+  }
+  .results-bootcamp-logo {
+    text-align: left;
+    background: $secondBg;
+    border: 1px solid $secondBg;
+    position: relative;
+    img {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      /* object-fit: contain; */
+    }
+  }
+
+  .results-bootcamp-info {
+    text-align: left;
+    h4 {
+      font-weight: 800;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      &:hover {
+        color: #135a91;
+        text-decoration: none;
+        transition: 0.3s linear;
+      }
+    }
+  }
+  .results-bootcamp-info-ratings {
+    display: flex;
+    margin: 0;
+    .results-bootcamp-star {
+      margin: 0 10px 4px 0;
+      #rating-empty-star-main,
+      #rating-full-star-main {
+        height: 14px;
+        width: auto;
+        float: left;
+      }
+    }
+  }
+  .results-bootcamp-location {
+    margin: 0 0 20px 0;
+  }
+  .results-bootcamp-dur-price {
+    display: flex;
+    margin: 0;
+    text-align: left;
+    .results-duration {
+      margin-right: 40px;
+    }
+  }
+  .results-bootcamp-addreview {
+    justify-self: end;
+    button {
+      border: 1px solid $thirdColor;
+      background-color: $secondBg;
+      padding: 5px 10px;
+      font-weight: 800;
+    }
+  }
 }
-    .results-content-navbar {
-        display: flex;
-        justify-content: space-between;  
-    }
-        .results-all-results {
-            font-weight: 800;
-            font-size: 16px;
-        }
-        .results-sortby select {
-            border: none; 
-            -webkit-appearance: none;
-            font-weight: 800;
-        }
-
-
-    .results-bootcamp-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        margin-top: 40px;
-        grid-column-gap: 40px;
-    }
-        .results-bootcamp-logo {
-            text-align: left;
-            background: #d7d7d7;
-            border: 1px solid #d7d7d7;
-            position: relative;
-        }
-            .results-bootcamp-logo img {
-                height: 100%;
-                width: 100%;
-                position: absolute;
-                /* object-fit: contain; */
-            }
-        .results-bootcamp-info {
-            text-align: left;
-        }
-            .results-bootcamp-info h4 {
-                font-weight: 800;
-            }
-            .results-bootcamp-info a {
-                color: inherit;
-                text-decoration: none;
-            }
-            .results-bootcamp-info a:hover {
-                color: #135a91;
-                text-decoration: none;
-                transition: 0.3s linear;
-            }
-            .results-bootcamp-info-ratings {
-               display: flex; 
-               margin: 0;    
-            }
-            .results-bootcamp-star {
-                margin: 0 10px 4px 0;
-            }
-            .results-bootcamp-location {
-                margin: 0 0 20px 0;
-            }
-            .results-bootcamp-dur-price {
-                display: flex; 
-                margin: 0;
-                text-align: left;
-            }
-                .results-duration {
-                    margin-right: 40px;
-                }
-        .results-bootcamp-addreview {
-            justify-self: end;
-        }
-        .results-bootcamp-addreview button {
-            border: 1px solid gray;
-            background-color: #d7d7d7;
-            padding: 5px 10px;
-            font-weight: 800;
-        }

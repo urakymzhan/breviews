@@ -41,10 +41,6 @@
     ...
     more schools
  
-### notes:
-- when user click "LEARN MORE" fetch all reviews.
-- For Optimiziation: use pagination (load more)  
-
 
 ### CORS issue on server side:
 https://expressjs.com/en/resources/middleware/cors.html
@@ -55,3 +51,4 @@ seytech -> https://ibb.co/CKjtwM4
 cybertek -> https://cybertekschool.com/wp-content/uploads/2020/02/cybertek_logo_header.svg
 cloudgateacademy -> https://ibb.co/ZMq7F4J
 salesforcebootcamp -> https://ibb.co/j3CF2Zj
+miami -> https://ibb.co/RBbm95T
