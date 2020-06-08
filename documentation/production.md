@@ -1,5 +1,0 @@
-- For production, you should create a seperate config that extends and modifies the development version.
-- Look for "webpackMerge" for merging productiona and development webpack configs
-- look up logger and chalk 
-- move my mongodb atlas to aws, s3 or no needed ?
-- secure your username/password on url strings

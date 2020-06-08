@@ -54,7 +54,11 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 module.exports = app;
 
 
-
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
 
 
 // // Serve static assets in production serve both front and backend combined
