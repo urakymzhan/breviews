@@ -1,56 +1,75 @@
 @import "../../../style/config";
-@import './media';
+@import "./media";
 
 .review-wrapper {
-    background: $thirdBg;
-    margin-bottom: 5px;
-    padding: 15px;
-    font-size: 12px;
-    color: $secondColor;
+  background: transparent;
+  margin-bottom: 5px;
+  padding: 5px;
 
-    .review-left-side {
-        display: inline-block;
-        width: 10%;
-        vertical-align: top;
+  .review-left-side {
+    display: inline-block;
+    width: 10%;
+    vertical-align: top;
 
-        .avatar-review {
-            border: 1px solid;
-            border-radius: 100%;
-            height: 40px;
-            width: 40px;
-            font-size: 8px;
-            padding-top: 12px;
-            margin: 0 auto;
-            background-color: $secondBg;
-        }
+    .avatar-review {
+      border-radius: 100% !important;
+      height: 40px;
+      width: 40px;
+      padding-top: 10px;
+      margin: 0 auto;
+      background: #000000;
+      color: #ffffff;
     }
-    .review-right-side {
-        display: inline-block;
-        width: 90%;
-    
-        p {
-            text-align: left;
-        }
-        #review-author {
-            margin-bottom: 0;
-            color: $mainColor;
-        }
-        .star-rating-container {
-            #rating-empty-star-main, #rating-full-star-main {
-                height: 16px;
-                width: auto;
-                float: left;
-              }
-        }
-        #review-text::first-letter {
-            text-transform: uppercase;
-        }
-        #review-pros {
-            margin-bottom: 10px;
-        }
+  }
+  .review-right-side {
+    display: inline-block;
+    width: 90%;
+
+    p {
+      text-align: left;
+      font-family: HalyardTextBook;
+      font-size: 14px;
+      line-height: 16px;
+      color: #504f4f;
     }
+    #review-author {
+      margin-bottom: 0;
+      font-family: Halyard Text;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 28px;
+      color: #000000;
+    }
+    #review-date {
+      font-family: HalyardTextLight;
+      font-size: 16px;
+      line-height: 19px;
+      text-align: right;
+      color: #a8a8a8;
+    }
+    .star-rating-container {
+      #rating-empty-star-main,
+      #rating-full-star-main {
+        height: 12px;
+        width: auto;
+        float: left;
+        margin-right: 1px;
+      }
+    }
+    #review-text::first-letter {
+      text-transform: uppercase;
+    }
+    #review-pros {
+      margin-bottom: 10px;
+    }
+    .highlight {
+      font-family: Halyard Text;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 20px;
+      color: #000000;
+    }
+  }
 }
-
-
-
-

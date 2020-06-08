@@ -3,7 +3,9 @@ import { withRouter } from "react-router";
 import React, { useState, useCallback, useEffect } from "react";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
-
+import { Search, Grid, Header, Segment, Button } from "semantic-ui-react";
+import _ from "lodash";
+import { Link } from "react-router-dom";
 const initalTags = [
   "Frontend",
   "Backend",
@@ -18,37 +20,30 @@ const initalTags = [
   "Java",
   "Mobile",
   "C#",
-  "USA",
-  "Europe",
 ];
 
 const SearchBanner = (props) => {
-  const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(
-    localStorage.getItem("option") || ""
-  );
-  const [value, setValue] = useState('');
+  // const [selectedOption, setSelectedOption] = useState(
+  //   localStorage.getItem("option") || ""
+  // );
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState([]);
+  const [value, setValue] = useState("");
 
-  const [selectedTags, setSelectedTags] = useState(
-    JSON.parse(localStorage.getItem("tags")) || []
-  );
+  const [selectedTags, setSelectedTags] = useState([]);
 
   // side effect
   useEffect(() => {
-    localStorage.setItem("tags", JSON.stringify(selectedTags));
-    localStorage.setItem("option", selectedOption);
-  }, [selectedTags, selectedOption]);
-
-  const handleSearch = useCallback((query) => {
     setIsLoading(true);
-    fetch(`/api/search/options?q=${query}`)
+    fetch(`/api/search/options?q=${value}`)
       .then((resp) => resp.json())
       .then((options) => {
+        console.log("options", options);
         setOptions(options);
-        setIsLoading(false);
       });
-  });
+    setIsLoading(false);
+  }, [value]);
 
   const hanldeTagClick = (tagValue) => {
     let newArr = selectedTags.filter((tag) => tag === tagValue);
@@ -63,13 +58,13 @@ const SearchBanner = (props) => {
     }
   };
 
-  const handleOption = (option) => {
-    const strOption = option.join();
-    setSelectedOption(strOption);
-  };
-
   const handleSearchClick = (e) => {
+    const selectedOption = value;
 
+    // if(props.getData) {
+    //   props.getData(selectedOption, selectedTags);
+    // } else {
+    // }
     const redirectLocation = {
       pathname: "/results",
       search: "?category=search",
@@ -77,37 +72,44 @@ const SearchBanner = (props) => {
     };
 
     // TODO: temorary not a react way of solution
-    // if (selectedOption.length > 0 || selectedTags.length > 0) {
+    if (value.length > 0 || selectedTags.length > 0) {
       props.history.push(redirectLocation);
       window.location.reload();
-    // }
+    }
   };
 
-  console.log("props", props);
-  console.log("value", value);
+  const handleResultSelect = (e, { result }) => setValue(result.title);
 
-  const { path } = props.match;
-  console.log(path);
+  const handleSearchChange = (e, { value }) => {
+    // setIsLoading(true);
+    setValue(value);
+
+    const re = new RegExp(_.escapeRegExp(value), "i");
+    const isMatch = (result) => re.test(result.title);
+
+    // setIsLoading(false);
+    setResults(_.filter(options, isMatch));
+  };
+
+  // console.log("value", value);
+  // console.log("results", results);
+
   return (
     <div className="banner">
       <div className="search-input-wrapper">
-        <AsyncTypeahead
-          id="async-example"
-          isLoading={isLoading}
-          labelKey="login"
-          minLength={3}
-          onSearch={handleSearch}
-          options={options}
-          placeholder="Search Bootcamp Name"
-          onChange={handleOption}
+        <Search
+          loading={isLoading}
+          onResultSelect={handleResultSelect}
+          onSearchChange={_.debounce(handleSearchChange, 500, {
+            leading: true,
+          })}
+          results={results}
           value={value}
-          renderMenuItemChildren={(option, props) => (
-            <div className="options">
-              <span>{option}</span>
-            </div>
-          )}
+          placeholder="Search Bootcamp"
+          // {...props}
         />
         <div className="rsw">
+          {/* <Link to="results"> */}
           <button
             type="submit"
             value="submit"
@@ -115,6 +117,7 @@ const SearchBanner = (props) => {
             onClick={handleSearchClick}
             // onKeyPress
           ></button>
+          {/* </Link> */}
         </div>
       </div>
 

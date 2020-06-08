@@ -1,5 +1,5 @@
 @import "../../../style/config";
-@import './media';
+@import "./media";
 
 .remote-bootcamps-nav {
   display: flex;
@@ -8,12 +8,25 @@
   clear: both;
 
   h3 {
-    font-weight: 800;
-    font-size: 16px;
+    font-family: Halyard Text;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 42px;
+    color: #000000;
   }
   a {
-    font-weight: 800;
-    color: $mainColor;
+    font-family: Halyard Text;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: right;
+    color: #000000;
+    border-bottom: 2px solid #ff3746;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -25,15 +38,22 @@
   grid-column-gap: calc((100% - (180px * 4)) / 3);
   font-size: 14px;
 
+  .bootcamp-section {
+    margin-bottom: 10px;
+  }
   .bootcamp-logo-wrapper {
-    background-color: $secondBg;
-    position: relative;
+    background-color: #081432;
     vertical-align: top;
+    height: 140px;
+    width: 140px;
+    padding: 10px; // dirty hack to make logo look better on the center 1
+    overflow: hidden;
+    .logo-fke-brder {
+      border: 5px solid transparent; // dirty hack to make logo look better on the center 2
+    }
     img {
-      height: 180px;
-      width: 180px;
-      // object-fit: contain; 
-      border: 1px solid $secondBg;
+      height: 110px; // 140 - 10(padding) - 10(border)
+      width: 110px;
     }
   }
   .schoolnames-wrapper {
@@ -41,10 +61,14 @@
 
     .schoolnames {
       a {
-        text-decoration: none;
-        color: $secondColor;
+        font-family: Halyard Text;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 19px;
+        line-height: 27px;
+        color: #000000;
         &:hover {
-          color: #135a91;
+          color: #ff3746;
           transition: 0.3s linear;
         }
       }
@@ -56,21 +80,32 @@
     margin: 4px 0;
     text-align: left;
     .star-rating-container {
-        #rating-empty-star-main, #rating-full-star-main {
-          height: 14px;
-          width: auto;
-          float: left;
-        }
+      #rating-empty-star-main,
+      #rating-full-star-main {
+        height: 12px;
+        width: auto;
+        float: left;
+        margin-right: 1px;
+      }
     }
     .total-review-count {
-      color: $secondColor;
-      margin-left: 0.8em;
+      margin-left: 0.4em;
+      font-family: Halyard Text;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 17px;
+      color: #000000;
     }
   }
   .bootcamp-location {
     text-align: left;
     display: flex;
     flex-wrap: wrap;
+    font-family: HalyardTextBook;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
     img {
       height: 14px;
       width: auto;

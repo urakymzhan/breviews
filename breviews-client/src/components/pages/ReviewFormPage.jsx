@@ -112,9 +112,9 @@ class ReviewFormPage extends Component {
     if (!values.review) {
       errors.review = "Required";
     } else if (
-      values.review.split(" ").length < 20
+      values.review.split(" ").length < 15
     ) {
-      errors.review = "Please write at least 20 words";
+      errors.review = "Please write at least 15 words";
     }
     if (!values.email) {
       errors.email = "Required";
@@ -201,8 +201,11 @@ const ReviewForm = (props) => {
               className="review"
               name="review"
               type="textarea"
+              component="textarea"
+              rows={5} 
+              cols={20}
             />
-            <span className="input-footers">( 20 word minimum )</span>
+            <span className="input-footers">( 15 word minimum )</span>
             <ErrorMessage name="review" render={msg => <div className="form-errors">{msg}</div>} />
           </div>
           <div>
@@ -212,6 +215,7 @@ const ReviewForm = (props) => {
               placeholder="Share some pros of this bootcamp"
               name="pros"
               type="textarea"
+              component="textarea"
             />
           </div>
           <div>
@@ -221,6 +225,7 @@ const ReviewForm = (props) => {
               placeholder="Share some cons of this bootcamp"
               name="cons"
               type="textarea"
+              component="textarea"
             />
           </div>
           <div>

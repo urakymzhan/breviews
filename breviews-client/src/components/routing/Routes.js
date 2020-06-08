@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
-import { Team, Legal, Contact, ReviewFormPage, Results, Bootcamp, FormComplete, Landing, Blog, NotFoundPage } from "../pages";
+import { About, Legal, Contact, ReviewFormPage, Results, Bootcamp, FormComplete, Landing, Blog, NotFoundPage } from "../pages";
 
 const Routes = () => {
   return (
@@ -12,8 +12,8 @@ const Routes = () => {
         <Route exact path="/results">
           <Results />
         </Route>
-        <Route exact path="/team" >
-          <Team />
+        <Route exact path="/about" >
+          <About />
         </Route>
         <Route exact path="/legal" >
           <Legal />

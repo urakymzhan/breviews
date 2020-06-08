@@ -42,11 +42,11 @@ const ReviewsBox = (props) => {
           <p id="review-text">{user.review}</p>
 
           <div id="review-pros">
-            <p style={{color: "#000"}}>Pros: </p> 
+            <p className="highlight">Pros: </p> 
             <p>{"- " + user.pros}</p>
           </div>
           <div id="review-cons">
-            <p style={{color: "#000"}}>Cons: </p>
+            <p className="highlight">Cons: </p>
             <p>{"- " + user.cons}</p>
           </div>
 

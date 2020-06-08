@@ -12,9 +12,11 @@ const TopBootcamps = ({topBootcamps}) => {
         
         <div>
           
-          <div className="bootcamp-logo-wrapper">
-            <img src={bootcamp.logo} />
-          </div>
+        <figure className="bootcamp-logo-wrapper">
+            <div className="logo-fke-brder">
+              <img src={bootcamp.logo} />
+            </div>
+          </figure>
           
           <div className="schoolnames-wrapper">
             <h4 className="schoolnames">

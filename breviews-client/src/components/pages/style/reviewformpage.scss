@@ -53,14 +53,6 @@
     textarea::placeholder {
       color: $secondBg;
     }
-
-    .review {
-      height: 60px;
-    }
-    .pros,
-    .cons {
-      height: 30px;
-    }
     .acceptTerms {
       width: 15px;
       height: 15px;
@@ -78,6 +70,7 @@
     .checkbox {
       width: 10%;
       vertical-align: top;
+      border-radius: 5px;
     }
     .checkbox-label {
       width: 90%;
@@ -86,3 +79,5 @@
     }
   }
 }
+
+@import './media';

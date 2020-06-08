@@ -1,15 +1,14 @@
 .contact-page-wrapper {
-    padding: 200px 30px;
-    background: url('https://images.unsplash.com/photo-1491183672482-d0af0e44929d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-    background-repeat: no-repeat;
-    background-size: cover;
-
+    // padding: 200px 50px;
+    // padding-bottom:100px; /* Height of the footer element */
+    text-align:center;
     form {
         text-align: left;
         width: 400px;
         padding: 0.8em;
         font-size: 10px;
-
+        background-color: #000000;
+        border-radius: 4px;
         ul {
             list-style: none;
             padding: 0;
@@ -44,17 +43,14 @@
                 width: 100%;
                 padding: 0.4em;
                 margin-bottom: 0.8em;
-                border: thin solid #ed4b82;
                 border-radius: 4px;
-                background: #ed4b82;
-                color: #fff;
                 font-size: 12px;
                 text-transform: uppercase;
             };
-            // input:focus,
-            // textarea:focus {
-            //   border-color: #000;
-            // }
+            input:focus,
+            textarea:focus {
+            //   border-color: green;
+            }
         }
     }
 }

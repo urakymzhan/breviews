@@ -1,37 +1,46 @@
 @import "../../../style/config";
-@import "./media";
 
 #header-nav {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   background: transparent;
-  padding: 20px;
-  font-size: 12px;
+  padding: 20px 80px;
+  font-size: 15px;
+  color: #000000;
+
   ul {
+    padding: 0;
     list-style: none;
-    color: $mainColor;
+    font-family: Halyard Text;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 21px;
+    text-align: center;
   }
   a {
-    color: inherit;
+    color: #000000;
     text-decoration: none;
   }
-
-  #brlogo {
-    width: auto;
-    height: 30px;
+  .header-left {
+    display: flex;
+    flex-wrap: nowrap;
+    .leave-review {
+      margin-left: 1.6em;
+    }
+    .brlogo {
+      width: auto;
+      height: 40px;
+    }
   }
-  #header-logo {
-    float: left;
-  }
-
-  #leave-review {
-    float: left;
-    margin: 0.8em 1.2em auto 1.2em;
-  }
-
-  .lists {
-    float: left;
-    margin: 0.8em 1.2em auto auto;
+  .header-right {
+    display: flex;
+    flex-wrap: nowrap;
+    li {
+      margin-left: 1.6em;
+    }
   }
 }
+
+// Media
+@import "./media";

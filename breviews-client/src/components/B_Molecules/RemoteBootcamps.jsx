@@ -4,14 +4,15 @@ import "./style/remotebootcamps.scss";
 import { Ratings } from "../A_Atoms";
 
 const RemoteBootcamps = ({ remoteBootcamps }) => {
-  
   let content = remoteBootcamps.map((bootcamp) => {
     return (
       <div className="bootcamp-section" key={bootcamp._id}>
         <div>
-          <div className="bootcamp-logo-wrapper">
-            <img src={bootcamp.logo} />
-          </div>
+          <figure className="bootcamp-logo-wrapper">
+            <div className="logo-fke-brder">
+              <img src={bootcamp.logo} />
+            </div>
+          </figure>
 
           <div className="schoolnames-wrapper">
             <h4 className="schoolnames">
@@ -56,8 +57,8 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
         <h3>Remote Bootcamps</h3>
         <Link
           to={{
-            pathname: '/results',
-            search: "?category=remote"
+            pathname: "/results",
+            search: "?category=remote",
           }}
         >
           See all

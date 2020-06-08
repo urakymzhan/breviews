@@ -2,7 +2,7 @@ import Contact from './Contact.jsx';
 import Landing from './Landing.jsx';
 import Legal from './Legal.jsx';
 import Blog from './Blog.jsx';
-import Team from './Team.jsx';
+import About from './About.jsx';
 import ReviewFormPage from './ReviewFormPage.jsx';
 import Bootcamp from './Bootcamp.jsx';
 import Results from './Results.jsx';
@@ -14,7 +14,7 @@ export {
     Blog,
     Landing,
     Legal,
-    Team,
+    About,
     ReviewFormPage,
     Bootcamp,
     Results,

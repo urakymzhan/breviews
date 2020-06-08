@@ -1,15 +1,18 @@
 .main-wrapper {
     margin: 0;
     text-align: center;
+    padding-bottom: 100px; /* Height of the footer element */
 
     .container-bootcamps {
       width: 80%;
-      margin: 5em auto;
-      // background-color: greenyellow;
-      padding: 10px 5px;
+      margin: -40px auto 40px auto; // overlap
+      background-color: #fff;
+      padding: 20px 60px;
+      z-index: 1;
     }
     
   }
 
+  @import './media';
 
   

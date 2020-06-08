@@ -1,118 +1,50 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media (max-width: 736px) {
-  // Header
-  #header-nav {
-    display: block;
-    padding: 20px;
+  // Home
+  .main-wrapper {
+    padding-bottom: 140px;
 
-    .header-left {
-      justify-content: space-between;
-      .brlogo {
-        height: 30px;
-      }
-    }
-    .header-right {
-      justify-content: space-evenly;
-      li {
-        margin-left: 0;
-      }
-    }
-  }
-
-  // SearchBanner
-  .banner {
-    height: 200px;
-    min-height: 200px;
-
-    .search-input-wrapper {
-      width: 350px;
-      height: 30px;
-    }
-
-    .search-tags {
-      font-size: 8px;
-      width: 340px;
-      margin: 8px auto;
-
-      .tags {
-        letter-spacing: normal;
-        padding: 2px 6px;
-        margin: 2px;
-      }
-    }
-  }
-
-  // Footer
-  footer {
-    .ftr-s1 {
+    .container-bootcamps {
+      width: 90%;
+      margin: -20px auto 20px auto;
       padding: 20px;
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      .s1-s1 {
-        order: 2 !important;
+    }
+  }
+
+  // Results
+  .results-content-wrapper {
+    width: 100%;
+    padding: 0 10px 200px 10px;
+
+    .results-bootcamp-wrapper {
+      display: block;
+      margin-top: 20px;
+      border-bottom: 1px solid #ff3746;
+    }
+    .results-bootcamp-location {
+      margin: 0;
+    }
+    .results-bootcamp-dur-price { 
+      margin: 10px 0;
+      justify-content: flex-start;
+      .results-duration {
+        margin-right: 0;
       }
-      .s1-s2 {
-        order: 1 !important;
-        text-align: left;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        p {
-          padding: 0;
-          margin: 0;
-        }
-        .terms {
-          order: 2 !important;
-          align-self: flex-start;
-          flex: 0 1 auto;
-          margin-right: 5px;
-          color: #ff3746;
-        }
-        .pp {
-          order: 3 !important;
-          align-self: flex-start;
-          flex: 1 auto;
-          color: #e4faa6;
-        }
-        .copyright {
-          order: 1 !important;
-          clear: both;
-          flex-basis: 100%;
-          align-self: flex-start;
-        }
+    }
+    .results-bootcamp-addreview {
+      text-align: left;
+      button {
+        border: none;
+        background-color: inherit;
+        color: gray;
       }
     }
   }
 
-  // Top
-  .top-bootcamps-nav {
-    display: block;
-    h3 {
-      font-size: 26px;
-      line-height: 41px;
-    }
-  }
-  .top-bootcamps-list-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30%, 50%));
-    .bootcamp-section {
-      margin-bottom: 10px;
-    }
-  }
-
-  // Remote
-  .remote-bootcamps-nav {
-    display: block;
-    h3 {
-      font-size: 20px;
-      line-height: 32px;
-    }
-  }
-  .remote-bootcamps-list-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30%, 50%));
-    .bootcamp-section {
-      margin-bottom: 10px;
-    }
+  // reviewform
+  .review-form-container {
+    width: 80%;
+    margin: 5px auto;
   }
 }
 

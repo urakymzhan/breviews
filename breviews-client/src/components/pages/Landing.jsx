@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style/landing.scss";
 import { SkeletonLanding } from "../A_Atoms";
-import { TopBootcamps, RemoteBootcamps, SearchBanner } from "../B_Molecules";
+import { TopBootcamps, RemoteBootcamps, SearchBanner, Footer } from "../B_Molecules";
 
 const Landing = () => {
   // removed redux for now
@@ -48,6 +48,7 @@ const Landing = () => {
             <RemoteBootcamps remoteBootcamps={mainpageData.remoteBootcamps} />
           </React.Fragment>
         )}
+        
       </React.Fragment>
     );
   }

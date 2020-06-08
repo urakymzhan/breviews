@@ -13,13 +13,13 @@ const Ratings = ({ classname, overall}) => {
             emptySymbol={
             <img
                 id="rating-empty-star-main"
-                src="../../public/assets/rating-off.png"
+                src="../../public/assets/empty-circle.svg"
             />
             }
             placeholderSymbol={
             <img
                 id="rating-full-star-main"
-                src="../../public/assets/rating-on.png"
+                src="../../public/assets/full-circle.svg"
             />
             }
             readonly

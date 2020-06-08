@@ -1,18 +1,49 @@
 @import "../../../style/config";
-@import "./media";
 
 footer {
-  padding: 2em;
-  background: #788b95;
-  font-size: 12px;
+  background: #000000;
   color: $mainWhite;
-  text-align: center;
+  width: 100%;
+  // height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
 
-  p {
-    margin: 5px;
-    font-size: 10px;
+  .ftr-fake-brder {
+    height: 10px;
+    background: #e4faa6;
+    width: 100%;
+    border-top: 1px solid #000000;
+  }
+  .ftr-fake-brder::after {
+    content: "";
+  }
+  .ftr-fake-brder::before {
+    content: "";
+  }
+  .ftr-s1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 80px;
+
+    .s1-s1 {
+      flex: 1;
+      text-align: left;
+    }
+    .s1-s2 {
+      display: flex;
+      flex: 2;
+      justify-content: space-evenly;
+    }
   }
   a {
     color: inherit;
   }
 }
+
+// MEDIA 
+@import "./media";

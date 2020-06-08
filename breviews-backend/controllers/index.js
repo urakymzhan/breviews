@@ -2,7 +2,7 @@
 const { findLandinPageData, findBootcampPageData, findSearchOptions, findResultsCategory, findAndUpdateReviews } = require('../services');
 const HttpError = require('../models/http-errors');
 const { validationResult } = require('express-validator');
-
+const _ = require('lodash');
 
 const getLandingPageData = async (req, res, next) => {
     try {
@@ -21,7 +21,7 @@ const getLandingPageData = async (req, res, next) => {
         const maxCount = 4;
         topBootcamps = topBootcamps.slice(0, maxCount);
         remoteBootcamps = remoteBootcamps.slice(0, maxCount);
-        
+
         const finalLanding = {
             topBootcamps,
             remoteBootcamps
@@ -91,16 +91,22 @@ const getSearchOptions = async (req, res, next) => {
     try {
         const customNamesObj = await findSearchOptions();
 
+
         if (!customNamesObj) {
             return next(
                 new HttpError('Could not find any options for this search input. Please try later', 404)
             );
         }
-        const customNamesArr = customNamesObj.map(obj => { return obj.customName });
-        res.json(customNamesArr);
+        // Because semantic-ui Search requires to have title!
+        const customArr = customNamesObj.map(obj => { return obj.customName });
+        const customResult = customArr.reduce((result, key) => {
+                result.push({ 'title': key})
+                return result;
+            }, []);
+
+        res.json(customResult);
 
     } catch (err) {
-        console.error(err.message);
         return next(
             new HttpError('Server Error', 500)
         );
@@ -108,11 +114,8 @@ const getSearchOptions = async (req, res, next) => {
 }
 
 const getResultsCategory = async (req, res, next) => {
-    var tags = req.query;
-    console.log(tags);
-
     try {
-        const query = req.query.search; 
+        const query = req.query.search;
         const resultsData = await findResultsCategory();
 
         if (!resultsData) {

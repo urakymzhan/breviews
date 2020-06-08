@@ -1,5 +1,7 @@
 import React from "react";
 import './style/contact.scss';
+import { Footer } from '../B_Molecules';
+
 class Contact extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +9,6 @@ class Contact extends React.Component {
   render() {
     return (
       <div className="contact-page-wrapper">
-        <div>
           <form>
             <ul>
               <li>
@@ -40,7 +41,6 @@ class Contact extends React.Component {
               </li>
             </ul>
           </form>
-        </div>
       </div>
     );
   }

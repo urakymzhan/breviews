@@ -2,7 +2,8 @@
 
 .results-content-wrapper {
   width: 60%;
-  margin: 60px auto;
+  margin: 20px auto 0 auto;
+  padding-bottom: 120px; /* Height of the footer element */
 
   .error {
     color: red;
@@ -31,16 +32,19 @@
     margin-top: 40px;
     grid-column-gap: 40px;
   }
-  .results-bootcamp-logo {
-    text-align: left;
-    background: $secondBg;
-    border: 1px solid $secondBg;
-    position: relative;
+  .results-bootcamp-logo  {
+    background-color: #081432;
+    vertical-align: top;
+    height: 140px;
+    width: 170px;
+    padding: 10px; // dirty hack to make logo look better on the center 
+    overflow: hidden;
+    .logo-fke-brder {
+      border: 5px solid transparent; // dirty hack to make logo look better on the center 
+    }
     img {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      /* object-fit: contain; */
+      height: 110px; // 140 - 20(padding) - 10(border)
+      width: 140px;  // 170 - 20(padding) - 10(border)
     }
   }
 
@@ -66,9 +70,10 @@
       margin: 0 10px 4px 0;
       #rating-empty-star-main,
       #rating-full-star-main {
-        height: 14px;
+        height: 12px;
         width: auto;
         float: left;
+        margin-right: 1px; 
       }
     }
   }
@@ -93,3 +98,6 @@
     }
   }
 }
+
+// Media
+@import './media';

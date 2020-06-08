@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./style/results.scss";
 import { withRouter, Link, useLocation } from "react-router-dom";
-import { Spinner, Ratings, SkeletonResults } from "../A_Atoms";
+import { Ratings, SkeletonResults } from "../A_Atoms";
 import { SearchBanner } from "../B_Molecules";
-import queryString from 'query-string'
-// import axios from "axios";
+import queryString from "query-string";
 
 const Results = (props) => {
   const [resultsData, setResultsData] = useState([]);
@@ -15,6 +14,8 @@ const Results = (props) => {
   const query = queryString.parse(loc.search).category;
   // const selectedTags = props.location.state.selectedTags;
   // const selectedOption = props.location.state.selectedOption;
+  // const [selectedOption, setSelectedOption] = useState("");
+  // const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +33,7 @@ const Results = (props) => {
         const resData = await response.json();
 
         if (!response.ok) {
-          // makes sure to go catch block 
+          // makes sure to go catch block
           throw new Error(resData.message);
         }
         setResultsData(resData);
@@ -51,7 +52,14 @@ const Results = (props) => {
     setSortValue(e.target.value);
   };
 
-  console.log("selectedTags and sO results", props.location.state);
+  // console.log("selectedTags and sO results", props.location.state);
+
+  // const getData = (selectedOption, selectedTags) => {
+  //   console.log("selectedOption", selectedOption)
+  //   console.log("selectedTags", selectedTags)
+  //   setSelectedOption(selectedOption);
+  //   setSelectedTags(selectedTags);
+  // }
 
   // client side sort
   if (sortVal === "toprated") {
@@ -81,9 +89,11 @@ const Results = (props) => {
         {resultsData.map((results) => {
           return (
             <div className="results-bootcamp-wrapper" key={results._id}>
-              <div className="results-bootcamp-logo">
+              <figure className="results-bootcamp-logo">
+                <div className="logo-fke-brder">
                 <img src={results.logo} alt="bootcamp logo" />
-              </div>
+                </div>
+              </figure>
               <div className="results-bootcamp-info">
                 <Link to={`/bootcamps/${results.schoolname}`}>
                   <h4>{results.customName}</h4>
@@ -111,14 +121,13 @@ const Results = (props) => {
                 </p>
                 <div className="results-bootcamp-dur-price">
                   <p className="results-duration">
-                    <span>Duration:</span> {results.duration}
+                    <span style={{fontWeight: "900"}}>Duration:</span> {results.duration}
                   </p>
                   <p>
-                    <span>Price:</span> {results.price}
+                    <span style={{fontWeight: "900"}}>Price:</span> {results.price}
                   </p>
                 </div>
               </div>
-
               <div className="results-bootcamp-addreview">
                 <Link
                   to={{

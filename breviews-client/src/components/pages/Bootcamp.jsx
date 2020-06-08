@@ -20,11 +20,10 @@ const Bootcamp = (props) => {
   const [offset, setOffset] = useState(5);
   const [activePage, setActivePage] = useState(1);
 
-  const [sortVal, setSortValue] = useState('newest');
+  const [sortVal, setSortValue] = useState("newest");
 
   useEffect(() => {
     dispatch(getBootcampData(name));
-
   }, []);
 
   const handlePageChange = (pageNumber) => {
@@ -33,7 +32,7 @@ const Bootcamp = (props) => {
 
   const handleSort = (e) => {
     setSortValue(e.target.value);
-  }
+  };
 
   console.log("localData from Bootcamp", localData);
   console.log("sortVal", sortVal);
@@ -42,17 +41,20 @@ const Bootcamp = (props) => {
   const start = (activePage - 1) * offset;
   const end = activePage * offset;
 
-  // client side sort 
-  if (sortVal === 'newest' && localData && localData.length > 0) {
-    localData[0].reviews = localData[0].reviews.sort((a,b) => new Date(a.date) < new Date(b.date) ? 1 : -1);
+  // client side sort
+  if (sortVal === "newest" && localData && localData.length > 0) {
+    localData[0].reviews = localData[0].reviews.sort((a, b) =>
+      new Date(a.date) < new Date(b.date) ? 1 : -1
+    );
+  } else if (sortVal === "oldest" && localData && localData.length > 0) {
+    localData[0].reviews = localData[0].reviews.sort((a, b) =>
+      new Date(a.date) > new Date(b.date) ? 1 : -1
+    );
+  } else if (sortVal === "highestrating") {
+    localData[0].reviews = localData[0].reviews.sort((a, b) => b.star - a.star);
+  } else if (sortVal === "lowestrating") {
+    localData[0].reviews = localData[0].reviews.sort((a, b) => a.star - b.star);
   }
-  else if (sortVal === 'oldest' && localData && localData.length > 0) {
-    localData[0].reviews = localData[0].reviews.sort((a,b) => new Date(a.date) > new Date(b.date) ? 1 : -1);
-  } else if (sortVal === 'highestrating'){
-    localData[0].reviews = localData[0].reviews.sort((a,b) => b.star - a.star);
-  } else if (sortVal === 'lowestrating'){
-    localData[0].reviews = localData[0].reviews.sort((a,b) => a.star - b.star);
-  } 
   return (
     <Fragment>
       {localData && localData.length === 0 ? (
@@ -60,73 +62,83 @@ const Bootcamp = (props) => {
       ) : (
         <div className="reviews-content-wrapper">
           <div className="bootcamps-header">
-            <div className="bootcamp-logo">
-              <img src={localData[0].logo} alt="company logo" />
-            </div>
-            
-            <div className="bootcamp-info">
-              <h3 style={{ color: "#000" }}>
-                {localData[0].customName}{" "}
-                <a href={localData[0].website} target="_blank">
-                  <img
-                    src="https://cdn1.iconfinder.com/data/icons/feather-2/24/external-link-512.png"
-                    style={{ height: "16px", width: "auto" }}
+            <div className="bootcamps-header-container">
+              <div className="logo-wraper">
+                <div className="bootcamp-logo">
+                  <div className="logo-fke-brder">
+                    <img src={localData[0].logo} alt="company logo" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="bootcamp-info">
+                <div className="bootcamp-info-row0">
+                  <h3>
+                    {localData[0].customName}{" "}
+                    <a href={localData[0].website} target="_blank">
+                      <img src="https://cdn1.iconfinder.com/data/icons/feather-2/24/external-link-512.png" />
+                    </a>
+                  </h3>
+                </div>
+                <div className="bootcamp-info-row1">
+                  <Ratings
+                    classname="star-rating-container"
+                    overall={localData[0].overall}
                   />
-                </a>
-              </h3>
-              <div className="bootcamp-info-row1">
-                <Ratings
-                  classname="star-rating-container"
-                  overall={localData[0].overall}
-                />
-                <p>{localData[0].reviewsCount} reviews</p>
-                <p>
-                  <img
-                    src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png"
-                    style={{
-                      height: "12px",
-                      width: "auto",
-                      marginRight: "5px",
-                      verticalAlign: "baseline",
-                    }}
-                  />
-                  {localData[0].location.map((loc, ind) => (
-                    <span key={ind}>{loc} </span>
-                  ))}
-                </p>
-              </div>
-              <div className="bootcamp-info-row2">
-                {localData[0].tags &&
-                  localData[0].tags.map((tag, i) => {
-                    return <button key={i}>{tag}</button>;
-                  })}
-              </div>
-              <div className="bootcamp-info-row3">
-                <p>
-                  <span>Duration: </span> {localData[0].duration}
-                </p>
-                <p>
-                  <span>Price: </span> {localData[0].price}
-                </p>
-              </div>
-              {/* <SortReviews /> */}
-              <div className="srt-div">
-                <span>Sort by: </span>
-                <select className="sortby-reviews" value={sortVal} onChange={handleSort}>
-                  <option value="newest">Newest</option>
-                  <option value="oldest">Oldest</option>
-                  <option value="highestrating">Highest rating</option>
-                  <option value="lowestrating">Lowest rating</option>
-                </select>
+                  <p className="total-reviews-cnt">
+                    {localData[0].reviewsCount} reviews
+                  </p>
+                  <p>
+                    <img
+                      src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png"
+                      style={{
+                        height: "12px",
+                        width: "auto",
+                        marginRight: "5px",
+                        verticalAlign: "baseline",
+                      }}
+                    />
+                    {localData[0].location.map((loc, ind) => (
+                      <span key={ind} className="location">
+                        {" "}
+                        {loc}{" "}
+                      </span>
+                    ))}
+                  </p>
+                </div>
+                <div className="bootcamp-info-row2">
+                  {localData[0].tags &&
+                    localData[0].tags.map((tag, i) => {
+                      return (
+                        <button key={i} className="row2-tags">
+                          {tag}
+                        </button>
+                      );
+                    })}
+                </div>
+                <div className="bootcamp-info-row3">
+                  <p>
+                    <span>Duration: </span> {localData[0].duration}
+                  </p>
+                  <p>
+                    <span>Price: </span> {localData[0].price}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="reviews-main">
             <div className="aside-wrapper">
+            <div className="reviews-progress-bars">
+                    <p>Will Fill Out Later</p>
+              </div>
               <div className="bootcamp-write-a-review">
                 <h6>Write a Review</h6>
                 <p>Have you completed {localData[0].customName}?</p>
+                <p>
+                  Submit a review and tell us about your experience?
+                </p>
                 <p>
                   We may take down any review that we think is fake or that
                   doesn’t follow our
@@ -145,6 +157,20 @@ const Bootcamp = (props) => {
 
             <div className="reviews-content">
               <div className="customer-reviews">
+                              {/* <SortReviews /> */}
+              <div className="srt-div">
+                <span>Sort by: </span>
+                <select
+                  className="sortby-reviews"
+                  value={sortVal}
+                  onChange={handleSort}
+                >
+                  <option value="newest">Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="highestrating">Highest rating</option>
+                  <option value="lowestrating">Lowest rating</option>
+                </select>
+              </div>
                 <div>
                   {localData[0].reviews.length === 0 ? (
                     <div>

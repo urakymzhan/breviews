@@ -1,28 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import brlogo from "../../../public/assets/brlogo3.png";
+import brlogo from "../../../public/assets/Logo_placeholder.png";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 
 import "./style/header.scss";
 
-const Header = props => {
+const Header = ({ location }) => {
 
-    const { location } = props;
-    const bgcolor =
-      location.pathname === "/" || location.pathname.includes("results")
-        ? { background: "#d7d7d7" }
+    const flexibleBgColor =
+      location.pathname === "/" || location.pathname.includes("results") || location.pathname.includes("bootcamps")
+        ? { background: "linear-gradient(180deg, #E7F3E7 61.98%, #E7F3E7 78.88%)" }
         : { background: "#fff" };
     return (
-      <header style={bgcolor}>
+      <header style={flexibleBgColor}>
         <nav id="header-nav">
-          <ul>
-            <li id="header-logo">
+          <ul className="header-left">
+            <li>
               <Link to="/" className="links">
-                <img id="brlogo" src={brlogo} />
+                <img className="brlogo" src={brlogo} />
               </Link>
             </li>
-            <li id="leave-review">
+            <li className="leave-review">
               <Link
                 to={{
                   pathname: '/results',
@@ -34,7 +33,8 @@ const Header = props => {
               </Link>
             </li>
           </ul>
-          <ul>
+         
+          <ul className="header-right">
             <li className="lists">
               <a
                 href="https://www.patreon.com/user?u=35633615"
@@ -45,8 +45,8 @@ const Header = props => {
               </a>
             </li>
             <li className="lists">
-              <Link to="/blog" className="links">
-                Blog
+              <Link to="/about" className="links">
+                About
               </Link>
             </li>
             <li className="lists">
