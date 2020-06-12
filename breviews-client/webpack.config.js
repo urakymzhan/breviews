@@ -40,21 +40,11 @@ module.exports = {
             options: {
               name: "[name].[hash].[ext]",
               // TODO
-              outputPath: "assets",
+              outputPath: "assets/",
             }
           },
         ],
       },
     ]
-  },
-  devServer: {
-    // helps on reloading pages
-    historyApiFallback: true,
-    port: 8080,
-    // proxying backend api
-    proxy: { "/api": "http://localhost:5000" },
-    // contentBase: path.join(__dirname, 'dist'),
-    // compress: true,
-    // publicPath: '/assets/'
-  },
+  }
 };

@@ -34,7 +34,6 @@ const getLandingPageData = async (req, res, next) => {
         res.json(finalLanding);
 
     } catch (err) {
-        // TODO: maybe also use custom HttpError here ?
         console.error(err.message);
         return next(
             new HttpError('Server Error', 500)
@@ -97,14 +96,14 @@ const getSearchOptions = async (req, res, next) => {
                 new HttpError('Could not find any options for this search input. Please try later', 404)
             );
         }
-        // Because semantic-ui Search requires to have title!
+        // Because semantic-ui Search requires to have title!!!
         const customArr = customNamesObj.map(obj => { return obj.customName });
-        const customResult = customArr.reduce((result, key) => {
+        const resultWithTitle = customArr.reduce((result, key) => {
                 result.push({ 'title': key})
                 return result;
             }, []);
 
-        res.json(customResult);
+        res.json(resultWithTitle);
 
     } catch (err) {
         return next(

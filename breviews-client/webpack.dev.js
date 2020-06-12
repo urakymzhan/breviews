@@ -2,10 +2,14 @@ const path = require("path");
 const common = require('./webpack.config');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const dotenv = require('dotenv');
+const env = dotenv.config().parsed;
+const webpack = require('webpack');
 
 
 module.exports = merge(common, {
   mode: "development",
+  devtool: 'eval-source-map',
   output: {
     filename: "bundle.js", 
     path: path.resolve(__dirname, "dist"),
@@ -16,7 +20,11 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
       favicon: './public/sample.ico'
-    })
+    }),
+    // env variables
+    new webpack.DefinePlugin({ 
+      'process.env.API_URL': JSON.stringify(`${env.API_URL}`)
+    }),
   ],
   module: {
     rules: [
@@ -32,7 +40,7 @@ module.exports = merge(common, {
           {
             loader: 'sass-loader',
             options: {
-              // Prefer `dart-sass`
+              // prefer `dart-sass`
               implementation: require('sass'),
               sassOptions: {
                 fiber: false,
@@ -42,5 +50,15 @@ module.exports = merge(common, {
         ],
       },
     ]
-  }
+  },
+  devServer: {
+    // helps on reloading pages
+    historyApiFallback: true,
+    port: 8080,
+    // proxying backend api
+    proxy: { "/api": "https://ba-backend.herokuapp.com" },
+    // contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    // publicPath: '/assets/'
+  },
 });

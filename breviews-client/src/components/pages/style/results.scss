@@ -7,23 +7,23 @@
 
   .error {
     color: red;
-    font-weight: 800;
-    margin-top: 20px;
+    font-weight: 900;
+    margin-top: 50px;
   }
   .results-content-navbar {
     display: flex;
     justify-content: space-between;
 
     .results-all-results {
-      font-weight: 800;
+      font-weight: 900;
       font-size: 16px;
     }
     .results-sortby select {
-      // border: none;
-      // -webkit-appearance: none;
-      font-weight: 800;
-      height: 100%;
-      border: 1px solid $secondBg;
+      font-weight: 900;
+      -webkit-appearance: menulist;
+      background-color: inherit;
+      border: none;
+      border-bottom: 2px solid #FF3746;
     }
   }
   .results-bootcamp-wrapper {

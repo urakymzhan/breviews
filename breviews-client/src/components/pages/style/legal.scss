@@ -4,8 +4,10 @@
     text-align: left;
     font-family: Roboto,arial,sans-serif;
     font-size: 12px;
+    padding: 20px 80px;
 
     section {
-        padding: 4em 6em;
+        margin-bottom: 20px;
     }
   };
+@import './media';

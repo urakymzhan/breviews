@@ -36,7 +36,7 @@ const SearchBanner = (props) => {
   // side effect
   useEffect(() => {
     setIsLoading(true);
-    fetch(`/api/search/options?q=${value}`)
+    fetch(`${process.env.API_URL}/search/options?q=${value}`)
       .then((resp) => resp.json())
       .then((options) => {
         console.log("options", options);

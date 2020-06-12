@@ -1,7 +1,7 @@
 # bootcampAvenue
 
-> personal bootcampAvenue project
+> bootcampAvenue project
 
-### run:
+### locally:
 - from breviews-backend
 - npm run dev

@@ -2,13 +2,14 @@
   "name": "breviews",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "13.x"
+  },
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server",
     "client": "npm start --prefix ../breviews-client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd ../breviews-client && npm install && npm run build",
-    "debug": "node --nolazy --inspect-brk=9229 app.js"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "concurrently": "^5.2.0",
@@ -21,8 +22,7 @@
     "http-proxy-middleware": "^1.0.3",
     "lodash": "^4.17.15",
     "mongodb": "^3.5.7",
-    "mongoose": "^5.9.12",
-    "monk": "^7.2.0"
+    "mongoose": "^5.9.12"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

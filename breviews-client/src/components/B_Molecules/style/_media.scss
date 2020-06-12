@@ -1,21 +1,10 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media (max-width: 736px) {
   // Header
-  #header-nav {
-    display: block;
-    padding: 20px;
-
-    .header-left {
-      justify-content: space-between;
-      .brlogo {
-        height: 30px;
-      }
-    }
-    .header-right {
-      justify-content: space-evenly;
-      li {
-        margin-left: 0;
-      }
+  .navbar {
+    padding: 20px!important;
+    #leave-review {
+      font-weight: 900;
     }
   }
 

@@ -23,7 +23,7 @@ const Results = (props) => {
       setError("");
       try {
         // POST
-        const response = await fetch(`/api/results?search=${query}`, {
+        const response = await fetch(`${process.env.API_URL}/results?search=${query}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -77,10 +77,11 @@ const Results = (props) => {
     content = <div className="error">{error}</div>;
   } else if (isLoading) {
     content = <SkeletonResults />;
-  } else if (resultsData.length === 0) {
+  } else if (!resultsData) {
     content = (
       <div className="error">
-        No Results found! Please try with different keys.
+        No Results found! <br/>
+        Please try with different keys.
       </div>
     );
   } else {

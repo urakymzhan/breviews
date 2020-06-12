@@ -7,8 +7,10 @@
 
   .bootcamps-header {
     background: linear-gradient(180deg, #e7f3e7 61.98%, #d6eee5 94.27%);
-    height: 300px;
+    // height: 300px;
+    min-height: 300px;
     padding-top: 50px;
+    // border: 1px solid;
 
     .bootcamps-header-container {
       display: grid;
@@ -16,6 +18,7 @@
       column-gap: 40px;
       width: 80%;
       margin: 0 auto;
+      // border: 1px solid red;
     }
     .logo-wraper {
       .bootcamp-logo {
@@ -50,7 +53,7 @@
         // padding: 5px 0;
       }
       .bootcamp-info-row0 {
-        margin-bottom: -20px;
+        margin-bottom: -10px;
         h3 {
           font-family: Halyard Text;
           font-style: normal;
@@ -139,10 +142,14 @@
       .reviews-progress-bars {
         background: #ffffff;
         width: 300px;
-        height: 152px;
+        min-height: 152px;
         margin-bottom: 10px;
-        padding-top: 20px;
+        padding: 10px;
         
+        .progressbar-grid {
+          display: grid; 
+          grid-template-columns: 1fr 1fr 2fr;
+        }
         p {
           font-family: Halyard Text;
           font-style: normal;
@@ -150,6 +157,27 @@
           font-size: 18px;
           line-height: 18px;
           color: #000000;
+        }
+        .rating-numbers {
+          padding-right: 20px;
+        }
+        .star-rating-container {
+          // width: 100%;
+          #rating-empty-star-main,
+          #rating-full-star-main {
+            height: 10px;
+            width: auto;
+            float: left;
+            margin-right: 1px;
+          }
+        }
+        .progress {
+          height: 10px;
+          // border: 1px solid;
+          align-self: center;
+          .progress-bar {
+            background-color: #000000;
+          }
         }
       }
       .bootcamp-write-a-review {
@@ -174,6 +202,8 @@
           font-size: 14px;
           line-height: 16px;
           color: #000000;
+          // border: 1px solid;
+          // margin: 10px 0;
         }
         a {
           text-decoration: none;
@@ -200,12 +230,16 @@
         align-self: end;
         select {
           // from semantic-ui
-          border-color: #000000;
           font-weight: bold;
           -webkit-appearance: menulist;
           background-color: inherit;
-          // border: none;
+          border: none;
+          border-bottom: 2px solid #FF3746;
         }
+      }
+      .empty-review-text {
+        margin: 20px 0;
+        color: #ff0000;
       }
     }
   }
@@ -232,3 +266,5 @@
   border-color: #000000;
   color: #ffffff;
 }
+
+@import './media';

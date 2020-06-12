@@ -6,9 +6,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const dotenv = require('dotenv');
+const env = dotenv.config().parsed;
+const webpack = require('webpack');
 
 module.exports = merge(common, {
   mode: "production",
+  devtool: 'source-map',
   output: {
     // cache busting
     filename: "bundle.[contentHash].js", 
@@ -35,7 +39,11 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({ filename: 'bundle.[contentHash].css'}), 
     // cleaning up dist folder to use only one bundle on each build
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+     //env variables
+     new webpack.DefinePlugin({ 
+       'process.env.API_URL': JSON.stringify(`${env.API_URL}`)
+      }),
   ],
   module: {
     rules: [
@@ -52,22 +60,11 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.s?css$/,
-        oneOf: [
-          {
-            test: /\.module\.s?css$/,
-            use: [
-              MiniCssExtractPlugin.loader,
-              {
-                loader: "css-loader",
-                options: { modules: true, exportOnlyLocals: false }
-              },
-              "sass-loader"
-            ]
-          },
-          {
-            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-          }
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
         ]
       }
     ]

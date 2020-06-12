@@ -1,14 +1,11 @@
 .contact-page-wrapper {
-    // padding: 200px 50px;
-    // padding-bottom:100px; /* Height of the footer element */
-    text-align:center;
     form {
-        text-align: left;
-        width: 400px;
+        width: 50%;
         padding: 0.8em;
         font-size: 10px;
-        background-color: #000000;
         border-radius: 4px;
+        margin: 50px auto;
+        border: thin solid #000000;
         ul {
             list-style: none;
             padding: 0;
@@ -20,7 +17,7 @@
                 width: 100%;
                 padding: 0.8em;
                 margin-bottom: 0.8em;
-                border: thin solid #e5e5e5;
+                border: thin solid #000000;
                 border-radius: 4px;
             }
 
@@ -31,7 +28,7 @@
                 padding: 0.8em;
                 min-height: 5em;
                 margin-bottom: 0.8em;
-                border: thin solid #e5e5e5;
+                border: thin solid #000000;
                 border-radius: 4px;
                 vertical-align: top;
                 resize: none;
@@ -39,20 +36,23 @@
 
             button {
                 outline: none;
-                border: none;
+                border: thin solid #000000;
                 width: 100%;
                 padding: 0.4em;
                 margin-bottom: 0.8em;
                 border-radius: 4px;
                 font-size: 12px;
                 text-transform: uppercase;
+                background-color: #000000;
+                color: #fff;
             };
             input:focus,
             textarea:focus {
-            //   border-color: green;
+              border-color: gray;
             }
         }
     }
 }
 
+@import 'media.scss';
 

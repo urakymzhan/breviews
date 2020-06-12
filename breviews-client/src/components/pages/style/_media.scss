@@ -43,10 +43,132 @@
 
   // reviewform
   .review-form-container {
-    width: 80%;
-    margin: 5px auto;
+    width: 100%;
+    padding: 20px;
+  }
+
+  // bootcamp
+  .reviews-content-wrapper {
+    padding-bottom: 150px; 
+  
+    .bootcamps-header {
+      padding: 10px 20px;
+      .bootcamps-header-container {
+        display: block;
+        width: 100%;
+      }
+      .logo-wraper {
+        .bootcamp-logo {
+          height: 100px;
+          width: 100px;
+          img {
+            height: 80px; // 100 - 10(padding) - 10(border)
+            width: 80px; // 100 - 10(padding) - 10(border)
+          }
+        }
+      }
+      .bootcamp-info {
+        .bootcamp-info-row0 {
+          margin-bottom: 0;
+        }
+        .bootcamp-info-row1 {
+          p {
+            margin-right: 20px;
+          }
+        }
+        .bootcamp-info-row2 {
+          margin: 10px 0;
+          .row2-tags {
+            margin-right: 5px;
+          }
+        }
+        .bootcamp-info-row3 {
+          p {
+            margin: 0 20px 0 0;
+          }
+        }
+      }
+    }
+    // reviews content
+    .reviews-main {
+      padding: 10px 0;
+      display: block;
+
+      .aside-wrapper {
+        .reviews-progress-bars {
+          width: 100%;
+          .progressbar-grid {
+            grid-template-columns: 1fr 1fr 3fr;
+          }
+        }
+        .bootcamp-write-a-review {
+          padding: 20px;
+          width: 100%;
+          margin-bottom: 10px;
+          h6 {
+            font-size: 20px;
+            line-height: 30px;
+          }
+          p {
+            margin: 6px 0;
+          }
+          button {
+            width: 100%;
+            background-color: #fff;
+            color: #000000;
+            border: 1px solid #000000;
+            border-radius: 4px;
+          }
+
+        }
+      }
+      .reviews-content {
+        padding: 10px;
+      }
+    }
+  }
+  // pagination
+
+  // reviewbox
+  .review-wrapper {
+  .reviews-cnt {
+    padding-left: 0;
   }
 }
+
+// about
+.team-wrapper {
+  padding: 10px 20px 200px 20px;
+  .leader-board {
+    display: block;
+    margin-bottom: 50px;
+  }
+  hr {
+    width: 60%;
+  }
+}
+// contact
+.contact-page-wrapper {
+  form {
+      width: 80%;
+      margin-top: 100px;
+    }
+  }
+
+  // terms 
+  .legal-wrapper {
+    padding: 20px;
+    padding-bottom: 200px;
+  };
+
+  // form complete
+  .form-complete-content-wrapper {
+    padding: 100px 20px;
+}
+
+}
+
+
 
 //   /* Smartphones (landscape) ----------- */
 //   @media only screen and (min-width : 321px) {

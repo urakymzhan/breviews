@@ -15,7 +15,7 @@ const Landing = () => {
       setIsLoading(true);
       setError("");
       try {
-        const response = await fetch("/api/landing", {
+        const response = await fetch(`${process.env.API_URL}/landing`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });

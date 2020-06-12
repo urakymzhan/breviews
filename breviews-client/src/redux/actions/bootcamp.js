@@ -8,7 +8,7 @@ import {
 
 export const getBootcampData = name => async dispatch => {
     try {
-        const res = await axios.get(`/api/bootcamps/${name}`);
+        const res = await axios.get(`${process.env.API_URL}/bootcamps/${name}`);
 
         dispatch({
             type: BOOTCAMP_DATA_LOADED,

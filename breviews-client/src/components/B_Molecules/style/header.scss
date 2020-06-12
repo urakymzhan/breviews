@@ -1,45 +1,37 @@
 @import "../../../style/config";
 
-#header-nav {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  background: transparent;
-  padding: 20px 80px;
+.navbar {
+  padding: 20px 80px!important;
   font-size: 15px;
   color: #000000;
 
-  ul {
-    padding: 0;
-    list-style: none;
-    font-family: Halyard Text;
-    font-style: normal;
-    font-weight: bold;
-    line-height: 21px;
-    text-align: center;
+  .brlogo {
+    width: auto;
+    height: 38px;
   }
-  a {
+  #leave-review {
+    margin-left: 1.6em;
     color: #000000;
-    text-decoration: none;
   }
-  .header-left {
-    display: flex;
-    flex-wrap: nowrap;
-    .leave-review {
+
+  .navbar-nav {
+    .nav-link {
+      color: #000000!important;
+      text-decoration: none;
       margin-left: 1.6em;
-    }
-    .brlogo {
-      width: auto;
-      height: 40px;
-    }
-  }
-  .header-right {
-    display: flex;
-    flex-wrap: nowrap;
-    li {
-      margin-left: 1.6em;
+      &:hover {
+        border-bottom: 0.1px solid;
+      }
     }
   }
+    // burger
+    .navbar-toggler.collapsed {
+      color: #000000!important;
+      border-color: #000000!important;
+    }
+      .navbar-toggler-icon {
+      background-image: url('../../../../public/assets/burger.png')!important;
+    }
 }
 
 // Media

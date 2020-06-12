@@ -5,6 +5,10 @@ import { withRouter } from "react-router";
 import Rating from "react-rating";
 import "./style/reviewformpage.scss";
 import * as Yup from 'yup';
+// import ratingOff from '../../../public/assets/rating-off.png';
+// import ratingOn from '../../../public/assets/rating-on.png';
+import fullLogo from '../../../public/assets/full-circle.svg';
+import emptyLogo from '../../../public/assets/empty-circle.svg';
 
 // Star rating value doesnt work with yup right now
 // const ReviewFormSchema = Yup.object().shape({
@@ -41,13 +45,13 @@ const MyStarInput = ({ratingVal, handleStar, ...props}) => {
           emptySymbol={
             <img
               id="rating-empty-star"
-              src="../../public/assets/rating-off.png"
+              src={emptyLogo}
             />
           }
           fullSymbol={
             <img
               id="rating-full-star"
-              src="../../public/assets/rating-on.png"
+              src={fullLogo}
             />
           }
         />
@@ -69,7 +73,7 @@ class ReviewFormPage extends Component {
     // post here
     // repeated params code
     const { name } = this.props.match.params;
-    fetch(`/api/bootcamps/${name}`, {
+    fetch(`${process.env.API_URL}/bootcamps/${name}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",

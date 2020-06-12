@@ -33,7 +33,7 @@ const findResultsCategory = async () => {
         throw new Error(err.message);
     }
 }
-// TODO: revise this code - error handling is incorrect
+// TODO: revise this code - it might be coded better
 const findAndUpdateReviews = async (name, newReview) => {
     try {
         return await Bootcamp.find({ schoolname: { $eq: name } }, (err, bootcamp) => {
@@ -44,16 +44,17 @@ const findAndUpdateReviews = async (name, newReview) => {
             // sum of stars 
             var sum = 0;
             allreviews.map(obj => {
-                sum += obj.star;
+                sum += Number(obj.star);
             });
             // review count
-            let count = allreviews.length;
+            let count = Number(allreviews.length);
             // overall review
             let overallRating = parseFloat(sum / count).toFixed(1);
 
             // update in db
             // i again had to parse them to int, 
             Bootcamp.updateOne(
+                // better use try/catch here ?
                 { schoolname: { $eq: name } },
                 {
                     $set: {
@@ -62,9 +63,9 @@ const findAndUpdateReviews = async (name, newReview) => {
                         reviewsCount: parseInt(count),
                     }
                 },
-                // TODO: no sure about this part. handle this in redux //  payload.data.data in redux reducers
+                // TODO: double check this part. handle in redux //  payload.data.data in redux reducers
                 (err, result ) => {
-                    err !== null ? console.log(err.message): console.log("Successfully updated bootcamp and inserted new review")
+                    err === null ? console.log("Successfully updated bootcamp and inserted new review"): console.log(err.message)
                 }
             );
         });

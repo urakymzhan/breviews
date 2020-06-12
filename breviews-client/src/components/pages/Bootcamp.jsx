@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { Ratings } from "../A_Atoms";
 // import ReactPaginate from "react-paginate";
 import Pagination from "react-js-pagination";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 const Bootcamp = (props) => {
   const localData = useSelector((state) => state.bootcamp.localData);
@@ -19,7 +20,6 @@ const Bootcamp = (props) => {
 
   const [offset, setOffset] = useState(5);
   const [activePage, setActivePage] = useState(1);
-
   const [sortVal, setSortValue] = useState("newest");
 
   useEffect(() => {
@@ -55,6 +55,7 @@ const Bootcamp = (props) => {
   } else if (sortVal === "lowestrating") {
     localData[0].reviews = localData[0].reviews.sort((a, b) => a.star - b.star);
   }
+
   return (
     <Fragment>
       {localData && localData.length === 0 ? (
@@ -130,18 +131,53 @@ const Bootcamp = (props) => {
 
           <div className="reviews-main">
             <div className="aside-wrapper">
-            <div className="reviews-progress-bars">
-                    <p>Will Fill Out Later</p>
+              <div className="reviews-progress-bars">
+                <div className="progressbar-grid">
+                  <div>
+                    <Ratings classname="star-rating-container" overall={5} />
+                  </div>
+                  <div className="rating-numbers">(24)</div>
+                  <ProgressBar max={localData[0].reviews.length} now={5} />
+                </div>
+
+                <div className="progressbar-grid">
+                  <div>
+                    <Ratings classname="star-rating-container" overall={4} />
+                  </div>
+                  <div className="rating-numbers">(12)</div>
+                  <ProgressBar max={localData[0].reviews.length} now={4} />
+                </div>
+
+                <div className="progressbar-grid">
+                  <div>
+                    <Ratings classname="star-rating-container" overall={3} />
+                  </div>
+                  <div className="rating-numbers">(6)</div>
+                  <ProgressBar max={localData[0].reviews.length} now={3} />
+                </div>
+
+                <div className="progressbar-grid">
+                  <div>
+                    <Ratings classname="star-rating-container" overall={2} />
+                  </div>
+                  <div className="rating-numbers">(3)</div>
+                  <ProgressBar max={localData[0].reviews.length} now={2} />
+                </div>
+
+                <div className="progressbar-grid">
+                  <div>
+                    <Ratings classname="star-rating-container" overall={1} />
+                  </div>
+                  <div className="rating-numbers">(1)</div>
+                  <ProgressBar max={localData[0].reviews.length} now={1} />
+                </div>
               </div>
               <div className="bootcamp-write-a-review">
                 <h6>Write a Review</h6>
                 <p>Have you completed {localData[0].customName}?</p>
+                <p>Submit a review and tell us about your experience?</p>
                 <p>
-                  Submit a review and tell us about your experience?
-                </p>
-                <p>
-                  We may take down any review that we think is fake or that
-                  doesn’t follow our
+                  Please follow our
                   <Link to="/legal"> review policies</Link>.
                 </p>
                 <Link
@@ -157,24 +193,24 @@ const Bootcamp = (props) => {
 
             <div className="reviews-content">
               <div className="customer-reviews">
-                              {/* <SortReviews /> */}
-              <div className="srt-div">
-                <span>Sort by: </span>
-                <select
-                  className="sortby-reviews"
-                  value={sortVal}
-                  onChange={handleSort}
-                >
-                  <option value="newest">Newest</option>
-                  <option value="oldest">Oldest</option>
-                  <option value="highestrating">Highest rating</option>
-                  <option value="lowestrating">Lowest rating</option>
-                </select>
-              </div>
+                {/* <SortReviews /> */}
+                <div className="srt-div">
+                  <span>Sort by: </span>
+                  <select
+                    className="sortby-reviews"
+                    value={sortVal}
+                    onChange={handleSort}
+                  >
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="highestrating">Highest rating</option>
+                    <option value="lowestrating">Lowest rating</option>
+                  </select>
+                </div>
                 <div>
                   {localData[0].reviews.length === 0 ? (
-                    <div>
-                      <p id="empty-review-text"> {EMPTY_REVIEW_TEXT} </p>
+                    <div className="empty-review-text">
+                      <p> {EMPTY_REVIEW_TEXT} </p>
                     </div>
                   ) : (
                     <ReviewsBox

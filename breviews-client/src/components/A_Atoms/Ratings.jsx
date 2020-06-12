@@ -1,6 +1,8 @@
 
 import React from 'react'
 import Rating from "react-rating";
+import fullLogo from '../../../public/assets/full-circle.svg';
+import emptyLogo from '../../../public/assets/empty-circle.svg';
 
 const Ratings = ({ classname, overall}) => {
     return (
@@ -13,13 +15,13 @@ const Ratings = ({ classname, overall}) => {
             emptySymbol={
             <img
                 id="rating-empty-star-main"
-                src="../../public/assets/empty-circle.svg"
+                src={emptyLogo}
             />
             }
             placeholderSymbol={
             <img
                 id="rating-full-star-main"
-                src="../../public/assets/full-circle.svg"
+                src={fullLogo}
             />
             }
             readonly
