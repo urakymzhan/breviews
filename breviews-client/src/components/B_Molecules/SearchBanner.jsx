@@ -21,6 +21,28 @@ const initalTags = [
   "Mobile",
   "C#",
 ];
+// test data
+// const options = [
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"},
+//   {title: "Seytech"}
+// ];
 
 const SearchBanner = (props) => {
   const [options, setOptions] = useState([]);

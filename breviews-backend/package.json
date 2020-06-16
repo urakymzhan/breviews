@@ -7,9 +7,9 @@
   },
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server",
+    "nodemonn": "nodemon server",
     "client": "npm start --prefix ../breviews-client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run nodemonn\" \"npm run client\""
   },
   "dependencies": {
     "concurrently": "^5.2.0",

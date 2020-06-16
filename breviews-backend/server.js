@@ -15,7 +15,6 @@ connectDB();
 app.use(express.json({ extended: true })); // bodyparser
 app.use(express.urlencoded({ extended: true })); // handle form submissions/url encoded data
 app.use(logger);
-
 // middleware to handle CORS issue
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', "*");

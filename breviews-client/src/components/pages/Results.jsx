@@ -61,7 +61,7 @@ const Results = (props) => {
   //   setSelectedTags(selectedTags);
   // }
 
-  // client side sort
+  // client side sort - temp solution
   if (sortVal === "toprated") {
     resultsData.sort((a, b) => b.overall - a.overall);
   } else if (sortVal === "leastrated") {
@@ -77,7 +77,7 @@ const Results = (props) => {
     content = <div className="error">{error}</div>;
   } else if (isLoading) {
     content = <SkeletonResults />;
-  } else if (!resultsData) {
+  } else if (!resultsData || resultsData.length === 0) {
     content = (
       <div className="error">
         No Results found! <br/>

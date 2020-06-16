@@ -29,6 +29,20 @@ const Legal = () => {
           Any detected falsy information or spam action will be removed without any notice.
         </p> 
       </section>
+      <section>
+        <h3> Disclaimer </h3>
+        <p>
+          The materials on bootcampAvenue are provided on an 'as is' basis<br />
+          Further, bootcampAvenue does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.
+        </p> 
+      </section>
+      <section>
+        <h3> Accuracy of materials </h3>
+        <p>
+          The materials appearing in this website could include technical, typographical, or photographic errors. <br />
+          bootcampAvenue does not warrant that any of the materials on its website are accurate, complete or current. 
+        </p> 
+      </section>
     </div>
   );
 };

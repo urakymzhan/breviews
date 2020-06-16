@@ -21,9 +21,9 @@ const Routes = () => {
         <Route exact path="/contact" >
           <Contact />
         </Route>
-        <Route exact path="/blog">
+        {/* <Route exact path="/blog">
           <Blog />
-        </Route>
+        </Route> */}
         <Route path="/bootcamps/:name">
           <Bootcamp />
         </Route>

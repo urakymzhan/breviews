@@ -8,7 +8,7 @@
   .error {
     color: red;
     font-weight: 900;
-    margin-top: 50px;
+    margin: 50px auto;
   }
   .results-content-navbar {
     display: flex;
@@ -29,7 +29,7 @@
   .results-bootcamp-wrapper {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    margin-top: 40px;
+    margin: 40px auto;
     grid-column-gap: 40px;
   }
   .results-bootcamp-logo  {
