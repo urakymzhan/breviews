@@ -96,12 +96,12 @@ const getSearchOptions = async (req, res, next) => {
                 new HttpError('Could not find any options for this search input. Please try later', 404)
             );
         }
-        // Because semantic-ui Search requires to have title!!!
+        // Because semantic-ui Search requires to have title!
         const customArr = customNamesObj.map(obj => { return obj.customName });
         const resultWithTitle = customArr.reduce((result, key) => {
-                result.push({ 'title': key})
-                return result;
-            }, []);
+            result.push({ 'title': key })
+            return result;
+        }, []);
 
         res.json(resultWithTitle);
 
@@ -125,22 +125,18 @@ const getResultsCategory = async (req, res, next) => {
 
         if (query === 'all') {
             res.json(resultsData);
-        }
-        else if (query === 'top') {
+        } else if (query === 'top') {
             const topBootcamps = resultsData.filter(top => top.overall > 4);
             res.json(topBootcamps)
         } else if (query === 'remote') {
             const remoteBootcamps = resultsData.filter(remote => remote.location.includes('Remote'));
             res.json(remoteBootcamps);
         } else if (query === "search") {
-            // TODO: handle lowerCase or upperCases and double check code
             const selectedOption = req.body.searchCriterias.selectedOption;
             const selectedTags = req.body.searchCriterias.selectedTags;
-            const searchResult = resultsData.filter(singleBoo => singleBoo.customName === selectedOption || singleBoo['tags'].some(r => selectedTags.includes(r)));
+            const searchResult = resultsData.filter(singleBoot => singleBoot.customName === selectedOption || singleBoot['tags'].some(eachTag => _.includes(selectedTags, eachTag))); 
             res.json(searchResult);
-        }
-        // TODO: revise this
-        else {
+        } else {
             return next(
                 new HttpError('Could not find any bootcamp for this criteria. Please try later', 404)
             );

@@ -1,11 +1,10 @@
 import "./style/searchbanner.scss";
 import { withRouter } from "react-router";
-import React, { useState, useCallback, useEffect } from "react";
-import { AsyncTypeahead } from "react-bootstrap-typeahead";
+import React, { useState, useEffect } from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
-import { Search, Grid, Header, Segment, Button } from "semantic-ui-react";
+import { Search } from "semantic-ui-react";
 import _ from "lodash";
-import { Link } from "react-router-dom";
+
 const initalTags = [
   "Frontend",
   "Backend",
@@ -21,7 +20,7 @@ const initalTags = [
   "Mobile",
   "C#",
 ];
-// test data
+// test data to limit options
 // const options = [
 //   {title: "Seytech"},
 //   {title: "Seytech"},
@@ -46,25 +45,21 @@ const initalTags = [
 
 const SearchBanner = (props) => {
   const [options, setOptions] = useState([]);
-  // const [selectedOption, setSelectedOption] = useState(
-  //   localStorage.getItem("option") || ""
-  // );
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
+  // localStorage.getItem("value") ?
   const [value, setValue] = useState("");
-
   const [selectedTags, setSelectedTags] = useState([]);
 
-  // side effect
   useEffect(() => {
     setIsLoading(true);
     fetch(`${process.env.API_URL}/search/options?q=${value}`)
       .then((resp) => resp.json())
       .then((options) => {
-        console.log("options", options);
         setOptions(options);
       });
     setIsLoading(false);
+    // side effect
   }, [value]);
 
   const hanldeTagClick = (tagValue) => {
@@ -81,26 +76,22 @@ const SearchBanner = (props) => {
   };
 
   const handleSearchClick = (e) => {
+    // backend accepts as selectedOption
+    // you can change it though
     const selectedOption = value;
-
-    // if(props.getData) {
-    //   props.getData(selectedOption, selectedTags);
-    // } else {
-    // }
     const redirectLocation = {
       pathname: "/results",
       search: "?category=search",
       state: { selectedOption, selectedTags },
     };
-
-    // TODO: temorary not a react way of solution
-    if (value.length > 0 || selectedTags.length > 0) {
+    if (selectedOption.length > 0 || selectedTags.length > 0) { 
       props.history.push(redirectLocation);
-      window.location.reload();
     }
   };
 
-  const handleResultSelect = (e, { result }) => setValue(result.title);
+  const handleResultSelect = (e, { result }) => { 
+    setValue(result.title);
+  }
 
   const handleSearchChange = (e, { value }) => {
     // setIsLoading(true);
@@ -112,9 +103,6 @@ const SearchBanner = (props) => {
     // setIsLoading(false);
     setResults(_.filter(options, isMatch));
   };
-
-  // console.log("value", value);
-  // console.log("results", results);
 
   return (
     <div className="banner">
@@ -131,15 +119,13 @@ const SearchBanner = (props) => {
           // {...props}
         />
         <div className="rsw">
-          {/* <Link to="results"> */}
           <button
             type="submit"
             value="submit"
             className="search-btn"
             onClick={handleSearchClick}
-            // onKeyPress
+            // add onKeyPress
           ></button>
-          {/* </Link> */}
         </div>
       </div>
 

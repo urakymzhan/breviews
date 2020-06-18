@@ -41,6 +41,10 @@
     .results.transition {
       width: 110%!important;
     }
+    .results.transition.visible {
+      // limits the search options via css
+      max-height: 207px;
+    }
   }
 
   .rsw {

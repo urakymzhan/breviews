@@ -4,18 +4,16 @@ import { withRouter, Link, useLocation } from "react-router-dom";
 import { Ratings, SkeletonResults } from "../A_Atoms";
 import { SearchBanner } from "../B_Molecules";
 import queryString from "query-string";
+import { Helmet } from 'react-helmet';
 
 const Results = (props) => {
   const [resultsData, setResultsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [sortVal, setSortValue] = useState("toprated");
+  // to persist sorting localstorage is used
+  const [sortVal, setSortValue] = useState(localStorage.getItem('sortVal') || "toprated");
   const loc = useLocation();
   const query = queryString.parse(loc.search).category;
-  // const selectedTags = props.location.state.selectedTags;
-  // const selectedOption = props.location.state.selectedOption;
-  // const [selectedOption, setSelectedOption] = useState("");
-  // const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,22 +42,14 @@ const Results = (props) => {
       setIsLoading(false);
     };
     fetchData();
-    // localStorage.setItem('tags', selectedTags);
-    // localStorage.setItem('option', selectedOption);
-  }, []);
+    // important in updating Results on every change!!!
+  }, [query, props.location.state]);
 
   const handleSort = (e) => {
+    localStorage.setItem("sortVal", e.target.value);
     setSortValue(e.target.value);
   };
 
-  // console.log("selectedTags and sO results", props.location.state);
-
-  // const getData = (selectedOption, selectedTags) => {
-  //   console.log("selectedOption", selectedOption)
-  //   console.log("selectedTags", selectedTags)
-  //   setSelectedOption(selectedOption);
-  //   setSelectedTags(selectedTags);
-  // }
 
   // client side sort - temp solution
   if (sortVal === "toprated") {
@@ -87,6 +77,11 @@ const Results = (props) => {
   } else {
     content = (
       <>
+      <Helmet>
+        <title>
+          Results
+        </title>
+      </Helmet>
         {resultsData.map((results) => {
           return (
             <div className="results-bootcamp-wrapper" key={results._id}>

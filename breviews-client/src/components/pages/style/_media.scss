@@ -1,5 +1,64 @@
-/* Smartphones (portrait and landscape) ----------- */
-@media (max-width: 736px) {
+  // IPADS
+@media only screen and (max-width: 1024px) {
+  // Home
+  .main-wrapper {
+    .container-bootcamps {
+      width: 90%;
+      margin: -20px auto 20px auto;
+      padding: 20px;
+    }
+  }
+  // Results
+  .results-content-wrapper {
+    width: 100%;
+    padding: 0 20px 180px 20px;
+  }
+  // reviewform
+  .review-form-container {
+    width: 90%;
+    .checkboxes {
+      .checkbox {
+        width: 5%;
+      }
+      .checkbox-label {
+        width: 95%;
+      }
+    }
+  }
+  // bootcamp
+  .reviews-content-wrapper {
+    padding-bottom: 180px;
+    .bootcamps-header {
+      .bootcamps-header-container {
+        width: 90%;
+      }
+    }
+    // reviews content
+    .reviews-main {
+      padding: 20px;
+      .reviews-content {
+        padding: 10px;
+      }
+    }
+  }
+  // about
+  .team-wrapper {
+    margin-top: 50px;
+  }
+  // contact
+  .contact-page-wrapper {
+    .contact-block {
+      width: 60%;
+    }
+  }
+  // terms
+  .legal-wrapper {
+    margin-top: 50px;
+  }
+}
+
+// MOBILE -----------
+@media only screen and (max-width: 736px) {
   // Home
   .main-wrapper {
     padding-bottom: 140px;
@@ -24,7 +83,7 @@
     .results-bootcamp-location {
       margin: 0;
     }
-    .results-bootcamp-dur-price { 
+    .results-bootcamp-dur-price {
       margin: 10px 0;
       justify-content: flex-start;
       .results-duration {
@@ -49,8 +108,8 @@
 
   // bootcamp
   .reviews-content-wrapper {
-    padding-bottom: 150px; 
-  
+    padding-bottom: 150px;
+
     .bootcamps-header {
       padding: 10px 20px;
       .bootcamps-header-container {
@@ -62,8 +121,8 @@
           height: 100px;
           width: 100px;
           img {
-            height: 80px; // 100 - 10(padding) - 10(border)
-            width: 80px; // 100 - 10(padding) - 10(border)
+            height: 80px; 
+            width: 80px; 
           }
         }
       }
@@ -118,8 +177,12 @@
             color: #000000;
             border: 1px solid #000000;
             border-radius: 4px;
+            &:hover {
+              color: #585757;
+              border-color: #585757;
+              transition: 0.3s linear;
+            }
           }
-
         }
       }
       .reviews-content {
@@ -127,170 +190,45 @@
       }
     }
   }
-  // pagination
 
   // reviewbox
   .review-wrapper {
-  .reviews-cnt {
-    padding-left: 0;
+    .reviews-cnt {
+      padding-left: 0;
+    }
   }
-}
-
-// about
-.team-wrapper {
-  padding: 10px 20px 200px 20px;
-  .leader-board {
-    display: block;
-    margin-bottom: 50px;
+  // about
+  .team-wrapper {
+    padding: 0px 20px 180px 20px;
+    .leader-board {
+      display: block;
+      margin-bottom: 50px;
+    }
+    hr {
+      width: 60%;
+    }
   }
-  hr {
-    width: 60%;
-  }
-}
-// contact
-.contact-page-wrapper {
-  form {
-      width: 80%;
-      margin-top: 100px;
+  // contact
+  .contact-page-wrapper {
+    .contact-block {
+      width: 90%;
+      .contact-team-icons {
+        width: 90%;
+      }
     }
   }
 
-  // terms 
+  // terms
   .legal-wrapper {
     padding: 20px;
     padding-bottom: 200px;
-  };
+  }
 
   // form complete
   .form-complete-content-wrapper {
     padding: 100px 20px;
+  }
 }
 
-}
 
 
-
-//   /* Smartphones (landscape) ----------- */
-//   @media only screen and (min-width : 321px) {
-//   /* Styles */
-//   }
-
-//   /* Smartphones (portrait) ----------- */
-//   @media only screen and (max-width : 320px) {
-//   /* Styles */
-//   }
-
-//   /* iPads (portrait and landscape) ----------- */
-//   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-//   /* Styles */
-//   }
-
-//   /* iPads (landscape) ----------- */
-//   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-//   /* Styles */
-//   }
-
-//   /* iPads (portrait) ----------- */
-//   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-//   /* Styles */
-//   }
-//   /**********
-//   iPad 3
-//   **********/
-//   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
-//   /* Styles */
-//   }
-//   /* Desktops and laptops ----------- */
-//   @media only screen  and (min-width : 1224px) {
-//   /* Styles */
-//   }
-
-//   /* Large screens ----------- */
-//   @media only screen  and (min-width : 1824px) {
-//   /* Styles */
-//   }
-
-//   /* iPhone 4 ----------- */
-//   @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
-//   /* Styles */
-//   }
-
-//   /* iPhone 5 ----------- */
-//   @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-//   /* Styles */
-//   }
-
-//   /* iPhone 6, 7, 8 ----------- */
-//   @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-//   /* Styles */
-//   }
-
-//   /* iPhone 6+, 7+, 8+ ----------- */
-//   @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-//   /* Styles */
-//   }
-
-//   /* iPhone X ----------- */
-//   @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-//   /* Styles */
-//   }
-
-//   /* iPhone XS Max, XR ----------- */
-//   @media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-//   /* Styles */
-//   }
-
-//   /* Samsung Galaxy S3 ----------- */
-//   @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-//   /* Styles */
-//   }
-
-//   /* Samsung Galaxy S4 ----------- */
-//   @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-//   /* Styles */
-//   }
-
-//   /* Samsung Galaxy S5 ----------- */
-//   @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
-//   /* Styles */
-//   }
-
-//   @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-//   /* Styles */
-//   }

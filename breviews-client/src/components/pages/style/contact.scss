@@ -1,57 +1,42 @@
 .contact-page-wrapper {
-    form {
-        width: 50%;
-        padding: 0.8em;
-        font-size: 10px;
-        border-radius: 4px;
-        margin: 50px auto;
-        border: thin solid #000000;
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+    padding-bottom: 150px;
 
-            input {
-                outline: none;
-                border: none;
-                width: 100%;
-                padding: 0.8em;
-                margin-bottom: 0.8em;
-                border: thin solid #000000;
-                border-radius: 4px;
+        .contact-block {
+            width: 50%;
+            font-family: HalyardTextBook;
+            font-size: 12px;
+            line-height: 14px;
+            border-radius: 4px;
+            margin: 50px auto;
+
+            h3, h5, p {
+                text-align: left;
+            }
+            h3 {
+                color: #ff3746;
+            }
+            h5 {
+                color: #737373;
+            }
+            .c-highlight {
+                color: #b9b7b7;
+            }
+            .email-itself {
+                font-weight: 900;
             }
 
-            textarea {
-                outline: none;
-                border: none;
-                width: 100%;
-                padding: 0.8em;
-                min-height: 5em;
-                margin-bottom: 0.8em;
-                border: thin solid #000000;
-                border-radius: 4px;
-                vertical-align: top;
-                resize: none;
-            };
+            .contact-team-icons {
+                margin-top: 20px;
+                width: 60%;
+                display: flex;
+                justify-content: space-between;
 
-            button {
-                outline: none;
-                border: thin solid #000000;
-                width: 100%;
-                padding: 0.4em;
-                margin-bottom: 0.8em;
-                border-radius: 4px;
-                font-size: 12px;
-                text-transform: uppercase;
-                background-color: #000000;
-                color: #fff;
-            };
-            input:focus,
-            textarea:focus {
-              border-color: gray;
+                img {
+                    height: 15px;
+                    width: 15px;
+                }
             }
         }
-    }
 }
 
 @import 'media.scss';

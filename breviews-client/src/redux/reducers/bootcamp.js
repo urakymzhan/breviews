@@ -7,7 +7,8 @@ import {
 
 const initialState = {
     localData: [],
-    error: ''
+    error: '',
+    isLoading: false
 }
 
 export default function(state = initialState, action) {
@@ -17,12 +18,14 @@ export default function(state = initialState, action) {
         case BOOTCAMP_DATA_LOADED:
             return {
                 ...state,
-                localData: payload
+                localData: payload,
+                isLoading: false
             }
         case BOOTCAMP_DATA_LOAD_FAILED:
             return {
                 ...state,
-                error: payload
+                error: payload,
+                isLoading: false
             }
         case REVIEW_POSTED:
             return {

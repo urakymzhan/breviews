@@ -2,15 +2,13 @@
 @import "../../../style/config";
 
 .reviews-content-wrapper {
-  padding-bottom: 100px; /* Height of the footer element */
+  padding-bottom: 180px; /* Height of the footer element */
   background-color: #f2f2f2;
 
   .bootcamps-header {
     background: linear-gradient(180deg, #e7f3e7 61.98%, #d6eee5 94.27%);
-    // height: 300px;
     min-height: 300px;
     padding-top: 50px;
-    // border: 1px solid;
 
     .bootcamps-header-container {
       display: grid;
@@ -18,7 +16,6 @@
       column-gap: 40px;
       width: 80%;
       margin: 0 auto;
-      // border: 1px solid red;
     }
     .logo-wraper {
       .bootcamp-logo {
@@ -145,9 +142,9 @@
         min-height: 152px;
         margin-bottom: 10px;
         padding: 10px;
-        
+
         .progressbar-grid {
-          display: grid; 
+          display: grid;
           grid-template-columns: 1fr 1fr 2fr;
         }
         p {
@@ -234,7 +231,7 @@
           -webkit-appearance: menulist;
           background-color: inherit;
           border: none;
-          border-bottom: 2px solid #FF3746;
+          border-bottom: 2px solid #ff3746;
         }
       }
       .empty-review-text {
@@ -244,27 +241,15 @@
     }
   }
 }
-
-/* TODO: testing out pagination */
-.pagination {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  outline: none;
-  // border: 1px solid #000000;
-  // margin-left: 35px;
-}
-.pagination .page-item.disabled .page-link {
-  // background-color: #000000;
-}
-.pagination .page-item .page-link {
-  padding: 8px 20px;
-  color: #000000;
-}
-.pagination .page-item.active .page-link {
-  background-color: #000000;
-  border-color: #000000;
-  color: #ffffff;
-}
-
-@import './media';
+  .MuiPagination-root {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    .MuiPagination-ul {
+      justify-content: center!important;
+      .MuiPaginationItem-page.Mui-selected {
+        background-color: #000000;
+        color: #fff;
+      }
+    }
+  }
+@import "./media";

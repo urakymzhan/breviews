@@ -3,11 +3,14 @@ import './style/about.scss';
 import instagram from '../../../public/assets/instagram.png';
 import facebook from '../../../public/assets/facebook.png';
 import linkedin from '../../../public/assets/linkedin.png';
+import {Helmet} from "react-helmet";
 
 const About = () => {
   return (
     <div className="team-wrapper">
-      
+      <Helmet>
+          <title>About</title>
+        </Helmet>
         <div className="team-header">
           <h5>Team who loves what they do</h5>
           <hr/>

@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./style/landing.scss";
 import { SkeletonLanding } from "../A_Atoms";
-import { TopBootcamps, RemoteBootcamps, SearchBanner, Footer } from "../B_Molecules";
+import {
+  TopBootcamps,
+  RemoteBootcamps,
+  SearchBanner,
+  Footer,
+} from "../B_Molecules";
+import { Helmet } from "react-helmet";
 
 const Landing = () => {
   // removed redux for now
@@ -34,6 +40,8 @@ const Landing = () => {
     fetchData();
   }, []);
 
+  console.log("mainpageData", mainpageData);
+
   let content;
   if (error) {
     content = <div>{error}</div>;
@@ -42,13 +50,15 @@ const Landing = () => {
   } else {
     content = (
       <React.Fragment>
+        <Helmet>
+          <title>BootcampAvenue</title>
+        </Helmet>
         {mainpageData.topBootcamps && mainpageData.remoteBootcamps && (
           <React.Fragment>
             <TopBootcamps topBootcamps={mainpageData.topBootcamps} />
             <RemoteBootcamps remoteBootcamps={mainpageData.remoteBootcamps} />
           </React.Fragment>
         )}
-        
       </React.Fragment>
     );
   }

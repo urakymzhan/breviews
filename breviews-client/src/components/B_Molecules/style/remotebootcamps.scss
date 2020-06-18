@@ -34,8 +34,8 @@
   position: relative;
   margin: 1.2em auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 180px));
-  grid-column-gap: calc((100% - (180px * 4)) / 3);
+  grid-template-columns: repeat(auto-fit, minmax(20%, 24%));
+  grid-column-gap: calc((100% - (24% * 4)) / 3);
   font-size: 14px;
 
   .bootcamp-section {

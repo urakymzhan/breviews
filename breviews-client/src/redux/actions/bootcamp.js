@@ -14,7 +14,7 @@ export const getBootcampData = name => async dispatch => {
             type: BOOTCAMP_DATA_LOADED,
             payload: res.data
         })
-    } catch(err) { 
+    } catch (err) {
         dispatch({
             type: BOOTCAMP_DATA_LOAD_FAILED,
             payload: err
@@ -22,7 +22,7 @@ export const getBootcampData = name => async dispatch => {
     }
 }
 
-export const addBootcampReview = (dataToPost, name)  => async  dispatch => {
+export const addBootcampReview = (dataToPost, name) => async  dispatch => {
 
     const config = {
         headers: {
@@ -36,7 +36,7 @@ export const addBootcampReview = (dataToPost, name)  => async  dispatch => {
             // its because backend is giving msg and data together from response
             payload: res.data.data
         })
-    }catch(err) {
+    } catch (err) {
         dispatch({
             type: REVIEW_POST_FAILED,
             payload: err

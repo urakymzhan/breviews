@@ -14,7 +14,7 @@ export default function( state = initialState, action ) {
             return {
                 ...state,
                 mainpageData: payload,
-                isLoading: true
+                isLoading: false
             }
         case MAIN_DATA_LOAD_FAILED:
             return {

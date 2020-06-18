@@ -1,7 +1,4 @@
 const path = require("path");
-const dotenv = require('dotenv');
-const env = dotenv.config().parsed;
-const webpack = require('webpack');
 
 const jsLoader = {
   test: /\.jsx?$/,
@@ -48,7 +45,7 @@ const fileLoader = {
 };
 
 module.exports = {
-  // we can more than 1 entry point ex: entry: {main: path.resolve(__dirname, "index.js"), vendor: "./src/vendor.js" }
+  // we can have more than 1 entry point ex: entry: {main: path.resolve(__dirname, "index.js"), vendor: "./src/vendor.js" }
   // then in dev and prod replace bundle to [name].js or whatever 
   // this might be useful in using 3rd party libraries like bootstrap js, jquery etc.
   entry: path.resolve(__dirname, "..", "index.js"),
