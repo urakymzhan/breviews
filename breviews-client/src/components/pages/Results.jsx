@@ -4,14 +4,17 @@ import { withRouter, Link, useLocation } from "react-router-dom";
 import { Ratings, SkeletonResults } from "../A_Atoms";
 import { SearchBanner } from "../B_Molecules";
 import queryString from "query-string";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
+import locationicon from "../../../public/assets/locationMini.png";
 
 const Results = (props) => {
   const [resultsData, setResultsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   // to persist sorting localstorage is used
-  const [sortVal, setSortValue] = useState(localStorage.getItem('sortVal') || "toprated");
+  const [sortVal, setSortValue] = useState(
+    localStorage.getItem("sortVal") || "toprated"
+  );
   const loc = useLocation();
   const query = queryString.parse(loc.search).category;
 
@@ -21,13 +24,16 @@ const Results = (props) => {
       setError("");
       try {
         // POST
-        const response = await fetch(`${process.env.API_URL}/results?search=${query}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            searchCriterias: props.location.state,
-          }),
-        });
+        const response = await fetch(
+          `${process.env.API_URL}/results?search=${query}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              searchCriterias: props.location.state,
+            }),
+          }
+        );
         const resData = await response.json();
 
         if (!response.ok) {
@@ -50,7 +56,6 @@ const Results = (props) => {
     setSortValue(e.target.value);
   };
 
-
   // client side sort - temp solution
   if (sortVal === "toprated") {
     resultsData.sort((a, b) => b.overall - a.overall);
@@ -70,24 +75,22 @@ const Results = (props) => {
   } else if (!resultsData || resultsData.length === 0) {
     content = (
       <div className="error">
-        No Results found! <br/>
+        No Results found! <br />
         Please try with different keys.
       </div>
     );
   } else {
     content = (
       <>
-      <Helmet>
-        <title>
-          Results
-        </title>
-      </Helmet>
+        <Helmet>
+          <title>Results</title>
+        </Helmet>
         {resultsData.map((results) => {
           return (
             <div className="results-bootcamp-wrapper" key={results._id}>
               <figure className="results-bootcamp-logo">
                 <div className="logo-fke-brder">
-                <img src={results.logo} alt="bootcamp logo" />
+                  <img src={results.logo} alt="bootcamp logo" />
                 </div>
               </figure>
               <div className="results-bootcamp-info">
@@ -102,25 +105,19 @@ const Results = (props) => {
                   <p>{results.reviewsCount} reviews</p>
                 </div>
                 <p className="results-bootcamp-location">
-                  <img
-                    src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png"
-                    style={{
-                      height: "12px",
-                      width: "auto",
-                      marginRight: "3px",
-                      verticalAlign: "baseline",
-                    }}
-                  />
+                  <img src={locationicon} />
                   {results.location.map((loc, ind) => {
                     return <span key={ind}> {loc} </span>;
                   })}
                 </p>
                 <div className="results-bootcamp-dur-price">
                   <p className="results-duration">
-                    <span style={{fontWeight: "900"}}>Duration:</span> {results.duration}
+                    <span style={{ fontWeight: "900" }}>Duration:</span>{" "}
+                    {results.duration}
                   </p>
                   <p>
-                    <span style={{fontWeight: "900"}}>Price:</span> {results.price}
+                    <span style={{ fontWeight: "900" }}>Price:</span>{" "}
+                    {results.price}
                   </p>
                 </div>
               </div>

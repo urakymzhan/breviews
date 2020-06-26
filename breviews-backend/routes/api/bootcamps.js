@@ -33,7 +33,10 @@ router.post("/bootcamps/:name",
     .not()
     .isEmpty(),
     check('email')
-    .isEmail()
+    .isEmail(),
+    check('linkedin')
+    .not()
+    .isEmpty()
 ],
 postReview);
 

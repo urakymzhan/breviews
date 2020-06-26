@@ -1,0 +1,49 @@
+.support-wrapper {
+  padding: 20px 80px 150px 80px;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+
+  p {
+    color: gray;
+    font-family: Halyard Text;
+    font-style: normal;
+  }
+  h5 {
+    color: #f44336;
+    font-family: Halyard Text;
+    font-style: normal;
+    margin-bottom: 20px;
+  }
+  .ui.pointing.menu {
+    border-color: #fff;
+    box-shadow: none;
+    .item {
+      width: 50%;
+      background-color: #000000;
+      border: 1px solid #fff;
+      color: #fff;
+      font-family: Halyard Text;
+      font-style: normal;
+    }
+  }
+  .ui.segment.active.tab {
+    border-color: #fff;
+    box-shadow: none;
+    a {
+      font-family: Halyard Text;
+      font-style: normal;
+      &:hover {
+        color: #0557b0;
+      }
+      img {
+        height: 10px;
+        width: 10xp;
+        vertical-align: baseline;
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+@import "./media";

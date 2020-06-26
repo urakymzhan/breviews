@@ -4,7 +4,6 @@ import { Ratings } from "../A_Atoms";
 
 const ReviewsBox = (props) => {
   const { reviewsData } = props;
-  // console.log("reviewsData from Box", reviewsData);
 
   return reviewsData.map((user) => {
     let emptyInd;

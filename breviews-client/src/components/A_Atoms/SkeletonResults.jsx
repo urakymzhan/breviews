@@ -1,5 +1,5 @@
 import React from "react";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 import "../pages/style/results.scss";
 
 // just a resemblance for actual component

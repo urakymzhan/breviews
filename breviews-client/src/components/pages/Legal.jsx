@@ -11,6 +11,7 @@ const Legal = () => {
       </Helmet>
       <section>
         <h3>Privacy Policy</h3>
+        <p className="pre-disclaimer"><strong>bootcampAvenue is not an affiliate of any of these bootcamp or any other private company.</strong></p>
         <p>
           This section will help you understand what information we collect,{" "}
           <br />
@@ -33,6 +34,9 @@ const Legal = () => {
           Please reach out on <Link to="contact">contact us</Link> page. We will
           carefully check for validity of request and thus perform right action.
         </p>
+        <p>
+          This policy might change accoridng to new features added to the website.<br/>
+        </p>
       </section>
       <section>
         <h3> Terms of Service </h3>
@@ -53,6 +57,9 @@ const Legal = () => {
           concerning the accuracy, likely results, or reliability of the use of
           the materials on its website or otherwise relating to such materials
           or on any sites linked to this site.
+          <br/>
+          We also don't guarantee to update any short term giveaways or any sort of discounts provided by each bootcamp.
+          For that info please keep track of their own websites.
         </p>
       </section>
       <section>

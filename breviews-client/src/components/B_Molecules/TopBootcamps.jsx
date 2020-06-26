@@ -2,11 +2,18 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import './style/topbootcamps.scss'
-import { Ratings } from '../A_Atoms';
+import { Ratings, SkeletonResults } from '../A_Atoms';
+import locationicon from '../../../public/assets/locationMini.png';
 
 const TopBootcamps = ({topBootcamps}) => {
-  
-  let content = topBootcamps.map((bootcamp) => {
+
+  let content;
+  // if(topBootcamps.length === 0) {
+  //   content = (
+  //     <SkeletonResults />
+  //   )
+  // }
+  content = topBootcamps.map((bootcamp) => {
     return (
       <div className="bootcamp-section" key={bootcamp._id}>
         
@@ -39,12 +46,10 @@ const TopBootcamps = ({topBootcamps}) => {
           </div>
           
           <div className="bootcamp-location">
-            <span>
-              <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png" />
-            </span>
+              <img src={locationicon} alt="location icons"/>
             {
               bootcamp.location.map((location, ind) => {
-                return <span key={ind} style={{marginRight: "3px"}}>{location}</span>
+                return <span key={ind}>{location}</span>
               })
             }
           </div>

@@ -4,6 +4,9 @@ import instagram from '../../../public/assets/instagram.png';
 import facebook from '../../../public/assets/facebook.png';
 import linkedin from '../../../public/assets/linkedin.png';
 import {Helmet} from "react-helmet";
+import chris from '../../../public/assets/chris.jpeg';
+import ulan from '../../../public/assets/ulan2.jpg';
+import marat from '../../../public/assets/marat.jpg';
 
 const About = () => {
   return (
@@ -20,7 +23,7 @@ const About = () => {
         <div>
           <div>
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRP8ZRhJ_aLb4ieqFUC9jEEuaPPubXlTMy99kfbURSBO_tdcQZs&usqp=CAU"
+              src={ulan}
               alt="Ulan Rakymzhanov"
             />
           </div>
@@ -37,8 +40,8 @@ const About = () => {
         <div>
           <div>
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRP8ZRhJ_aLb4ieqFUC9jEEuaPPubXlTMy99kfbURSBO_tdcQZs&usqp=CAU"
-              alt="Marat Gaipov"
+              src={chris}
+              alt="Chris Arellano"
             />
           </div>
           <div>
@@ -54,7 +57,7 @@ const About = () => {
         <div>
           <div>
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRP8ZRhJ_aLb4ieqFUC9jEEuaPPubXlTMy99kfbURSBO_tdcQZs&usqp=CAU"
+              src={marat}
               alt="Marat Gaipov"
             />
           </div>

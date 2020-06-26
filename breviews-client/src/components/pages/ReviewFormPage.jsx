@@ -133,6 +133,13 @@ class ReviewFormPage extends Component {
     if (ratingVal === 0) {
       errors.ratingVal = "Required";
     }
+    if(!values.linkedin) {
+      errors.linkedin = "Required";
+    } else if (
+      values.linkedin.indexOf("linkedin") === -1
+    ) {
+      errors.linkedin = "Invalid linkedin url";
+    }
     return errors;
   };
 
@@ -167,7 +174,8 @@ const ReviewForm = (props) => {
         title: "",
         email: "",
         acceptTerms: false,
-        ratingVal: ratingVal
+        ratingVal: ratingVal,
+        linkedin: ""
       }}
       validate={validate}
       onSubmit={onSubmit}
@@ -233,12 +241,20 @@ const ReviewForm = (props) => {
             />
           </div>
           <div>
-          <label htmlFor="cons"> Email* </label>
+          <label htmlFor="email"> Email* </label>
             <Field
               name="email"
               type="email"
             />
             <ErrorMessage name="email" render={msg => <div className="form-errors">{msg}</div>} />
+          </div>
+          <div>
+          <label htmlFor="linkedin"> LinkedIn Url* </label>
+            <Field
+              name="linkedin"
+              type="input"
+            />
+            <ErrorMessage name="linkedin" render={msg => <div className="form-errors">{msg}</div>} />
           </div>
           <div className="checkboxes">
             <Field name="acceptTerms" type="checkbox" className="checkbox"/>

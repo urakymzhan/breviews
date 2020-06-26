@@ -12,12 +12,33 @@ const getLandingPageData = async (req, res, next) => {
                 new HttpError('There was an error loading data. Please try later', 404)
             );
         }
-        // filter top and remote from bootcamps
-        let topBootcamps = landing.filter((bootcamp) => bootcamp.overall > 4);
+        // filter top bootcamps
+        let topBootcamps = landing.filter(bootcamp => { 
+            let isTop = 0;
+            const isJobGuaranteed = bootcamp.tags.includes('Career Services');
+            const isRemote = bootcamp.location.includes("Remote")
+
+            if (bootcamp.overall > 4) {
+                isTop += 5;
+            }
+            if (bootcamp.totalPrice < 10000) {
+                isTop += 1;
+            }
+            if (isJobGuaranteed) {
+                isTop += 2;
+            }
+            if (isRemote) {
+                isTop += 1;
+            }
+            if (isTop > 6) {
+                return bootcamp;
+            } 
+        })
+        // filter remote bootcamps
         let remoteBootcamps = landing.filter((bootcamp) =>
             bootcamp.location.includes("Remote")
         );
-        // show only 4 bootcamps in landing page
+        // show only 4 in landing page
         const maxCount = 4;
         topBootcamps = topBootcamps.slice(0, maxCount);
         remoteBootcamps = remoteBootcamps.slice(0, maxCount);

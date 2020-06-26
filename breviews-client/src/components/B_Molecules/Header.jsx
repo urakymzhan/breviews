@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import brlogo from "../../../public/assets/Logo_placeholder.png";
+import brlogo from "../../../public/assets/Logo.svg";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import Navbar from "react-bootstrap/Navbar";
@@ -68,7 +68,7 @@ const Header = ({ location }) => {
         <img className="brlogo" src={brlogo} />
       </Navbar.Brand>
 
-      <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link
@@ -83,10 +83,7 @@ const Header = ({ location }) => {
           </Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link
-            href="https://www.patreon.com/user?u=35633615"
-            target="_blank"
-          >
+          <Nav.Link as={Link} to="/support">
             Support
           </Nav.Link>
           <Nav.Link as={Link} to="/about">

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style/remotebootcamps.scss";
 import { Ratings } from "../A_Atoms";
+import locationicon from '../../../public/assets/locationMini.png';
 
 const RemoteBootcamps = ({ remoteBootcamps }) => {
   let content = remoteBootcamps.map((bootcamp) => {
@@ -35,12 +36,10 @@ const RemoteBootcamps = ({ remoteBootcamps }) => {
           </div>
 
           <div className="bootcamp-location location">
-            <span>
-              <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/location-512.png" />
-            </span>
+          <img src={locationicon} alt="location icons"/>
             {bootcamp.location.map((location, ind) => {
               return (
-                <span key={ind} style={{ marginRight: "3px" }}>
+                <span key={ind}>
                   {location}
                 </span>
               );

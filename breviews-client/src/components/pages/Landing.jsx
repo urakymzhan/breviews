@@ -5,7 +5,6 @@ import {
   TopBootcamps,
   RemoteBootcamps,
   SearchBanner,
-  Footer,
 } from "../B_Molecules";
 import { Helmet } from "react-helmet";
 
@@ -39,8 +38,6 @@ const Landing = () => {
     };
     fetchData();
   }, []);
-
-  console.log("mainpageData", mainpageData);
 
   let content;
   if (error) {

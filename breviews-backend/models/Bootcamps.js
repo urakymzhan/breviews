@@ -18,7 +18,8 @@ const BootcampSchema = new Schema({
       title: String,
       star: Number,
       review: String,
-      email: String
+      email: String,
+      linkedin: String
     }
   ],
   logo: {
@@ -56,7 +57,7 @@ const BootcampSchema = new Schema({
   },
   tags: [{
     type: String,
-  }],
+  }]
 });
 
 // 3rd parameter is collection name
