@@ -1,5 +1,3 @@
-# bootcampAvenue
-
 # bootcampAvenue  🏕️
 
 > bootcampAvenue project
