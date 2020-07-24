@@ -38,6 +38,7 @@
       padding: 20px;
       .reviews-content {
         padding: 10px;
+        
       }
     }
   }
@@ -192,6 +193,9 @@
       }
       .reviews-content {
         padding: 10px;
+        .review-warning {
+          margin-bottom: 20px;
+        }
       }
     }
   }

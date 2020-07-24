@@ -241,6 +241,10 @@ const Bootcamp = (props) => {
           </div>
 
           <div className="reviews-content">
+            <div className="review-warning">
+              <p>Can't see your review? <br/>
+              Please check your email to learn why we evaluated it as a spam.</p>
+            </div>
             <div className="customer-reviews">
               {/* <SortReviews /> */}
               <div className="srt-div">

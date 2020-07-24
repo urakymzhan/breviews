@@ -229,6 +229,14 @@
       }
     }
     .reviews-content {
+      .review-warning {
+      margin-bottom: 30px;
+        p {
+          color: gray;
+          font-size: 8px;
+          text-align: right;
+        }
+      }
       .srt-div {
         text-align: right;
         margin-bottom: 10px;

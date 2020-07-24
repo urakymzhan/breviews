@@ -76,9 +76,9 @@ const About = () => {
         <h6>Special thanks to our interns and contributors</h6>
         <hr/>
         <div className="team-contributors-names">
-        <a href="https://linkedin.com/azamat-rashidbekov" target="_blank"><p>Azamat Rashidbekov <img src={linkedin} alt="linkedin icon"/></p></a>
+        <a href="https://www.linkedin.com/in/azamatrashidbekov/" target="_blank"><p>Azamat Rashidbekov <img src={linkedin} alt="linkedin icon"/></p></a>
         <a href="https://linkedin.com/makhabat-maksatbekova" target="_blank"><p>Makhabat Maksatbekova <img src={linkedin} alt="linkedin icon"/></p></a>
-        <a href="https://linkedin.com/askar-zholdoshev" target="_blank"><p>Askar Zholdoshev <img src={linkedin} alt="linkedin icon"/></p></a>
+        <a href="https://www.linkedin.com/in/askar-zholdoshev-6b9a641aa/" target="_blank"><p>Askar Zholdoshev <img src={linkedin} alt="linkedin icon"/></p></a>
         </div>
       </div>
       <div className="team-reach-us">
