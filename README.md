@@ -2,7 +2,7 @@
 
 > bootcampAvenue project
 
-### locally run:
+### dev run:
 - from breviews-backend
 - npm run dev
 
