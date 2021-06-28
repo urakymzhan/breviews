@@ -30,3 +30,5 @@ I divided dev and prod api urls according to node_env. You might add KEYS etc la
 - show all bootcamps (Leave a Review button is not intuitive)
 - server side filter etc for **top** and **remote** bootcamps
 - remove Support page
+- improve Search
+- improve rating system 
