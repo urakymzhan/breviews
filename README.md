@@ -23,7 +23,7 @@ I divided dev and prod api urls according to node_env. You might add KEYS etc la
 - Change this behavior to store all prod and dev keys in local and use of libraries like "node-config", "dotenv" etc.
 
 ### Notes
-- keep copyright year [2020](https://stackoverflow.com/questions/2390230/do-copyright-dates-need-to-be-updated)
+- keep copyright year [2021](https://stackoverflow.com/questions/2390230/do-copyright-dates-need-to-be-updated)
 
 ### Features to add
 - login system
