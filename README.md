@@ -4,6 +4,7 @@
 
 ### dev:
 - from breviews-backend
+- $ `npm run install:both`
 - $ `npm run dev`
 
 ### IMPORTANT
