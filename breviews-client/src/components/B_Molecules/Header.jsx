@@ -79,7 +79,7 @@ const Header = ({ location }) => {
             }}
             id="leave-review"
           >
-            Leave a review
+            Show All Bootcamps
           </Nav.Link>
         </Nav>
         <Nav>
