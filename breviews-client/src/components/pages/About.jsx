@@ -11,7 +11,14 @@ const About = () => {
           <title>About</title>
         </Helmet>
         <div className="team-header">
-          <h5>Team who loves what they do</h5>
+          <h1>WHAT WE DO</h1>
+          <h5>
+          Bootcamp Avenue is a team of professionals on a mission. 
+          Our team created a space for people who looking for honest review on their next bootcamp.
+          And others who want to share their experience of studying at a bootcamp.  
+          We want people to find a place that fit their needs. 
+          We did research for you and picked the Best Bootcamps with Real feedback from Real students. 
+          </h5>
           <hr/>
         </div>
 
