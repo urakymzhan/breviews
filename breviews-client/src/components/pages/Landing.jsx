@@ -13,6 +13,7 @@ const Landing = () => {
   const [mainpageData, setMainpageData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  console.log(`${process.env.API_URL}/landing`);
 
   useEffect(() => {
     localStorage.clear();
