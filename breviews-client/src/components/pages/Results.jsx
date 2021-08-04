@@ -25,7 +25,7 @@ const Results = (props) => {
       try {
         // POST
         const response = await fetch(
-          `${process.env.API_URL}/results?search=${query}`,
+          `${process.env.API_URL}/results?search=${query}&sortParam=${sortVal}`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -49,7 +49,7 @@ const Results = (props) => {
     };
     fetchData();
     // important in updating Results on every change!!!
-  }, [query, props.location.state]);
+  }, [query, sortVal, props.location.state]);
 
   const handleSort = (e) => {
     localStorage.setItem("sortVal", e.target.value);
@@ -57,15 +57,15 @@ const Results = (props) => {
   };
 
   // client side sort - temp solution
-  if (sortVal === "toprated") {
-    resultsData.sort((a, b) => b.overall - a.overall);
-  } else if (sortVal === "leastrated") {
-    resultsData.sort((a, b) => a.overall - b.overall);
-  } else if (sortVal === "pricehigh") {
-    resultsData.sort((a, b) => b.totalPrice - a.totalPrice);
-  } else if (sortVal === "pricelow") {
-    resultsData.sort((a, b) => a.totalPrice - b.totalPrice);
-  }
+  // if (sortVal === "toprated") {
+  //   resultsData.sort((a, b) => b.overall - a.overall);
+  // } else if (sortVal === "leastrated") {
+  //   resultsData.sort((a, b) => a.overall - b.overall);
+  // } else if (sortVal === "pricehigh") {
+  //   resultsData.sort((a, b) => b.totalPrice - a.totalPrice);
+  // } else if (sortVal === "pricelow") {
+  //   resultsData.sort((a, b) => a.totalPrice - b.totalPrice);
+  // }
 
   let content;
   if (error) {
