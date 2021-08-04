@@ -9,7 +9,8 @@
     "start": "node server.js",
     "nodemonn": "nodemon server",
     "client": "npm start --prefix ../breviews-client",
-    "dev": "concurrently \"npm run nodemonn\" \"npm run client\""
+    "dev": "concurrently \"npm run nodemonn\" \"npm run client\"",
+    "install:both": "concurrently \"npm install\" \"npm install --prefix ../breviews-client\""
   },
   "dependencies": {
     "concurrently": "^5.2.0",
