@@ -136,6 +136,7 @@ const getSearchOptions = async (req, res, next) => {
 const getResultsCategory = async (req, res, next) => {
     try {
         const query = req.query.search;
+        const sortParam = req.query.sortParam;
         const resultsData = await findResultsCategory();
 
         if (!resultsData) {
@@ -143,6 +144,16 @@ const getResultsCategory = async (req, res, next) => {
                 new HttpError('Could not find any bootcamp for this criteria. Please try later', 404)
             );
         }
+
+        if (sortParam === "toprated") {
+            resultsData.sort((a, b) => b.overall - a.overall);
+          } else if (sortParam === "leastrated") {
+            resultsData.sort((a, b) => a.overall - b.overall);
+          } else if (sortParam === "pricehigh") {
+            resultsData.sort((a, b) => b.totalPrice - a.totalPrice);
+          } else if (sortParam === "pricelow") {
+            resultsData.sort((a, b) => a.totalPrice - b.totalPrice);
+          }
 
         if (query === 'all') {
             res.json(resultsData);
