@@ -212,6 +212,9 @@
     .leader-board {
       display: block;
       margin-bottom: 50px;
+      > div {
+        margin: 20px 0;
+      }
     }
     hr {
       width: 60%;
