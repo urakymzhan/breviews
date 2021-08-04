@@ -6,9 +6,16 @@
     text-align: center;
   
     .team-header {
-      margin-bottom: 20px;
+      margin-left: 80px;
+      margin-right: 80px;
+      margin-bottom: 80px;
+      h1 {
+        color:black;
+        font-weight: bold;
+      }
       h5 {
           color: gray;
+          text-align: center;
       }
     }
     .leader-board {
