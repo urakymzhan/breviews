@@ -27,7 +27,6 @@ app.use((req, res, next) => {
 })
 
 // routes
-// app.get("/", (req, res, next) => res.send("API Running")); // get rid of this in production
 app.use("/api", bootcamps);
 // handle Could not GET errors... (optional feature)
 app.use((req, res, next) => {
