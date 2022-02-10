@@ -1,7 +1,7 @@
 @import "../../../style/config";
 
 .navbar {
-  padding: 20px 80px!important;
+  padding: 20px 80px !important;
   font-size: 15px;
   color: #000000;
   text-align: center;
@@ -18,7 +18,7 @@
 
   .navbar-nav {
     .nav-link {
-      color: #000000!important;
+      color: #000000 !important;
       text-decoration: none;
       margin-left: 1.6em;
       font-weight: bold;
@@ -26,15 +26,19 @@
         border-bottom: 0.1px solid;
       }
     }
+    // override login color
+    #login {
+      color: #e83e8c !important;
+    }
   }
-    // burger
-    .navbar-toggler.collapsed {
-      color: #000000!important;
-      border-color: #000000!important;
-    }
-      .navbar-toggler-icon {
-      background-image: url('../../../../public/assets/burger.png')!important;
-    }
+  // burger
+  .navbar-toggler.collapsed {
+    color: #000000 !important;
+    border-color: #000000 !important;
+  }
+  .navbar-toggler-icon {
+    background-image: url("../../../../public/assets/burger.png") !important;
+  }
 }
 
 // Media

@@ -15,50 +15,6 @@ const Header = ({ location }) => {
       ? "linear-gradient(180deg, #E7F3E7 61.98%, #E7F3E7 78.88%)"
       : "#fff";
   return (
-    // <header style={flexibleBgColor}>
-    //   <nav id="header-nav">
-    //     <ul className="header-left">
-    //       <li>
-    //         <Link to="/" className="links">
-    //           <img className="brlogo" src={brlogo} />
-    //         </Link>
-    //       </li>
-    //       <li className="leave-review">
-    //         <Link
-    //           to={{
-    //             pathname: '/results',
-    //             search: '?category=all'
-    //           }}
-    //           className="links"
-    //         >
-    //           Leave a review
-    //         </Link>
-    //       </li>
-    //     </ul>
-
-    //     <ul className="header-right">
-    //       <li className="lists">
-    //         <a
-    //           href="https://www.patreon.com/user?u=35633615"
-    //           target="_blank"
-    //           className="links"
-    //         >
-    //           Patreon
-    //         </a>
-    //       </li>
-    //       <li className="lists">
-    //         <Link to="/about" className="links">
-    //           About
-    //         </Link>
-    //       </li>
-    //       <li className="lists">
-    //         <Link to="/contact" className="links">
-    //           Contact
-    //         </Link>
-    //       </li>
-    //     </ul>
-    //   </nav>
-    // </header>
     <Navbar
       collapseOnSelect
       expand="sm"
@@ -83,8 +39,8 @@ const Header = ({ location }) => {
           </Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link as={Link} to="/support">
-            Support
+          <Nav.Link as={Link} to="/login" id="login">
+            Login
           </Nav.Link>
           <Nav.Link as={Link} to="/about">
             About

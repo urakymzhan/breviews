@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./style/landing.scss";
 import { SkeletonLanding } from "../A_Atoms";
-import {
-  TopBootcamps,
-  RemoteBootcamps,
-  SearchBanner,
-} from "../B_Molecules";
+import { TopBootcamps, RemoteBootcamps, SearchBanner } from "../B_Molecules";
 import { Helmet } from "react-helmet";
 
 const Landing = () => {
-  // removed redux for now
+  // removed redux
   const [mainpageData, setMainpageData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  console.log(`${process.env.API_URL}/landing`);
+  // console.log(`${process.env.API_URL}/landing`);
 
+  console.log("data", mainpageData);
   useEffect(() => {
     localStorage.clear();
     const fetchData = async () => {
