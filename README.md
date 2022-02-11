@@ -43,12 +43,3 @@
 ### Notes
 
 - keep copyright year [2020](https://stackoverflow.com/questions/2390230/do-copyright-dates-need-to-be-updated)
-
-### Features to add
-
-- login system
-- show all bootcamps (Leave a Review button is not intuitive)
-- server side filter etc for **top** and **remote** bootcamps
-- remove Support page
-- improve Search
-- improve rating system

@@ -14,6 +14,17 @@ const Header = ({ location }) => {
     location.pathname.includes("bootcamps")
       ? "linear-gradient(180deg, #E7F3E7 61.98%, #E7F3E7 78.88%)"
       : "#fff";
+
+  const logOut = () => {
+    fetch(`${process.env.API_URL}/auth/logout`, {
+      method: "GET",
+      credentials: "include", // important for cookies
+      withCredentials: true,
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+  };
   return (
     <Navbar
       collapseOnSelect
@@ -39,9 +50,16 @@ const Header = ({ location }) => {
           </Nav.Link>
         </Nav>
         <Nav>
+          {/* render based on is user isAuthenticated or not*/}
           <Nav.Link as={Link} to="/login" id="login">
             Login
           </Nav.Link>
+          {/* <Nav.Link as={Link} to="/" id="logout" onClick={logOut}>
+            Logout
+          </Nav.Link> */}
+          <button id="logout" onClick={logOut}>
+            Logout
+          </button>
           <Nav.Link as={Link} to="/about">
             About
           </Nav.Link>
