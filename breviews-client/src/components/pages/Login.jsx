@@ -4,28 +4,34 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import "./style/reviewformpage.scss";
 // import * as Yup from "yup";
+import AuthService from "../../services/auth.services";
 
 class Login extends Component {
+  state = {
+    authError: null,
+  };
+
   handleSubmit = (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
 
-    fetch(`${process.env.API_URL}/auth/login`, {
-      method: "POST",
-      credentials: "include", // important for cookies
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify(values),
-    })
-      .then((res) => res.json())
-      .then((user) => console.log(user));
+    AuthService.login(values)
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem("token", res?.data?.token);
+          localStorage.setItem("user_id", res?.data?.user_id);
+          this.props.history.push("/profile");
+        } else {
+          this.setState({ authError: res.data.message });
+          localStorage.removeItem("token");
+        }
+      })
+      .catch((err) => {
+        this.setState({ authError: err.message });
+      });
 
     setSubmitting(false);
     // reset
     resetForm();
-
-    // redirect
-    this.props.history.push("/");
   };
 
   validate = (values) => {
@@ -47,8 +53,14 @@ class Login extends Component {
   };
 
   render() {
+    const unauthMessage = this.props.location.state?.message;
     return (
       <div className="review-form-container">
+        {/* temporary fix */}
+        {this.state.authError && (
+          <p style={{ color: "red" }}>{this.state.authError}</p>
+        )}
+        {unauthMessage && <p style={{ color: "red" }}>{unauthMessage}</p>}
         <LoginForm onSubmit={this.handleSubmit} validate={this.validate} />
       </div>
     );

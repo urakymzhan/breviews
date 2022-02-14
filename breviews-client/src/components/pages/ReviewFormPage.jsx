@@ -4,11 +4,9 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import Rating from "react-rating";
 import "./style/reviewformpage.scss";
-import * as Yup from 'yup';
-// import ratingOff from '../../../public/assets/rating-off.png';
-// import ratingOn from '../../../public/assets/rating-on.png';
-import fullLogo from '../../../public/assets/full-circle.svg';
-import emptyLogo from '../../../public/assets/empty-circle.svg';
+import * as Yup from "yup";
+import fullLogo from "../../../public/assets/full-circle.svg";
+import emptyLogo from "../../../public/assets/empty-circle.svg";
 
 // Star rating value doesnt work with yup right now
 // const ReviewFormSchema = Yup.object().shape({
@@ -31,37 +29,26 @@ import emptyLogo from '../../../public/assets/empty-circle.svg';
 //     .min(1, 'Required!')
 // })
 
-
 // handle star rating
-const MyStarInput = ({ratingVal, handleStar, ...props}) => {
+const MyStarInput = ({ ratingVal, handleStar, ...props }) => {
   // const [field, meta ] = useField(props);
   return (
     <Rating
-          className="star-rating-container"
-          start={0}
-          stop={5}
-          initialRating={ratingVal}
-          onClick={handleStar}
-          emptySymbol={
-            <img
-              id="rating-empty-star"
-              src={emptyLogo}
-            />
-          }
-          fullSymbol={
-            <img
-              id="rating-full-star"
-              src={fullLogo}
-            />
-          }
-        />
-  )
-} 
+      className="star-rating-container"
+      start={0}
+      stop={5}
+      initialRating={ratingVal}
+      onClick={handleStar}
+      emptySymbol={<img id="rating-empty-star" src={emptyLogo} />}
+      fullSymbol={<img id="rating-full-star" src={fullLogo} />}
+    />
+  );
+};
 
 class ReviewFormPage extends Component {
   state = {
-    ratingVal: 0
-  }
+    ratingVal: 0,
+  };
 
   handleSubmit = (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
@@ -80,7 +67,7 @@ class ReviewFormPage extends Component {
       },
       body: JSON.stringify(values),
     });
-  
+
     setSubmitting(false);
     // reset
     resetForm();
@@ -94,7 +81,6 @@ class ReviewFormPage extends Component {
       state: customName,
     };
     this.props.history.push(location);
-
   };
 
   handleStar = (clickedVal) => this.setState({ ratingVal: clickedVal });
@@ -108,16 +94,12 @@ class ReviewFormPage extends Component {
     }
     if (!values.title) {
       errors.title = "Required";
-    } else if (
-      values.title.split(" ").length < 3
-    ) {
+    } else if (values.title.split(" ").length < 3) {
       errors.title = "Please write at least 3 words";
     }
     if (!values.review) {
       errors.review = "Required";
-    } else if (
-      values.review.split(" ").length < 15
-    ) {
+    } else if (values.review.split(" ").length < 15) {
       errors.review = "Please write at least 15 words";
     }
     if (!values.email) {
@@ -133,11 +115,9 @@ class ReviewFormPage extends Component {
     if (ratingVal === 0) {
       errors.ratingVal = "Required";
     }
-    if(!values.linkedin) {
+    if (!values.linkedin) {
       errors.linkedin = "Required";
-    } else if (
-      values.linkedin.indexOf("linkedin") === -1
-    ) {
+    } else if (values.linkedin.indexOf("linkedin") === -1) {
       errors.linkedin = "Invalid linkedin url";
     }
     return errors;
@@ -149,7 +129,7 @@ class ReviewFormPage extends Component {
     return (
       <div className="review-form-container">
         <h3>{customName}</h3>
-        <ReviewForm 
+        <ReviewForm
           onSubmit={this.handleSubmit}
           handleStar={this.handleStar}
           ratingVal={this.state.ratingVal}
@@ -164,117 +144,139 @@ const ReviewForm = (props) => {
   const { onSubmit, handleStar, ratingVal, validate } = props;
   return (
     <div>
-    <Formik
-      validateOnChange={true}
-      initialValues={{
-        customerName: "",
-        review: "",
-        pros: "",
-        cons: "",
-        title: "",
-        email: "",
-        acceptTerms: false,
-        ratingVal: ratingVal,
-        linkedin: ""
-      }}
-      validate={validate}
-      onSubmit={onSubmit}
-    >
-      {({ values, errors, isSubmitting }) => (
-        <Form className="review-submit-form">
-          <div>
-            <label htmlFor="customerName">Name* </label>
-            <Field
-              placeholder="Name"
-              name="customerName"
-              type="input"
-            />
-            <ErrorMessage name="customerName" render={msg => <div className="form-errors">{msg}</div>} />
-          </div>
-          <div>
-            <label>Select Rating*</label>
-            <MyStarInput name="ratingVal" handleStar={handleStar} ratingVal={ratingVal} value={ratingVal}/>
-            <ErrorMessage name="ratingVal" render={msg => <div className="form-errors">{msg}</div>} />
-          </div>
-          <div>
-            <label htmlFor="title"> Title of your review* </label>
-            <Field
-              placeholder="Best bootcamp, reccomend..."
-              name="title"
-              type="input"
-            />
-            <span className="input-footers">( 3 word minimum )</span>
-            <ErrorMessage name="title" render={msg => <div className="form-errors">{msg}</div>} />
-          </div>
+      <Formik
+        validateOnChange={true}
+        initialValues={{
+          customerName: "",
+          review: "",
+          pros: "",
+          cons: "",
+          title: "",
+          email: "",
+          acceptTerms: false,
+          ratingVal: ratingVal,
+          linkedin: "",
+        }}
+        validate={validate}
+        onSubmit={onSubmit}
+      >
+        {({ values, errors, isSubmitting }) => (
+          <Form className="review-submit-form">
+            <div>
+              <label htmlFor="customerName">Name* </label>
+              <Field placeholder="Name" name="customerName" type="input" />
+              <ErrorMessage
+                name="customerName"
+                render={(msg) => <div className="form-errors">{msg}</div>}
+              />
+            </div>
+            <div>
+              <label>Select Rating*</label>
+              <MyStarInput
+                name="ratingVal"
+                handleStar={handleStar}
+                ratingVal={ratingVal}
+                value={ratingVal}
+              />
+              <ErrorMessage
+                name="ratingVal"
+                render={(msg) => <div className="form-errors">{msg}</div>}
+              />
+            </div>
+            <div>
+              <label htmlFor="title"> Title of your review* </label>
+              <Field
+                placeholder="Best bootcamp, reccomend..."
+                name="title"
+                type="input"
+              />
+              <span className="input-footers">( 3 word minimum )</span>
+              <ErrorMessage
+                name="title"
+                render={(msg) => <div className="form-errors">{msg}</div>}
+              />
+            </div>
 
-          <div>
-            <label htmlFor="review"> Your Review* </label>
-            <Field
-              className="review"
-              name="review"
-              type="textarea"
-              component="textarea"
-              rows={5} 
-              cols={20}
-            />
-            <span className="input-footers">( 15 word minimum )</span>
-            <ErrorMessage name="review" render={msg => <div className="form-errors">{msg}</div>} />
-          </div>
-          <div>
-            <label htmlFor="pros"> Pros </label>
-            <Field
-              className="pros"
-              placeholder="Share some pros of this bootcamp"
-              name="pros"
-              type="textarea"
-              component="textarea"
-            />
-          </div>
-          <div>
-          <label htmlFor="cons"> Cons </label>
-            <Field
-              className="cons"
-              placeholder="Share some cons of this bootcamp"
-              name="cons"
-              type="textarea"
-              component="textarea"
-            />
-          </div>
-          <div>
-          <label htmlFor="email"> Email* </label>
-            <Field
-              name="email"
-              type="email"
-            />
-            <ErrorMessage name="email" render={msg => <div className="form-errors">{msg}</div>} />
-          </div>
-          <div>
-          <label htmlFor="linkedin"> LinkedIn Url* </label>
-            <Field
-              name="linkedin"
-              type="input"
-            />
-            <ErrorMessage name="linkedin" render={msg => <div className="form-errors">{msg}</div>} />
-          </div>
-          <div className="checkboxes">
-            <Field name="acceptTerms" type="checkbox" className="checkbox"/>
-            <label className="checkbox-label">I agree to BootcampAvenue Terms of Use. This review of my experience at this bootcamp is truthful*</label>
-            <ErrorMessage name="acceptTerms" render={msg => <div className="form-errors">{msg}</div>} />
-          </div>
-          <div>
-            <button disabled={isSubmitting} type="submit" className="form-submit-btn">
-              Post Review
-            </button>
-            {/* for testing purposes only */}
-            {/* <pre>{JSON.stringify(values, null, 2)}</pre>
+            <div>
+              <label htmlFor="review"> Your Review* </label>
+              <Field
+                className="review"
+                name="review"
+                type="textarea"
+                component="textarea"
+                rows={5}
+                cols={20}
+              />
+              <span className="input-footers">( 15 word minimum )</span>
+              <ErrorMessage
+                name="review"
+                render={(msg) => <div className="form-errors">{msg}</div>}
+              />
+            </div>
+            <div>
+              <label htmlFor="pros"> Pros </label>
+              <Field
+                className="pros"
+                placeholder="Share some pros of this bootcamp"
+                name="pros"
+                type="textarea"
+                component="textarea"
+              />
+            </div>
+            <div>
+              <label htmlFor="cons"> Cons </label>
+              <Field
+                className="cons"
+                placeholder="Share some cons of this bootcamp"
+                name="cons"
+                type="textarea"
+                component="textarea"
+              />
+            </div>
+            <div>
+              <label htmlFor="email"> Email* </label>
+              <Field name="email" type="email" />
+              <ErrorMessage
+                name="email"
+                render={(msg) => <div className="form-errors">{msg}</div>}
+              />
+            </div>
+            <div>
+              <label htmlFor="linkedin"> LinkedIn Url* </label>
+              <Field name="linkedin" type="input" />
+              <ErrorMessage
+                name="linkedin"
+                render={(msg) => <div className="form-errors">{msg}</div>}
+              />
+            </div>
+            <div className="checkboxes">
+              <Field name="acceptTerms" type="checkbox" className="checkbox" />
+              <label className="checkbox-label">
+                I agree to BootcampAvenue Terms of Use. This review of my
+                experience at this bootcamp is truthful*
+              </label>
+              <ErrorMessage
+                name="acceptTerms"
+                render={(msg) => <div className="form-errors">{msg}</div>}
+              />
+            </div>
+            <div>
+              <button
+                disabled={isSubmitting}
+                type="submit"
+                className="form-submit-btn"
+              >
+                Post Review
+              </button>
+              {/* for testing purposes only */}
+              {/* <pre>{JSON.stringify(values, null, 2)}</pre>
             <pre>{JSON.stringify(errors, null, 2)}</pre> */}
-          </div>
-        </Form>
-      )}
-    </Formik>
-  </div>  
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </div>
   );
 };
 
 export default withRouter(ReviewFormPage);
-

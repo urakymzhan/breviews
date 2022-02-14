@@ -8,13 +8,22 @@ import { Provider } from "react-redux";
 import store from "../src/redux/store";
 import { ScrollToTop, Spinner } from "./components/A_Atoms";
 
+// Cookie is httpOnly (used for only server side auth)
+// Thats why using localstorage
+
 const App = () => {
+  /* TODO: 
+    const [isAuthenticated, setIsAuthenticated] = useState(
+      localStorage.getItem("token") ? "yes" : "no"
+    );
+  */
+
   return (
     <Provider store={store}>
       <Router>
         <Suspense
           fallback={
-            <div style={{textAlign: "center"}}>
+            <div style={{ textAlign: "center" }}>
               <Spinner />
             </div>
           }
@@ -22,7 +31,10 @@ const App = () => {
           <ScrollToTop>
             <Header />
             <Switch>
-              <Route component={Routes} />
+              <Route
+                render={(props) => <Routes {...props} />}
+                // component={Routes}
+              />
             </Switch>
             <Footer />
           </ScrollToTop>

@@ -3,35 +3,36 @@ import { useField, Field, Formik, ErrorMessage, Form } from "formik";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import "./style/reviewformpage.scss";
+import AuthService from "../../services/auth.services";
 // import * as Yup from "yup";
 
 class SignUp extends Component {
-  // state = {
-  //   email: "",
-  //   pass: "",
-  // };
+  state = {
+    authError: null,
+  };
 
   handleSubmit = (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
 
-    console.log("values", values);
-    fetch(`${process.env.API_URL}/auth/signup`, {
-      method: "POST",
-      credentials: "include", // important for cookies
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify(values),
-    })
-      .then((res) => res.json())
-      .then((user) => console.log(user));
+    AuthService.signup(values)
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem("token", res?.data?.token);
+          localStorage.setItem("user_id", res?.data?.user_id);
+          this.props.history.push("/profile");
+        } else {
+          this.setState({ authError: res.data.message });
+          localStorage.removeItem("logged_in");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ authError: error.message });
+      });
 
     setSubmitting(false);
     // reset
     resetForm();
-
-    // redirect
-    this.props.history.push("/");
   };
 
   validate = (values) => {
@@ -55,6 +56,10 @@ class SignUp extends Component {
   render() {
     return (
       <div className="review-form-container">
+        {/* temporary fix */}
+        {this.state.authError && (
+          <p style={{ color: "red" }}>{this.state.authError}</p>
+        )}
         <LoginForm onSubmit={this.handleSubmit} validate={this.validate} />
       </div>
     );
@@ -99,7 +104,7 @@ const LoginForm = (props) => {
                 type="submit"
                 className="form-submit-btn"
               >
-                Login
+                Sign Up
               </button>
             </div>
             <div>

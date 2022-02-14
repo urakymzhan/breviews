@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { loginUser, signUpUser, logOutUser } = require("../../controllers/auth");
+const {
+  loginUser,
+  signUpUser,
+  logOutUser,
+  getSingleUser,
+} = require("../../controllers/auth");
 
-// @route  GET api/auth/:user
+// @route  POST api/auth/:user
 // access  Public
 router.post("/login", loginUser);
 
@@ -13,5 +18,9 @@ router.post("/signup", signUpUser);
 // @route  GET api/auth/logout
 // access  Public
 router.get("/logout", logOutUser);
+
+// @route  POST api/auth/logout
+// access  Public
+router.post("/user", getSingleUser);
 
 module.exports = router;

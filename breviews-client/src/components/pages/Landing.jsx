@@ -11,9 +11,9 @@ const Landing = () => {
   const [error, setError] = useState("");
   // console.log(`${process.env.API_URL}/landing`);
 
-  console.log("data", mainpageData);
   useEffect(() => {
-    localStorage.clear();
+    // was clear before, its break users auth
+    localStorage.removeItem("sortVal");
     const fetchData = async () => {
       setIsLoading(true);
       setError("");

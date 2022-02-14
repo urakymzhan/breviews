@@ -85,6 +85,7 @@ const getBootcampPageData = async (req, res, next) => {
 const postReview = async (req, res, next) => {
     // express validator
     const errors = validationResult(req);
+    
     if (!errors.isEmpty()) {
         throw new HttpError('Invalid form data passed!', 422);
     }

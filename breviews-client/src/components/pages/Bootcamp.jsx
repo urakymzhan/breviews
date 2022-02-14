@@ -10,7 +10,7 @@ import { Ratings } from "../A_Atoms";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { makeStyles } from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 import locationicon from "../../../public/assets/locationMini.png";
 import externallink from "../../../public/assets/external-link.svg";
 
@@ -38,7 +38,8 @@ const Bootcamp = (props) => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    localStorage.clear();
+    // was clear before, its break users auth
+    localStorage.removeItem("sortVal"); 
     const fetchData = async () => {
       setIsLoading(true);
       setError("");
@@ -114,7 +115,7 @@ const Bootcamp = (props) => {
     const progresTwo = reviews.filter((review) => review.star === 2).length;
     const progresOne = reviews.filter((review) => review.star === 1).length;
 
-    // pagination data 
+    // pagination data
     const start = (page - 1) * offset;
     const end = page * offset;
     const count = Math.ceil(reviews.length / offset);
@@ -147,7 +148,7 @@ const Bootcamp = (props) => {
                 <Ratings classname="star-rating-container" overall={overall} />
                 <p className="total-reviews-cnt">{reviewsCount} reviews</p>
                 <p>
-                <img src={locationicon} alt="bootcamp location" />
+                  <img src={locationicon} alt="bootcamp location" />
                   {location.map((loc, ind) => (
                     <span key={ind} className="location">
                       {" "}
@@ -242,8 +243,10 @@ const Bootcamp = (props) => {
 
           <div className="reviews-content">
             <div className="review-warning">
-              <p>Can't see your review? <br/>
-              Please check your email to learn why we evaluated it as a spam.</p>
+              <p>
+                Can't see your review? <br />
+                Please check your email to learn why we evaluated it as a spam.
+              </p>
             </div>
             <div className="customer-reviews">
               {/* <SortReviews /> */}
@@ -269,7 +272,11 @@ const Bootcamp = (props) => {
                   <ReviewsBox reviewsData={reviews.slice(start, end)} />
                 )}
                 <div className={classes.root}>
-                  <Pagination count={count} page={page} onChange={handlePageChange} />
+                  <Pagination
+                    count={count}
+                    page={page}
+                    onChange={handlePageChange}
+                  />
                 </div>
               </div>
             </div>

@@ -11,13 +11,14 @@
    API_PROD_URL=https://ba-backend.herokuapp.com/api
    API_DEV_URL=http://localhost:5000/api
    ```
-3. In development inside `nodemon.json` in `/breviews-backend` write:
+3. In development inside `nodemon.json` in `/breviews-backend` write (Testing database):
    ```
    {
        "env": {
-            DATABASE_NAME: askme
-            DATABASE_PASSWORD: askme
-            DATABASE_USER: askme
+            "DATABASE_NAME": "breviews",
+            "DATABASE_PASSWORD": "123",
+            "DATABASE_USER": Ulan",
+            "SECRET_KEY": "your key"
        }
    }
    ```
@@ -43,3 +44,14 @@
 ### Notes
 
 - keep copyright year [2020](https://stackoverflow.com/questions/2390230/do-copyright-dates-need-to-be-updated)
+
+### Learn
+
+- Cookie and Auth:
+  - https://www.youtube.com/watch?v=uXDnS5PcjCA&ab_channel=LearnWebCode
+  - https://github.com/LearnWebCode/youtube-cookies-and-more
+
+## Separated deployments
+
+- https://github.com/urakymzhan/breviews-frontend
+- https://github.com/urakymzhan/breviews-backend

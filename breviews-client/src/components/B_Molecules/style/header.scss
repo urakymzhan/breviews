@@ -17,7 +17,8 @@
   }
 
   .navbar-nav {
-    .nav-link {
+    .nav-link,
+    .dropdown-menu {
       color: #000000 !important;
       text-decoration: none;
       margin-left: 1.6em;
@@ -26,8 +27,9 @@
         border-bottom: 0.1px solid;
       }
     }
-    // override login color
-    #login {
+    // override color
+    #login,
+    #logout {
       color: #e83e8c !important;
     }
   }
